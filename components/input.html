@@ -1,0 +1,86 @@
+<!-- INPUT FIELD -->
+<div class="mb-3">
+  <label for="basicInput" class="form-label">Email Address</label>
+  <input type="email" class="form-control" id="basicInput" placeholder="Enter email address">
+  <small class="form-text text-muted">We'll never share your email with anyone else.</small>
+</div>
+
+<!-- INPUT WITH ERROR STATE -->
+<div class="mb-3">
+  <label for="errorInput" class="form-label">Password</label>
+  <input type="password" class="form-control is-invalid" id="errorInput" value="incorrect" required>
+  <div class="invalid-feedback">
+    Password must be at least 8 characters long.
+  </div>
+</div>
+
+<!-- INPUT WITH SUCCESS STATE -->
+<div class="mb-3">
+  <label for="successInput" class="form-label">Username</label>
+  <input type="text" class="form-control is-valid" id="successInput" value="john_doe" required>
+  <div class="valid-feedback">
+    Username is available!
+  </div>
+</div>
+
+<!-- TEXTAREA -->
+<div class="mb-3">
+  <label for="messageTextarea" class="form-label">Message</label>
+  <textarea class="form-control" id="messageTextarea" rows="4" placeholder="Enter your message here..."></textarea>
+</div>
+
+<!-- FORM SELECT -->
+<div class="mb-3">
+  <label for="selectOption" class="form-label">Select Grade</label>
+  <select class="form-select" id="selectOption">
+    <option selected>Choose a grade...</option>
+    <option value="1">Grade 1</option>
+    <option value="2">Grade 2</option>
+    <option value="3">Grade 3</option>
+    <option value="4">Grade 4</option>
+    <option value="5">Grade 5</option>
+  </select>
+</div>
+
+<!-- CHECKBOX -->
+<div class="mb-3">
+  <div class="form-check">
+    <input class="form-check-input" type="checkbox" value="" id="rememberCheckbox">
+    <label class="form-check-label" for="rememberCheckbox">
+      Remember me
+    </label>
+  </div>
+</div>
+
+<!-- RADIO BUTTONS -->
+<div class="mb-3">
+  <label class="form-label d-block">User Type</label>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="userType" id="studentRadio" value="student" checked>
+    <label class="form-check-label" for="studentRadio">
+      Student
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="userType" id="parentRadio" value="parent">
+    <label class="form-check-label" for="parentRadio">
+      Parent
+    </label>
+  </div>
+  <div class="form-check">
+    <input class="form-check-input" type="radio" name="userType" id="teacherRadio" value="teacher">
+    <label class="form-check-label" for="teacherRadio">
+      Teacher
+    </label>
+  </div>
+</div>
+
+<!-- SWITCH/TOGGLE -->
+<div class="mb-3">
+  <div class="form-check form-switch">
+    <input class="form-check-input" type="checkbox" id="notificationSwitch" checked>
+    <label class="form-check-label" for="notificationSwitch">
+      Enable notifications
+    </label>
+  </div>
+</div>
