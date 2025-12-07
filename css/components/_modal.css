@@ -1,0 +1,133 @@
+/* ============================================================================
+   COMPONENT: Modal (Bootstrap Hybrid)
+   Namespace: .vs-modal
+   Visual Style: Clean Modern Card (Option A)
+   Architecture: BEM + Token-driven
+   ========================================================================= */
+
+/* Wrapper — applied on .modal */
+.vs-modal {
+  /* no direct styles here — modal container controlled by Bootstrap */
+}
+
+/* Dialog */
+.vs-modal .modal-dialog {
+  margin: var(--space-40) auto;
+  max-width: 600px;
+  transition: transform var(--motion-duration-medium) ease;
+}
+
+/* Modal Content as a Clean Card */
+.vs-modal .modal-content {
+  background-color: var(--surface-default);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color-subtle);
+  box-shadow: var(--elevation-4);
+
+  padding: 0;
+  overflow: hidden;
+
+  transition:
+    box-shadow var(--motion-duration-medium) ease,
+    transform var(--motion-duration-medium) ease;
+}
+
+/* Header */
+.vs-modal__header {
+  padding: var(--space-20) var(--space-24);
+  border-bottom: 1px solid var(--border-color-subtle);
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background-color: var(--surface-default);
+}
+
+.vs-modal__title {
+  margin: 0;
+  font-size: var(--body-lg-size);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* Close Button */
+.vs-modal__close {
+  border: none;
+  background: transparent;
+  font-size: 1.25rem;
+  line-height: 1;
+  color: var(--text-tertiary);
+  cursor: pointer;
+
+  transition: opacity var(--motion-duration-fast) ease;
+}
+
+.vs-modal__close:hover {
+  opacity: 0.6;
+}
+
+/* Body */
+.vs-modal__body {
+  padding: var(--space-24);
+  color: var(--text-secondary);
+  font-size: var(--body-md-size);
+  line-height: var(--body-md-line-height);
+}
+
+/* Footer */
+.vs-modal__footer {
+  padding: var(--space-16) var(--space-24);
+  border-top: 1px solid var(--border-color-subtle);
+
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-12);
+
+  background-color: var(--surface-default);
+}
+
+/* ---------------------------------------------------------------------------
+   SIZE VARIANTS
+--------------------------------------------------------------------------- */
+
+.vs-modal--sm .modal-dialog {
+  max-width: 400px;
+}
+
+.vs-modal--lg .modal-dialog {
+  max-width: 800px;
+}
+
+.vs-modal--xl .modal-dialog {
+  max-width: 1140px;
+}
+
+/* ---------------------------------------------------------------------------
+   FULLSCREEN VARIANT (Optional)
+--------------------------------------------------------------------------- */
+
+.vs-modal--fullscreen .modal-dialog {
+  max-width: 100%;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+.vs-modal--fullscreen .modal-content {
+  height: 100%;
+  border-radius: 0;
+}
+
+/* ---------------------------------------------------------------------------
+   ANIMATION OVERRIDES
+--------------------------------------------------------------------------- */
+
+.vs-modal.show .modal-dialog {
+  transform: translateY(0);
+}
+
+.vs-modal.fade .modal-dialog {
+  transform: translateY(-10px);
+}
+

@@ -1,0 +1,103 @@
+/* ============================================================================
+   COMPONENT: Select
+   Namespace: .vs-select
+   Architecture: BEM (Strict)
+   Dependencies: tokens.css, base.css, typography.css, utilities.css
+   ============================================================================ */
+
+.vs-select {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: 100%;
+}
+
+/* Control — the <select> element */
+.vs-select__control {
+  width: 100%;
+  padding: var(--space-12) var(--space-40) var(--space-12) var(--space-12);
+
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-color-default);
+
+  background-color: var(--surface-default);
+  color: var(--text-primary);
+
+  font-family: var(--font-family-sans);
+  font-size: var(--body-md-size);
+  line-height: var(--body-md-line-height);
+
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  transition: border-color var(--motion-duration-medium) ease,
+    box-shadow var(--motion-duration-medium) ease,
+    background-color var(--motion-duration-medium) ease;
+}
+
+.vs-select__control:focus-visible {
+  outline: none;
+  border-color: var(--border-color-primary);
+  box-shadow: var(--focus-ring);
+}
+
+/* Disabled */
+.vs-select__control:disabled {
+  background-color: var(--surface-disabled);
+  color: var(--text-tertiary);
+  cursor: not-allowed;
+}
+
+/* Chevron Icon */
+.vs-select__icon {
+  position: absolute;
+  top: 50%;
+  right: var(--space-12);
+  transform: translateY(-50%);
+  pointer-events: none;
+
+  color: var(--icon-color-default);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ---------------------------------------------------------------------------
+   STATES
+   --------------------------------------------------------------------------- */
+
+.vs-select--error .vs-select__control {
+  border-color: var(--border-color-error);
+  background-color: var(--error-50);
+}
+
+.vs-select--success .vs-select__control {
+  border-color: var(--border-color-success);
+  background-color: var(--success-50);
+}
+
+/* Disabled wrapper (alternative to disabled attribute) */
+.vs-select--disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+/* ---------------------------------------------------------------------------
+   SIZE VARIANTS
+   --------------------------------------------------------------------------- */
+
+.vs-select--sm .vs-select__control {
+  padding: var(--space-8) var(--space-32) var(--space-8) var(--space-12);
+  font-size: var(--body-sm-size);
+  line-height: var(--body-sm-line-height);
+}
+
+.vs-select--lg .vs-select__control {
+  padding: var(--space-16) var(--space-40) var(--space-16) var(--space-16);
+  font-size: var(--body-lg-size);
+  line-height: var(--body-lg-line-height);
+}
+/* ============================================================================
+   END OF FILE
+   ============================================================================ */

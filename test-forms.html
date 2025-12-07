@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>VIS Forms Test Page</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+
+    <!-- VIS Design System -->
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/typography.css" />
+    <link rel="stylesheet" href="css/utilities.css" />
+
+    <!-- VIS Components -->
+    <link rel="stylesheet" href="css/custom.css" />
+
+    <style>
+      .vs-form-group {
+        margin-bottom: 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        max-width: 420px;
+      }
+
+      .vs-form-label {
+        font-weight: 500;
+        color: var(--text-primary);
+        font-size: var(--body-md-size);
+      }
+
+      .vs-form-hint {
+        font-size: var(--body-sm-size);
+        color: var(--text-secondary);
+      }
+
+      .vs-form-error {
+        font-size: var(--body-sm-size);
+        color: var(--error-600);
+      }
+    </style>
+  </head>
+
+  <body style="padding: 40px">
+    <h1>VIS Forms Test Page</h1>
+    <p>
+      All form components arranged for testing visuals, spacing, interactions,
+      and error states.
+    </p>
+    <hr />
+    <br />
+
+    <!-- ============================================================
+       INPUT
+  ============================================================= -->
+    <section>
+      <h2>Input Fields</h2>
+
+      <div class="vs-form-group">
+        <label class="vs-form-label">Default Input</label>
+        <input
+          type="text"
+          class="vs-input__field"
+          placeholder="Enter text..."
+        />
+      </div>
+
+      <div class="vs-form-group">
+        <label class="vs-form-label">Input with Error</label>
+        <input
+          type="text"
+          class="vs-input__field vs-input--error"
+          placeholder="Wrong value..."
+        />
+        <span class="vs-form-error">This field is required.</span>
+      </div>
+
+      <div class="vs-form-group">
+        <label class="vs-form-label">Disabled Input</label>
+        <input
+          type="text"
+          class="vs-input__field"
+          disabled
+          placeholder="Disabled..."
+        />
+      </div>
+    </section>
+
+    <br />
+    <hr />
+    <br />
+
+    <!-- ============================================================
+       TEXTAREA
+  ============================================================= -->
+    <section>
+      <h2>Textarea</h2>
+
+      <div class="vs-form-group">
+        <label class="vs-form-label">Default Textarea</label>
+        <textarea
+          class="vs-textarea__field"
+          rows="4"
+          placeholder="Enter description..."
+        ></textarea>
+      </div>
+
+      <div class="vs-form-group">
+        <label class="vs-form-label">Textarea with Error</label>
+        <textarea
+          class="vs-textarea__field vs-textarea--error"
+          rows="4"
+        ></textarea>
+        <span class="vs-form-error">Minimum 20 characters required.</span>
+      </div>
+    </section>
+
+    <br />
+    <hr />
+    <br />
+
+    <!-- ============================================================
+       SELECT
+  ============================================================= -->
+    <section class="vs-select">
+      <h2>Select Dropdown</h2>
+
+      <div class="vs-form-group">
+        <label class="vs-form-label">Default Select</label>
+        <select class="vs-select__field form-select">
+          <option>Select Option</option>
+          <option>Item A</option>
+          <option>Item B</option>
+          <option>Item C</option>
+        </select>
+      </div>
+
+      <div class="vs-form-group">
+        <label class="vs-form-label">Select with Error</label>
+        <select class="vs-select__field vs-select--error form-select">
+          <option>Choose...</option>
+        </select>
+        <span class="vs-form-error">Selection required.</span>
+      </div>
+    </section>
+
+    <br />
+    <hr />
+    <br />
+
+    <!-- ============================================================
+       TOGGLE SWITCH
+  ============================================================= -->
+    <section>
+      <h2>Toggle Switch</h2>
+
+      <div class="vs-form-group">
+        <label class="vs-form-label">Default Toggle</label>
+        <label class="vs-toggle">
+          <input type="checkbox" class="vs-toggle__input" />
+          <span class="vs-toggle__switch"></span>
+          <span class="vs-toggle__label">Enable notifications</span>
+        </label>
+      </div>
+
+      <div class="vs-form-group">
+        <label class="vs-form-label">Disabled Toggle</label>
+        <label class="vs-toggle">
+          <input type="checkbox" class="vs-toggle__input" disabled />
+          <span class="vs-toggle__switch"></span>
+          <span class="vs-toggle__label">Feature locked</span>
+        </label>
+      </div>
+    </section>
+
+    <br />
+    <hr />
+    <br />
+
+    <!-- ============================================================
+       CHECKBOX
+  ============================================================= -->
+    <section>
+      <h2>Checkbox</h2>
+
+      <div class="vs-form-group">
+        <label class="vs-form-label">Default Checkbox</label>
+
+        <label class="vs-checkbox">
+          <input type="checkbox" class="vs-checkbox__input" />
+          <span class="vs-checkbox__box"></span>
+          <span class="vs-checkbox__label">Subscribe to updates</span>
+        </label>
+      </div>
+
+      <div class="vs-form-group">
+        <label class="vs-form-label">Checkbox Group</label>
+
+        <label class="vs-checkbox">
+          <input type="checkbox" class="vs-checkbox__input" />
+          <span class="vs-checkbox__box"></span>
+          <span class="vs-checkbox__label">Option A</span>
+        </label>
+
+        <label class="vs-checkbox">
+          <input type="checkbox" class="vs-checkbox__input" checked />
+          <span class="vs-checkbox__box"></span>
+          <span class="vs-checkbox__label">Option B (Checked)</span>
+        </label>
+
+        <label class="vs-checkbox vs-checkbox--error">
+          <input type="checkbox" class="vs-checkbox__input" />
+          <span class="vs-checkbox__box"></span>
+          <span class="vs-checkbox__label">Option C (Error)</span>
+        </label>
+      </div>
+    </section>
+
+    <br />
+    <hr />
+    <br />
+
+    <!-- ============================================================
+       RADIO
+  ============================================================= -->
+    <section>
+      <h2>Radio Buttons</h2>
+
+      <div class="vs-form-group">
+        <label class="vs-form-label">Choose one option</label>
+
+        <label class="vs-radio">
+          <input type="radio" class="vs-radio__input" name="rg1" />
+          <span class="vs-radio__circle"></span>
+          <span class="vs-radio__label">Choice A</span>
+        </label>
+
+        <label class="vs-radio">
+          <input type="radio" class="vs-radio__input" name="rg1" checked />
+          <span class="vs-radio__circle"></span>
+          <span class="vs-radio__label">Choice B (Checked)</span>
+        </label>
+
+        <label class="vs-radio vs-radio--error">
+          <input type="radio" class="vs-radio__input" name="rg1" />
+          <span class="vs-radio__circle"></span>
+          <span class="vs-radio__label">Choice C (Error)</span>
+        </label>
+      </div>
+    </section>
+
+    <br />
+    <hr />
+    <br />
+
+    <!-- Bootstrap JS -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

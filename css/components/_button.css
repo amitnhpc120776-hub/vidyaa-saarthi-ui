@@ -1,0 +1,166 @@
+/* ============================================================================
+   COMPONENT: Button
+   Namespace: .vs-btn
+   Architecture: BEM (Strict)
+   Dependencies: tokens.css, base.css, typography.css, utilities.css
+   ============================================================================ */
+
+/* Base button */
+.vs-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--icon-spacing);
+
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+
+  padding: var(--btn-padding-md-y) var(--btn-padding-md-x);
+
+  font-family: var(--font-family-sans);
+  font-size: var(--btn-font-md-size);
+  font-weight: var(--btn-font-weight);
+  line-height: var(--body-md-line-height);
+
+  text-decoration: none;
+  cursor: pointer;
+
+  background-color: transparent;
+  color: var(--text-primary);
+
+  transition: background-color var(--motion-duration-medium) ease,
+    color var(--motion-duration-medium) ease,
+    border-color var(--motion-duration-medium) ease,
+    box-shadow var(--motion-duration-medium) ease,
+    transform var(--motion-duration-fast) ease;
+}
+
+/* Focus */
+.vs-btn:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+/* Active (pressed) */
+.vs-btn:active {
+  transform: translateY(1px);
+}
+
+/* Disabled */
+.vs-btn.vs-is-disabled,
+.vs-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* ---------------------------------------------------------------------------
+   COLOR VARIANTS
+   --------------------------------------------------------------------------- */
+
+/* Primary */
+.vs-btn--primary {
+  background-color: var(--btn-primary-bg);
+  border-color: var(--btn-primary-bg);
+  color: var(--btn-primary-text);
+}
+
+.vs-btn--primary:hover {
+  background-color: var(--btn-primary-bg-hover);
+  border-color: var(--btn-primary-bg-hover);
+}
+
+/* Secondary */
+.vs-btn--secondary {
+  background-color: var(--btn-secondary-bg);
+  border-color: var(--btn-secondary-bg);
+  color: var(--btn-secondary-text);
+}
+
+.vs-btn--secondary:hover {
+  background-color: var(--btn-secondary-bg-hover);
+  border-color: var(--btn-secondary-bg-hover);
+}
+
+/* Tertiary */
+.vs-btn--tertiary {
+  background-color: var(--btn-tertiary-bg);
+  border-color: var(--border-color-subtle);
+  color: var(--btn-tertiary-text);
+}
+
+.vs-btn--tertiary:hover {
+  background-color: var(--btn-tertiary-bg-hover);
+}
+
+/* Outline */
+.vs-btn--outline {
+  background-color: transparent;
+  color: var(--btn-outline-text);
+  border-color: var(--btn-outline-border);
+}
+
+.vs-btn--outline:hover {
+  background-color: var(--btn-outline-bg-hover);
+}
+
+/* Ghost */
+.vs-btn--ghost {
+  background-color: transparent;
+  border-color: transparent;
+  color: var(--btn-ghost-text);
+}
+
+.vs-btn--ghost:hover {
+  background-color: var(--btn-ghost-bg-hover);
+}
+
+/* Danger */
+.vs-btn--danger {
+  background-color: var(--btn-danger-bg);
+  border-color: var(--btn-danger-bg);
+  color: var(--btn-danger-text);
+}
+
+.vs-btn--danger:hover {
+  background-color: var(--btn-danger-bg-hover);
+  border-color: var(--btn-danger-bg-hover);
+}
+
+/* ---------------------------------------------------------------------------
+   SIZE VARIANTS
+   --------------------------------------------------------------------------- */
+
+.vs-btn--sm {
+  padding: var(--btn-padding-sm-y) var(--btn-padding-sm-x);
+  font-size: var(--btn-font-sm-size);
+}
+
+.vs-btn--lg {
+  padding: var(--btn-padding-lg-y) var(--btn-padding-lg-x);
+  font-size: var(--btn-font-lg-size);
+}
+
+.vs-btn--full {
+  width: 100%;
+}
+
+/* ---------------------------------------------------------------------------
+   ICON SUPPORT
+   --------------------------------------------------------------------------- */
+
+.vs-btn__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Icon left */
+.vs-btn--icon-left > .vs-btn__icon {
+  margin-right: var(--icon-spacing);
+}
+
+/* Icon right */
+.vs-btn--icon-right > .vs-btn__icon {
+  margin-left: var(--icon-spacing);
+}

@@ -1,0 +1,115 @@
+/* ============================================================================
+   COMPONENT: Checkbox (VIS + Bootstrap Hybrid)
+   Namespace: .vs-checkbox
+   Style Option: Classic Outline
+   Architecture: BEM + Token-driven
+   ============================================================================ */
+
+/* Wrapper */
+.vs-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
+  cursor: pointer;
+}
+
+/* Hide the native checkbox */
+.vs-checkbox__input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Visual box */
+.vs-checkbox__box {
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--border-color-default);
+  border-radius: var(--radius-sm);
+  background-color: var(--surface-default);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: background-color var(--motion-duration-fast) ease,
+    border-color var(--motion-duration-fast) ease,
+    box-shadow var(--motion-duration-fast) ease;
+}
+
+/* Label */
+.vs-checkbox__label {
+  font-size: var(--body-md-size);
+  color: var(--text-primary);
+}
+
+/* Hover */
+.vs-checkbox:hover .vs-checkbox__box {
+  border-color: var(--neutral-600);
+}
+
+/* Focus (triggered by input focus) */
+.vs-checkbox__input:focus-visible + .vs-checkbox__box {
+  box-shadow: 0 0 0 3px var(--primary-200);
+  border-color: var(--primary-600);
+}
+
+/* Checked */
+.vs-checkbox__input:checked + .vs-checkbox__box {
+  background-color: var(--primary-600);
+  border-color: var(--primary-600);
+}
+
+/* Tick icon (drawn using CSS) */
+.vs-checkbox__box::after {
+  content: "";
+  width: 10px;
+  height: 6px;
+  border-left: 2px solid transparent;
+  border-bottom: 2px solid transparent;
+  transform: rotate(-45deg);
+  opacity: 0;
+  transition: opacity var(--motion-duration-fast) ease;
+}
+
+/* Show tick when checked */
+.vs-checkbox__input:checked + .vs-checkbox__box::after {
+  border-color: var(--text-inverse);
+  opacity: 1;
+}
+
+/* Disabled */
+.vs-checkbox__input:disabled + .vs-checkbox__box {
+  background-color: var(--neutral-200);
+  border-color: var(--neutral-300);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.vs-checkbox__input:disabled ~ .vs-checkbox__label {
+  color: var(--text-tertiary);
+  cursor: not-allowed;
+}
+
+/* Error State */
+.vs-checkbox--error .vs-checkbox__box {
+  border-color: var(--error-600);
+}
+
+.vs-checkbox--error:hover .vs-checkbox__box {
+  border-color: var(--error-700);
+}
+.vs-checkbox--error .vs-checkbox__input:focus-visible + .vs-checkbox__box {
+  box-shadow: 0 0 0 3px var(--error-200);
+  border-color: var(--error-600);
+}
+.vs-checkbox--error .vs-checkbox__input:checked + .vs-checkbox__box {
+  background-color: var(--error-600);
+  border-color: var(--error-600);
+}
+.vs-checkbox--error .vs-checkbox__input:checked + .vs-checkbox__box::after {
+  border-color: var(--text-inverse);
+}
+/* ============================================================================
+   END OF COMPONENT: Checkbox
+   ============================================================================ */

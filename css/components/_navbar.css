@@ -1,0 +1,137 @@
+/* ============================================================================
+   COMPONENT: Navbar
+   Namespace: .vs-navbar
+   Architecture: BEM (Strict)
+   Dependencies: tokens.css, base.css, typography.css, utilities.css
+   ============================================================================ */
+
+.vs-navbar {
+  width: 100%;
+  background-color: var(--secondary-500);
+  color: var(--text-inverse);
+  padding: var(--space-12) 0;
+
+  display: flex;
+  align-items: center;
+  z-index: 50;
+
+  transition: background-color var(--motion-duration-medium) ease,
+    box-shadow var(--motion-duration-medium) ease;
+}
+
+/* Sticky variant */
+.vs-navbar--sticky {
+  position: sticky;
+  top: 0;
+}
+
+/* Shadow variant */
+.vs-navbar--shadow {
+  box-shadow: var(--elevation-2);
+}
+
+/* Transparent variant (for hero sections) */
+.vs-navbar--transparent {
+  background-color: transparent;
+}
+
+/* ---------------------------------------------------------------------------
+   CONTAINER
+   --------------------------------------------------------------------------- */
+
+.vs-navbar__container {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-24);
+}
+
+/* ---------------------------------------------------------------------------
+   BRAND
+   --------------------------------------------------------------------------- */
+
+.vs-navbar__brand {
+  font-size: var(--heading-sm-size);
+  font-weight: 600;
+  color: var(--text-inverse);
+  text-decoration: none;
+
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+}
+
+.vs-navbar__brand:hover {
+  opacity: 0.9;
+}
+
+/* ---------------------------------------------------------------------------
+   MENU
+   --------------------------------------------------------------------------- */
+
+.vs-navbar__menu {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: var(--space-32);
+  margin: 0;
+  padding: 0;
+}
+
+.vs-navbar__item {
+}
+
+.vs-navbar__link {
+  text-decoration: none;
+  color: var(--text-inverse);
+  font-size: var(--body-md-size);
+  font-weight: 500;
+
+  transition: opacity var(--motion-duration-fast) ease;
+}
+
+.vs-navbar__link:hover {
+  opacity: 0.8;
+}
+
+/* ---------------------------------------------------------------------------
+   ACTIONS (right side buttons)
+   --------------------------------------------------------------------------- */
+
+.vs-navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-16);
+}
+
+/* ---------------------------------------------------------------------------
+   MOBILE TOGGLE (hamburger)
+   --------------------------------------------------------------------------- */
+
+.vs-navbar__toggle {
+  display: none;
+  cursor: pointer;
+  font-size: 1.5rem;
+  color: var(--text-inverse);
+}
+
+/* ---------------------------------------------------------------------------
+   RESPONSIVE BEHAVIOR
+   --------------------------------------------------------------------------- */
+
+@media (max-width: 992px) {
+  .vs-navbar__menu {
+    display: none;
+  }
+
+  .vs-navbar__toggle {
+    display: block;
+  }
+}
+/* ============================================================================
+   END OF FILE
+   ============================================================================ */

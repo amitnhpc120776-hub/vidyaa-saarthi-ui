@@ -1,0 +1,109 @@
+/* ============================================================================
+   COMPONENT: Radio Button (VIS + Bootstrap Hybrid)
+   Namespace: .vs-radio
+   Style Option: Classic Outline
+   Architecture: BEM + Token-driven
+   ============================================================================ */
+
+/* Wrapper */
+.vs-radio {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-8);
+  cursor: pointer;
+}
+
+/* Hide native radio */
+.vs-radio__input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Visual outer circle */
+.vs-radio__circle {
+  width: 18px;
+  height: 18px;
+
+  border: 2px solid var(--border-color-default);
+  border-radius: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: var(--surface-default);
+
+  transition: border-color var(--motion-duration-fast) ease,
+    background-color var(--motion-duration-fast) ease,
+    box-shadow var(--motion-duration-fast) ease;
+}
+
+/* Label */
+.vs-radio__label {
+  font-size: var(--body-md-size);
+  color: var(--text-primary);
+}
+
+/* Hover */
+.vs-radio:hover .vs-radio__circle {
+  border-color: var(--neutral-600);
+}
+
+/* Focus ring (from input) */
+.vs-radio__input:focus-visible + .vs-radio__circle {
+  box-shadow: 0 0 0 3px var(--primary-200);
+  border-color: var(--primary-600);
+}
+
+/* Inner filled dot */
+.vs-radio__circle::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background-color: var(--primary-600);
+  border-radius: 50%;
+  opacity: 0;
+
+  transition: opacity var(--motion-duration-fast) ease,
+    transform var(--motion-duration-fast) ease;
+  transform: scale(0.3);
+}
+
+/* Checked */
+.vs-radio__input:checked + .vs-radio__circle {
+  border-color: var(--primary-600);
+}
+
+.vs-radio__input:checked + .vs-radio__circle::after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* Disabled */
+.vs-radio__input:disabled + .vs-radio__circle {
+  background-color: var(--neutral-200);
+  border-color: var(--neutral-300);
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.vs-radio__input:disabled ~ .vs-radio__label {
+  color: var(--text-tertiary);
+  cursor: not-allowed;
+}
+
+/* Error */
+.vs-radio--error .vs-radio__circle {
+  border-color: var(--error-600);
+}
+.vs-radio--error .vs-radio__input:checked + .vs-radio__circle {
+  border-color: var(--error-600);
+}
+.vs-radio--error .vs-radio__input:focus-visible + .vs-radio__circle {
+  box-shadow: 0 0 0 3px var(--error-200);
+  border-color: var(--error-600);
+}
+.vs-radio--error .vs-radio__label {
+  color: var(--error-600);
+}

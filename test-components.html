@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>VIS Design System — Component Test Page</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+
+    <!-- VIS Design System CSS -->
+    <link rel="stylesheet" href="css/tokens.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/typography.css" />
+    <link rel="stylesheet" href="css/utilities.css" />
+    <link rel="stylesheet" href="css/custom.css" />
+
+    <style>
+      body {
+        padding-top: 80px;
+      }
+      .demo-section {
+        padding: 40px 0;
+        border-bottom: 1px solid #eee;
+      }
+      .demo-section h2 {
+        margin-bottom: 20px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- =======================================================================
+       NAVBAR
+  ======================================================================= -->
+
+    <nav class="navbar navbar-expand-lg vs-navbar vs-navbar--shadow">
+      <div class="container-fluid vs-navbar__container">
+        <!-- BRAND -->
+        <a class="navbar-brand vs-navbar__brand" href="#"> Vidyaa Saarthi </a>
+
+        <!-- MOBILE TOGGLER -->
+        <button
+          class="navbar-toggler vs-navbar__toggle"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#vsNavbar"
+          aria-controls="vsNavbar"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- COLLAPSIBLE AREA -->
+        <div class="collapse navbar-collapse" id="vsNavbar">
+          <!-- LEFT MENU -->
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0 vs-navbar__menu">
+            <li class="nav-item vs-navbar__item">
+              <a
+                class="nav-link vs-navbar__link active"
+                aria-current="page"
+                href="#"
+                >Home</a
+              >
+            </li>
+
+            <li class="nav-item vs-navbar__item">
+              <a class="nav-link vs-navbar__link" href="#">Features</a>
+            </li>
+
+            <li class="nav-item dropdown vs-navbar__item">
+              <a
+                class="nav-link dropdown-toggle vs-navbar__link"
+                href="#"
+                role="button"
+                data-bs-toggle="dropdown"
+                aria-expanded="false"
+              >
+                Dropdown
+              </a>
+              <ul class="dropdown-menu vs-dropdown">
+                <li><a class="dropdown-item" href="#">Action</a></li>
+                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><hr class="dropdown-divider" /></li>
+                <li>
+                  <a class="dropdown-item" href="#">Something else here</a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+
+          <!-- RIGHT ACTIONS -->
+          <div class="vs-navbar__actions">
+            <form class="d-flex me-3" role="search">
+              <input
+                class="form-control vs-input__field"
+                type="search"
+                placeholder="Search"
+              />
+            </form>
+
+            <button class="vs-btn vs-btn--secondary">Login</button>
+            <button class="vs-btn vs-btn--primary">Sign Up</button>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <!-- =====================================================================
+         BUTTONS
+    ======================================================================= -->
+      <section class="demo-section">
+        <h2>Buttons</h2>
+
+        <button class="vs-btn vs-btn--primary">Primary</button>
+        <button class="vs-btn vs-btn--secondary">Secondary</button>
+        <button class="vs-btn vs-btn--outline">Outline</button>
+        <button class="vs-btn vs-btn--ghost">Ghost</button>
+        <button class="vs-btn vs-btn--danger">Danger</button>
+        <br /><br />
+        <button class="vs-btn vs-btn--primary vs-btn--sm">Small</button>
+        <button class="vs-btn vs-btn--primary vs-btn--lg">Large</button>
+      </section>
+
+      <!-- =====================================================================
+         INPUTS
+    ======================================================================= -->
+      <section class="demo-section">
+        <h2>Inputs</h2>
+
+        <div class="vs-input">
+          <input
+            type="text"
+            class="vs-input__field"
+            placeholder="Default Input"
+          />
+        </div>
+        <br />
+
+        <div class="vs-input vs-input--error">
+          <input
+            type="text"
+            class="vs-input__field"
+            placeholder="Error Input"
+          />
+        </div>
+        <br />
+
+        <div class="vs-input vs-input--success">
+          <input
+            type="text"
+            class="vs-input__field"
+            placeholder="Success Input"
+          />
+        </div>
+        <br />
+
+        <div class="vs-input vs-input--disabled">
+          <input
+            type="text"
+            class="vs-input__field"
+            placeholder="Disabled Input"
+            disabled
+          />
+        </div>
+      </section>
+
+      <!-- =====================================================================
+         TEXTAREA
+    ======================================================================= -->
+      <section class="demo-section">
+        <h2>Textarea</h2>
+
+        <div class="vs-textarea">
+          <textarea
+            class="vs-textarea__field"
+            placeholder="Default textarea"
+          ></textarea>
+        </div>
+        <br />
+
+        <div class="vs-textarea vs-textarea--error">
+          <textarea
+            class="vs-textarea__field"
+            placeholder="Error textarea"
+          ></textarea>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+         SELECT
+    ======================================================================= -->
+      <section class="demo-section">
+        <h2>Select</h2>
+
+        <div class="vs-select">
+          <select class="vs-select__control">
+            <option>Select an option</option>
+            <option>Option A</option>
+            <option>Option B</option>
+          </select>
+          <span class="vs-select__icon">⌄</span>
+        </div>
+        <br />
+
+        <div class="vs-select vs-select--error">
+          <select class="vs-select__control">
+            <option>Error state</option>
+          </select>
+          <span class="vs-select__icon">⌄</span>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+         TOGGLE
+    ======================================================================= -->
+      <section class="demo-section">
+        <h2>Toggle / Switch</h2>
+
+        <label class="vs-toggle">
+          <input type="checkbox" />
+          <span class="vs-toggle__track"></span>
+          <span class="vs-toggle__thumb"></span>
+        </label>
+        <br /><br />
+
+        <label class="vs-toggle vs-toggle--checked">
+          <input type="checkbox" checked />
+          <span class="vs-toggle__track"></span>
+          <span class="vs-toggle__thumb"></span>
+        </label>
+        <br /><br />
+
+        <label class="vs-toggle vs-toggle--error">
+          <input type="checkbox" />
+          <span class="vs-toggle__track"></span>
+          <span class="vs-toggle__thumb"></span>
+        </label>
+      </section>
+
+      <!-- =====================================================================
+         CARD
+    ======================================================================= -->
+      <section class="demo-section">
+        <h2>Card</h2>
+
+        <div class="vs-card vs-card--shadow">
+          <div class="vs-card__header">Card Title</div>
+          <div class="vs-card__body">
+            This is a card body content area using VIS tokens.
+          </div>
+          <div class="vs-card__footer">
+            <button class="vs-btn vs-btn--primary">Action</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- =====================================================================
+         ALERT
+    ======================================================================= -->
+      <section class="demo-section">
+        <h2>Alerts</h2>
+
+        <div class="vs-alert vs-alert--success">
+          <span class="vs-alert__icon">✔</span>
+          <div class="vs-alert__content">This is a success message.</div>
+        </div>
+        <br />
+
+        <div class="vs-alert vs-alert--error">
+          <span class="vs-alert__icon">⚠</span>
+          <div class="vs-alert__content">This is an error message.</div>
+        </div>
+      </section>
+    </div>
+
+    <!-- =======================================================================
+       FOOTER
+  ======================================================================= -->
+    <footer class="vs-footer">
+      <div class="vs-footer__container">
+        <div class="vs-footer__section">
+          <div class="vs-footer__heading">Company</div>
+          <a href="#" class="vs-footer__link">About</a>
+          <a href="#" class="vs-footer__link">Careers</a>
+        </div>
+
+        <div class="vs-footer__section">
+          <div class="vs-footer__heading">Resources</div>
+          <a href="#" class="vs-footer__link">Blog</a>
+          <a href="#" class="vs-footer__link">Help Center</a>
+        </div>
+
+        <div class="vs-footer__section">
+          <div class="vs-footer__heading">Legal</div>
+          <a href="#" class="vs-footer__link">Privacy Policy</a>
+          <a href="#" class="vs-footer__link">Terms of Service</a>
+        </div>
+      </div>
+
+      <div class="vs-footer__bottom">
+        © 2025 Vidyaa Saarthi. All rights reserved.
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

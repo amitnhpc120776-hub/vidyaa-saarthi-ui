@@ -1,0 +1,145 @@
+/* ============================================================================
+   COMPONENT: Offcanvas (Bootstrap Hybrid)
+   Namespace: .vs-offcanvas
+   Architecture: BEM + Token-driven
+   ========================================================================= */
+
+/* Wrapper with no direct overrides */
+.vs-offcanvas {
+  /* Offcanvas positioning & behavior handled by Bootstrap */
+}
+
+/* Offcanvas Panel */
+.vs-offcanvas .offcanvas {
+  background-color: var(--surface-default);
+  color: var(--text-primary);
+
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0; /* Default: left slide */
+  box-shadow: var(--elevation-4);
+
+  padding: 0;
+  border: 1px solid var(--border-color-subtle);
+
+  transition: transform var(--motion-duration-medium) ease,
+    box-shadow var(--motion-duration-medium) ease;
+}
+
+/* Header */
+.vs-offcanvas__header,
+.vs-offcanvas .offcanvas-header {
+  padding: var(--space-20) var(--space-24);
+  border-bottom: 1px solid var(--border-color-subtle);
+}
+
+.vs-offcanvas__title,
+.vs-offcanvas .offcanvas-title {
+  font-size: var(--body-lg-size);
+  font-weight: 600;
+  margin: 0;
+  color: var(--text-primary);
+}
+
+/* Close Button */
+.vs-offcanvas__close,
+.vs-offcanvas .btn-close {
+  opacity: 0.75;
+  transition: opacity var(--motion-duration-fast) ease;
+}
+
+.vs-offcanvas__close:hover,
+.vs-offcanvas .btn-close:hover {
+  opacity: 1;
+}
+
+/* Body */
+.vs-offcanvas__body,
+.vs-offcanvas .offcanvas-body {
+  padding: var(--space-24);
+  font-size: var(--body-md-size);
+  color: var(--text-secondary);
+  line-height: var(--body-md-line-height);
+}
+
+/* ---------------------------------------------------------------------------
+   POSITION VARIANTS (Bootstrap-aware)
+   --------------------------------------------------------------------------- */
+
+/* Start (Left) */
+.vs-offcanvas--start .offcanvas {
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+}
+
+/* End (Right) */
+.vs-offcanvas--end .offcanvas {
+  border-radius: var(--radius-lg) 0 0 var(--radius-lg);
+}
+
+/* Top */
+.vs-offcanvas--top .offcanvas {
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+}
+
+/* Bottom */
+.vs-offcanvas--bottom .offcanvas {
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+}
+
+/* ---------------------------------------------------------------------------
+   SIZE VARIANTS
+   --------------------------------------------------------------------------- */
+
+.vs-offcanvas--sm .offcanvas {
+  width: 240px;
+}
+
+.vs-offcanvas--md .offcanvas {
+  width: 320px;
+}
+
+.vs-offcanvas--lg .offcanvas {
+  width: 480px;
+}
+
+.vs-offcanvas--xl .offcanvas {
+  width: 640px;
+}
+
+/* Height variants only for top/bottom offcanvas */
+.vs-offcanvas--height-sm .offcanvas {
+  height: 30vh;
+}
+
+.vs-offcanvas--height-md .offcanvas {
+  height: 50vh;
+}
+
+.vs-offcanvas--height-lg .offcanvas {
+  height: 70vh;
+}
+
+/* ---------------------------------------------------------------------------
+   ANIMATION TWEAKS
+   --------------------------------------------------------------------------- */
+
+.vs-offcanvas .offcanvas.show {
+  box-shadow: var(--elevation-5);
+}
+
+.vs-offcanvas .offcanvas.fade {
+  transform: translateX(-10px);
+}
+
+.vs-offcanvas--end .offcanvas.fade {
+  transform: translateX(10px);
+}
+
+.vs-offcanvas--top .offcanvas.fade {
+  transform: translateY(-10px);
+}
+
+.vs-offcanvas--bottom .offcanvas.fade {
+  transform: translateY(10px);
+}
+.vs-offcanvas .offcanvas.show.fade {
+  transform: translateX(0);
+}

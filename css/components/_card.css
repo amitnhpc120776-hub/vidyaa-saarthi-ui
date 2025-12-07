@@ -1,0 +1,84 @@
+/* ============================================================================
+   COMPONENT: Card
+   Namespace: .vs-card
+   Architecture: BEM (Strict)
+   Dependencies: tokens.css, base.css, typography.css, utilities.css
+   ============================================================================ */
+
+.vs-card {
+  background-color: var(--surface-default);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color-subtle);
+  padding: var(--space-20);
+
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-16);
+
+  transition: box-shadow var(--motion-duration-medium) ease,
+    border-color var(--motion-duration-medium) ease,
+    transform var(--motion-duration-medium) ease;
+}
+
+/* ---------------------------------------------------------------------------
+   ELEMENTS
+   --------------------------------------------------------------------------- */
+
+.vs-card__header {
+  margin-bottom: var(--space-8);
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.vs-card__body {
+  color: var(--text-secondary);
+}
+
+.vs-card__footer {
+  margin-top: var(--space-12);
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-12);
+}
+
+/* ---------------------------------------------------------------------------
+   MODIFIERS
+   --------------------------------------------------------------------------- */
+
+/* Shadow variant */
+.vs-card--shadow {
+  box-shadow: var(--elevation-2);
+}
+
+/* Hover effect */
+.vs-card--hover {
+  cursor: pointer;
+}
+
+.vs-card--hover:hover {
+  box-shadow: var(--elevation-3);
+  transform: translateY(-2px);
+}
+
+/* Strong bordered variant */
+.vs-card--bordered {
+  border: 1px solid var(--border-color-strong);
+}
+
+/* ---------------------------------------------------------------------------
+   SIZE VARIANTS
+   --------------------------------------------------------------------------- */
+
+.vs-card--sm {
+  padding: var(--space-12);
+  border-radius: var(--radius-md);
+}
+
+.vs-card--lg {
+  padding: var(--space-24);
+  border-radius: var(--radius-xl);
+}
+.vs-card--xl {
+  padding: var(--space-32);
+  border-radius: var(--radius-2xl);
+}

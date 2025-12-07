@@ -1,0 +1,246 @@
+/* ==========================================================================
+   VIDYAA SAARTHI — TYPOGRAPHY UTILITIES
+   Uses only token-based sizing, weights, line-heights & roles.
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. DISPLAY TEXT UTILITIES
+   -------------------------------------------------------------------------- */
+
+.text-display-xl {
+  font-size: var(--display-xl-size);
+  font-weight: var(--display-xl-weight);
+  line-height: var(--display-xl-line-height);
+  letter-spacing: var(--tracking-tight);
+  color: var(--text-primary);
+}
+
+.text-display-lg {
+  font-size: var(--display-lg-size);
+  font-weight: var(--display-lg-weight);
+  line-height: var(--display-lg-line-height);
+  letter-spacing: var(--tracking-tight);
+  color: var(--text-primary);
+}
+
+/* --------------------------------------------------------------------------
+   2. HEADING UTILITIES
+   These match semantic <h1> … <h4> tokens in your design system.
+   -------------------------------------------------------------------------- */
+
+.h1 {
+  font-size: var(--h1-size);
+  font-weight: var(--h1-weight);
+  line-height: var(--h1-line-height);
+  letter-spacing: var(--tracking-tight);
+  color: var(--text-primary);
+}
+
+.h2 {
+  font-size: var(--h2-size);
+  font-weight: var(--h2-weight);
+  line-height: var(--h2-line-height);
+  letter-spacing: var(--tracking-normal);
+  color: var(--text-primary);
+}
+
+.h3 {
+  font-size: var(--h3-size);
+  font-weight: var(--h3-weight);
+  line-height: var(--h3-line-height);
+  letter-spacing: var(--tracking-normal);
+  color: var(--text-primary);
+}
+
+.h4 {
+  font-size: var(--h4-size);
+  font-weight: var(--h4-weight);
+  line-height: var(--h4-line-height);
+  letter-spacing: var(--tracking-normal);
+  color: var(--text-primary);
+}
+
+/* --------------------------------------------------------------------------
+   3. BODY TEXT UTILITIES
+   -------------------------------------------------------------------------- */
+
+.text-body-lg {
+  font-size: var(--body-lg-size);
+  line-height: var(--body-lg-line-height);
+  font-weight: var(--body-lg-weight);
+  letter-spacing: var(--tracking-normal);
+  color: var(--text-primary);
+}
+
+.text-body-md {
+  font-size: var(--body-md-size);
+  line-height: var(--body-md-line-height);
+  font-weight: var(--body-md-weight);
+  letter-spacing: var(--tracking-normal);
+  color: var(--text-primary);
+}
+
+.text-body-sm {
+  font-size: var(--body-sm-size);
+  line-height: var(--body-sm-line-height);
+  font-weight: var(--body-sm-weight);
+  letter-spacing: var(--tracking-normal);
+  color: var(--text-primary);
+}
+
+/* --------------------------------------------------------------------------
+   4. LABEL & CAPTION UTILITIES
+   -------------------------------------------------------------------------- */
+
+.text-label-lg {
+  font-size: var(--label-lg-size);
+  font-weight: var(--label-lg-weight);
+  line-height: var(--label-lg-line-height);
+  color: var(--text-secondary);
+}
+
+.text-label-md {
+  font-size: var(--label-md-size);
+  font-weight: var(--label-md-weight);
+  line-height: var(--label-md-line-height);
+  color: var(--text-secondary);
+}
+
+.text-label-sm {
+  font-size: var(--label-sm-size);
+  font-weight: var(--label-sm-weight);
+  line-height: var(--label-sm-line-height);
+  color: var(--text-secondary);
+}
+
+.text-caption {
+  font-size: var(--caption-size);
+  font-weight: var(--caption-weight);
+  line-height: var(--caption-line-height);
+  color: var(--text-tertiary);
+}
+
+/* --------------------------------------------------------------------------
+   5. FONT WEIGHT UTILITIES
+   (Useful for UI states & text emphasis without altering structure)
+   -------------------------------------------------------------------------- */
+
+.fw-regular {
+  font-weight: var(--font-weight-regular);
+}
+.fw-medium {
+  font-weight: var(--font-weight-medium);
+}
+.fw-semibold {
+  font-weight: var(--font-weight-semibold);
+}
+.fw-bold {
+  font-weight: var(--font-weight-bold);
+}
+
+/* --------------------------------------------------------------------------
+   6. TEXT COLOR UTILITIES
+   -------------------------------------------------------------------------- */
+
+.text-primary {
+  color: var(--text-primary);
+}
+.text-secondary {
+  color: var(--text-secondary);
+}
+.text-tertiary {
+  color: var(--text-tertiary);
+}
+.text-inverse {
+  color: var(--text-inverse);
+}
+
+.text-success {
+  color: var(--success-600);
+}
+.text-warning {
+  color: var(--warning-600);
+}
+.text-error {
+  color: var(--error-600);
+}
+
+.text-on-primary {
+  color: var(--text-on-primary);
+}
+.text-on-secondary {
+  color: var(--text-on-secondary);
+}
+.text-on-accent {
+  color: var(--text-on-accent);
+}
+.text-on-success {
+  color: var(--text-on-success);
+}
+.text-on-warning {
+  color: var(--text-on-warning);
+}
+.text-on-error {
+  color: var(--text-on-error);
+}
+
+/* --------------------------------------------------------------------------
+   7. ALIGNMENT UTILITIES
+   -------------------------------------------------------------------------- */
+
+.text-left {
+  text-align: left;
+}
+.text-center {
+  text-align: center;
+}
+.text-right {
+  text-align: right;
+}
+
+/* --------------------------------------------------------------------------
+   8. TEXT TRANSFORM UTILITIES
+   -------------------------------------------------------------------------- */
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+.text-lowercase {
+  text-transform: lowercase;
+}
+.text-capitalize {
+  text-transform: capitalize;
+}
+
+/* --------------------------------------------------------------------------
+   9. TEXT WRAP & TRUNCATION UTILITIES
+   -------------------------------------------------------------------------- */
+
+.text-nowrap {
+  white-space: nowrap;
+}
+.text-wrap {
+  white-space: normal;
+}
+
+.text-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.text-multiline-ellipsis-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.text-multiline-ellipsis-3 {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}

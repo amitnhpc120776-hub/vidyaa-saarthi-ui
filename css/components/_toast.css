@@ -1,0 +1,145 @@
+/* ============================================================================
+   COMPONENT: Toast (Bootstrap Hybrid)
+   Namespace: .vs-toast
+   Architecture: BEM + Token-driven, Modern Clean Notification
+   ========================================================================= */
+
+/* Wrapper — no global overrides */
+.vs-toast {
+  position: relative;
+}
+
+/* Toast Container (Bootstrap: .toast) */
+.vs-toast .toast {
+  background-color: var(--surface-default);
+  color: var(--text-primary);
+
+  border: 1px solid var(--border-color-subtle);
+  border-radius: var(--radius-md);
+  box-shadow: var(--elevation-4);
+
+  padding: var(--space-12) var(--space-16);
+
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+
+  transition: opacity var(--motion-duration-medium) ease,
+    transform var(--motion-duration-medium) ease;
+}
+
+/* Toast Header (Bootstrap uses .toast-header) */
+.vs-toast .toast-header {
+  background-color: transparent;
+  border-bottom: none;
+
+  padding: var(--space-8) var(--space-12);
+
+  color: var(--text-secondary);
+  font-size: var(--body-sm-size);
+}
+
+/* Title */
+.vs-toast__title {
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: var(--body-md-size);
+  margin-right: auto;
+}
+
+/* Body (Bootstrap: .toast-body) */
+.vs-toast .toast-body {
+  font-size: var(--body-md-size);
+  color: var(--text-secondary);
+  padding: var(--space-8) 0;
+}
+
+/* Close button */
+.vs-toast .btn-close {
+  margin-left: var(--space-8);
+  opacity: 0.5;
+  transition: opacity var(--motion-duration-fast) ease;
+}
+
+.vs-toast .btn-close:hover {
+  opacity: 1;
+}
+
+/* ---------------------------------------------------------------------------
+   VARIANTS — success, error, warning, info
+   --------------------------------------------------------------------------- */
+
+/* SUCCESS */
+.vs-toast--success .toast {
+  border-left: 4px solid var(--success-600);
+}
+
+/* ERROR */
+.vs-toast--error .toast {
+  border-left: 4px solid var(--error-600);
+}
+
+/* WARNING */
+.vs-toast--warning .toast {
+  border-left: 4px solid var(--warning-600);
+}
+
+/* INFO */
+.vs-toast--info .toast {
+  border-left: 4px solid var(--primary-600);
+}
+
+/* ---------------------------------------------------------------------------
+   POSITION UTILITY (Optional but standard)
+   --------------------------------------------------------------------------- */
+
+/* Top Right */
+.vs-toast--top-right {
+  position: fixed;
+  top: var(--space-24);
+  right: var(--space-24);
+  z-index: 1080;
+}
+
+/* Bottom Right */
+.vs-toast--bottom-right {
+  position: fixed;
+  bottom: var(--space-24);
+  right: var(--space-24);
+  z-index: 1080;
+}
+
+/* Top Left */
+.vs-toast--top-left {
+  position: fixed;
+  top: var(--space-24);
+  left: var(--space-24);
+  z-index: 1080;
+}
+
+/* Bottom Left */
+.vs-toast--bottom-left {
+  position: fixed;
+  bottom: var(--space-24);
+  left: var(--space-24);
+  z-index: 1080;
+}
+
+/* ---------------------------------------------------------------------------
+   ANIMATION
+   --------------------------------------------------------------------------- */
+
+.vs-toast .toast.showing {
+  opacity: 0;
+  transform: translateY(-8px);
+}
+
+.vs-toast .toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.vs-toast .toast.hide {
+  opacity: 0;
+  transform: translateY(8px);
+}
