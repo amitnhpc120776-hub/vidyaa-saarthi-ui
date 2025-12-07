@@ -1,0 +1,80 @@
+<!-- Section 1 → VIS HTML Snippet -->
+<div class="vs-offcanvas vs-offcanvas--start vs-offcanvas--backdrop vs-offcanvas--no-scroll vs-offcanvas--with-header vs-offcanvas--with-close" id="vs-offcanvas-basic" aria-hidden="true" hidden>
+  <div class="vs-offcanvas__backdrop" data-vs-offcanvas-dismiss></div>
+  <div class="vs-offcanvas__panel" role="dialog" aria-modal="true" aria-labelledby="vs-offcanvas-basic-title" tabindex="-1">
+    <div class="vs-offcanvas__header">
+      <div>
+        <h2 class="vs-offcanvas__title" id="vs-offcanvas-basic-title">Project navigation</h2>
+        <p class="vs-offcanvas__subtitle">Switch workspaces or access quick links.</p>
+      </div>
+      <button class="vs-offcanvas__close" type="button" aria-label="Close panel" data-vs-offcanvas-dismiss>
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div class="vs-offcanvas__body">
+      <nav class="vs-offcanvas__nav">
+        <a class="vs-offcanvas__link is-active" href="#">Overview</a>
+        <a class="vs-offcanvas__link" href="#">Roadmap</a>
+        <a class="vs-offcanvas__link" href="#">Releases</a>
+        <a class="vs-offcanvas__link" href="#">Analytics</a>
+      </nav>
+      <div class="vs-offcanvas__section">
+        <p class="vs-offcanvas__label">Teams</p>
+        <ul class="vs-offcanvas__list">
+          <li>Design System</li>
+          <li>Mobile Squad</li>
+          <li>Revenue Ops</li>
+        </ul>
+      </div>
+    </div>
+    <div class="vs-offcanvas__footer">
+      <div class="vs-offcanvas__actions">
+        <button class="vs-btn vs-btn--primary" type="button">Create</button>
+        <button class="vs-btn vs-btn--ghost" type="button" data-vs-offcanvas-dismiss>Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="vs-offcanvas vs-offcanvas--end vs-offcanvas--scrollable vs-offcanvas--backdrop-static vs-offcanvas--persistent-lg vs-offcanvas--with-header vs-offcanvas--with-close" id="vs-offcanvas-details" aria-hidden="true" hidden>
+  <div class="vs-offcanvas__backdrop" data-vs-offcanvas-dismiss></div>
+  <div class="vs-offcanvas__panel" role="dialog" aria-modal="true" aria-labelledby="vs-offcanvas-details-title" tabindex="-1">
+    <div class="vs-offcanvas__header">
+      <div>
+        <h2 class="vs-offcanvas__title" id="vs-offcanvas-details-title">Filter issues</h2>
+        <p class="vs-offcanvas__subtitle">Static backdrop prevents accidental closes.</p>
+      </div>
+      <button class="vs-offcanvas__close" type="button" aria-label="Close panel" data-vs-offcanvas-dismiss>
+        <span aria-hidden="true">×</span>
+      </button>
+    </div>
+    <div class="vs-offcanvas__body">
+      <p class="vs-offcanvas__label">Status</p>
+      <div class="vs-offcanvas__chips">
+        <button class="vs-btn vs-btn--ghost" type="button">Open</button>
+        <button class="vs-btn vs-btn--ghost" type="button">In progress</button>
+        <button class="vs-btn vs-btn--ghost" type="button">Closed</button>
+      </div>
+      <p class="vs-offcanvas__label">Assignee</p>
+      <div class="vs-offcanvas__list">Unassigned · Design Team · Engineering</div>
+      <p class="vs-offcanvas__label">Due date</p>
+      <div class="vs-offcanvas__list">This week · Next 2 weeks · This month</div>
+    </div>
+    <div class="vs-offcanvas__footer">
+      <div class="vs-offcanvas__actions">
+        <button class="vs-btn vs-btn--secondary" type="button">Apply</button>
+        <button class="vs-btn vs-btn--ghost" type="button" data-vs-offcanvas-dismiss>Reset</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Section 2 → Notes for Integration -->
+<ul>
+  <li>Use <code>data-vs-offcanvas-trigger="offcanvas-id"</code> on any control to open a matching offcanvas element.</li>
+  <li>Add <code>data-vs-offcanvas-dismiss</code> to close buttons or backdrop; <code>vs-offcanvas--backdrop-static</code> ignores backdrop clicks.</li>
+  <li>Apply placement modifiers (<code>vs-offcanvas--start</code>, <code>--end</code>, <code>--top</code>, <code>--bottom</code>) to choose slide direction.</li>
+  <li><code>vs-offcanvas--scrollable</code> keeps the page scrollable; omit for locked body scroll when open.</li>
+  <li>Remove the overlay with <code>vs-offcanvas--no-backdrop</code>; prevent ESC closing with <code>vs-offcanvas--no-escape</code>; hide header or close button using structural modifiers.</li>
+  <li>Persistent variants (<code>vs-offcanvas--persistent-*</code>) pin the panel as a sidebar at and above the specified breakpoint.</li>
+</ul>

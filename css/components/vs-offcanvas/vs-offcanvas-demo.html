@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VIS Component Demo — vs-offcanvas</title>
+    <link rel="stylesheet" href="../../vs-designSystem/tokens.css" />
+    <link rel="stylesheet" href="../../vs-designSystem/base.css" />
+    <link rel="stylesheet" href="../../vs-designSystem/typography.css" />
+    <link rel="stylesheet" href="../../vs-designSystem/utilities.css" />
+    <link rel="stylesheet" href="../../custom.css" />
+  </head>
+  <body class="p-24">
+    <header class="mb-24">
+      <h1 class="mb-8">vs-offcanvas Component Demo</h1>
+      <p class="text-secondary">
+        Sliding panels with placement, backdrop, scroll, and responsive persistent variants.
+      </p>
+    </header>
+
+    <section class="mb-24">
+      <h2 class="mb-12">Start placement (backdrop, locked scroll)</h2>
+      <div class="flex gap-12 mb-12">
+        <button class="vs-btn vs-btn--primary" type="button" data-vs-offcanvas-trigger="demo-offcanvas-start">
+          Open navigation
+        </button>
+      </div>
+      <div
+        class="vs-offcanvas vs-offcanvas--start vs-offcanvas--backdrop vs-offcanvas--no-scroll vs-offcanvas--with-header vs-offcanvas--with-close"
+        id="demo-offcanvas-start"
+        aria-hidden="true"
+        hidden
+      >
+        <div class="vs-offcanvas__backdrop" data-vs-offcanvas-dismiss></div>
+        <div class="vs-offcanvas__panel" role="dialog" aria-modal="true" aria-labelledby="demo-offcanvas-start-title" tabindex="-1">
+          <div class="vs-offcanvas__header">
+            <div>
+              <h2 class="vs-offcanvas__title" id="demo-offcanvas-start-title">Navigation</h2>
+              <p class="vs-offcanvas__subtitle">Quick links for product teams.</p>
+            </div>
+            <button class="vs-offcanvas__close" type="button" aria-label="Close navigation" data-vs-offcanvas-dismiss>
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="vs-offcanvas__body">
+            <nav class="vs-offcanvas__nav">
+              <a class="vs-offcanvas__link is-active" href="#">Dashboard</a>
+              <a class="vs-offcanvas__link" href="#">Projects</a>
+              <a class="vs-offcanvas__link" href="#">Teams</a>
+              <a class="vs-offcanvas__link" href="#">Settings</a>
+            </nav>
+            <div class="vs-offcanvas__section">
+              <p class="vs-offcanvas__label">Favorites</p>
+              <ul class="vs-offcanvas__list">
+                <li>Design system</li>
+                <li>Research backlog</li>
+              </ul>
+            </div>
+          </div>
+          <div class="vs-offcanvas__footer">
+            <div class="vs-offcanvas__actions">
+              <button class="vs-btn vs-btn--ghost" type="button" data-vs-offcanvas-dismiss>Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-24">
+      <h2 class="mb-12">End placement (scrollable, static backdrop, persistent from lg)</h2>
+      <div class="flex gap-12 mb-12">
+        <button class="vs-btn vs-btn--secondary" type="button" data-vs-offcanvas-trigger="demo-offcanvas-end">
+          Open filters
+        </button>
+      </div>
+      <div
+        class="vs-offcanvas vs-offcanvas--end vs-offcanvas--scrollable vs-offcanvas--backdrop-static vs-offcanvas--persistent-lg vs-offcanvas--with-header vs-offcanvas--with-close"
+        id="demo-offcanvas-end"
+        aria-hidden="true"
+        hidden
+      >
+        <div class="vs-offcanvas__backdrop" data-vs-offcanvas-dismiss></div>
+        <div class="vs-offcanvas__panel" role="dialog" aria-modal="true" aria-labelledby="demo-offcanvas-end-title" tabindex="-1">
+          <div class="vs-offcanvas__header">
+            <div>
+              <h2 class="vs-offcanvas__title" id="demo-offcanvas-end-title">Filter issues</h2>
+              <p class="vs-offcanvas__subtitle">Static backdrop prevents closing on outside click.</p>
+            </div>
+            <button class="vs-offcanvas__close" type="button" aria-label="Close filters" data-vs-offcanvas-dismiss>
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="vs-offcanvas__body">
+            <p class="vs-offcanvas__label">Status</p>
+            <div class="vs-offcanvas__chips">
+              <button class="vs-btn vs-btn--ghost" type="button">Open</button>
+              <button class="vs-btn vs-btn--ghost" type="button">In progress</button>
+              <button class="vs-btn vs-btn--ghost" type="button">Closed</button>
+            </div>
+            <p class="vs-offcanvas__label">Assignee</p>
+            <div class="vs-offcanvas__list">Unassigned · Design Team · Engineering</div>
+            <p class="vs-offcanvas__label">Due date</p>
+            <div class="vs-offcanvas__list">This week · Next 2 weeks · This month</div>
+          </div>
+          <div class="vs-offcanvas__footer">
+            <div class="vs-offcanvas__actions">
+              <button class="vs-btn vs-btn--secondary" type="button">Apply</button>
+              <button class="vs-btn vs-btn--ghost" type="button" data-vs-offcanvas-dismiss>Reset</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-24">
+      <h2 class="mb-12">Top placement (no backdrop, escape disabled, headerless)</h2>
+      <div class="flex gap-12 mb-12">
+        <button class="vs-btn vs-btn--ghost" type="button" data-vs-offcanvas-trigger="demo-offcanvas-top">
+          Show announcement
+        </button>
+      </div>
+      <div
+        class="vs-offcanvas vs-offcanvas--top vs-offcanvas--no-backdrop vs-offcanvas--no-escape vs-offcanvas--no-header vs-offcanvas--with-close"
+        id="demo-offcanvas-top"
+        aria-hidden="true"
+        hidden
+      >
+        <div class="vs-offcanvas__backdrop" data-vs-offcanvas-dismiss></div>
+        <div class="vs-offcanvas__panel" role="dialog" aria-modal="true" aria-labelledby="demo-offcanvas-top-title" tabindex="-1">
+          <div class="vs-offcanvas__header">
+            <div>
+              <h2 class="vs-offcanvas__title" id="demo-offcanvas-top-title">Headerless announcement</h2>
+            </div>
+            <button class="vs-offcanvas__close" type="button" aria-label="Dismiss announcement" data-vs-offcanvas-dismiss>
+              <span aria-hidden="true">×</span>
+            </button>
+          </div>
+          <div class="vs-offcanvas__body">
+            <p>
+              ESC key is disabled and the backdrop is removed. Use this style for lightweight banners that slide from the top
+              without blocking the page.
+            </p>
+            <button class="vs-btn vs-btn--ghost" type="button" data-vs-offcanvas-dismiss>Dismiss</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="../../js/components/vs-offcanvas/vs-offcanvas.js"></script>
+  </body>
+</html>
