@@ -1,0 +1,143 @@
+/* Base component */
+.vs-placeholder {
+  --vs-placeholder-height: var(--space-16);
+  --vs-placeholder-radius: var(--radius-sm);
+  --vs-placeholder-width: 100%;
+  --vs-placeholder-bg: var(--bg-subtle);
+  --vs-placeholder-highlight: color-mix(in srgb, var(--neutral-100) 70%, transparent);
+
+  position: relative;
+  display: block;
+  width: var(--vs-placeholder-width);
+  height: var(--vs-placeholder-height);
+  background-color: var(--vs-placeholder-bg);
+  border-radius: var(--vs-placeholder-radius);
+  overflow: hidden;
+}
+
+.vs-placeholder.is-hidden {
+  display: none;
+}
+
+/* Animation modifiers */
+.vs-placeholder--static {
+  animation: none;
+}
+
+.vs-placeholder--glow {
+  animation: vs-placeholder-glow 1.4s ease-in-out infinite;
+  background-image: linear-gradient(180deg, transparent, color-mix(in srgb, var(--neutral-0) 16%, transparent), transparent);
+  background-origin: border-box;
+}
+
+.vs-placeholder--wave {
+  background-image: none;
+}
+
+.vs-placeholder__wave {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 0%, color-mix(in srgb, var(--neutral-0) 18%, transparent) 50%, transparent 100%);
+  transform: translateX(-100%);
+  animation: vs-placeholder-wave 1.6s ease-in-out infinite;
+}
+
+.vs-placeholder--static .vs-placeholder__wave,
+.vs-placeholder--glow .vs-placeholder__wave {
+  display: none;
+}
+
+/* Shape modifiers */
+.vs-placeholder--rect {
+  --vs-placeholder-radius: var(--radius-sm);
+}
+
+.vs-placeholder--rounded {
+  --vs-placeholder-radius: var(--radius-md);
+}
+
+.vs-placeholder--pill {
+  --vs-placeholder-radius: var(--radius-full);
+}
+
+.vs-placeholder--circle {
+  --vs-placeholder-radius: var(--radius-full);
+  width: var(--vs-placeholder-height);
+}
+
+/* Size modifiers */
+.vs-placeholder--xs {
+  --vs-placeholder-height: var(--space-8);
+}
+
+.vs-placeholder--sm {
+  --vs-placeholder-height: var(--space-12);
+}
+
+.vs-placeholder--md {
+  --vs-placeholder-height: var(--space-16);
+}
+
+.vs-placeholder--lg {
+  --vs-placeholder-height: var(--space-20);
+}
+
+.vs-placeholder--xl {
+  --vs-placeholder-height: var(--space-24);
+}
+
+/* Content-type modifiers */
+.vs-placeholder--text-line {
+  max-width: 100%;
+}
+
+.vs-placeholder--heading {
+  --vs-placeholder-height: var(--space-20);
+  max-width: 72%;
+}
+
+.vs-placeholder--avatar {
+  --vs-placeholder-height: var(--space-40);
+  width: var(--vs-placeholder-height);
+}
+
+.vs-placeholder--button {
+  --vs-placeholder-height: var(--space-16);
+  max-width: 42%;
+}
+
+.vs-placeholder--card {
+  --vs-placeholder-height: var(--space-64);
+  border-radius: var(--radius-md);
+}
+
+/* Accessibility & reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .vs-placeholder,
+  .vs-placeholder__wave {
+    animation-duration: 0.001ms;
+    animation-iteration-count: 1;
+  }
+}
+
+/* Keyframes */
+@keyframes vs-placeholder-glow {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.65;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes vs-placeholder-wave {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
