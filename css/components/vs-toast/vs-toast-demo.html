@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VIS Component Demo — vs-toast</title>
+    <link rel="stylesheet" href="../../vs-designSystem/tokens.css" />
+    <link rel="stylesheet" href="../../vs-designSystem/base.css" />
+    <link rel="stylesheet" href="../../vs-designSystem/typography.css" />
+    <link rel="stylesheet" href="../../vs-designSystem/utilities.css" />
+    <link rel="stylesheet" href="../../custom.css" />
+  </head>
+  <body class="p-24">
+    <header class="mb-24">
+      <h1 class="mb-12">vs-toast Component Demo</h1>
+      <p class="text-secondary">
+        Transient notifications with stacking, positional variants, auto-hide, and
+        manual dismiss behaviors.
+      </p>
+    </header>
+
+    <section class="mb-24">
+      <h2 class="mb-12">Stacked auto-hide (top-right, fade)</h2>
+      <div
+        class="vs-toast vs-toast--top-right vs-toast--stacked vs-toast--auto-hide vs-toast--fade vs-toast--with-header vs-toast--closable"
+        role="region"
+        aria-live="polite"
+        aria-atomic="true"
+      >
+        <div class="vs-toast__list" data-vs-toast-stack>
+          <article
+            class="vs-toast__item vs-toast--success is-visible"
+            role="status"
+            aria-live="polite"
+            aria-atomic="true"
+            data-vs-toast-duration="4500"
+          >
+            <header class="vs-toast__header">
+              <h3 class="vs-toast__title">Upload complete</h3>
+              <span class="vs-toast__meta">Just now</span>
+              <button class="vs-toast__close" type="button" aria-label="Dismiss notification">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </header>
+            <div class="vs-toast__body">Your files have been synced successfully.</div>
+            <div class="vs-toast__actions">
+              <button class="vs-btn vs-btn--ghost vs-btn--sm" type="button">View files</button>
+            </div>
+          </article>
+
+          <article
+            class="vs-toast__item vs-toast--info is-visible"
+            role="status"
+            aria-live="polite"
+            aria-atomic="true"
+            data-vs-toast-duration="7000"
+          >
+            <div class="vs-toast__body">Background processing will continue for a few minutes.</div>
+            <button class="vs-toast__close" type="button" aria-label="Dismiss notification">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-24">
+      <h2 class="mb-12">Persistent manual dismiss (bottom-left, dark, no fade)</h2>
+      <div
+        class="vs-toast vs-toast--bottom-left vs-toast--single vs-toast--manual vs-toast--no-fade vs-toast--closable vs-toast--dark"
+        role="region"
+        aria-live="assertive"
+        aria-atomic="true"
+      >
+        <div class="vs-toast__list">
+          <article class="vs-toast__item vs-toast--lg" role="alert" aria-live="assertive" aria-atomic="true">
+            <header class="vs-toast__header">
+              <h3 class="vs-toast__title">Connectivity lost</h3>
+              <button class="vs-toast__close" type="button" aria-label="Dismiss notification">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </header>
+            <div class="vs-toast__body">You're offline. Changes will sync when you're back online.</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-24">
+      <h2 class="mb-12">Container layout (middle-center, secondary theme)</h2>
+      <div
+        class="vs-toast vs-toast--middle-center vs-toast--container vs-toast--stacked vs-toast--auto-hide vs-toast--fade vs-toast--secondary"
+        role="region"
+        aria-live="polite"
+        aria-atomic="true"
+        data-vs-toast-duration="6000"
+      >
+        <div class="vs-toast__list">
+          <article class="vs-toast__item vs-toast--secondary" role="status" aria-live="polite" aria-atomic="true">
+            <div class="vs-toast__body">Invite sent to the selected teammates.</div>
+          </article>
+          <article class="vs-toast__item vs-toast--warning" role="status" aria-live="assertive" aria-atomic="true">
+            <div class="vs-toast__body">Billing update required before the next cycle.</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <script src="../../js/components/vs-btn/vs-btn.js"></script>
+    <script src="../../js/components/vs-toast/vs-toast.js"></script>
+  </body>
+</html>
