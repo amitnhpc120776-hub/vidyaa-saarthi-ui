@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VIS Component Demo — vs-input</title>
+    <link rel="stylesheet" href="../../vs-designSystem/tokens.css" />
+    <link rel="stylesheet" href="../../vs-designSystem/base.css" />
+    <link rel="stylesheet" href="../../vs-designSystem/typography.css" />
+    <link rel="stylesheet" href="../../vs-designSystem/utilities.css" />
+    <link rel="stylesheet" href="./vs-input.css" />
+  </head>
+  <body class="p-24">
+    <header class="mb-24">
+      <h1 class="mb-12">vs-input Component Demo</h1>
+      <p class="text-secondary">Core VIS text input with semantic variants, icons, sizes, and states.</p>
+    </header>
+
+    <section class="mb-24">
+      <h2 class="mb-12">Default</h2>
+      <div class="vs-input vs-input--md">
+        <label class="vs-input__label" for="demo-input-default">Default label</label>
+        <div class="vs-input__control">
+          <input id="demo-input-default" class="vs-input__field" type="text" placeholder="Type something" />
+        </div>
+        <p class="vs-input__support">Helper text goes here.</p>
+      </div>
+    </section>
+
+    <section class="mb-24">
+      <h2 class="mb-12">Variants</h2>
+      <div class="grid gap-16" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
+        <div class="vs-input vs-input--success">
+          <label class="vs-input__label" for="demo-input-success">Success label</label>
+          <div class="vs-input__control vs-input__control--with-trailing">
+            <input id="demo-input-success" class="vs-input__field" type="text" value="Valid content" aria-describedby="demo-success-support" />
+            <span class="vs-input__icon vs-input__icon--trailing" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+          </div>
+          <p id="demo-success-support" class="vs-input__support">Looks good!</p>
+        </div>
+
+        <div class="vs-input vs-input--warning">
+          <label class="vs-input__label" for="demo-input-warning">Warning label</label>
+          <div class="vs-input__control">
+            <input id="demo-input-warning" class="vs-input__field" type="text" placeholder="Check this input" aria-describedby="demo-warning-support" />
+          </div>
+          <p id="demo-warning-support" class="vs-input__support">Double-check the value.</p>
+        </div>
+
+        <div class="vs-input vs-input--error">
+          <label class="vs-input__label" for="demo-input-error">Error label</label>
+          <div class="vs-input__control">
+            <input id="demo-input-error" class="vs-input__field" type="email" placeholder="email@domain.com" aria-invalid="true" aria-describedby="demo-error-support" />
+          </div>
+          <p id="demo-error-support" class="vs-input__support">Please enter a valid email.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-24">
+      <h2 class="mb-12">Sizes & Icons</h2>
+      <div class="flex gap-16 flex-wrap">
+        <div class="vs-input vs-input--sm vs-input__control--with-leading">
+          <label class="vs-input__label" for="demo-input-sm">Small with icon</label>
+          <div class="vs-input__control vs-input__control--with-leading">
+            <span class="vs-input__icon vs-input__icon--leading" aria-hidden="true">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M21 21l-4.35-4.35m1.35-4.65a7 7 0 11-14 0 7 7 0 0114 0z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+            <input id="demo-input-sm" class="vs-input__field" type="search" placeholder="Search" />
+          </div>
+        </div>
+
+        <div class="vs-input vs-input--md">
+          <label class="vs-input__label" for="demo-input-md">Medium</label>
+          <div class="vs-input__control">
+            <input id="demo-input-md" class="vs-input__field" type="text" placeholder="Standard input" />
+          </div>
+        </div>
+
+        <div class="vs-input vs-input--lg">
+          <label class="vs-input__label" for="demo-input-lg">Large</label>
+          <div class="vs-input__control">
+            <input id="demo-input-lg" class="vs-input__field" type="text" placeholder="More room to type" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-24">
+      <h2 class="mb-12">States</h2>
+      <div class="grid gap-16" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
+        <div class="vs-input is-focused">
+          <label class="vs-input__label" for="demo-input-focused">Focused</label>
+          <div class="vs-input__control">
+            <input id="demo-input-focused" class="vs-input__field" type="text" placeholder="Focus ring visible" />
+          </div>
+        </div>
+
+        <div class="vs-input is-disabled">
+          <label class="vs-input__label" for="demo-input-disabled">Disabled</label>
+          <div class="vs-input__control">
+            <input id="demo-input-disabled" class="vs-input__field" type="text" placeholder="Disabled input" disabled />
+          </div>
+        </div>
+
+        <div class="vs-input is-readonly">
+          <label class="vs-input__label" for="demo-input-readonly">Read-only</label>
+          <div class="vs-input__control">
+            <input id="demo-input-readonly" class="vs-input__field" type="text" value="Locked text" readonly />
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
