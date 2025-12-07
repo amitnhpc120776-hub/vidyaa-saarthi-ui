@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VIS Component Demo — vs-dropdown</title>
+    <link rel="stylesheet" href="../../vs-designSystem/tokens.css" />
+    <link rel="stylesheet" href="../../vs-designSystem/base.css" />
+    <link rel="stylesheet" href="../../vs-designSystem/typography.css" />
+    <link rel="stylesheet" href="../../vs-designSystem/utilities.css" />
+    <link rel="stylesheet" href="./vs-dropdown.css" />
+  </head>
+  <body class="p-24">
+    <header class="mb-24">
+      <h1 class="mb-12">vs-dropdown Component Demo</h1>
+      <p class="text-secondary">Dropdown surface with trigger, placement, surface, and behavior variants.</p>
+    </header>
+
+    <section class="mb-24">
+      <h2 class="mb-12">Default (button trigger, auto-close)</h2>
+      <div class="vs-dropdown vs-dropdown--down vs-dropdown--default vs-dropdown--button-trigger vs-dropdown--menu-links vs-dropdown--auto-close vs-dropdown--md" id="demo-dropdown-default">
+        <div class="vs-dropdown__toggle">
+          <button class="vs-btn vs-btn--primary vs-dropdown__button" type="button" data-vs-dropdown-toggle aria-haspopup="true" aria-expanded="false" aria-controls="demo-dropdown-default-menu">
+            <span class="vs-dropdown__label">Actions</span>
+            <span class="vs-dropdown__icon" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+          </button>
+        </div>
+        <div class="vs-dropdown__menu" id="demo-dropdown-default-menu" role="menu" hidden>
+          <ul class="vs-dropdown__list">
+            <li class="vs-dropdown__item"><a class="vs-dropdown__link" href="#" role="menuitem">New project</a></li>
+            <li class="vs-dropdown__item"><a class="vs-dropdown__link" href="#" role="menuitem">Share</a></li>
+            <li class="vs-dropdown__item"><a class="vs-dropdown__link" href="#" role="menuitem">Duplicate</a></li>
+            <li class="vs-dropdown__divider" role="presentation"></li>
+            <li class="vs-dropdown__item"><a class="vs-dropdown__link" href="#" role="menuitem">Archive</a></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-24">
+      <h2 class="mb-12">Split trigger (grouped menu, no auto-close)</h2>
+      <div class="vs-dropdown vs-dropdown--down vs-dropdown--align-end vs-dropdown--bordered vs-dropdown--rounded vs-dropdown--split-trigger vs-dropdown--menu-grouped vs-dropdown--no-auto-close vs-dropdown--lg" id="demo-dropdown-grouped">
+        <div class="vs-dropdown__toggle">
+          <button class="vs-btn vs-btn--secondary vs-dropdown__button" type="button">
+            <span class="vs-dropdown__label">Secondary</span>
+          </button>
+          <button class="vs-btn vs-btn--secondary vs-dropdown__split" type="button" data-vs-dropdown-toggle aria-haspopup="true" aria-expanded="false" aria-controls="demo-dropdown-grouped-menu">
+            <span class="vs-dropdown__icon" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+            <span class="vs-dropdown__label sr-only">Toggle menu</span>
+          </button>
+        </div>
+        <div class="vs-dropdown__menu" id="demo-dropdown-grouped-menu" role="menu" hidden>
+          <div class="vs-dropdown__group" role="presentation">
+            <div class="vs-dropdown__header">Workspace</div>
+            <ul class="vs-dropdown__list">
+              <li class="vs-dropdown__item">
+                <a class="vs-dropdown__link" href="#" role="menuitem">
+                  <span class="vs-dropdown__icon" aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M3 7h18M3 12h18M3 17h18" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                  </span>
+                  Boards
+                </a>
+              </li>
+              <li class="vs-dropdown__item">
+                <a class="vs-dropdown__link" href="#" role="menuitem">
+                  <span class="vs-dropdown__icon" aria-hidden="true">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M12 6v12M6 12h12" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+                    </svg>
+                  </span>
+                  Create view
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="vs-dropdown__divider" role="presentation"></div>
+          <div class="vs-dropdown__group" role="presentation">
+            <div class="vs-dropdown__header">Automation</div>
+            <ul class="vs-dropdown__list">
+              <li class="vs-dropdown__item"><a class="vs-dropdown__link" href="#" role="menuitem">Set rule</a></li>
+              <li class="vs-dropdown__item"><a class="vs-dropdown__link" href="#" role="menuitem">Manage triggers</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="mb-12">Link trigger (dark, manual, scrollable form)</h2>
+      <div class="vs-dropdown vs-dropdown--up vs-dropdown--start vs-dropdown--align-start vs-dropdown--dark vs-dropdown--square vs-dropdown--link-trigger vs-dropdown--menu-form vs-dropdown--scrollable vs-dropdown--sm vs-dropdown--manual" id="demo-dropdown-form">
+        <div class="vs-dropdown__toggle">
+          <button class="vs-dropdown__button vs-dropdown__button--link" type="button" data-vs-dropdown-toggle aria-haspopup="true" aria-expanded="false" aria-controls="demo-dropdown-form-menu">
+            <span class="vs-dropdown__icon" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4Z" stroke="currentColor" stroke-width="2" />
+                <path d="M6 20c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              </svg>
+            </span>
+            <span class="vs-dropdown__label">Profile</span>
+          </button>
+        </div>
+        <div class="vs-dropdown__menu" id="demo-dropdown-form-menu" role="menu" hidden>
+          <form class="vs-dropdown__form" action="#" role="presentation">
+            <div class="vs-dropdown__text">Switch account</div>
+            <div class="vs-dropdown__item">
+              <label class="vs-dropdown__link" role="menuitem" aria-label="Account A">
+                <input type="radio" name="account" value="a" checked />
+                Account A
+              </label>
+            </div>
+            <div class="vs-dropdown__item">
+              <label class="vs-dropdown__link" role="menuitem" aria-label="Account B">
+                <input type="radio" name="account" value="b" />
+                Account B
+              </label>
+            </div>
+            <div class="vs-dropdown__divider" role="presentation"></div>
+            <div class="vs-dropdown__item">
+              <label class="vs-dropdown__link" role="menuitem" aria-label="Notifications">
+                <input type="checkbox" name="notifications" checked />
+                Enable notifications
+              </label>
+            </div>
+            <div class="vs-dropdown__item">
+              <button class="vs-btn vs-btn--ghost vs-btn--sm w-100" type="submit">Save preferences</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <script src="../../../js/components/vs-dropdown/vs-dropdown.js"></script>
+  </body>
+</html>
