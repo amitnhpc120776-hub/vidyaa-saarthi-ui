@@ -1,0 +1,45 @@
+<!-- Section 1 → VIS HTML Snippet -->
+<div class="vs-card vs-card--default" data-vs-component="vs-card">
+  <div class="vs-card__media" role="img" aria-label="Media placeholder"></div>
+  <div class="vs-card__header">
+    <span class="vs-card__subtitle">Featured</span>
+  </div>
+  <div class="vs-card__body">
+    <h3 class="vs-card__title">Card title</h3>
+    <p class="vs-card__text">Supportive descriptive copy that elaborates on the card topic and wraps to multiple lines as needed.</p>
+    <div class="vs-card__actions">
+      <button class="vs-btn vs-btn--primary" type="button">Primary action</button>
+      <button class="vs-btn vs-btn--ghost" type="button">Secondary</button>
+    </div>
+  </div>
+  <div class="vs-card__footer">Updated 2 days ago</div>
+</div>
+
+<div class="vs-card vs-card--horizontal vs-card--shadow is-hoverable">
+  <div class="vs-card__media" role="img" aria-label="Landscape media"></div>
+  <div class="vs-card__body">
+    <h3 class="vs-card__title">Horizontal card</h3>
+    <p class="vs-card__text">Media sits to the left while content and actions align to the right.</p>
+    <div class="vs-card__actions">
+      <button class="vs-btn vs-btn--tertiary" type="button">Learn more</button>
+    </div>
+  </div>
+</div>
+
+<div class="vs-card vs-card--media-top vs-card--inverted vs-card--sm is-selected">
+  <div class="vs-card__media" role="img" aria-label="Top media"></div>
+  <div class="vs-card__body">
+    <h3 class="vs-card__title">Inverted card</h3>
+    <p class="vs-card__text">Dark surface with supporting text and a footer for metadata.</p>
+  </div>
+  <div class="vs-card__footer">Footer content</div>
+</div>
+
+<!-- Section 2 → Notes for Integration -->
+<ul>
+  <li>Use modifier classes to set layout and tone: <code>vs-card--default</code>, <code>vs-card--outlined</code>, <code>vs-card--shadow</code>, <code>vs-card--filled</code>, <code>vs-card--horizontal</code>, <code>vs-card--media-top</code>, <code>vs-card--media-bottom</code>, and <code>vs-card--inverted</code>.</li>
+  <li>Apply size modifiers <code>vs-card--sm</code>, <code>vs-card--md</code> (default), or <code>vs-card--lg</code> to adjust padding and typography.</li>
+  <li>Add state classes like <code>.is-hoverable</code>, <code>.is-pressed</code>, <code>.is-selected</code>, and <code>.is-disabled</code> when managing interactive behavior.</li>
+  <li><code>vs-card__media</code> can wrap images, videos, or placeholders; ensure appropriate <code>alt</code> text or <code>aria-label</code> for accessibility.</li>
+  <li>Place buttons or links inside <code>vs-card__actions</code> and supplementary metadata inside <code>vs-card__footer</code>.</li>
+</ul>

@@ -1,0 +1,256 @@
+/* Base component */
+.vs-card {
+  --vs-card-bg: var(--bg-soft);
+  --vs-card-text: var(--text-primary);
+  --vs-card-border-color: var(--border-color-default);
+  --vs-card-radius: var(--radius-md);
+  --vs-card-padding: var(--space-16);
+  --vs-card-gap: var(--space-12);
+  --vs-card-shadow: var(--elevation-0);
+
+  display: flex;
+  flex-direction: column;
+  background-color: var(--vs-card-bg);
+  color: var(--vs-card-text);
+  border: 1px solid var(--vs-card-border-color);
+  border-radius: var(--vs-card-radius);
+  box-shadow: var(--vs-card-shadow);
+  overflow: hidden;
+  transition: box-shadow 150ms ease, border-color 150ms ease, background-color 150ms ease, color 150ms ease, transform 150ms ease;
+}
+
+.vs-card__media {
+  width: 100%;
+  background-color: var(--bg-subtle);
+  color: inherit;
+  display: block;
+  min-height: calc(var(--space-40) * 4);
+  object-fit: cover;
+}
+
+.vs-card__header,
+.vs-card__body,
+.vs-card__footer {
+  padding: var(--vs-card-padding);
+}
+
+.vs-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--vs-card-gap);
+}
+
+.vs-card__title {
+  margin: 0;
+  color: inherit;
+  font-size: var(--h5-size);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+}
+
+.vs-card__subtitle {
+  display: inline-flex;
+  align-items: center;
+  color: var(--text-secondary);
+  font-size: var(--body-sm-size);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--tracking-wide);
+  text-transform: uppercase;
+}
+
+.vs-card__text {
+  margin: 0;
+  color: var(--text-secondary);
+  font-size: var(--body-md-size);
+  line-height: var(--line-height-relaxed);
+}
+
+.vs-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-12);
+}
+
+.vs-card__footer {
+  border-top: 1px solid var(--border-color-subtle);
+  color: var(--text-tertiary);
+  font-size: var(--body-sm-size);
+  line-height: var(--line-height-normal);
+}
+
+/* =========================================================================
+   STATES
+   ========================================================================= */
+.vs-card.is-hoverable:hover:not(.is-disabled) {
+  box-shadow: var(--elevation-2);
+  border-color: var(--border-color-strong);
+  transform: translateY(-1px);
+}
+
+.vs-card.is-pressed:not(.is-disabled) {
+  box-shadow: var(--elevation-1);
+  transform: translateY(1px);
+}
+
+.vs-card.is-selected:not(.is-disabled) {
+  border-color: var(--primary-500);
+  box-shadow: 0 0 0 2px var(--primary-100);
+}
+
+.vs-card.is-disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  pointer-events: none;
+  box-shadow: var(--elevation-0);
+}
+
+/* =========================================================================
+   RESPONSIVE
+   ========================================================================= */
+@media (min-width: var(--bp-md)) {
+  .vs-card__body {
+    gap: var(--space-16);
+  }
+}
+
+/* =========================================================================
+   VARIANTS & SIZE MODIFIERS
+   ========================================================================= */
+/* OUTPUT SECTION 1 — Visual Variants */
+/* DEFAULT */
+.vs-card--default {
+  --vs-card-bg: var(--bg-soft);
+  --vs-card-border-color: var(--border-color-default);
+  --vs-card-shadow: var(--elevation-1);
+}
+
+/* OUTLINED */
+.vs-card--outlined {
+  --vs-card-bg: transparent;
+  --vs-card-border-color: var(--border-color-strong);
+  --vs-card-shadow: var(--elevation-0);
+}
+
+/* SHADOW */
+.vs-card--shadow {
+  --vs-card-border-color: var(--border-color-subtle);
+  --vs-card-shadow: var(--elevation-3);
+}
+
+/* FILLED */
+.vs-card--filled {
+  --vs-card-bg: var(--primary-50);
+  --vs-card-border-color: var(--primary-100);
+  --vs-card-shadow: var(--elevation-2);
+}
+
+/* HORIZONTAL */
+.vs-card--horizontal {
+  gap: 0;
+}
+
+.vs-card--horizontal .vs-card__media {
+  min-height: 100%;
+}
+
+@media (min-width: var(--bp-md)) {
+  .vs-card--horizontal {
+    flex-direction: row;
+  }
+
+  .vs-card--horizontal .vs-card__media {
+    width: 40%;
+    height: auto;
+  }
+
+  .vs-card--horizontal .vs-card__body {
+    flex: 1;
+  }
+}
+
+/* MEDIA TOP */
+.vs-card--media-top .vs-card__media {
+  border-bottom: 1px solid var(--border-color-subtle);
+}
+
+/* MEDIA BOTTOM */
+.vs-card--media-bottom .vs-card__media {
+  order: 3;
+  border-top: 1px solid var(--border-color-subtle);
+}
+
+/* INVERTED */
+.vs-card--inverted {
+  --vs-card-bg: var(--neutral-900);
+  --vs-card-text: var(--text-inverse);
+  --vs-card-border-color: var(--neutral-800);
+  --vs-card-shadow: var(--elevation-2);
+}
+
+.vs-card--inverted .vs-card__subtitle,
+.vs-card--inverted .vs-card__text,
+.vs-card--inverted .vs-card__footer {
+  color: var(--neutral-200);
+}
+
+.vs-card--inverted .vs-card__footer {
+  border-color: color-mix(in srgb, var(--neutral-0) 12%, transparent);
+}
+
+/* OUTPUT SECTION 2 — Size Modifiers */
+/* SMALL */
+.vs-card--sm {
+  --vs-card-padding: var(--space-12);
+  --vs-card-gap: var(--space-8);
+}
+
+.vs-card--sm .vs-card__title {
+  font-size: var(--h6-size);
+}
+
+.vs-card--sm .vs-card__text,
+.vs-card--sm .vs-card__footer {
+  font-size: var(--body-sm-size);
+}
+
+/* MEDIUM (default) */
+.vs-card--md {
+  --vs-card-padding: var(--space-16);
+  --vs-card-gap: var(--space-12);
+}
+
+/* LARGE */
+.vs-card--lg {
+  --vs-card-padding: var(--space-20);
+  --vs-card-gap: var(--space-16);
+  --vs-card-radius: var(--radius-lg);
+}
+
+.vs-card--lg .vs-card__title {
+  font-size: var(--h4-size);
+}
+
+.vs-card--lg .vs-card__text {
+  font-size: var(--body-lg-size);
+  line-height: var(--line-height-relaxed);
+}
+
+/* OUTPUT SECTION 3 — Notes & Variant Behavior Rules */
+/*
+- Visual variants adjust background, border emphasis, and elevation. Use --default for general surfaces, --outlined for low-fill layouts, --shadow when elevation emphasis is needed, --filled for soft accent emphasis, and --inverted for dark contexts.
+- Layout variants change composition: --horizontal aligns media to the left on medium+ viewports, falling back to stacked on small screens; --media-top and --media-bottom add subtle separators for media placement.
+- Size modifiers tune padding, gap, and typography only. Combine with visual variants as needed. If multiple modifiers are present, size modifiers should be placed alongside a single visual variant; state classes (.is-disabled, .is-selected) take precedence for interaction styling.
+- .is-disabled overrides hover/press/selection visuals. Inverted variant maintains readable contrast for text, subtitle, and footer.
+*/
+
+/* OUTPUT SECTION 4 — Quality Check List (MANDATORY)
+- BEM compliance verified
+- Token-only values
+- Scoped selectors; no duplication
+- No Bootstrap dependencies
+- State interactions validated
+*/
+
+/* OUTPUT SECTION 5 — Storage Instructions (MANDATORY)
+Append this section to css/components/vs-card/vs-card.css under the provided header. Do not create additional files.
+*/
