@@ -1,0 +1,71 @@
+<!-- Section 1 → VIS HTML Snippet -->
+<div class="vs-btn-group vs-btn-group--horizontal" role="group" aria-label="Horizontal button group">
+  <div class="vs-btn-group__item">
+    <button type="button" class="vs-btn vs-btn--primary vs-btn--sm">Primary sm</button>
+  </div>
+  <div class="vs-btn-group__item">
+    <button type="button" class="vs-btn vs-btn--secondary">Secondary md</button>
+  </div>
+  <div class="vs-btn-group__item">
+    <button type="button" class="vs-btn vs-btn--ghost vs-btn--lg">Ghost lg</button>
+  </div>
+  <div class="vs-btn-group__item">
+    <button type="button" class="vs-btn vs-btn--outline" disabled>Disabled</button>
+  </div>
+</div>
+
+<div class="vs-btn-group vs-btn-group--vertical mt-16" role="group" aria-label="Vertical button group">
+  <div class="vs-btn-group__item">
+    <button type="button" class="vs-btn vs-btn--primary">Top action</button>
+  </div>
+  <div class="vs-btn-group__item">
+    <button type="button" class="vs-btn vs-btn--secondary">Middle action</button>
+  </div>
+  <div class="vs-btn-group__item">
+    <button type="button" class="vs-btn vs-btn--outline">Bottom action</button>
+  </div>
+</div>
+
+<div class="vs-btn-group vs-btn-group--horizontal vs-btn-group--segmented mt-16" role="group" aria-label="Segmented controls">
+  <div class="vs-btn-group__item">
+    <button type="button" class="vs-btn vs-btn--outline vs-btn--sm">Left</button>
+  </div>
+  <div class="vs-btn-group__item">
+    <button type="button" class="vs-btn vs-btn--outline vs-btn--sm">Middle</button>
+  </div>
+  <div class="vs-btn-group__item">
+    <button type="button" class="vs-btn vs-btn--outline vs-btn--sm">Right</button>
+  </div>
+</div>
+
+<div class="vs-btn-group vs-btn-group--toolbar mt-24" aria-label="Toolbar with button groups">
+  <div class="vs-btn-group__toolbar-row">
+    <div class="vs-btn-group vs-btn-group--horizontal vs-btn-group--segmented" role="group" aria-label="Formatting">
+      <div class="vs-btn-group__item">
+        <button type="button" class="vs-btn vs-btn--secondary vs-btn--sm">Bold</button>
+      </div>
+      <div class="vs-btn-group__item">
+        <button type="button" class="vs-btn vs-btn--secondary vs-btn--sm">Italic</button>
+      </div>
+      <div class="vs-btn-group__item">
+        <button type="button" class="vs-btn vs-btn--secondary vs-btn--sm">Underline</button>
+      </div>
+    </div>
+    <div class="vs-btn-group vs-btn-group--horizontal" role="group" aria-label="Actions">
+      <div class="vs-btn-group__item">
+        <button type="button" class="vs-btn vs-btn--primary">Save</button>
+      </div>
+      <div class="vs-btn-group__item">
+        <button type="button" class="vs-btn vs-btn--outline">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Section 2 → Notes for Integration -->
+<ul>
+  <li>Use <code>vs-btn-group</code> with the <code>vs-btn-group--horizontal</code> (default) or <code>vs-btn-group--vertical</code> modifiers to control direction.</li>
+  <li>Apply <code>vs-btn-group--segmented</code> when adjacent buttons should share borders for a connected control strip.</li>
+  <li>Wrap multiple groups inside <code>vs-btn-group--toolbar</code> to create complex toolbars that wrap on smaller viewports.</li>
+  <li>Place any <code>vs-btn</code> variant or size within <code>vs-btn-group__item</code>; disabled buttons remain disabled inside groups.</li>
+</ul>
