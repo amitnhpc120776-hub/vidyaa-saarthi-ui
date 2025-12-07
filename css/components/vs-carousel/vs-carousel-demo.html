@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VIS Component Demo — vs-carousel</title>
+    <link rel="stylesheet" href="../../vs-designSystem/tokens.css" />
+    <link rel="stylesheet" href="../../vs-designSystem/base.css" />
+    <link rel="stylesheet" href="../../vs-designSystem/typography.css" />
+    <link rel="stylesheet" href="../../vs-designSystem/utilities.css" />
+    <link rel="stylesheet" href="../vs-btn/vs-btn.css" />
+    <link rel="stylesheet" href="./vs-carousel.css" />
+  </head>
+  <body class="p-24">
+    <header class="mb-24">
+      <h1 class="mb-8">vs-carousel Component Demo</h1>
+      <p class="text-secondary">Sliding and fading carousels with autoplay, controls, indicators, orientations, and content mixes.</p>
+    </header>
+
+    <section class="mb-32">
+      <h2 class="mb-12">Slide Animation — Controls + Indicators + Autoplay</h2>
+      <div class="vs-carousel vs-carousel--slide vs-carousel--with-controls vs-carousel--with-indicators vs-carousel--auto vs-carousel--pause-on-hover vs-carousel--loop vs-carousel--horizontal vs-carousel--mixed" data-vs-interval="4500">
+        <div class="vs-carousel__viewport">
+          <div class="vs-carousel__track">
+            <article class="vs-carousel__slide is-active" id="demo-slide-1" aria-roledescription="slide" aria-label="1 of 3">
+              <img class="vs-carousel__media" src="https://via.placeholder.com/800x400" alt="Placeholder media" />
+              <div class="vs-carousel__content">
+                <h3 class="vs-carousel__title">Mixed Content</h3>
+                <p class="vs-carousel__text">Default sliding transition with autoplay and loop enabled. Hover to pause.</p>
+                <div class="flex gap-12">
+                  <button class="vs-btn vs-btn--primary" type="button">Primary</button>
+                  <button class="vs-btn vs-btn--ghost" type="button">Secondary</button>
+                </div>
+              </div>
+            </article>
+            <article class="vs-carousel__slide" id="demo-slide-2" aria-roledescription="slide" aria-label="2 of 3">
+              <img class="vs-carousel__media" src="https://via.placeholder.com/800x400/FFE4B5/000" alt="Warm placeholder" />
+              <div class="vs-carousel__content">
+                <h3 class="vs-carousel__title">Media Emphasis</h3>
+                <p class="vs-carousel__text">Use <code>vs-carousel--media</code> when imagery is primary content.</p>
+              </div>
+            </article>
+            <article class="vs-carousel__slide" id="demo-slide-3" aria-roledescription="slide" aria-label="3 of 3">
+              <img class="vs-carousel__media" src="https://via.placeholder.com/800x400/ADD8E6/000" alt="Cool placeholder" />
+              <div class="vs-carousel__content">
+                <h3 class="vs-carousel__title">Looping Slides</h3>
+                <p class="vs-carousel__text">Combining <code>vs-carousel--loop</code> keeps navigation continuous.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+        <div class="vs-carousel__controls" aria-label="Carousel controls">
+          <button class="vs-carousel__button vs-carousel__button--prev" type="button" aria-label="Previous slide">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+          <button class="vs-carousel__button vs-carousel__button--next" type="button" aria-label="Next slide">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+        </div>
+        <div class="vs-carousel__indicators" role="tablist" aria-label="Carousel pagination">
+          <button class="vs-carousel__indicator is-active" type="button" role="tab" aria-label="Slide 1" aria-controls="demo-slide-1" aria-selected="true" data-vs-slide-index="0"></button>
+          <button class="vs-carousel__indicator" type="button" role="tab" aria-label="Slide 2" aria-controls="demo-slide-2" aria-selected="false" data-vs-slide-index="1"></button>
+          <button class="vs-carousel__indicator" type="button" role="tab" aria-label="Slide 3" aria-controls="demo-slide-3" aria-selected="false" data-vs-slide-index="2"></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-32">
+      <h2 class="mb-12">Fade Animation — Indicators Only</h2>
+      <div class="vs-carousel vs-carousel--fade vs-carousel--no-controls vs-carousel--with-indicators vs-carousel--manual-only vs-carousel--horizontal vs-carousel--text">
+        <div class="vs-carousel__viewport">
+          <div class="vs-carousel__track">
+            <article class="vs-carousel__slide is-active" id="demo-fade-1" aria-roledescription="slide" aria-label="1 of 2">
+              <div class="vs-carousel__content">
+                <h3 class="vs-carousel__title">Soft Fade</h3>
+                <p class="vs-carousel__text">Crossfade animation ideal for text or hero messaging.</p>
+              </div>
+            </article>
+            <article class="vs-carousel__slide" id="demo-fade-2" aria-roledescription="slide" aria-label="2 of 2">
+              <div class="vs-carousel__content">
+                <h3 class="vs-carousel__title">Manual Control</h3>
+                <p class="vs-carousel__text">Use <code>vs-carousel--manual-only</code> to disable autoplay.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+        <div class="vs-carousel__indicators" role="tablist" aria-label="Carousel pagination">
+          <button class="vs-carousel__indicator is-active" type="button" role="tab" aria-label="Slide 1" aria-controls="demo-fade-1" aria-selected="true" data-vs-slide-index="0"></button>
+          <button class="vs-carousel__indicator" type="button" role="tab" aria-label="Slide 2" aria-controls="demo-fade-2" aria-selected="false" data-vs-slide-index="1"></button>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="mb-12">Vertical Orientation — Media Focus</h2>
+      <div class="vs-carousel vs-carousel--slide vs-carousel--with-controls vs-carousel--no-indicators vs-carousel--vertical vs-carousel--media" data-vs-interval="6000">
+        <div class="vs-carousel__viewport">
+          <div class="vs-carousel__track">
+            <article class="vs-carousel__slide is-active" id="demo-vertical-1" aria-roledescription="slide" aria-label="1 of 2">
+              <img class="vs-carousel__media" src="https://via.placeholder.com/600x360/111/fff" alt="Dark placeholder" />
+              <div class="vs-carousel__content">
+                <h3 class="vs-carousel__title">Vertical Slide</h3>
+                <p class="vs-carousel__text">Orientation set with <code>vs-carousel--vertical</code>. Indicators removed.</p>
+              </div>
+            </article>
+            <article class="vs-carousel__slide" id="demo-vertical-2" aria-roledescription="slide" aria-label="2 of 2">
+              <img class="vs-carousel__media" src="https://via.placeholder.com/600x360/444/fff" alt="Neutral placeholder" />
+              <div class="vs-carousel__content">
+                <h3 class="vs-carousel__title">Edge Stop</h3>
+                <p class="vs-carousel__text">Loop modifier omitted so controls disable at edges.</p>
+              </div>
+            </article>
+          </div>
+        </div>
+        <div class="vs-carousel__controls" aria-label="Carousel controls">
+          <button class="vs-carousel__button vs-carousel__button--prev" type="button" aria-label="Previous slide">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+          <button class="vs-carousel__button vs-carousel__button--next" type="button" aria-label="Next slide">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <script src="../../js/bootstrap.bundle.min.js"></script>
+    <script src="../../js/components/vs-btn/vs-btn.js"></script>
+    <script src="../../js/components/vs-carousel/vs-carousel.js"></script>
+  </body>
+</html>
