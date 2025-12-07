@@ -1,0 +1,295 @@
+/* Base component */
+.vs-modal {
+  --vs-modal-bg: var(--neutral-0);
+  --vs-modal-text: var(--text-primary);
+  --vs-modal-border: var(--border-color-subtle);
+  --vs-modal-radius: var(--radius-lg);
+  --vs-modal-shadow: var(--elevation-4);
+  --vs-modal-header-gap: var(--space-12);
+  --vs-modal-padding: var(--space-20);
+  --vs-modal-max-width: 32rem;
+  --vs-modal-overlay: var(--overlay-dark);
+
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding: var(--space-16);
+  color: var(--vs-modal-text);
+  z-index: 100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 150ms ease;
+}
+
+.vs-modal[hidden] {
+  display: none;
+}
+
+.vs-modal.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.vs-modal__overlay {
+  position: absolute;
+  inset: 0;
+  background-color: var(--vs-modal-overlay);
+  opacity: 1;
+  transition: opacity 150ms ease;
+}
+
+.vs-modal__dialog {
+  position: relative;
+  width: min(100%, var(--vs-modal-max-width));
+  margin-top: var(--space-24);
+  background-color: var(--vs-modal-bg);
+  color: inherit;
+  border: 1px solid var(--vs-modal-border);
+  border-radius: var(--vs-modal-radius);
+  box-shadow: var(--vs-modal-shadow);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-12);
+  max-height: calc(100vh - var(--space-32));
+  overflow: hidden;
+}
+
+.vs-modal__header,
+.vs-modal__footer {
+  padding: var(--vs-modal-padding);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--vs-modal-header-gap);
+}
+
+.vs-modal__header {
+  justify-content: space-between;
+  border-bottom: 1px solid var(--border-color-subtle);
+}
+
+.vs-modal__title {
+  margin: 0;
+  font-size: var(--h5-size);
+  line-height: var(--line-height-tight);
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-primary);
+}
+
+.vs-modal__subtitle {
+  margin: var(--space-4) 0 0 0;
+  font-size: var(--body-sm-size);
+  color: var(--text-secondary);
+  line-height: var(--line-height-normal);
+}
+
+.vs-modal__close {
+  align-self: flex-start;
+  margin-inline-start: auto;
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-secondary);
+  border-radius: var(--radius-full);
+  padding: var(--space-6);
+  line-height: 1;
+  cursor: pointer;
+  transition: color 150ms ease, background-color 150ms ease, border-color 150ms ease;
+}
+
+.vs-modal__close:hover,
+.vs-modal__close:focus-visible {
+  color: var(--text-primary);
+  background-color: var(--neutral-50);
+  border-color: var(--border-color-default);
+  outline: none;
+}
+
+.vs-modal__body {
+  padding: 0 var(--vs-modal-padding) var(--vs-modal-padding);
+  font-size: var(--body-md-size);
+  color: var(--text-secondary);
+  line-height: var(--line-height-relaxed);
+  overflow: visible;
+}
+
+.vs-modal__footer {
+  justify-content: flex-end;
+  border-top: 1px solid var(--border-color-subtle);
+}
+
+.vs-modal__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-8);
+  justify-content: flex-end;
+}
+
+/* =========================================================================
+   STATES
+   ========================================================================= */
+.vs-modal.is-closing {
+  opacity: 0;
+}
+
+.vs-modal--scrollable .vs-modal__dialog {
+  max-height: calc(90vh - var(--space-16));
+}
+
+.vs-modal--scrollable .vs-modal__body {
+  overflow: auto;
+  padding-right: calc(var(--vs-modal-padding) - var(--space-4));
+}
+
+.vs-modal--centered {
+  align-items: center;
+}
+
+/* =========================================================================
+   RESPONSIVE ADJUSTMENTS
+   ========================================================================= */
+@media (max-width: calc(var(--bp-sm) - 1px)) {
+  .vs-modal__dialog {
+    margin-top: var(--space-16);
+    max-height: calc(100vh - var(--space-24));
+  }
+}
+
+@media (min-width: var(--bp-md)) {
+  .vs-modal {
+    padding: var(--space-24);
+  }
+}
+
+/* =========================================================================
+   VARIANTS & SIZE MODIFIERS
+   ========================================================================= */
+/* OUTPUT SECTION 1 — Visual Variants (BEM Modifiers) */
+/* DEFAULT SURFACE */
+.vs-modal--default .vs-modal__dialog {
+  background-color: var(--neutral-0);
+  border-color: var(--vs-modal-border);
+  box-shadow: var(--vs-modal-shadow);
+}
+
+/* BORDERED */
+.vs-modal--bordered .vs-modal__dialog {
+  border-color: var(--border-color-strong);
+}
+
+/* SHADOWED */
+.vs-modal--shadow .vs-modal__dialog {
+  box-shadow: var(--elevation-5);
+}
+
+/* HEADERLESS */
+.vs-modal--headerless .vs-modal__header {
+  display: none;
+}
+
+.vs-modal--headerless .vs-modal__body {
+  padding-top: var(--vs-modal-padding);
+}
+
+/* FOOTERLESS */
+.vs-modal--footerless .vs-modal__footer {
+  display: none;
+}
+
+.vs-modal--footerless .vs-modal__body {
+  padding-bottom: var(--vs-modal-padding);
+}
+
+/* BACKDROP CONTROL */
+.vs-modal--backdrop .vs-modal__overlay,
+.vs-modal--backdrop-static .vs-modal__overlay {
+  background-color: var(--vs-modal-overlay);
+}
+
+.vs-modal--backdrop-static.is-open .vs-modal__overlay {
+  pointer-events: none;
+}
+
+.vs-modal--no-backdrop .vs-modal__overlay {
+  display: none;
+}
+
+.vs-modal--no-backdrop .vs-modal__dialog {
+  box-shadow: var(--elevation-3);
+}
+
+/* OUTPUT SECTION 2 — Size Modifiers (BEM Modifiers) */
+/* SMALL */
+.vs-modal--sm .vs-modal__dialog {
+  --vs-modal-max-width: 22rem;
+  --vs-modal-padding: var(--space-16);
+  --vs-modal-header-gap: var(--space-8);
+}
+
+/* MEDIUM (DEFAULT) */
+.vs-modal--md .vs-modal__dialog {
+  --vs-modal-max-width: 32rem;
+}
+
+/* LARGE */
+.vs-modal--lg .vs-modal__dialog {
+  --vs-modal-max-width: 42rem;
+}
+
+/* EXTRA LARGE */
+.vs-modal--xl .vs-modal__dialog {
+  --vs-modal-max-width: 54rem;
+}
+
+/* FULLSCREEN */
+.vs-modal--fullscreen .vs-modal__dialog {
+  width: 100%;
+  height: 100%;
+  max-height: none;
+  margin-top: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+/* FULLSCREEN RESPONSIVE */
+.vs-modal--fullscreen-responsive .vs-modal__dialog {
+  width: 100%;
+  height: 100%;
+  max-height: none;
+  margin-top: 0;
+  border-radius: 0;
+}
+
+@media (min-width: var(--bp-md)) {
+  .vs-modal--fullscreen-responsive .vs-modal__dialog {
+    height: auto;
+    max-height: calc(100vh - var(--space-32));
+    border-radius: var(--vs-modal-radius);
+    width: min(100%, 48rem);
+    margin-top: var(--space-24);
+  }
+}
+
+/* OUTPUT SECTION 3 — Notes & Variant Behavior Rules */
+/*
+- Apply visual modifiers (`--bordered`, `--shadow`) to adjust the dialog surface without altering layout.
+- `--headerless` removes the header row; provide an alternative close control within the body to maintain accessibility.
+- `--footerless` removes the action bar; combine with utility classes for custom layouts.
+- Size modifiers change the dialog max-width and padding density; `--fullscreen` and `--fullscreen-responsive` override border-radius and height to fill the viewport.
+- Behavior modifiers: `--backdrop` (default) adds a dim layer; `--backdrop-static` keeps the overlay visible but ignores outside clicks; `--no-backdrop` removes the overlay and relies on `box-shadow` for elevation.
+- State class `.is-open` should be paired with removing the `hidden` attribute and updating `aria-hidden="false"`; `.is-closing` can be used for exit animations before hiding.
+- On mobile, dialogs use tighter padding and height constraints; fullscreen variants remain edge-to-edge at all sizes.
+- Priority: `.is-open` controls visibility; behavior modifiers affect close interactions but not sizing; size modifiers override defaults even when combined with fullscreen variants.
+*/
+
+/* OUTPUT SECTION 4 — Quality Check List (MANDATORY)
+- BEM compliance verified.
+- Token compliance: uses VIS spacing, color, radius, and elevation tokens; rem values limited to layout widths.
+- Scoped selectors under .vs-modal; no duplication with other components.
+- Bootstrap independent; vanilla CSS only.
+- State and variant interactions reviewed for accessibility and responsiveness.
+*/
+
+/* OUTPUT SECTION 5 — Storage Instructions (MANDATORY)
+Append this variant and size CSS within css/components/vs-modal/vs-modal.css under the designated header.
+*/
