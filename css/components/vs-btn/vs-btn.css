@@ -22,7 +22,8 @@
   line-height: var(--line-height-normal);
   text-decoration: none;
   cursor: pointer;
-  transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease, box-shadow 150ms ease, transform 150ms ease;
+  transition: background-color 150ms ease, color 150ms ease,
+    border-color 150ms ease, box-shadow 150ms ease, transform 150ms ease;
 }
 
 .vs-btn__content {
@@ -146,6 +147,9 @@
   --vs-btn-bg-active: var(--btn-primary-bg-active);
   --vs-btn-text: var(--btn-primary-text);
   --vs-btn-border: transparent;
+  /* Shape override */
+  border-radius: 0;
+  border-bottom-left-radius: var(--radius-md); /* or your chosen token */
 }
 
 /* SECONDARY */
@@ -155,6 +159,9 @@
   --vs-btn-bg-active: var(--btn-secondary-bg-active);
   --vs-btn-text: var(--btn-secondary-text);
   --vs-btn-border: transparent;
+  /* Shape override */
+  border-radius: 0;
+  border-bottom-left-radius: var(--radius-md); /* or your chosen token */
 }
 
 /* TERTIARY */

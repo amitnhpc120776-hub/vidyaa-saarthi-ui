@@ -8,25 +8,48 @@
     <link rel="stylesheet" href="../../vs-designSystem/base.css" />
     <link rel="stylesheet" href="../../vs-designSystem/typography.css" />
     <link rel="stylesheet" href="../../vs-designSystem/utilities.css" />
-    <link rel="stylesheet" href="./vs-accordion.css" />
+    <link rel="stylesheet" href="../../custom.css" />
   </head>
   <body class="p-24">
     <header class="mb-24">
       <h1 class="mb-12">vs-accordion Component Demo</h1>
-      <p class="text-secondary">Collapsible VIS accordion with default, flush, shadow, and always-open variants.</p>
+      <p class="text-secondary">
+        Collapsible VIS accordion with default, flush, shadow, and always-open
+        variants.
+      </p>
     </header>
 
     <section class="mb-24">
       <h2 class="mb-12">Default (single-open)</h2>
-      <div class="vs-accordion vs-accordion--default" id="demo-accordion-default">
+      <div
+        class="vs-accordion vs-accordion--default"
+        id="demo-accordion-default"
+      >
         <div class="vs-accordion__item is-open">
           <h3 class="vs-accordion__header">
-            <button class="vs-accordion__trigger" type="button" aria-expanded="true" aria-controls="demo-accordion-default-panel-1">
+            <button
+              class="vs-accordion__trigger"
+              type="button"
+              aria-expanded="true"
+              aria-controls="demo-accordion-default-panel-1"
+            >
               <span class="vs-accordion__label">Default Item #1</span>
               <span class="vs-accordion__meta">Updated today</span>
               <span class="vs-accordion__icon" aria-hidden="true">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M6 9l6 6 6-6"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
                 </svg>
               </span>
             </button>
@@ -39,17 +62,40 @@
         </div>
         <div class="vs-accordion__item">
           <h3 class="vs-accordion__header">
-            <button class="vs-accordion__trigger" type="button" aria-expanded="false" aria-controls="demo-accordion-default-panel-2">
+            <button
+              class="vs-accordion__trigger"
+              type="button"
+              aria-expanded="false"
+              aria-controls="demo-accordion-default-panel-2"
+            >
               <span class="vs-accordion__label">Default Item #2</span>
               <span class="vs-accordion__icon" aria-hidden="true">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M6 9l6 6 6-6"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
                 </svg>
               </span>
             </button>
           </h3>
-          <div class="vs-accordion__panel" id="demo-accordion-default-panel-2" hidden>
-            <div class="vs-accordion__body">Toggle between panels to see single-open behavior.</div>
+          <div
+            class="vs-accordion__panel"
+            id="demo-accordion-default-panel-2"
+            hidden
+          >
+            <div class="vs-accordion__body">
+              Toggle between panels to see single-open behavior.
+            </div>
           </div>
         </div>
       </div>
@@ -57,35 +103,78 @@
 
     <section class="mb-24">
       <h2 class="mb-12">Flush (borderless, dense)</h2>
-      <div class="vs-accordion vs-accordion--flush vs-accordion--always-open" id="demo-accordion-flush">
+      <div
+        class="vs-accordion vs-accordion--flush vs-accordion--always-open"
+        id="demo-accordion-flush"
+      >
         <div class="vs-accordion__item is-open">
           <h3 class="vs-accordion__header">
-            <button class="vs-accordion__trigger" type="button" aria-expanded="true" aria-controls="demo-accordion-flush-panel-1">
+            <button
+              class="vs-accordion__trigger"
+              type="button"
+              aria-expanded="true"
+              aria-controls="demo-accordion-flush-panel-1"
+            >
               <span class="vs-accordion__label">Flush Item #1</span>
               <span class="vs-accordion__icon" aria-hidden="true">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M6 9l6 6 6-6"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
                 </svg>
               </span>
             </button>
           </h3>
           <div class="vs-accordion__panel" id="demo-accordion-flush-panel-1">
-            <div class="vs-accordion__body">Flush styling removes container chrome for inline groupings.</div>
+            <div class="vs-accordion__body">
+              Flush styling removes container chrome for inline groupings.
+            </div>
           </div>
         </div>
         <div class="vs-accordion__item is-open">
           <h3 class="vs-accordion__header">
-            <button class="vs-accordion__trigger" type="button" aria-expanded="true" aria-controls="demo-accordion-flush-panel-2">
-              <span class="vs-accordion__label">Flush Item #2 (Always Open)</span>
+            <button
+              class="vs-accordion__trigger"
+              type="button"
+              aria-expanded="true"
+              aria-controls="demo-accordion-flush-panel-2"
+            >
+              <span class="vs-accordion__label"
+                >Flush Item #2 (Always Open)</span
+              >
               <span class="vs-accordion__icon" aria-hidden="true">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M6 9l6 6 6-6"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
                 </svg>
               </span>
             </button>
           </h3>
           <div class="vs-accordion__panel" id="demo-accordion-flush-panel-2">
-            <div class="vs-accordion__body">Multiple panels remain open with the always-open modifier.</div>
+            <div class="vs-accordion__body">
+              Multiple panels remain open with the always-open modifier.
+            </div>
           </div>
         </div>
       </div>
@@ -96,17 +185,40 @@
       <div class="vs-accordion vs-accordion--shadow" id="demo-accordion-shadow">
         <div class="vs-accordion__item">
           <h3 class="vs-accordion__header">
-            <button class="vs-accordion__trigger" type="button" aria-expanded="false" aria-controls="demo-accordion-shadow-panel-1">
+            <button
+              class="vs-accordion__trigger"
+              type="button"
+              aria-expanded="false"
+              aria-controls="demo-accordion-shadow-panel-1"
+            >
               <span class="vs-accordion__label">Shadow Item</span>
               <span class="vs-accordion__icon" aria-hidden="true">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    d="M6 9l6 6 6-6"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
                 </svg>
               </span>
             </button>
           </h3>
-          <div class="vs-accordion__panel" id="demo-accordion-shadow-panel-1" hidden>
-            <div class="vs-accordion__body">Use shadow variant where the accordion should feel card-like.</div>
+          <div
+            class="vs-accordion__panel"
+            id="demo-accordion-shadow-panel-1"
+            hidden
+          >
+            <div class="vs-accordion__body">
+              Use shadow variant where the accordion should feel card-like.
+            </div>
           </div>
         </div>
       </div>

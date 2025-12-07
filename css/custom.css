@@ -8,8 +8,12 @@
    Imported modular VIS components
    ============================================================================ */
 
-
 @import "components/vs-accordion/vs-accordion.css";
-@import "components/vs-dropdown/vs-dropdown.css";
 @import "components/vs-btn/vs-btn.css";
-
+@import "components/vs-btn-group/vs-btn-group.css";
+@import "components/vs-card/vs-card.css";
+@import "components/vs-carousel/vs-carousel.css";
+@import "components/vs-dropdown/vs-dropdown.css";
+@import "components/vs-modal/vs-modal.css";
+@import "components/vs-offcanvas/vs-offcanvas.css";
+@import "components/vs-input/vs-input.css";

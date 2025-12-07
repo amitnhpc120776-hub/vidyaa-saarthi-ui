@@ -8,17 +8,23 @@
     <link rel="stylesheet" href="../../vs-designSystem/base.css" />
     <link rel="stylesheet" href="../../vs-designSystem/typography.css" />
     <link rel="stylesheet" href="../../vs-designSystem/utilities.css" />
-    <link rel="stylesheet" href="./vs-modal.css" />
+    <link rel="stylesheet" href="../../custom.css" />
   </head>
   <body class="p-24">
     <header class="mb-24">
       <h1 class="mb-8">vs-modal Component Demo</h1>
-      <p class="text-secondary">Dialog overlay with size, surface, and behavior variants.</p>
+      <p class="text-secondary">
+        Dialog overlay with size, surface, and behavior variants.
+      </p>
     </header>
 
     <section class="mb-24">
       <h2 class="mb-12">Default modal (md, backdrop)</h2>
-      <button class="vs-btn vs-btn--primary" type="button" data-vs-modal-trigger="demo-modal-default">
+      <button
+        class="vs-btn vs-btn--primary"
+        type="button"
+        data-vs-modal-trigger="demo-modal-default"
+      >
         Open default modal
       </button>
       <div
@@ -34,23 +40,40 @@
         <div class="vs-modal__dialog">
           <div class="vs-modal__header">
             <div>
-              <h2 class="vs-modal__title" id="demo-modal-default-title">Modal heading</h2>
-              <p class="vs-modal__subtitle">Use this for short tasks or confirmations.</p>
+              <h2 class="vs-modal__title" id="demo-modal-default-title">
+                Modal heading
+              </h2>
+              <p class="vs-modal__subtitle">
+                Use this for short tasks or confirmations.
+              </p>
             </div>
-            <button class="vs-modal__close" type="button" aria-label="Close modal" data-vs-modal-dismiss>
+            <button
+              class="vs-modal__close"
+              type="button"
+              aria-label="Close modal"
+              data-vs-modal-dismiss
+            >
               <span aria-hidden="true">×</span>
             </button>
           </div>
           <div class="vs-modal__body">
             <p>
-              This modal uses the default surface with responsive padding. Add forms, descriptions, or supporting components to
-              the body section.
+              This modal uses the default surface with responsive padding. Add
+              forms, descriptions, or supporting components to the body section.
             </p>
           </div>
           <div class="vs-modal__footer">
             <div class="vs-modal__actions">
-              <button class="vs-btn vs-btn--primary" type="button">Submit</button>
-              <button class="vs-btn vs-btn--ghost" type="button" data-vs-modal-dismiss>Cancel</button>
+              <button class="vs-btn vs-btn--primary" type="button">
+                Submit
+              </button>
+              <button
+                class="vs-btn vs-btn--ghost"
+                type="button"
+                data-vs-modal-dismiss
+              >
+                Cancel
+              </button>
             </div>
           </div>
         </div>
@@ -59,7 +82,11 @@
 
     <section class="mb-24">
       <h2 class="mb-12">Scrollable content (lg, centered, static backdrop)</h2>
-      <button class="vs-btn vs-btn--secondary" type="button" data-vs-modal-trigger="demo-modal-scrollable">
+      <button
+        class="vs-btn vs-btn--secondary"
+        type="button"
+        data-vs-modal-trigger="demo-modal-scrollable"
+      >
         Open scrollable modal
       </button>
       <div
@@ -75,39 +102,61 @@
         <div class="vs-modal__dialog">
           <div class="vs-modal__header">
             <div>
-              <h2 class="vs-modal__title" id="demo-modal-scrollable-title">Review details</h2>
-              <p class="vs-modal__subtitle">Static backdrop prevents dismissing on outside click.</p>
+              <h2 class="vs-modal__title" id="demo-modal-scrollable-title">
+                Review details
+              </h2>
+              <p class="vs-modal__subtitle">
+                Static backdrop prevents dismissing on outside click.
+              </p>
             </div>
-            <button class="vs-modal__close" type="button" aria-label="Close modal" data-vs-modal-dismiss>
+            <button
+              class="vs-modal__close"
+              type="button"
+              aria-label="Close modal"
+              data-vs-modal-dismiss
+            >
               <span aria-hidden="true">×</span>
             </button>
           </div>
           <div class="vs-modal__body">
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque vitae venenatis lorem. Donec sed aliquam nibh.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              Pellentesque vitae venenatis lorem. Donec sed aliquam nibh.
               Integer vehicula dapibus quam.
             </p>
             <p>
-              Aliquam dapibus orci eu neque facilisis, vitae semper sapien malesuada. Sed vestibulum lectus ut justo ultrices, in
-              ultrices ex suscipit.
+              Aliquam dapibus orci eu neque facilisis, vitae semper sapien
+              malesuada. Sed vestibulum lectus ut justo ultrices, in ultrices ex
+              suscipit.
             </p>
             <p>
-              Nulla facilisi. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Fusce sit
-              amet lacus interdum, lacinia massa vel, gravida ipsum.
+              Nulla facilisi. Vestibulum ante ipsum primis in faucibus orci
+              luctus et ultrices posuere cubilia curae; Fusce sit amet lacus
+              interdum, lacinia massa vel, gravida ipsum.
             </p>
             <p>
-              Etiam vitae arcu condimentum, volutpat massa ac, interdum neque. Maecenas mattis, lectus ac sagittis iaculis, neque
-              odio suscipit nulla, ac faucibus sem turpis at sem.
+              Etiam vitae arcu condimentum, volutpat massa ac, interdum neque.
+              Maecenas mattis, lectus ac sagittis iaculis, neque odio suscipit
+              nulla, ac faucibus sem turpis at sem.
             </p>
             <p>
-              Curabitur finibus condimentum arcu, vel bibendum metus placerat nec. Sed tristique dui vitae mi tempus, vitae lacinia
-              lorem lobortis.
+              Curabitur finibus condimentum arcu, vel bibendum metus placerat
+              nec. Sed tristique dui vitae mi tempus, vitae lacinia lorem
+              lobortis.
             </p>
           </div>
           <div class="vs-modal__footer">
             <div class="vs-modal__actions">
-              <button class="vs-btn vs-btn--secondary" type="button">Save draft</button>
-              <button class="vs-btn vs-btn--ghost" type="button" data-vs-modal-dismiss>Close</button>
+              <button class="vs-btn vs-btn--secondary" type="button">
+                Save draft
+              </button>
+              <button
+                class="vs-btn vs-btn--ghost"
+                type="button"
+                data-vs-modal-dismiss
+              >
+                Close
+              </button>
             </div>
           </div>
         </div>
@@ -115,8 +164,14 @@
     </section>
 
     <section class="mb-24">
-      <h2 class="mb-12">Fullscreen responsive (headerless, footerless, no escape)</h2>
-      <button class="vs-btn vs-btn--ghost" type="button" data-vs-modal-trigger="demo-modal-fullscreen">
+      <h2 class="mb-12">
+        Fullscreen responsive (headerless, footerless, no escape)
+      </h2>
+      <button
+        class="vs-btn vs-btn--ghost"
+        type="button"
+        data-vs-modal-trigger="demo-modal-fullscreen"
+      >
         Open fullscreen workspace
       </button>
       <div
@@ -131,21 +186,32 @@
         <div class="vs-modal__dialog">
           <div class="vs-modal__header">
             <div>
-              <h2 class="vs-modal__title" id="demo-modal-fullscreen-title">Immersive workspace</h2>
-              <p class="vs-modal__subtitle">Edge-to-edge layout on small screens; constrained on desktop.</p>
+              <h2 class="vs-modal__title" id="demo-modal-fullscreen-title">
+                Immersive workspace
+              </h2>
+              <p class="vs-modal__subtitle">
+                Edge-to-edge layout on small screens; constrained on desktop.
+              </p>
             </div>
-            <button class="vs-modal__close" type="button" aria-label="Close modal" data-vs-modal-dismiss>
+            <button
+              class="vs-modal__close"
+              type="button"
+              aria-label="Close modal"
+              data-vs-modal-dismiss
+            >
               <span aria-hidden="true">×</span>
             </button>
           </div>
           <div class="vs-modal__body">
             <p>
-              Combine the no-backdrop and no-escape variants for uninterrupted flows. Provide explicit close buttons in the
-              interface when disabling escape key support.
+              Combine the no-backdrop and no-escape variants for uninterrupted
+              flows. Provide explicit close buttons in the interface when
+              disabling escape key support.
             </p>
             <p>
-              Add toolbars, editors, or split layouts inside this body using VIS utility classes for spacing. Resize the viewport
-              to see the responsive fullscreen behavior.
+              Add toolbars, editors, or split layouts inside this body using VIS
+              utility classes for spacing. Resize the viewport to see the
+              responsive fullscreen behavior.
             </p>
           </div>
         </div>

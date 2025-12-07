@@ -8,84 +8,137 @@
     <link rel="stylesheet" href="../../vs-designSystem/base.css" />
     <link rel="stylesheet" href="../../vs-designSystem/typography.css" />
     <link rel="stylesheet" href="../../vs-designSystem/utilities.css" />
-    <link rel="stylesheet" href="../vs-btn/vs-btn.css" />
-    <link rel="stylesheet" href="./vs-btn-group.css" />
+    <link rel="stylesheet" href="../../custom.css" />
   </head>
   <body class="p-24">
     <header class="mb-24">
       <h1 class="mb-12">vs-btn-group Component Demo</h1>
-      <p class="text-secondary">Bootstrap-like VIS button groups supporting horizontal, vertical, segmented, and toolbar layouts.</p>
+      <p class="text-secondary">
+        Bootstrap-like VIS button groups supporting horizontal, vertical,
+        segmented, and toolbar layouts.
+      </p>
     </header>
 
     <section class="mb-24">
       <h2 class="mb-12">Horizontal (default)</h2>
-      <div class="vs-btn-group vs-btn-group--horizontal" role="group" aria-label="Horizontal actions">
+      <div
+        class="vs-btn-group vs-btn-group--horizontal"
+        role="group"
+        aria-label="Horizontal actions"
+      >
         <div class="vs-btn-group__item">
-          <button type="button" class="vs-btn vs-btn--primary vs-btn--sm">Primary sm</button>
+          <button type="button" class="vs-btn vs-btn--primary vs-btn--sm">
+            Primary sm
+          </button>
         </div>
         <div class="vs-btn-group__item">
-          <button type="button" class="vs-btn vs-btn--secondary">Secondary md</button>
+          <button type="button" class="vs-btn vs-btn--secondary">
+            Secondary md
+          </button>
         </div>
         <div class="vs-btn-group__item">
-          <button type="button" class="vs-btn vs-btn--ghost vs-btn--lg">Ghost lg</button>
+          <button type="button" class="vs-btn vs-btn--ghost vs-btn--lg">
+            Ghost lg
+          </button>
         </div>
         <div class="vs-btn-group__item">
-          <button type="button" class="vs-btn vs-btn--outline" disabled>Disabled</button>
+          <button type="button" class="vs-btn vs-btn--outline" disabled>
+            Disabled
+          </button>
         </div>
       </div>
     </section>
 
     <section class="mb-24">
       <h2 class="mb-12">Vertical Stack</h2>
-      <div class="vs-btn-group vs-btn-group--vertical" role="group" aria-label="Vertical actions">
+      <div
+        class="vs-btn-group vs-btn-group--vertical"
+        role="group"
+        aria-label="Vertical actions"
+      >
         <div class="vs-btn-group__item">
-          <button type="button" class="vs-btn vs-btn--primary">Top action</button>
+          <button type="button" class="vs-btn vs-btn--primary">
+            Top action
+          </button>
         </div>
         <div class="vs-btn-group__item">
-          <button type="button" class="vs-btn vs-btn--secondary">Middle action</button>
+          <button type="button" class="vs-btn vs-btn--secondary">
+            Middle action
+          </button>
         </div>
         <div class="vs-btn-group__item">
-          <button type="button" class="vs-btn vs-btn--outline">Bottom action</button>
+          <button type="button" class="vs-btn vs-btn--outline">
+            Bottom action
+          </button>
         </div>
       </div>
     </section>
 
     <section class="mb-24">
       <h2 class="mb-12">Segmented Group</h2>
-      <div class="vs-btn-group vs-btn-group--horizontal vs-btn-group--segmented" role="group" aria-label="Segmented controls">
+      <div
+        class="vs-btn-group vs-btn-group--horizontal vs-btn-group--segmented"
+        role="group"
+        aria-label="Segmented controls"
+      >
         <div class="vs-btn-group__item">
-          <button type="button" class="vs-btn vs-btn--outline vs-btn--sm">Left</button>
+          <button type="button" class="vs-btn vs-btn--outline vs-btn--sm">
+            Left
+          </button>
         </div>
         <div class="vs-btn-group__item">
-          <button type="button" class="vs-btn vs-btn--outline vs-btn--sm">Middle</button>
+          <button type="button" class="vs-btn vs-btn--outline vs-btn--sm">
+            Middle
+          </button>
         </div>
         <div class="vs-btn-group__item">
-          <button type="button" class="vs-btn vs-btn--outline vs-btn--sm">Right</button>
+          <button type="button" class="vs-btn vs-btn--outline vs-btn--sm">
+            Right
+          </button>
         </div>
       </div>
     </section>
 
     <section class="mb-24">
       <h2 class="mb-12">Toolbar</h2>
-      <div class="vs-btn-group vs-btn-group--toolbar" aria-label="Editor toolbar">
+      <div
+        class="vs-btn-group vs-btn-group--toolbar"
+        aria-label="Editor toolbar"
+      >
         <div class="vs-btn-group__toolbar-row">
-          <div class="vs-btn-group vs-btn-group--horizontal vs-btn-group--segmented" role="group" aria-label="Formatting">
+          <div
+            class="vs-btn-group vs-btn-group--horizontal vs-btn-group--segmented"
+            role="group"
+            aria-label="Formatting"
+          >
             <div class="vs-btn-group__item">
-              <button type="button" class="vs-btn vs-btn--secondary vs-btn--sm">Bold</button>
+              <button type="button" class="vs-btn vs-btn--secondary vs-btn--sm">
+                Bold
+              </button>
             </div>
             <div class="vs-btn-group__item">
-              <button type="button" class="vs-btn vs-btn--secondary vs-btn--sm">Italic</button>
+              <button type="button" class="vs-btn vs-btn--secondary vs-btn--sm">
+                Italic
+              </button>
             </div>
             <div class="vs-btn-group__item">
-              <button type="button" class="vs-btn vs-btn--secondary vs-btn--sm">Underline</button>
+              <button type="button" class="vs-btn vs-btn--secondary vs-btn--sm">
+                Underline
+              </button>
             </div>
           </div>
-          <div class="vs-btn-group vs-btn-group--horizontal" role="group" aria-label="Actions">
+          <div
+            class="vs-btn-group vs-btn-group--horizontal"
+            role="group"
+            aria-label="Actions"
+          >
             <div class="vs-btn-group__item">
               <button type="button" class="vs-btn vs-btn--primary">Save</button>
             </div>
             <div class="vs-btn-group__item">
-              <button type="button" class="vs-btn vs-btn--outline">Cancel</button>
+              <button type="button" class="vs-btn vs-btn--outline">
+                Cancel
+              </button>
             </div>
           </div>
         </div>
