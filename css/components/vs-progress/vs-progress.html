@@ -1,0 +1,109 @@
+<!-- Section 1 → VIS HTML Snippet -->
+<div
+  class="vs-progress vs-progress--md vs-progress--primary vs-progress--default vs-progress--with-label vs-progress--horizontal"
+  data-vs-component="vs-progress"
+  role="progressbar"
+  aria-label="File upload progress"
+  aria-valuemin="0"
+  aria-valuemax="100"
+  aria-valuenow="64"
+>
+  <div class="vs-progress__label">
+    <span class="vs-progress__label-text">Uploading files</span>
+    <span class="vs-progress__value">64%</span>
+  </div>
+  <div class="vs-progress__track" aria-hidden="true">
+    <div class="vs-progress__bar" style="--vs-progress-value: 64%;"></div>
+  </div>
+</div>
+
+<div
+  class="vs-progress vs-progress--sm vs-progress--warning vs-progress--striped vs-progress--with-label vs-progress--horizontal"
+  role="progressbar"
+  aria-label="Export job"
+  aria-valuemin="0"
+  aria-valuemax="100"
+  aria-valuenow="38"
+>
+  <div class="vs-progress__label">
+    <span class="vs-progress__label-text">Exporting data</span>
+    <span class="vs-progress__value">38%</span>
+  </div>
+  <div class="vs-progress__track" aria-hidden="true">
+    <div class="vs-progress__bar" style="--vs-progress-value: 38%;"></div>
+  </div>
+</div>
+
+<div
+  class="vs-progress vs-progress--lg vs-progress--info vs-progress--animated vs-progress--with-label vs-progress--horizontal"
+  role="progressbar"
+  aria-label="System update"
+  aria-valuemin="0"
+  aria-valuemax="100"
+  aria-valuenow="82"
+>
+  <div class="vs-progress__label">
+    <span class="vs-progress__label-text">Updating system</span>
+    <span class="vs-progress__value">82%</span>
+  </div>
+  <div class="vs-progress__track" aria-hidden="true">
+    <div class="vs-progress__bar" style="--vs-progress-value: 82%;"></div>
+  </div>
+</div>
+
+<div
+  class="vs-progress vs-progress--md vs-progress--success vs-progress--default vs-progress--no-label vs-progress--horizontal"
+  role="progressbar"
+  aria-label="Backup completion"
+  aria-valuemin="0"
+  aria-valuemax="100"
+  aria-valuenow="96"
+>
+  <div class="vs-progress__track" aria-hidden="true">
+    <div class="vs-progress__bar" style="--vs-progress-value: 96%;"></div>
+  </div>
+</div>
+
+<div
+  class="vs-progress vs-progress--md vs-progress--multi vs-progress--neutral vs-progress--striped vs-progress--with-label vs-progress--horizontal"
+  role="progressbar"
+  aria-label="Stacked tasks"
+  aria-valuemin="0"
+  aria-valuemax="100"
+>
+  <div class="vs-progress__label">
+    <span class="vs-progress__label-text">Segmented rollout</span>
+    <span class="vs-progress__value">Segments</span>
+  </div>
+  <div class="vs-progress__track" aria-hidden="true">
+    <div class="vs-progress__segment" style="--vs-progress-value: 32%; --vs-progress-segment-color: var(--primary-600);"></div>
+    <div class="vs-progress__segment" style="--vs-progress-value: 18%; --vs-progress-segment-color: var(--success-500);"></div>
+    <div class="vs-progress__segment" style="--vs-progress-value: 12%; --vs-progress-segment-color: var(--warning-500);"></div>
+  </div>
+</div>
+
+<div
+  class="vs-progress vs-progress--sm vs-progress--danger vs-progress--animated vs-progress--with-label vs-progress--vertical"
+  role="progressbar"
+  aria-label="Critical processing"
+  aria-valuemin="0"
+  aria-valuemax="100"
+  aria-valuenow="45"
+>
+  <div class="vs-progress__label">
+    <span class="vs-progress__label-text">Vertical status</span>
+    <span class="vs-progress__value">45%</span>
+  </div>
+  <div class="vs-progress__track" aria-hidden="true">
+    <div class="vs-progress__bar" style="--vs-progress-value: 45%;"></div>
+  </div>
+</div>
+
+<!-- Section 2 → Notes for Integration -->
+<ul>
+  <li>Attach <code>aria-valuemin</code>, <code>aria-valuemax</code>, and <code>aria-valuenow</code> on determinate progress; remove <code>aria-valuenow</code> and add <code>is-indeterminate</code> when progress is unknown.</li>
+  <li>Use color modifiers to align with status: <code>vs-progress--primary</code>, <code>vs-progress--secondary</code>, <code>vs-progress--success</code>, <code>vs-progress--warning</code>, <code>vs-progress--danger</code>, <code>vs-progress--info</code>, <code>vs-progress--neutral</code>.</li>
+  <li>Apply <code>vs-progress--striped</code> for textured fills and <code>vs-progress--animated</code> or <code>.is-animated</code> to animate stripe motion. Use <code>.is-paused</code> to stop animation.</li>
+  <li><code>vs-progress--multi</code> stacks <code>vs-progress__segment</code> elements inside the track for stacked progress; set <code>--vs-progress-value</code> and optional <code>--vs-progress-segment-color</code> per segment.</li>
+  <li>Switch to <code>vs-progress--vertical</code> to orient the track vertically; size modifiers adjust thickness, and <code>--vs-progress-value</code> maps to height.</li>
+</ul>

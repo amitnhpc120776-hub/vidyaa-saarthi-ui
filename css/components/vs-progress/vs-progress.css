@@ -1,0 +1,359 @@
+/* Base component */
+.vs-progress {
+  --vs-progress-height: var(--space-12);
+  --vs-progress-radius: var(--radius-full);
+  --vs-progress-track-bg: var(--neutral-100);
+  --vs-progress-bar-bg: var(--primary-600);
+  --vs-progress-label-color: var(--text-secondary);
+  --vs-progress-value-color: var(--text-primary);
+  --vs-progress-label-size: var(--label-md-size);
+  --vs-progress-label-line-height: var(--label-md-line-height);
+  --vs-progress-value-weight: var(--font-weight-semibold);
+  --vs-progress-gap: var(--space-8);
+  --vs-progress-segment-gap: var(--space-2);
+  --vs-progress-length: var(--space-64);
+  --vs-progress-stripe-overlay: color-mix(in srgb, var(--neutral-0) 20%, transparent);
+  --vs-progress-animation-speed: 1s;
+
+  display: grid;
+  gap: var(--vs-progress-gap);
+  width: 100%;
+}
+
+.vs-progress__label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-8);
+  font-size: var(--vs-progress-label-size);
+  line-height: var(--vs-progress-label-line-height);
+  color: var(--vs-progress-label-color);
+}
+
+.vs-progress__value {
+  color: var(--vs-progress-value-color);
+  font-weight: var(--vs-progress-value-weight);
+}
+
+.vs-progress__track {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: var(--vs-progress-height);
+  background-color: var(--vs-progress-track-bg);
+  border-radius: var(--vs-progress-radius);
+  overflow: hidden;
+  isolation: isolate;
+}
+
+.vs-progress__bar,
+.vs-progress__segment {
+  position: relative;
+  display: block;
+  height: 100%;
+  width: var(--vs-progress-value, 0%);
+  background-color: var(--vs-progress-bar-bg);
+  border-radius: inherit;
+  transition: width 240ms ease, height 240ms ease;
+  background-repeat: repeat;
+}
+
+.vs-progress__segment {
+  --vs-progress-bar-bg: var(--vs-progress-segment-color, var(--vs-progress-bar-bg));
+
+  flex: 0 0 auto;
+}
+
+/* Content visibility */
+.vs-progress--no-label .vs-progress__label {
+  display: none;
+}
+
+/* Orientation modifiers */
+.vs-progress--vertical {
+  width: auto;
+  max-width: var(--space-48);
+}
+
+.vs-progress--vertical .vs-progress__track {
+  flex-direction: column-reverse;
+  width: var(--vs-progress-height);
+  min-height: var(--vs-progress-length);
+  height: var(--vs-progress-length);
+}
+
+.vs-progress--vertical .vs-progress__bar,
+.vs-progress--vertical .vs-progress__segment {
+  width: 100%;
+  height: var(--vs-progress-value, 0%);
+}
+
+.vs-progress--vertical .vs-progress__segment {
+  width: 100%;
+}
+
+/* Layout modifiers */
+.vs-progress--multi .vs-progress__track {
+  gap: var(--vs-progress-segment-gap);
+  padding: var(--vs-progress-segment-gap);
+}
+
+.vs-progress--multi .vs-progress__bar {
+  display: none;
+}
+
+/* Stripe & animation modifiers */
+.vs-progress--striped .vs-progress__bar,
+.vs-progress--striped .vs-progress__segment {
+  background-image: linear-gradient(
+    45deg,
+    var(--vs-progress-stripe-overlay) 25%,
+    transparent 25%,
+    transparent 50%,
+    var(--vs-progress-stripe-overlay) 50%,
+    var(--vs-progress-stripe-overlay) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: var(--space-16) var(--space-16);
+}
+
+.vs-progress--animated .vs-progress__bar,
+.vs-progress--animated .vs-progress__segment,
+.vs-progress.is-animated .vs-progress__bar,
+.vs-progress.is-animated .vs-progress__segment {
+  animation: vs-progress-stripes var(--vs-progress-animation-speed) linear infinite;
+}
+
+.vs-progress--animated.vs-progress--vertical .vs-progress__bar,
+.vs-progress--animated.vs-progress--vertical .vs-progress__segment,
+.vs-progress.is-animated.vs-progress--vertical .vs-progress__bar,
+.vs-progress.is-animated.vs-progress--vertical .vs-progress__segment {
+  animation: vs-progress-stripes-vertical var(--vs-progress-animation-speed) linear infinite;
+}
+
+.vs-progress.is-paused .vs-progress__bar,
+.vs-progress.is-paused .vs-progress__segment {
+  animation-play-state: paused;
+}
+
+/* States */
+.vs-progress.is-disabled {
+  opacity: 0.6;
+  filter: saturate(0.85);
+}
+
+.vs-progress.is-indeterminate .vs-progress__bar,
+.vs-progress.is-indeterminate .vs-progress__segment {
+  width: 38%;
+  animation: vs-progress-indeterminate 1.4s ease-in-out infinite;
+}
+
+.vs-progress--vertical.is-indeterminate .vs-progress__bar,
+.vs-progress--vertical.is-indeterminate .vs-progress__segment {
+  height: 38%;
+  width: 100%;
+  animation: vs-progress-indeterminate-vertical 1.4s ease-in-out infinite;
+}
+
+/* Size modifiers */
+.vs-progress--sm {
+  --vs-progress-height: var(--space-8);
+  --vs-progress-gap: var(--space-6);
+  --vs-progress-label-size: var(--label-sm-size);
+  --vs-progress-label-line-height: var(--label-sm-line-height);
+}
+
+.vs-progress--md {
+  --vs-progress-height: var(--space-12);
+  --vs-progress-gap: var(--space-8);
+  --vs-progress-label-size: var(--label-md-size);
+  --vs-progress-label-line-height: var(--label-md-line-height);
+}
+
+.vs-progress--lg {
+  --vs-progress-height: var(--space-16);
+  --vs-progress-gap: var(--space-12);
+  --vs-progress-label-size: var(--label-lg-size);
+  --vs-progress-label-line-height: var(--label-lg-line-height);
+  --vs-progress-value-weight: var(--font-weight-bold);
+}
+
+/* Color modifiers */
+.vs-progress--primary {
+  --vs-progress-bar-bg: var(--primary-600);
+}
+
+.vs-progress--secondary {
+  --vs-progress-bar-bg: var(--secondary-500);
+}
+
+.vs-progress--success {
+  --vs-progress-bar-bg: var(--success-500);
+}
+
+.vs-progress--warning {
+  --vs-progress-bar-bg: var(--warning-500);
+}
+
+.vs-progress--danger {
+  --vs-progress-bar-bg: var(--error-600);
+}
+
+.vs-progress--info {
+  --vs-progress-bar-bg: var(--accent-500);
+}
+
+.vs-progress--neutral {
+  --vs-progress-bar-bg: var(--neutral-500);
+}
+
+/* Additional style modifiers */
+.vs-progress--default .vs-progress__bar,
+.vs-progress--default .vs-progress__segment {
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--neutral-1000) 4%, transparent);
+}
+
+.vs-progress--striped .vs-progress__bar,
+.vs-progress--striped .vs-progress__segment {
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--neutral-1000) 4%, transparent);
+}
+
+.vs-progress--animated .vs-progress__bar,
+.vs-progress--animated .vs-progress__segment {
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--neutral-1000) 4%, transparent);
+}
+
+/* Accessibility & reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .vs-progress__bar,
+  .vs-progress__segment {
+    transition-duration: 0.001ms;
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+  }
+}
+
+/* Keyframes */
+@keyframes vs-progress-stripes {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: var(--space-20) 0;
+  }
+}
+
+@keyframes vs-progress-stripes-vertical {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 0 var(--space-20);
+  }
+}
+
+@keyframes vs-progress-indeterminate {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(-30%);
+  }
+  100% {
+    transform: translateX(120%);
+  }
+}
+
+@keyframes vs-progress-indeterminate-vertical {
+  0% {
+    transform: translateY(100%);
+  }
+  50% {
+    transform: translateY(30%);
+  }
+  100% {
+    transform: translateY(-120%);
+  }
+}
+
+/* ========================================================================
+   VARIANTS & SIZE MODIFIERS
+   ======================================================================== */
+
+/* Visual variants override only fill colors and stripe overlay intensity */
+.vs-progress--primary .vs-progress__bar,
+.vs-progress--primary .vs-progress__segment {
+  background-color: var(--primary-600);
+  --vs-progress-stripe-overlay: color-mix(in srgb, var(--primary-50) 40%, transparent);
+}
+
+.vs-progress--secondary .vs-progress__bar,
+.vs-progress--secondary .vs-progress__segment {
+  background-color: var(--secondary-500);
+  --vs-progress-stripe-overlay: color-mix(in srgb, var(--secondary-100) 40%, transparent);
+}
+
+.vs-progress--success .vs-progress__bar,
+.vs-progress--success .vs-progress__segment {
+  background-color: var(--success-500);
+  --vs-progress-stripe-overlay: color-mix(in srgb, var(--success-50) 40%, transparent);
+}
+
+.vs-progress--warning .vs-progress__bar,
+.vs-progress--warning .vs-progress__segment {
+  background-color: var(--warning-500);
+  --vs-progress-stripe-overlay: color-mix(in srgb, var(--warning-50) 40%, transparent);
+}
+
+.vs-progress--danger .vs-progress__bar,
+.vs-progress--danger .vs-progress__segment {
+  background-color: var(--error-600);
+  --vs-progress-stripe-overlay: color-mix(in srgb, var(--error-50) 40%, transparent);
+}
+
+.vs-progress--info .vs-progress__bar,
+.vs-progress--info .vs-progress__segment {
+  background-color: var(--accent-500);
+  --vs-progress-stripe-overlay: color-mix(in srgb, var(--accent-50) 40%, transparent);
+}
+
+.vs-progress--neutral .vs-progress__bar,
+.vs-progress--neutral .vs-progress__segment {
+  background-color: var(--neutral-500);
+  --vs-progress-stripe-overlay: color-mix(in srgb, var(--neutral-100) 40%, transparent);
+}
+
+/* Size modifiers adjust thickness and typography only */
+.vs-progress--sm .vs-progress__track {
+  height: var(--space-8);
+}
+
+.vs-progress--md .vs-progress__track {
+  height: var(--space-12);
+}
+
+.vs-progress--lg .vs-progress__track {
+  height: var(--space-16);
+}
+
+.vs-progress--vertical.vs-progress--sm .vs-progress__track {
+  width: var(--space-8);
+}
+
+.vs-progress--vertical.vs-progress--md .vs-progress__track {
+  width: var(--space-12);
+}
+
+.vs-progress--vertical.vs-progress--lg .vs-progress__track {
+  width: var(--space-16);
+}
+
+/* Notes & interaction guidance */
+/*
+- Apply color modifiers to signal status, with .is-disabled taking priority to reduce emphasis.
+- .vs-progress--animated and .is-animated add movement; combine with .is-paused to stop at runtime.
+- In multi layout, set --vs-progress-value and --vs-progress-segment-color per segment to ensure proportions remain meaningful.
+- Vertical orientation stacks fills from bottom to top via column-reverse; ensure container height is sufficient for readability.
+*/
