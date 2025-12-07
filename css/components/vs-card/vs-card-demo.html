@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VIS Component Demo — vs-card</title>
+    <link rel="stylesheet" href="../../vs-designSystem/tokens.css" />
+    <link rel="stylesheet" href="../../vs-designSystem/base.css" />
+    <link rel="stylesheet" href="../../vs-designSystem/typography.css" />
+    <link rel="stylesheet" href="../../vs-designSystem/utilities.css" />
+    <link rel="stylesheet" href="../vs-btn/vs-btn.css" />
+    <link rel="stylesheet" href="./vs-card.css" />
+  </head>
+  <body class="p-24">
+    <header class="mb-24">
+      <h1 class="mb-12">vs-card Component Demo</h1>
+      <p class="text-secondary">Flexible card component showcasing media placement, tonal variants, and sizing.</p>
+    </header>
+
+    <section class="mb-24">
+      <h2 class="mb-12">Default</h2>
+      <div class="vs-card vs-card--default">
+        <div class="vs-card__media" role="img" aria-label="Illustrative placeholder"></div>
+        <div class="vs-card__body">
+          <h3 class="vs-card__title">Default card</h3>
+          <p class="vs-card__text">Neutral card layout with footer and primary/secondary actions.</p>
+          <div class="vs-card__actions">
+            <button class="vs-btn vs-btn--primary" type="button">Primary</button>
+            <button class="vs-btn vs-btn--tertiary" type="button">Secondary</button>
+          </div>
+        </div>
+        <div class="vs-card__footer">Footer content</div>
+      </div>
+    </section>
+
+    <section class="mb-24">
+      <h2 class="mb-12">Visual Variants</h2>
+      <div class="grid gap-16" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));">
+        <div class="vs-card vs-card--outlined">
+          <div class="vs-card__body">
+            <h3 class="vs-card__title">Outlined</h3>
+            <p class="vs-card__text">Border emphasis with transparent surface.</p>
+          </div>
+        </div>
+
+        <div class="vs-card vs-card--shadow is-hoverable">
+          <div class="vs-card__body">
+            <h3 class="vs-card__title">Shadow</h3>
+            <p class="vs-card__text">Elevated surface with hover affordance.</p>
+            <div class="vs-card__actions">
+              <button class="vs-btn vs-btn--ghost" type="button">Action</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="vs-card vs-card--filled">
+          <div class="vs-card__body">
+            <h3 class="vs-card__title">Filled</h3>
+            <p class="vs-card__text">Soft tinted background and subtle border.</p>
+          </div>
+          <div class="vs-card__footer">Supporting info</div>
+        </div>
+
+        <div class="vs-card vs-card--inverted is-selected">
+          <div class="vs-card__body">
+            <h3 class="vs-card__title">Inverted</h3>
+            <p class="vs-card__text">Dark theme card with selected outline.</p>
+          </div>
+          <div class="vs-card__footer">Updated today</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-24">
+      <h2 class="mb-12">Layout Variants</h2>
+      <div class="grid gap-16" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+        <div class="vs-card vs-card--horizontal vs-card--shadow">
+          <div class="vs-card__media" role="img" aria-label="Horizontal media"></div>
+          <div class="vs-card__body">
+            <h3 class="vs-card__title">Horizontal</h3>
+            <p class="vs-card__text">Media aligns left on medium screens while content fills remaining space.</p>
+          </div>
+        </div>
+
+        <div class="vs-card vs-card--media-top">
+          <div class="vs-card__media" role="img" aria-label="Top media"></div>
+          <div class="vs-card__body">
+            <h3 class="vs-card__title">Media top</h3>
+            <p class="vs-card__text">Media displayed above content with subtle separator.</p>
+          </div>
+        </div>
+
+        <div class="vs-card vs-card--media-bottom">
+          <div class="vs-card__body">
+            <h3 class="vs-card__title">Media bottom</h3>
+            <p class="vs-card__text">Content flows first; media anchors the bottom.</p>
+          </div>
+          <div class="vs-card__media" role="img" aria-label="Bottom media"></div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="mb-12">Sizes & States</h2>
+      <div class="grid gap-16" style="grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));">
+        <div class="vs-card vs-card--sm">
+          <div class="vs-card__body">
+            <h3 class="vs-card__title">Small</h3>
+            <p class="vs-card__text">Compact padding and tighter typography.</p>
+          </div>
+        </div>
+
+        <div class="vs-card vs-card--md is-hoverable">
+          <div class="vs-card__body">
+            <h3 class="vs-card__title">Medium</h3>
+            <p class="vs-card__text">Default sizing with hover feedback.</p>
+          </div>
+        </div>
+
+        <div class="vs-card vs-card--lg is-disabled">
+          <div class="vs-card__body">
+            <h3 class="vs-card__title">Large (disabled)</h3>
+            <p class="vs-card__text">Spacious layout with disabled state visuals.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
