@@ -1,0 +1,148 @@
+.vs-accordion {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-0);
+  background-color: var(--neutral-0);
+  color: var(--text-primary);
+  border-radius: var(--radius-md);
+}
+
+.vs-accordion__item {
+  position: relative;
+  background-color: inherit;
+}
+
+.vs-accordion__header {
+  margin: 0;
+}
+
+.vs-accordion__trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  padding: var(--space-16);
+  background: transparent;
+  color: inherit;
+  border: 0;
+  text-align: left;
+  font-family: var(--font-family-sans);
+  font-size: var(--body-md-size);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--body-md-line-height);
+  cursor: pointer;
+  transition: background-color 150ms ease, color 150ms ease;
+}
+
+.vs-accordion__trigger:hover:not(:disabled):not(.is-disabled) {
+  background-color: var(--bg-subtle);
+}
+
+.vs-accordion__trigger:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--primary-100);
+}
+
+.vs-accordion__label {
+  flex: 1;
+  color: inherit;
+}
+
+.vs-accordion__meta {
+  margin-left: auto;
+  color: var(--text-secondary);
+  font-size: var(--body-sm-size);
+  line-height: var(--body-sm-line-height);
+}
+
+.vs-accordion__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+  transition: transform 150ms ease;
+}
+
+.vs-accordion__panel {
+  padding: 0 var(--space-16) var(--space-16);
+}
+
+.vs-accordion__panel[hidden] {
+  display: none;
+}
+
+.vs-accordion__body {
+  padding-top: var(--space-4);
+  color: var(--text-secondary);
+  font-size: var(--body-md-size);
+  line-height: var(--body-md-line-height);
+}
+
+.vs-accordion__item.is-open .vs-accordion__icon {
+  transform: rotate(180deg);
+}
+
+.vs-accordion__item.is-open .vs-accordion__panel[hidden] {
+  display: block;
+}
+
+.vs-accordion__item.is-disabled .vs-accordion__trigger,
+.vs-accordion__trigger:disabled {
+  color: var(--text-tertiary);
+  cursor: not-allowed;
+  background-color: transparent;
+}
+
+/* =========================================================================
+   VARIANTS & SIZE MODIFIERS
+   ========================================================================= */
+
+/* DEFAULT (bordered) */
+.vs-accordion--default {
+  border: 1px solid var(--border-color-default);
+}
+
+.vs-accordion--default .vs-accordion__item + .vs-accordion__item {
+  border-top: 1px solid var(--border-color-default);
+}
+
+/* FLUSH (no borders, tight spacing) */
+.vs-accordion--flush {
+  border: none;
+  border-radius: 0;
+  background-color: transparent;
+}
+
+.vs-accordion--flush .vs-accordion__item + .vs-accordion__item {
+  border-top: 1px solid var(--border-color-subtle);
+}
+
+.vs-accordion--flush .vs-accordion__trigger {
+  padding: var(--space-12) 0;
+}
+
+.vs-accordion--flush .vs-accordion__panel {
+  padding: 0 0 var(--space-12);
+}
+
+/* SHADOW (elevated card) */
+.vs-accordion--shadow {
+  border: 1px solid var(--border-color-subtle);
+  box-shadow: var(--elevation-3);
+  border-radius: var(--radius-lg);
+  padding: var(--space-4) var(--space-4) var(--space-8);
+}
+
+.vs-accordion--shadow .vs-accordion__item + .vs-accordion__item {
+  border-top: 1px solid var(--border-color-subtle);
+}
+
+/* ALWAYS OPEN (multi-expand) */
+.vs-accordion--always-open .vs-accordion__item {
+  border-radius: 0;
+}
+
+.vs-accordion--always-open .vs-accordion__item.is-open .vs-accordion__panel {
+  display: block;
+}
