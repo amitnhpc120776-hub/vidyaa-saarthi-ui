@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VIS Component Demo — vs-progress</title>
+    <link rel="stylesheet" href="../../vs-designSystem/tokens.css" />
+    <link rel="stylesheet" href="../../vs-designSystem/base.css" />
+    <link rel="stylesheet" href="../../vs-designSystem/typography.css" />
+    <link rel="stylesheet" href="../../vs-designSystem/utilities.css" />
+    <link rel="stylesheet" href="../../custom.css" />
+  </head>
+  <body class="p-24">
+    <header class="mb-24">
+      <h1 class="mb-12">vs-progress Component Demo</h1>
+      <p class="text-secondary">Token-driven progress indicators with sizes, orientations, styles, and stacked layouts.</p>
+    </header>
+
+    <section class="mb-24">
+      <h2 class="mb-12">Default</h2>
+      <div class="vs-progress vs-progress--md vs-progress--primary vs-progress--with-label vs-progress--horizontal" role="progressbar" aria-label="Default progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="64">
+        <div class="vs-progress__label">
+          <span class="vs-progress__label-text">Default upload</span>
+          <span class="vs-progress__value">64%</span>
+        </div>
+        <div class="vs-progress__track" aria-hidden="true">
+          <div class="vs-progress__bar" style="--vs-progress-value: 64%;"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-24">
+      <h2 class="mb-12">Color Variants</h2>
+      <div class="grid grid-gap-16 grid-cols-2">
+        <div class="vs-progress vs-progress--md vs-progress--secondary vs-progress--with-label" role="progressbar" aria-label="Secondary" aria-valuemin="0" aria-valuemax="100" aria-valuenow="55">
+          <div class="vs-progress__label">
+            <span class="vs-progress__label-text">Secondary</span>
+            <span class="vs-progress__value">55%</span>
+          </div>
+          <div class="vs-progress__track" aria-hidden="true">
+            <div class="vs-progress__bar" style="--vs-progress-value: 55%;"></div>
+          </div>
+        </div>
+        <div class="vs-progress vs-progress--md vs-progress--success vs-progress--with-label" role="progressbar" aria-label="Success" aria-valuemin="0" aria-valuemax="100" aria-valuenow="88">
+          <div class="vs-progress__label">
+            <span class="vs-progress__label-text">Success</span>
+            <span class="vs-progress__value">88%</span>
+          </div>
+          <div class="vs-progress__track" aria-hidden="true">
+            <div class="vs-progress__bar" style="--vs-progress-value: 88%;"></div>
+          </div>
+        </div>
+        <div class="vs-progress vs-progress--md vs-progress--warning vs-progress--with-label" role="progressbar" aria-label="Warning" aria-valuemin="0" aria-valuemax="100" aria-valuenow="30">
+          <div class="vs-progress__label">
+            <span class="vs-progress__label-text">Warning</span>
+            <span class="vs-progress__value">30%</span>
+          </div>
+          <div class="vs-progress__track" aria-hidden="true">
+            <div class="vs-progress__bar" style="--vs-progress-value: 30%;"></div>
+          </div>
+        </div>
+        <div class="vs-progress vs-progress--md vs-progress--danger vs-progress--with-label" role="progressbar" aria-label="Danger" aria-valuemin="0" aria-valuemax="100" aria-valuenow="72">
+          <div class="vs-progress__label">
+            <span class="vs-progress__label-text">Danger</span>
+            <span class="vs-progress__value">72%</span>
+          </div>
+          <div class="vs-progress__track" aria-hidden="true">
+            <div class="vs-progress__bar" style="--vs-progress-value: 72%;"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-24">
+      <h2 class="mb-12">Styles & Animation</h2>
+      <div class="grid grid-gap-16 grid-cols-3">
+        <div class="vs-progress vs-progress--sm vs-progress--info vs-progress--striped vs-progress--with-label" role="progressbar" aria-label="Striped info" aria-valuemin="0" aria-valuemax="100" aria-valuenow="42">
+          <div class="vs-progress__label">
+            <span class="vs-progress__label-text">Striped</span>
+            <span class="vs-progress__value">42%</span>
+          </div>
+          <div class="vs-progress__track" aria-hidden="true">
+            <div class="vs-progress__bar" style="--vs-progress-value: 42%;"></div>
+          </div>
+        </div>
+        <div class="vs-progress vs-progress--lg vs-progress--primary vs-progress--animated vs-progress--with-label" role="progressbar" aria-label="Animated" aria-valuemin="0" aria-valuemax="100" aria-valuenow="76">
+          <div class="vs-progress__label">
+            <span class="vs-progress__label-text">Animated</span>
+            <span class="vs-progress__value">76%</span>
+          </div>
+          <div class="vs-progress__track" aria-hidden="true">
+            <div class="vs-progress__bar" style="--vs-progress-value: 76%;"></div>
+          </div>
+        </div>
+        <div class="vs-progress vs-progress--md vs-progress--neutral vs-progress--with-label is-indeterminate" role="progressbar" aria-label="Indeterminate" aria-valuemin="0" aria-valuemax="100">
+          <div class="vs-progress__label">
+            <span class="vs-progress__label-text">Indeterminate</span>
+            <span class="vs-progress__value">Loading</span>
+          </div>
+          <div class="vs-progress__track" aria-hidden="true">
+            <div class="vs-progress__bar"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-24">
+      <h2 class="mb-12">Sizes</h2>
+      <div class="grid grid-gap-16 grid-cols-3 align-center">
+        <div class="vs-progress vs-progress--sm vs-progress--primary vs-progress--with-label" role="progressbar" aria-label="Small" aria-valuemin="0" aria-valuemax="100" aria-valuenow="28">
+          <div class="vs-progress__label">
+            <span class="vs-progress__label-text">Small</span>
+            <span class="vs-progress__value">28%</span>
+          </div>
+          <div class="vs-progress__track" aria-hidden="true">
+            <div class="vs-progress__bar" style="--vs-progress-value: 28%;"></div>
+          </div>
+        </div>
+        <div class="vs-progress vs-progress--md vs-progress--primary vs-progress--with-label" role="progressbar" aria-label="Medium" aria-valuemin="0" aria-valuemax="100" aria-valuenow="58">
+          <div class="vs-progress__label">
+            <span class="vs-progress__label-text">Medium</span>
+            <span class="vs-progress__value">58%</span>
+          </div>
+          <div class="vs-progress__track" aria-hidden="true">
+            <div class="vs-progress__bar" style="--vs-progress-value: 58%;"></div>
+          </div>
+        </div>
+        <div class="vs-progress vs-progress--lg vs-progress--primary vs-progress--with-label" role="progressbar" aria-label="Large" aria-valuemin="0" aria-valuemax="100" aria-valuenow="84">
+          <div class="vs-progress__label">
+            <span class="vs-progress__label-text">Large</span>
+            <span class="vs-progress__value">84%</span>
+          </div>
+          <div class="vs-progress__track" aria-hidden="true">
+            <div class="vs-progress__bar" style="--vs-progress-value: 84%;"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-24">
+      <h2 class="mb-12">Multi & Vertical</h2>
+      <div class="grid grid-gap-24 grid-cols-2 align-start">
+        <div class="vs-progress vs-progress--md vs-progress--multi vs-progress--neutral vs-progress--striped vs-progress--with-label" role="progressbar" aria-label="Segmented" aria-valuemin="0" aria-valuemax="100">
+          <div class="vs-progress__label">
+            <span class="vs-progress__label-text">Stacked rollout</span>
+            <span class="vs-progress__value">Segments</span>
+          </div>
+          <div class="vs-progress__track" aria-hidden="true">
+            <div class="vs-progress__segment" style="--vs-progress-value: 25%; --vs-progress-segment-color: var(--primary-600);"></div>
+            <div class="vs-progress__segment" style="--vs-progress-value: 22%; --vs-progress-segment-color: var(--success-500);"></div>
+            <div class="vs-progress__segment" style="--vs-progress-value: 14%; --vs-progress-segment-color: var(--warning-500);"></div>
+          </div>
+        </div>
+        <div class="flex gap-16">
+          <div class="vs-progress vs-progress--sm vs-progress--danger vs-progress--animated vs-progress--with-label vs-progress--vertical" role="progressbar" aria-label="Vertical progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="45">
+            <div class="vs-progress__label">
+              <span class="vs-progress__label-text">Vertical</span>
+              <span class="vs-progress__value">45%</span>
+            </div>
+            <div class="vs-progress__track" aria-hidden="true">
+              <div class="vs-progress__bar" style="--vs-progress-value: 45%;"></div>
+            </div>
+          </div>
+          <div class="vs-progress vs-progress--lg vs-progress--success vs-progress--with-label vs-progress--vertical is-indeterminate" role="progressbar" aria-label="Vertical indeterminate" aria-valuemin="0" aria-valuemax="100">
+            <div class="vs-progress__label">
+              <span class="vs-progress__label-text">Vertical indeterminate</span>
+              <span class="vs-progress__value">Loading</span>
+            </div>
+            <div class="vs-progress__track" aria-hidden="true">
+              <div class="vs-progress__bar"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
