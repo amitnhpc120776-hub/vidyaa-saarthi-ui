@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VIS Component Demo — vs-switch</title>
+    <link rel="stylesheet" href="../../vs-designSystem/tokens.css" />
+    <link rel="stylesheet" href="../../vs-designSystem/base.css" />
+    <link rel="stylesheet" href="../../vs-designSystem/typography.css" />
+    <link rel="stylesheet" href="../../vs-designSystem/utilities.css" />
+    <link rel="stylesheet" href="../vs-switch/vs-switch.css" />
+    <link rel="stylesheet" href="../../custom.css" />
+  </head>
+  <body class="p-24">
+    <header class="mb-24">
+      <h1 class="mb-8">vs-switch Component Demo</h1>
+      <p class="text-secondary">
+        Toggle control supporting style, color, size, layout, shape, and state variants.
+      </p>
+    </header>
+
+    <section class="mb-24">
+      <h2 class="mb-12">Default</h2>
+      <div class="flex column gap-12">
+        <label class="vs-switch vs-switch--default vs-switch--md vs-switch--primary">
+          <input class="vs-switch__input" type="checkbox" role="switch" aria-checked="false" />
+          <span class="vs-switch__track" aria-hidden="true">
+            <span class="vs-switch__thumb"></span>
+          </span>
+          <span class="vs-switch__label">Primary default</span>
+        </label>
+      </div>
+    </section>
+
+    <section class="mb-24">
+      <h2 class="mb-12">Style & Color Variants</h2>
+      <div class="grid grid-cols-3 gap-16">
+        <label class="vs-switch vs-switch--solid vs-switch--lg vs-switch--secondary vs-switch--inline">
+          <input class="vs-switch__input" type="checkbox" role="switch" checked aria-checked="true" />
+          <span class="vs-switch__track" aria-hidden="true">
+            <span class="vs-switch__thumb"></span>
+          </span>
+          <span class="vs-switch__label">Solid secondary</span>
+        </label>
+
+        <label class="vs-switch vs-switch--outline vs-switch--md vs-switch--warning vs-switch--reverse">
+          <input class="vs-switch__input" type="checkbox" role="switch" aria-checked="false" />
+          <span class="vs-switch__track" aria-hidden="true">
+            <span class="vs-switch__thumb"></span>
+          </span>
+          <span class="vs-switch__label">Outline warning</span>
+        </label>
+
+        <label class="vs-switch vs-switch--subtle vs-switch--md vs-switch--info">
+          <input class="vs-switch__input" type="checkbox" role="switch" aria-checked="true" checked />
+          <span class="vs-switch__track" aria-hidden="true">
+            <span class="vs-switch__thumb"></span>
+          </span>
+          <span class="vs-switch__label">Subtle info</span>
+        </label>
+      </div>
+    </section>
+
+    <section class="mb-24">
+      <h2 class="mb-12">Sizes & Shapes</h2>
+      <div class="grid grid-cols-3 gap-16">
+        <label class="vs-switch vs-switch--sm vs-switch--neutral vs-switch--square">
+          <input class="vs-switch__input" type="checkbox" role="switch" aria-checked="false" />
+          <span class="vs-switch__track" aria-hidden="true">
+            <span class="vs-switch__thumb"></span>
+          </span>
+          <span class="vs-switch__label">Small square</span>
+        </label>
+
+        <label class="vs-switch vs-switch--md vs-switch--primary vs-switch--pill vs-switch--checked">
+          <input class="vs-switch__input" type="checkbox" role="switch" checked aria-checked="true" />
+          <span class="vs-switch__track" aria-hidden="true">
+            <span class="vs-switch__thumb"></span>
+          </span>
+          <span class="vs-switch__label">Medium pill</span>
+        </label>
+
+        <label class="vs-switch vs-switch--lg vs-switch--success vs-switch--rounded">
+          <input class="vs-switch__input" type="checkbox" role="switch" aria-checked="false" />
+          <span class="vs-switch__track" aria-hidden="true">
+            <span class="vs-switch__thumb"></span>
+          </span>
+          <span class="vs-switch__label">Large rounded</span>
+        </label>
+      </div>
+    </section>
+
+    <section class="mb-24">
+      <h2 class="mb-12">Layout & States</h2>
+      <div class="grid grid-cols-3 gap-16">
+        <label class="vs-switch vs-switch--block vs-switch--md vs-switch--danger vs-switch--checked">
+          <input class="vs-switch__input" type="checkbox" role="switch" checked aria-checked="true" />
+          <span class="vs-switch__track" aria-hidden="true">
+            <span class="vs-switch__thumb"></span>
+          </span>
+          <span class="vs-switch__label">Block layout</span>
+        </label>
+
+        <label class="vs-switch vs-switch--inline vs-switch--no-label vs-switch--info" aria-label="Inline no label switch">
+          <input class="vs-switch__input" type="checkbox" role="switch" aria-checked="false" />
+          <span class="vs-switch__track" aria-hidden="true">
+            <span class="vs-switch__thumb"></span>
+          </span>
+          <span class="vs-switch__label">Hidden label</span>
+        </label>
+
+        <label class="vs-switch vs-switch--default vs-switch--md vs-switch--neutral vs-switch--disabled">
+          <input class="vs-switch__input" type="checkbox" role="switch" aria-checked="true" checked disabled />
+          <span class="vs-switch__track" aria-hidden="true">
+            <span class="vs-switch__thumb"></span>
+          </span>
+          <span class="vs-switch__label">Disabled state</span>
+        </label>
+      </div>
+    </section>
+
+    <script src="../../../js/components/vs-switch/vs-switch.js"></script>
+  </body>
+</html>
