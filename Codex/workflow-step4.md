@@ -106,7 +106,7 @@ JS may **read** externally controlled states to adjust behavior, but must not cl
 
 Each component MUST provide an explicit lifecycle API so it can be:
 
-- initialized at DOMContentLoaded, and
+- initialized at `DOMContentLoaded`, and
 - re-initialized or destroyed when inserted/removed dynamically.
 
 ### You MUST define at least:
@@ -123,8 +123,6 @@ function destroyVs[ComponentName](rootElement) {
   // Clean up timers, observers, etc.
 }
 ```
-
-````
 
 Where `[ComponentName]` is PascalCase for the block, e.g.:
 
@@ -200,7 +198,7 @@ If JavaScript toggles `.is-*` states that are defined in Step 1, you MUST:
 
 - Append minimal, token-driven CSS to:
 
-  ```text
+  ```
   css/components/vs-[component]/vs-[component].css
   ```
 
@@ -211,6 +209,7 @@ You MUST NOT:
 - Add new visual variants (belongs to Step 5).
 - Modify primitive component CSS.
 - Redefine core layout beyond documented behavior.
+- Introduce raw px/hex values; **token rules from Step 3 still apply**.
 
 ---
 
@@ -244,7 +243,7 @@ Your output MUST contain these sections:
 - Provide the full JS code in a code block.
 - This is the content for:
 
-  ```text
+  ```
   js/components/vs-[component]/vs-[component].js
   ```
 
@@ -262,7 +261,7 @@ It MUST include:
   - be token-driven, and
   - be appended to:
 
-    ```text
+    ```
     css/components/vs-[component]/vs-[component].css
     ```
 
@@ -285,7 +284,7 @@ Explain clearly:
 
 Store the JS file as:
 
-```text
+```
 js/components/vs-[component]/vs-[component].js
 ```
 
@@ -308,11 +307,8 @@ Before finalizing Step 4 output, verify that:
 - Primitive behavior is neither overridden nor duplicated.
 - Any `.is-*` states toggled by JS have corresponding CSS token-based styles.
 
-========================
-
 ```
 
 ---
 
 ```
-````

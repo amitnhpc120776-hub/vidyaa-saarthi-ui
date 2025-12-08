@@ -49,14 +49,19 @@ ANY markup representing a button, icon, input field, close action, badge, spinne
 ```html
 <button class="vs-btn ..."></button>
 <!-- buttons -->
+
 <span class="vs-icon">...</span>
 <!-- icons -->
+
 <div class="vs-input">...</div>
 <!-- inputs -->
+
 <div class="vs-divider"></div>
 <!-- dividers -->
+
 <span class="vs-badge">...</span>
 <!-- badges -->
+
 <span class="vs-spinner"></span>
 <!-- spinners -->
 ```
@@ -102,10 +107,13 @@ You must generate HTML that adheres strictly to the Component API and Canonical 
 - No Bootstrap classes, attributes, or patterns
 - No inline CSS or JS
 - Minimal, semantic HTML only
-- At most one example variant or state may appear, using:
+- **Do NOT include variants or states.**
+  The Step-2 snippet MUST be **pure**, containing:
 
-  - `vs-[component]--[variant]`
-  - `.is-[state]`
+  - NO `vs-[component]--[variant]`
+  - NO `.is-[state]`
+
+- Variants/states will be shown **only in Step-6 demo**, not here.
 
 The output is **production HTML**, not demo HTML.
 
@@ -137,11 +145,11 @@ Before finalizing Step 2, Codex MUST validate:
 
 ### Block
 
-- Root class is exactly:
+Root class is exactly:
 
-  ```
-  vs-[component]
-  ```
+```
+vs-[component]
+```
 
 ### Elements
 
@@ -150,13 +158,11 @@ Before finalizing Step 2, Codex MUST validate:
 
 ### Variants
 
-- All variant modifiers match Step 1
-- No new or guessed variants appear
+- No variant modifiers (`--primary`, `--success`, etc.) may appear here
 
 ### States
 
-- All `.is-*` states match Step 1
-- No new state invented
+- No `.is-*` states may appear here
 
 ### Primitive usage
 
@@ -196,11 +202,7 @@ Include:
 
 Do NOT include any CSS or JS code in this file.
 
-========================
-
 ```
 
 ---
-
-```
 ````

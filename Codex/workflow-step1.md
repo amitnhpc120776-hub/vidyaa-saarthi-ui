@@ -19,6 +19,10 @@ Analyse the external HTML component provided by the user and create a VIS Compon
 This step does **not** produce HTML or CSS.  
 It creates the Component API, which drives everything that follows.
 
+> **Note:**  
+> Structural elements are defined here, but **no HTML attributes** (e.g., ARIA attributes) are defined at this stage.  
+> Attributes are added later in **Step 2 (HTML)** or **Step 4 (JS)** as required for accessibility.
+
 ## Input Files You Must Use
 
 - conversion-master-agent.md
@@ -120,7 +124,7 @@ List structural elements:
 
 ```
 
-vs-[component]\_\_element-name — description
+vs-[component]__element-name — description
 
 ```
 
@@ -128,10 +132,10 @@ vs-[component]\_\_element-name — description
 
 - Include only essential structural elements.
 - No styling decisions.
-- No attributes (handled later).
+- No HTML attributes (added later in Step 2 or Step 4).
 - DO NOT rename, wrap, or alias VIS primitives.
 
-If the component includes a button, icon, input, spinner, etc.,
+If the component includes a button, icon, input, spinner, etc.,  
 the anatomy MUST reference the **actual VIS primitive**.
 
 ## Variants (BEM Modifiers)
@@ -178,8 +182,8 @@ States MUST NOT duplicate existing primitive internal states.
 
 ## Responsive Behavior (If Needed)
 
-Include notes ONLY if the component has explicit responsive structural differences.
-Default assumption: mobile-first using VIS breakpoints.
+Include notes ONLY if the component has explicit responsive structural differences.  
+Default assumption: **mobile-first using VIS breakpoints**.
 
 # 4. Canonical Anatomy Freeze (MANDATORY)
 
@@ -197,8 +201,8 @@ You MUST produce a **Canonical Anatomy Block** using a JSON-like structure:
 {
 "block": "vs-[component]",
 "elements": [
-"vs-[component]**element1",
-"vs-[component]**element2"
+"vs-[component]__element1",
+"vs-[component]__element2"
 ],
 "states": [
 "is-active",
@@ -222,7 +226,7 @@ Any change requires the **Anatomy Extension Protocol** (below).
 
 # 5. Anatomy Extension Protocol (Version-Controlled)
 
-Because real-world components evolve, Codex MUST follow this protocol
+Because real-world components evolve, Codex MUST follow this protocol  
 when adding a new element, state, or variant after Step 1:
 
 ### Changes allowed ONLY when:
@@ -234,13 +238,13 @@ when adding a new element, state, or variant after Step 1:
 
 ### Protocol:
 
-1. Update Step 1 API
+1. Update Step 1 API  
    → Add new element/state/variant with justification
-2. Add a version bump:
+2. Add a version bump:  
    `v1.0 → v1.1`
 3. Regenerate **Steps 2–6** for consistency
 
-NO step may introduce new structure silently.
+NO step may introduce new structure silently.  
 This ensures system integrity and prevents “HTML drift.”
 
 # 6. Structural Consistency Validation (Cross-Step Rule)
@@ -300,8 +304,6 @@ Step 1 output MUST end with the **Canonical Anatomy Block**.
 - Keep everything clean, minimal, and system-driven.
 - All future steps MUST follow this API exactly.
 - Changes after Step 1 require the Anatomy Extension Protocol.
-
-========================
 
 ```
 

@@ -1,6 +1,7 @@
 # STEP 5 — Add Variants & Sizes (BEM Modifiers)
 
-This file is part of the Six-Step VIS Component Conversion Workflow. Follow the instructions defined in conversion-master-agent.md.
+This file is part of the Six-Step VIS Component Conversion Workflow.  
+Follow the instructions defined in conversion-master-agent.md.
 
 ## Input Files You Must Use
 
@@ -20,7 +21,8 @@ This file is part of the Six-Step VIS Component Conversion Workflow. Follow the 
 - VIS JS produced in STEP 4 (if applicable):
   - js/components/vs-[component]/vs-[component].js
 
-Use only previous steps of this workflow. No new assumptions are allowed.
+Use only previous steps of this workflow.  
+No new assumptions are allowed.
 
 ## Tasks (Step 5)
 
@@ -33,6 +35,8 @@ css/components/vs-[component]/vs-[component].css
 ```
 
 by **appending** variant and size modifiers at the **bottom** of the file, following the required structure.
+
+---
 
 ## Rules (Strict)
 
@@ -48,6 +52,8 @@ You MUST append all variant + size CSS under this exact header:
 
 Do NOT modify or overwrite the base CSS above this header.
 
+---
+
 ### 2. Variants MUST Follow BEM Modifier Rules
 
 All variants MUST be implemented using modifiers:
@@ -60,23 +66,25 @@ All variants MUST be implemented using modifiers:
 ...
 ```
 
-And element-specific overrides MUST use:
+Element-specific overrides MUST use:
 
 ```
 .vs-[component]--primary .vs-[component]__element { ... }
 ```
 
-Variant rules may override ONLY **visual properties**, such as:
+Variants may override ONLY **visual properties**, such as:
 
 - background-color
 - border-color
 - text color
 - box-shadow
-- padding (only if required)
+- padding (only if required, and **must still use tokens**)
+
+---
 
 ### 3. Size Modifiers MUST Follow BEM Modifier Rules
 
-Sizes must follow:
+Size modifiers follow:
 
 ```
 .vs-[component]--sm
@@ -91,7 +99,9 @@ Size rules may override ONLY:
 - typography tokens
 - dimensions
 
-All such values MUST come from VIS tokens.
+All values MUST come from VIS tokens.
+
+---
 
 ### 4. Token Compliance (Mandatory)
 
@@ -100,90 +110,93 @@ All new CSS added in Step 5 MUST:
 - Use VIS tokens only
 - Use NO raw px, rem, or hex values
 - Use NO hard-coded colors
-- Use NO ad-hoc spacing values
+- Use NO custom spacing values
 
-If a required value has **no matching token**, you MUST:
+If a required value has **no existing token**, you MUST:
 
-- Call it out in a comment at the end of the output
-- Do NOT generate custom raw values
-- Do NOT create new tokens unless the user explicitly instructs
+- Call it out in a comment
+- Do NOT use a raw value
+- Do NOT create new tokens
+
+---
 
 ### 5. Primitive Variant Protection (Strict)
 
-**You MUST NOT redefine the internal variants of VIS primitives.**
+You MUST NOT redefine internal variants of VIS primitives.
 
-Forbidden examples:
+❌ Forbidden:
 
 ```css
 .vs-btn--primary {
   ...;
-} /* ❌ illegal: overriding a primitive */
+} /* illegal */
 .vs-radio--danger {
   ...;
-} /* ❌ illegal unless working inside a composed component */
+} /* illegal unless inside a composed component */
 ```
 
-Allowed ONLY when scoped inside the block:
+✔ Allowed ONLY when scoped inside the composed component:
 
 ```css
-.vs-navbar--primary .vs-btn { … }   /* ✔ allowed: modifying placement inside composed component */
+.vs-navbar--primary .vs-btn { … }  /* allowed */
 ```
 
 Rules:
 
-- Primitives (vs-btn, vs-input, vs-icon, vs-close, vs-checkbox, vs-radio, vs-switch, vs-badge, vs-divider, vs-spinner)
-  MUST NOT be visually redefined.
-- Variants MUST apply only to the **outer block** of the component being defined.
-- NEVER modify primitive CSS variables, radii, borders, or states inside Step 5.
+- Primitives (vs-btn, vs-input, vs-icon, vs-close, vs-checkbox, vs-radio, vs-switch, vs-badge, vs-divider, vs-spinner) MUST NOT be visually redefined.
+- Variants MUST apply ONLY to the **outer block** of the component.
+- NEVER modify primitive CSS variables, radii, borders, or states in Step 5.
+
+---
 
 ### 6. Variant Source Rule
 
-You MUST implement only those variants and sizes that appear **explicitly** in the Component API (Step 1).
+You MUST implement ONLY the variants and sizes explicitly listed in Step 1 API.
 
 Forbidden:
 
-- Creating additional variants not listed in Step 1
-- Inventing size modifiers
-- Adding undocumented behavior states
+- Inventing variants not present in Step 1
+- Adding extra size modifiers
+- Adding undocumented states
 
-If a required variant is missing from Step 1, you MUST ask the user before proceeding.
+If a variant appears missing, ask the user before proceeding.
 
 ---
 
 ## Structural Consistency Validation (Against Step 1–4)
 
-Before finalizing Step 5 output, you MUST validate that:
+Before finalizing Step 5, validate:
 
-- Every modifier class exists in the Step 1 API:
+- Every modifier exists in Step 1 API:
 
   - `vs-[component]--[variant]`
   - `vs-[component]--[size]`
 
 - No modifier touches primitives directly.
-- Every selector references elements defined in the Step 1 Canonical Anatomy Block.
-- No new elements, wrappers, or state classes are invented.
-- CSS remains consistent with:
+- Every selector references ONLY elements defined in Step 1 anatomy.
+- No new elements, wrappers, or states are introduced.
+- CSS is consistent with:
 
-  - Step 2 HTML structure
+  - Step 2 HTML
   - Step 3 base CSS
   - Step 4 JS states
 
-If inconsistencies are found, correct them OR request an API/HTML/CSS revision.
+If mismatches occur, request revisions.
 
 ---
 
 ## Output Format (MANDATORY)
 
-Your output MUST follow **exactly** this structure:
+Your output MUST follow this exact structure:
 
 ---
 
 ### OUTPUT SECTION 1 — Visual Variants (BEM Modifiers)
 
 Provide token-driven CSS for all visual variants.
-Override ONLY minimal necessary properties.
+Override ONLY essential properties.
 
-Example format:
+Example:
 
 ```css
 /* PRIMARY */
@@ -193,11 +206,6 @@ Example format:
 
 /* ERROR */
 .vs-[component]--error .vs-[component]__element {
-  ...;
-}
-
-/* SUCCESS */
-.vs-[component]--success .vs-[component]__element {
   ...;
 }
 ```
@@ -231,10 +239,10 @@ Example:
 Explain:
 
 - When each variant should be used
-- How variants interact with component states
-- Which variant has priority (e.g., `.is-disabled` overrides visual variants)
-- Responsiveness considerations
-- Any guidance for developers using the variants
+- Priority rules (e.g., `.is-disabled` overrides all variants)
+- How variants interact with states
+- Any responsiveness considerations
+- How developers should apply variants correctly
 
 ---
 
@@ -245,23 +253,23 @@ Before finalizing, verify:
 - BEM compliance
 - Token compliance (no raw values)
 - Proper scoping to `.vs-[component]` only
-- No duplication of CSS rules
-- No Bootstrap dependencies
-- Variant/state interaction correctness
-- No redefinition of primitives
+- No CSS duplication
+- No modification of primitives
+- Correct variant/state interaction
 - No invented variants or states
+- No Bootstrap classes or patterns
 
 ---
 
 ### OUTPUT SECTION 5 — Storage Instructions (MANDATORY)
 
-Append the generated variant & size CSS to:
+Append the generated CSS to:
 
 ```
 css/components/vs-[component]/vs-[component].css
 ```
 
-Place it **under the required header**:
+Place it under the required header:
 
 ```css
 /* ========================================================================
@@ -271,8 +279,8 @@ Place it **under the required header**:
 
 Do NOT create a new file.
 
-========================
-
 ```
+
+---
 
 ```

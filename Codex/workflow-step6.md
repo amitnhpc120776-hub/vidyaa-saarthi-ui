@@ -19,6 +19,8 @@ Follow the instructions defined in conversion-master-agent.md.
 Use only previous steps’ outputs.  
 No new assumptions are allowed.
 
+---
+
 ## Your Tasks (Step 6)
 
 ### 1. Produce the Final Reusable Component HTML Snippet
@@ -27,6 +29,7 @@ This snippet MUST be:
 
 - Exactly the canonical markup defined in Step 2
 - Matching the Canonical Anatomy Block from Step 1
+- **Free from any variants (`vs-[component]--*`) or `.is-*` state classes**
 - Free from demo wrappers, experimental markup, or layout scaffolding
 - Strict VIS namespace + BEM
 - Strict primitive usage (vs-icon, vs-btn, vs-input, vs-badge, etc.)
@@ -38,6 +41,9 @@ You MUST NOT:
 - Add or remove elements versus Step 1 anatomy
 - Introduce new wrappers or states
 - Change primitive markup
+- Add variant or state classes to the snippet (variants/states are demonstrated only in the demo page)
+
+---
 
 ### 2. Produce a Fully Working Demo/Test Page
 
@@ -62,6 +68,8 @@ Incorrect:
 
 > Note: The exact relative path may differ depending on your project root,
 > but the intent is: **use the global component bundle, not per-component CSS.**
+
+---
 
 ### Demo/Test Page Requirements
 
@@ -90,15 +98,23 @@ You MUST:
 5. Show at minimum:
 
    - Default component
+
    - One visual variant
+
    - One size variant
+
    - One interactive state (if applicable)
+
+   > Variants and `.is-*` states are applied **around** or **on** the canonical snippet
+   > in the demo page, not baked into the snippet file itself.
 
 6. Use NO external libraries, CDNs, or inline scripts.
 
 7. Use NO custom wrappers around VIS primitives.
 
 8. Add NO markup that contradicts or extends the BEM anatomy from Step 1.
+
+---
 
 ### Strict Primitive Reuse in Demo Pages
 
@@ -129,7 +145,7 @@ Before finalizing Step 6 output, Codex MUST validate:
 - No extra/unlisted elements.
 - No missing required elements.
 - No invented wrappers.
-- Uses only variants & states defined in Step 1.
+- **Snippet contains no variant (`vs-[component]--*`) or `.is-*` state classes.**
 - Uses primitives where Step 1/2 indicate them.
 
 ### Demo validation
@@ -153,16 +169,20 @@ Provide the exact snippet developers will use in production:
 - No demo wrappers.
 - No extra containers beyond the block root and its BEM elements.
 - No placeholder elements outside the defined anatomy.
+- No variants or `.is-*` states baked into the snippet.
 - Must match:
 
   - Step 1 Canonical Anatomy Block, and
   - Step 2 VIS HTML structure.
+
+---
 
 ### OUTPUT SECTION 2 → Full Demo/Test HTML Page
 
 Provide a complete, ready-to-run HTML page including:
 
 - `<html>`, `<head>`, VIS system imports
+
 - `<body>` containing:
 
   - one or more preview blocks
@@ -180,6 +200,8 @@ This file MUST be stored as:
 ```text
 css/components/vs-[component]/vs-[component]-demo.html
 ```
+
+---
 
 ### OUTPUT SECTION 3 → Usage Notes
 
@@ -222,6 +244,7 @@ Before finalizing Step 6, validate:
 - No inline styles or inline scripts.
 - No invented wrappers.
 - No missing BEM elements.
+- **No variant (`vs-[component]--*`) or `.is-*` state classes in the snippet.**
 - Correct and consistent use of primitives (vs-btn, vs-input, vs-icon, etc.).
 
 ### Demo Requirements
@@ -257,4 +280,8 @@ css/components/vs-[component]/vs-[component]-demo.html
 
 and uses only the approved VIS system + component bundle imports.
 
-========================
+```
+
+---
+
+```
