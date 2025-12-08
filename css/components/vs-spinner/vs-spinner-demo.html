@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VIS Component Demo — vs-spinner</title>
+    <link rel="stylesheet" href="../../vs-designSystem/tokens.css" />
+    <link rel="stylesheet" href="../../vs-designSystem/base.css" />
+    <link rel="stylesheet" href="../../vs-designSystem/typography.css" />
+    <link rel="stylesheet" href="../../vs-designSystem/utilities.css" />
+    <link rel="stylesheet" href="../../component.css" />
+  </head>
+  <body class="p-24">
+    <header class="mb-24">
+      <h1 class="mb-8">vs-spinner Component Demo</h1>
+      <p class="text-secondary">
+        Foundational loading indicator supporting token-driven sizes, colors, and animation speeds for any VIS workflow.
+      </p>
+    </header>
+
+    <section class="mb-24">
+      <h2 class="mb-12">Default Spinner</h2>
+      <div class="flex gap-16 align-center">
+        <div class="vs-spinner vs-spinner--md vs-spinner--primary" role="status" aria-live="polite" aria-label="Loading">
+          <span class="vs-spinner__circle" aria-hidden="true"></span>
+          <span class="vs-spinner__label">Loading data</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-24">
+      <h2 class="mb-12">Visual Variants</h2>
+      <div class="flex gap-24 align-center">
+        <div class="vs-spinner vs-spinner--md vs-spinner--primary" aria-label="Primary loading" role="status">
+          <span class="vs-spinner__circle" aria-hidden="true"></span>
+        </div>
+        <div class="vs-spinner vs-spinner--md vs-spinner--secondary" aria-label="Secondary loading" role="status">
+          <span class="vs-spinner__circle" aria-hidden="true"></span>
+        </div>
+        <div class="vs-spinner vs-spinner--md vs-spinner--success" aria-label="Success loading" role="status">
+          <span class="vs-spinner__circle" aria-hidden="true"></span>
+        </div>
+        <div class="vs-spinner vs-spinner--md vs-spinner--warning" aria-label="Warning loading" role="status">
+          <span class="vs-spinner__circle" aria-hidden="true"></span>
+        </div>
+        <div class="vs-spinner vs-spinner--md vs-spinner--danger" aria-label="Danger loading" role="status">
+          <span class="vs-spinner__circle" aria-hidden="true"></span>
+        </div>
+        <div class="vs-spinner vs-spinner--md vs-spinner--inverse" aria-label="Inverse loading" role="status">
+          <span class="vs-spinner__circle" aria-hidden="true"></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-24">
+      <h2 class="mb-12">Sizes</h2>
+      <div class="flex gap-24 align-center">
+        <div class="vs-spinner vs-spinner--sm vs-spinner--primary" aria-label="Small loading" role="status">
+          <span class="vs-spinner__circle" aria-hidden="true"></span>
+        </div>
+        <div class="vs-spinner vs-spinner--md vs-spinner--primary" aria-label="Medium loading" role="status">
+          <span class="vs-spinner__circle" aria-hidden="true"></span>
+        </div>
+        <div class="vs-spinner vs-spinner--lg vs-spinner--primary" aria-label="Large loading" role="status">
+          <span class="vs-spinner__circle" aria-hidden="true"></span>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-24">
+      <h2 class="mb-12">Animation Styles & Speed</h2>
+      <div class="flex gap-24 align-center">
+        <div class="vs-spinner vs-spinner--md vs-spinner--primary" aria-label="Rotating spinner" role="status">
+          <span class="vs-spinner__circle" aria-hidden="true"></span>
+        </div>
+        <div class="vs-spinner vs-spinner--md vs-spinner--secondary vs-spinner--pulse" aria-label="Pulse spinner" role="status">
+          <span class="vs-spinner__circle" aria-hidden="true"></span>
+        </div>
+        <div class="vs-spinner vs-spinner--md vs-spinner--success vs-spinner--fast" aria-label="Fast spinner" role="status">
+          <span class="vs-spinner__circle" aria-hidden="true"></span>
+        </div>
+        <div class="vs-spinner vs-spinner--md vs-spinner--warning vs-spinner--slow" aria-label="Slow spinner" role="status">
+          <span class="vs-spinner__circle" aria-hidden="true"></span>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
