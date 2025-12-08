@@ -2,7 +2,11 @@
 
 **Component Type:** Dependent Primitive (toggle control built on native checkbox)
 
+**Version:** v1.1 (previously v1.0)
+
 **Purpose:** Switch control to toggle a binary setting with optional label and supporting text, using native checkbox semantics and VIS styling.
+
+**Justification for change:** Added label placement modifiers to support flexible layouts without altering the canonical anatomy.
 
 ## Anatomy / Structure
 - `vs-switch` — root label container aligning control and text.
@@ -14,6 +18,10 @@
 
 ## Variants (BEM Modifiers)
 - Sizes: `vs-switch--sm`, `vs-switch--md`
+- Label placement:
+  - `vs-switch--label-top` — stacks the label above the switch control for vertical emphasis.
+  - `vs-switch--label-start` — positions the label to the left of the switch using reversed horizontal flow.
+  - `vs-switch--label-bottom` — places the label beneath the switch while keeping support text below.
 
 ## States
 - `.is-checked` — switch is in the on/active position.
@@ -38,6 +46,12 @@
     "is-disabled",
     "is-focused"
   ],
-  "variants": ["vs-switch--sm", "vs-switch--md"]
+  "variants": [
+    "vs-switch--sm",
+    "vs-switch--md",
+    "vs-switch--label-top",
+    "vs-switch--label-start",
+    "vs-switch--label-bottom"
+  ]
 }
 ```
