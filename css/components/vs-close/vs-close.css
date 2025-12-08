@@ -1,0 +1,238 @@
+/* Base component */
+.vs-close {
+  --vs-close-size: var(--space-32);
+  --vs-close-font-size: var(--body-md-size);
+  --vs-close-icon-size: var(--icon-size-16);
+  --vs-close-radius: var(--radius-sm);
+  --vs-close-tone-main: var(--neutral-600);
+  --vs-close-tone-strong: var(--neutral-800);
+  --vs-close-tone-surface: var(--neutral-50);
+  --vs-close-tone-surface-strong: var(--neutral-100);
+  --vs-close-tone-border: var(--neutral-200);
+  --vs-close-tone-contrast: var(--text-on-primary);
+
+  --vs-close-bg: transparent;
+  --vs-close-bg-hover: var(--surface-hover);
+  --vs-close-bg-active: var(--surface-subtle);
+  --vs-close-border: transparent;
+  --vs-close-border-hover: transparent;
+  --vs-close-border-active: transparent;
+  --vs-close-color: var(--text-secondary);
+  --vs-close-color-hover: var(--text-primary);
+  --vs-close-color-active: var(--text-primary);
+  --vs-close-shadow-focus: var(--focus-ring);
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--vs-close-size);
+  height: var(--vs-close-size);
+  padding: 0;
+  border: 1px solid var(--vs-close-border);
+  border-radius: var(--vs-close-radius);
+  background-color: var(--vs-close-bg);
+  color: var(--vs-close-color);
+  font-family: var(--font-family-sans);
+  font-size: var(--vs-close-font-size);
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 150ms ease, border-color 150ms ease,
+    color 150ms ease, box-shadow 150ms ease, transform 150ms ease;
+}
+
+.vs-close:hover {
+  background-color: var(--vs-close-bg-hover);
+  border-color: var(--vs-close-border-hover);
+  color: var(--vs-close-color-hover);
+}
+
+.vs-close:active {
+  background-color: var(--vs-close-bg-active);
+  border-color: var(--vs-close-border-active);
+  color: var(--vs-close-color-active);
+  transform: translateY(1px);
+}
+
+.vs-close:focus-visible {
+  outline: none;
+  box-shadow: var(--vs-close-shadow-focus);
+}
+
+.vs-close__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1em;
+  height: 1em;
+  color: inherit;
+}
+
+.vs-close__glyph {
+  display: inline-block;
+  font-weight: var(--font-weight-medium);
+  line-height: 1;
+}
+
+.vs-close--icon svg {
+  width: var(--vs-close-icon-size);
+  height: var(--vs-close-icon-size);
+}
+
+/* Shape variants */
+.vs-close--rounded {
+  border-radius: var(--radius-md);
+}
+
+.vs-close--circle {
+  border-radius: var(--radius-full);
+}
+
+/* Size variants */
+.vs-close--sm {
+  --vs-close-size: var(--space-24);
+  --vs-close-font-size: var(--body-sm-size);
+  --vs-close-icon-size: var(--icon-size-12);
+}
+
+.vs-close--md {
+  --vs-close-size: var(--space-32);
+  --vs-close-font-size: var(--body-md-size);
+  --vs-close-icon-size: var(--icon-size-16);
+}
+
+.vs-close--lg {
+  --vs-close-size: var(--space-40);
+  --vs-close-font-size: var(--body-lg-size);
+  --vs-close-icon-size: var(--icon-size-20);
+}
+
+/* Style variants */
+.vs-close--default {
+  --vs-close-bg: transparent;
+  --vs-close-bg-hover: var(--surface-hover);
+  --vs-close-bg-active: var(--surface-subtle);
+  --vs-close-border: transparent;
+  --vs-close-border-hover: transparent;
+  --vs-close-border-active: transparent;
+  --vs-close-color: var(--vs-close-tone-main);
+  --vs-close-color-hover: var(--vs-close-tone-strong);
+  --vs-close-color-active: var(--vs-close-tone-strong);
+}
+
+.vs-close--subtle {
+  --vs-close-bg: var(--vs-close-tone-surface);
+  --vs-close-bg-hover: var(--vs-close-tone-surface-strong);
+  --vs-close-bg-active: var(--vs-close-tone-surface-strong);
+  --vs-close-border: transparent;
+  --vs-close-border-hover: transparent;
+  --vs-close-border-active: transparent;
+  --vs-close-color: var(--vs-close-tone-strong);
+  --vs-close-color-hover: var(--vs-close-tone-strong);
+  --vs-close-color-active: var(--vs-close-tone-strong);
+}
+
+.vs-close--solid {
+  --vs-close-bg: var(--vs-close-tone-main);
+  --vs-close-bg-hover: var(--vs-close-tone-strong);
+  --vs-close-bg-active: var(--vs-close-tone-strong);
+  --vs-close-border: transparent;
+  --vs-close-border-hover: transparent;
+  --vs-close-border-active: transparent;
+  --vs-close-color: var(--vs-close-tone-contrast);
+  --vs-close-color-hover: var(--vs-close-tone-contrast);
+  --vs-close-color-active: var(--vs-close-tone-contrast);
+}
+
+.vs-close--bordered {
+  --vs-close-bg: transparent;
+  --vs-close-bg-hover: var(--vs-close-tone-surface);
+  --vs-close-bg-active: var(--vs-close-tone-surface-strong);
+  --vs-close-border: var(--vs-close-tone-border);
+  --vs-close-border-hover: var(--vs-close-tone-main);
+  --vs-close-border-active: var(--vs-close-tone-main);
+  --vs-close-color: var(--vs-close-tone-main);
+  --vs-close-color-hover: var(--vs-close-tone-strong);
+  --vs-close-color-active: var(--vs-close-tone-strong);
+}
+
+/* Color variants */
+.vs-close--primary {
+  --vs-close-tone-main: var(--primary-600);
+  --vs-close-tone-strong: var(--primary-700);
+  --vs-close-tone-surface: var(--primary-50);
+  --vs-close-tone-surface-strong: var(--primary-100);
+  --vs-close-tone-border: var(--primary-200);
+  --vs-close-tone-contrast: var(--text-on-primary);
+}
+
+.vs-close--secondary {
+  --vs-close-tone-main: var(--secondary-500);
+  --vs-close-tone-strong: var(--secondary-600);
+  --vs-close-tone-surface: var(--secondary-50);
+  --vs-close-tone-surface-strong: var(--secondary-100);
+  --vs-close-tone-border: var(--secondary-200);
+  --vs-close-tone-contrast: var(--text-on-secondary);
+}
+
+.vs-close--success {
+  --vs-close-tone-main: var(--success-600);
+  --vs-close-tone-strong: var(--success-700);
+  --vs-close-tone-surface: var(--success-50);
+  --vs-close-tone-surface-strong: var(--success-100);
+  --vs-close-tone-border: var(--success-200);
+  --vs-close-tone-contrast: var(--text-on-success);
+}
+
+.vs-close--warning {
+  --vs-close-tone-main: var(--warning-600);
+  --vs-close-tone-strong: var(--warning-700);
+  --vs-close-tone-surface: var(--warning-50);
+  --vs-close-tone-surface-strong: var(--warning-100);
+  --vs-close-tone-border: var(--warning-200);
+  --vs-close-tone-contrast: var(--text-on-warning);
+}
+
+.vs-close--danger {
+  --vs-close-tone-main: var(--error-600);
+  --vs-close-tone-strong: var(--error-700);
+  --vs-close-tone-surface: var(--error-50);
+  --vs-close-tone-surface-strong: var(--error-100);
+  --vs-close-tone-border: var(--error-200);
+  --vs-close-tone-contrast: var(--text-on-error);
+}
+
+.vs-close--neutral {
+  --vs-close-tone-main: var(--neutral-600);
+  --vs-close-tone-strong: var(--neutral-800);
+  --vs-close-tone-surface: var(--neutral-50);
+  --vs-close-tone-surface-strong: var(--neutral-100);
+  --vs-close-tone-border: var(--neutral-200);
+  --vs-close-tone-contrast: var(--text-primary);
+}
+
+/* Hover emphasis variants */
+.vs-close--hover-strong {
+  --vs-close-bg-hover: var(--vs-close-tone-surface-strong);
+  --vs-close-border-hover: var(--vs-close-tone-main);
+  --vs-close-color-hover: var(--vs-close-tone-contrast);
+}
+
+.vs-close--hover-strong.vs-close--solid {
+  --vs-close-color-hover: var(--vs-close-tone-contrast);
+  --vs-close-bg-hover: var(--vs-close-tone-strong);
+}
+
+.vs-close--hover-subtle {
+  --vs-close-bg-hover: var(--vs-close-bg);
+  --vs-close-border-hover: var(--vs-close-border);
+  --vs-close-color-hover: var(--vs-close-color);
+}
+
+.vs-close--hover-subtle.vs-close--solid {
+  --vs-close-bg-hover: var(--vs-close-bg);
+}
+
+/* Behavioral helper */
+.is-hidden {
+  display: none !important;
+}
