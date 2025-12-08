@@ -1,0 +1,122 @@
+/* Base divider */
+.vs-divider {
+  --vs-divider-color: var(--border-color-default);
+  --vs-divider-thickness: var(--space-2);
+  --vs-divider-radius: var(--radius-sm);
+  --vs-divider-spacing-block: var(--space-12);
+  --vs-divider-spacing-inline: 0;
+  --vs-divider-stroke-style: solid;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  margin-block: var(--vs-divider-spacing-block);
+  margin-inline: var(--vs-divider-spacing-inline);
+  padding-inline: 0;
+  color: var(--text-secondary);
+  box-sizing: border-box;
+}
+
+.vs-divider::before,
+.vs-divider::after {
+  content: "";
+  display: block;
+  flex: 1;
+  min-width: 0;
+  height: var(--vs-divider-thickness);
+  border-top: var(--vs-divider-thickness) var(--vs-divider-stroke-style) var(--vs-divider-color);
+  border-radius: var(--vs-divider-radius);
+}
+
+.vs-divider::after {
+  display: none;
+}
+
+.vs-divider__label {
+  padding-inline: var(--space-8);
+  color: var(--text-secondary);
+  font-family: var(--font-family-sans);
+  font-size: var(--body-sm-size);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-normal);
+  white-space: nowrap;
+}
+
+/* Orientation */
+.vs-divider--horizontal,
+.vs-divider:not(.vs-divider--vertical) {
+  flex-direction: row;
+}
+
+.vs-divider--vertical {
+  flex-direction: column;
+  width: auto;
+  min-height: var(--space-32);
+  height: 100%;
+  margin-block: 0;
+  margin-inline: calc(var(--vs-divider-spacing-block) / 2);
+  padding-inline: 0;
+}
+
+.vs-divider--vertical::before,
+.vs-divider--vertical::after {
+  width: var(--vs-divider-thickness);
+  height: auto;
+  flex: 1;
+  border-top: 0;
+  border-left: var(--vs-divider-thickness) var(--vs-divider-stroke-style) var(--vs-divider-color);
+}
+
+/* States */
+.vs-divider.is-labeled {
+  gap: var(--space-12);
+}
+
+.vs-divider.is-labeled::after {
+  display: block;
+}
+
+.vs-divider--vertical.is-labeled {
+  align-items: center;
+}
+
+.vs-divider.is-full-height {
+  align-self: stretch;
+  height: 100%;
+}
+
+/* Variants */
+.vs-divider--light {
+  --vs-divider-color: var(--border-color-subtle);
+}
+
+.vs-divider--strong {
+  --vs-divider-color: var(--border-color-strong);
+  --vs-divider-thickness: var(--space-4);
+}
+
+.vs-divider--dashed {
+  --vs-divider-stroke-style: dashed;
+}
+
+.vs-divider--dotted {
+  --vs-divider-stroke-style: dotted;
+}
+
+.vs-divider--spaced {
+  --vs-divider-spacing-block: var(--space-20);
+  --vs-divider-spacing-inline: var(--space-12);
+}
+
+.vs-divider--inset {
+  padding-inline: var(--space-16);
+}
+
+/* Accessibility helpers */
+.vs-divider[role="separator"] {
+  border: 0;
+}
+
+/* Utility alignment within flex or grid layouts */
+.vs-divider--vertical.is-full-height {
+  min-height: 100%;
+}

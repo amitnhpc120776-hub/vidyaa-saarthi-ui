@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VIS Component Demo — vs-divider</title>
+    <link rel="stylesheet" href="../../vs-designSystem/tokens.css" />
+    <link rel="stylesheet" href="../../vs-designSystem/base.css" />
+    <link rel="stylesheet" href="../../vs-designSystem/typography.css" />
+    <link rel="stylesheet" href="../../vs-designSystem/utilities.css" />
+    <link rel="stylesheet" href="../../component.css" />
+  </head>
+  <body class="p-24">
+    <header class="mb-24">
+      <h1 class="mb-8">vs-divider Component Demo</h1>
+      <p class="text-secondary">
+        Foundational separator for structuring content, supporting horizontal and vertical orientations with token-driven stroke,
+        spacing, and inset controls.
+      </p>
+    </header>
+
+    <section class="mb-24">
+      <h2 class="mb-12">Base Orientation & Emphasis</h2>
+      <div class="flex flex-col gap-12">
+        <div class="vs-divider vs-divider--horizontal"></div>
+        <div class="vs-divider vs-divider--horizontal vs-divider--light"></div>
+        <div class="vs-divider vs-divider--horizontal vs-divider--strong"></div>
+      </div>
+    </section>
+
+    <section class="mb-24">
+      <h2 class="mb-12">Stroke Styles & Spacing</h2>
+      <div class="flex flex-col gap-12">
+        <div class="vs-divider vs-divider--horizontal vs-divider--dashed"></div>
+        <div class="vs-divider vs-divider--horizontal vs-divider--dotted"></div>
+        <div class="vs-divider vs-divider--horizontal vs-divider--spaced"></div>
+        <div class="vs-divider vs-divider--horizontal vs-divider--inset"></div>
+      </div>
+    </section>
+
+    <section class="mb-24">
+      <h2 class="mb-12">Labeled Divider</h2>
+      <div class="vs-divider vs-divider--horizontal is-labeled vs-divider--dashed">
+        <span class="vs-divider__label">Section title</span>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="mb-12">Vertical Usage</h2>
+      <div class="flex gap-24 align-start">
+        <div class="flex flex-col gap-8">
+          <div class="text-secondary">Item A</div>
+          <div class="text-secondary">Item B</div>
+          <div class="text-secondary">Item C</div>
+        </div>
+        <div class="vs-divider vs-divider--vertical is-full-height"></div>
+        <div class="flex flex-col gap-8">
+          <div class="text-secondary">Detail 1</div>
+          <div class="text-secondary">Detail 2</div>
+          <div class="text-secondary">Detail 3</div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
