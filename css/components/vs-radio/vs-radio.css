@@ -1,0 +1,253 @@
+/* Base component */
+.vs-radio {
+  --vs-radio-size: var(--space-20);
+  --vs-radio-gap: var(--space-8);
+  --vs-radio-radius: 50%;
+  --vs-radio-border: var(--border-color-strong);
+  --vs-radio-bg: var(--neutral-0);
+  --vs-radio-dot-size: calc(var(--vs-radio-size) / 2);
+  --vs-radio-checked-bg: var(--primary-600);
+  --vs-radio-checked-border: var(--primary-600);
+  --vs-radio-dot-color: var(--neutral-0);
+  --vs-radio-focus-ring: 0 0 0 3px var(--primary-100);
+  --vs-radio-label-color: var(--text-primary);
+  --vs-radio-label-size: var(--body-md-size);
+  --vs-radio-label-weight: var(--font-weight-regular);
+  --vs-radio-label-line-height: var(--line-height-normal);
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: var(--vs-radio-gap);
+  cursor: pointer;
+  color: var(--vs-radio-label-color);
+  font-family: var(--font-family-sans);
+  font-size: var(--vs-radio-label-size);
+  font-weight: var(--vs-radio-label-weight);
+  line-height: var(--vs-radio-label-line-height);
+}
+
+.vs-radio__input {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: inherit;
+}
+
+.vs-radio__control {
+  position: relative;
+  flex-shrink: 0;
+  width: var(--vs-radio-size);
+  height: var(--vs-radio-size);
+  border: 2px solid var(--vs-radio-border);
+  border-radius: var(--vs-radio-radius);
+  background-color: var(--vs-radio-bg);
+  transition: background-color 150ms ease, border-color 150ms ease,
+    box-shadow 150ms ease, color 150ms ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vs-radio__control::after {
+  content: "";
+  width: var(--vs-radio-dot-size);
+  height: var(--vs-radio-dot-size);
+  border-radius: inherit;
+  background-color: var(--vs-radio-dot-color);
+  transform: scale(0);
+  transition: transform 150ms ease;
+}
+
+.vs-radio__label {
+  display: inline-flex;
+  align-items: center;
+  color: inherit;
+}
+
+/* Checked state */
+.vs-radio__input:checked + .vs-radio__control,
+.vs-radio.is-checked .vs-radio__control,
+.vs-radio--checked .vs-radio__control {
+  background-color: var(--vs-radio-checked-bg);
+  border-color: var(--vs-radio-checked-border);
+}
+
+.vs-radio__input:checked + .vs-radio__control::after,
+.vs-radio.is-checked .vs-radio__control::after,
+.vs-radio--checked .vs-radio__control::after {
+  transform: scale(1);
+}
+
+/* Focus and active */
+.vs-radio__input:focus-visible + .vs-radio__control,
+.vs-radio.is-focused .vs-radio__control {
+  outline: none;
+  box-shadow: var(--vs-radio-focus-ring);
+}
+
+.vs-radio__input:active + .vs-radio__control,
+.vs-radio.is-active .vs-radio__control {
+  box-shadow: inset 0 0 0 1px var(--vs-radio-checked-border);
+}
+
+/* Disabled */
+.vs-radio__input:disabled + .vs-radio__control,
+.vs-radio.is-disabled .vs-radio__control,
+.vs-radio--disabled .vs-radio__control {
+  background-color: var(--surface-disabled, var(--neutral-100));
+  border-color: var(--border-color-default);
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.vs-radio__input:disabled ~ .vs-radio__label,
+.vs-radio.is-disabled .vs-radio__label,
+.vs-radio--disabled .vs-radio__label {
+  color: var(--text-tertiary);
+  cursor: not-allowed;
+}
+
+.vs-radio.is-disabled,
+.vs-radio--disabled {
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Layout modifiers */
+.vs-radio--block {
+  display: flex;
+  width: 100%;
+}
+
+.vs-radio--inline {
+  display: inline-flex;
+}
+
+.vs-radio--no-label .vs-radio__label {
+  display: none;
+}
+
+/* Reverse layout */
+.vs-radio--reverse {
+  flex-direction: row-reverse;
+}
+
+/* Shapes */
+.vs-radio--circle .vs-radio__control {
+  border-radius: 50%;
+}
+
+.vs-radio--rounded .vs-radio__control {
+  border-radius: var(--radius-md);
+}
+
+.vs-radio--square .vs-radio__control {
+  border-radius: var(--radius-sm);
+}
+
+/* =========================================================================
+   VARIANTS & SIZE MODIFIERS
+   ========================================================================= */
+/* STYLE VARIANTS */
+.vs-radio--default {
+  --vs-radio-bg: var(--neutral-0);
+  --vs-radio-border: var(--border-color-strong);
+  --vs-radio-checked-bg: var(--primary-600);
+  --vs-radio-checked-border: var(--primary-600);
+}
+
+.vs-radio--solid {
+  --vs-radio-bg: var(--neutral-100);
+  --vs-radio-border: transparent;
+  --vs-radio-checked-bg: var(--primary-600);
+  --vs-radio-checked-border: var(--primary-600);
+}
+
+.vs-radio--outline {
+  --vs-radio-bg: var(--neutral-0);
+  --vs-radio-border: var(--border-color-strong);
+  --vs-radio-checked-bg: var(--neutral-0);
+}
+
+/* COLOR VARIANTS */
+.vs-radio--primary {
+  --vs-radio-checked-bg: var(--primary-600);
+  --vs-radio-checked-border: var(--primary-600);
+  --vs-radio-focus-ring: 0 0 0 3px var(--primary-100);
+}
+
+.vs-radio--secondary {
+  --vs-radio-checked-bg: var(--secondary-600);
+  --vs-radio-checked-border: var(--secondary-600);
+  --vs-radio-focus-ring: 0 0 0 3px var(--secondary-100);
+}
+
+.vs-radio--success {
+  --vs-radio-checked-bg: var(--success-600);
+  --vs-radio-checked-border: var(--success-600);
+  --vs-radio-focus-ring: 0 0 0 3px var(--success-100);
+}
+
+.vs-radio--warning {
+  --vs-radio-checked-bg: var(--warning-500);
+  --vs-radio-checked-border: var(--warning-500);
+  --vs-radio-focus-ring: 0 0 0 3px var(--warning-100);
+}
+
+.vs-radio--danger {
+  --vs-radio-checked-bg: var(--danger-600);
+  --vs-radio-checked-border: var(--danger-600);
+  --vs-radio-focus-ring: 0 0 0 3px var(--danger-100);
+}
+
+.vs-radio--info {
+  --vs-radio-checked-bg: var(--info-600);
+  --vs-radio-checked-border: var(--info-600);
+  --vs-radio-focus-ring: 0 0 0 3px var(--info-100);
+}
+
+.vs-radio--neutral {
+  --vs-radio-checked-bg: var(--neutral-600);
+  --vs-radio-checked-border: var(--neutral-600);
+  --vs-radio-focus-ring: 0 0 0 3px var(--neutral-200);
+}
+
+/* STATE VARIANTS */
+.vs-radio--unchecked .vs-radio__control::after,
+.vs-radio--unchecked.is-checked .vs-radio__control::after {
+  transform: scale(0);
+}
+
+/* SIZE VARIANTS */
+.vs-radio--sm {
+  --vs-radio-size: var(--space-16);
+  --vs-radio-gap: var(--space-6);
+  --vs-radio-dot-size: calc(var(--vs-radio-size) / 2.2);
+  --vs-radio-label-size: var(--body-sm-size);
+  --vs-radio-label-line-height: var(--line-height-tight);
+}
+
+.vs-radio--md {
+  --vs-radio-size: var(--space-20);
+  --vs-radio-gap: var(--space-8);
+  --vs-radio-dot-size: calc(var(--vs-radio-size) / 2);
+  --vs-radio-label-size: var(--body-md-size);
+  --vs-radio-label-line-height: var(--line-height-normal);
+}
+
+.vs-radio--lg {
+  --vs-radio-size: var(--space-24);
+  --vs-radio-gap: var(--space-10);
+  --vs-radio-dot-size: calc(var(--vs-radio-size) / 2.1);
+  --vs-radio-label-size: var(--body-lg-size);
+  --vs-radio-label-line-height: var(--line-height-relaxed);
+}
+
+/* LAYOUT VARIANTS */
+.vs-radio--block {
+  align-items: flex-start;
+}
