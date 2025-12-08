@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VIS Component Demo — vs-badge</title>
+    <link rel="stylesheet" href="../../vs-designSystem/tokens.css" />
+    <link rel="stylesheet" href="../../vs-designSystem/base.css" />
+    <link rel="stylesheet" href="../../vs-designSystem/typography.css" />
+    <link rel="stylesheet" href="../../vs-designSystem/utilities.css" />
+    <link rel="stylesheet" href="../../component.css" />
+  </head>
+  <body class="p-24">
+    <header class="mb-24">
+      <h1 class="mb-8">vs-badge Component Demo</h1>
+      <p class="text-secondary">
+        Foundational badge primitive for status labels, counts, highlights, tags, and notification overlays with token-driven
+        color, size, and shape variants.
+      </p>
+    </header>
+
+    <section class="mb-24">
+      <h2 class="mb-12">Default & Color Variants</h2>
+      <div class="flex flex-wrap gap-12 items-center">
+        <span class="vs-badge vs-badge--neutral vs-badge--md">Neutral</span>
+        <span class="vs-badge vs-badge--primary vs-badge--md">Primary</span>
+        <span class="vs-badge vs-badge--secondary vs-badge--md">Secondary</span>
+        <span class="vs-badge vs-badge--success vs-badge--md">Success</span>
+        <span class="vs-badge vs-badge--warning vs-badge--md">Warning</span>
+        <span class="vs-badge vs-badge--danger vs-badge--md">Danger</span>
+        <span class="vs-badge vs-badge--info vs-badge--md">Info</span>
+      </div>
+    </section>
+
+    <section class="mb-24">
+      <h2 class="mb-12">Shapes & Treatments</h2>
+      <div class="flex flex-wrap gap-12 items-center">
+        <span class="vs-badge vs-badge--primary vs-badge--pill">Pill shape</span>
+        <span class="vs-badge vs-badge--success vs-badge--outline">Outline success</span>
+        <span class="vs-badge vs-badge--danger vs-badge--inverted">Inverted danger</span>
+        <span class="vs-badge vs-badge--warning vs-badge--dot" aria-label="New notification"></span>
+        <span class="text-secondary">Dot indicator</span>
+      </div>
+    </section>
+
+    <section class="mb-24">
+      <h2 class="mb-12">Size Modifiers</h2>
+      <div class="flex flex-wrap gap-12 items-center">
+        <span class="vs-badge vs-badge--primary vs-badge--sm">Small</span>
+        <span class="vs-badge vs-badge--primary vs-badge--md">Medium</span>
+        <span class="vs-badge vs-badge--primary vs-badge--lg">Large</span>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="mb-12">States</h2>
+      <div class="flex flex-wrap gap-12 items-center">
+        <span class="vs-badge vs-badge--info is-interactive" role="button" tabindex="0">Interactive</span>
+        <span class="vs-badge vs-badge--neutral is-disabled">Disabled</span>
+      </div>
+    </section>
+  </body>
+</html>
