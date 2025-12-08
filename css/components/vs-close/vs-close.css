@@ -1,0 +1,185 @@
+/* ========================================================================
+   VIS Dependent Primitive: vs-close
+   ======================================================================== */
+.vs-close {
+  --vs-close-size: var(--space-32);
+  --vs-close-bg: var(--neutral-0);
+  --vs-close-color: var(--text-primary);
+  --vs-close-border-color: var(--neutral-300);
+  --vs-close-hover-bg: var(--neutral-100);
+  --vs-close-hover-border: var(--neutral-400);
+  --vs-close-active-bg: var(--neutral-200);
+  --vs-close-active-border: var(--neutral-500);
+  --vs-close-focus-ring: color-mix(in srgb, var(--primary-500) 24%, transparent);
+  --vs-close-focus-outline: var(--primary-600);
+  --vs-close-radius: var(--radius-round, var(--radius-full));
+  --vs-close-icon-size: var(--space-16);
+  --vs-close-icon-color: var(--text-primary);
+  --vs-close-opacity-disabled: 0.6;
+
+  position: relative;
+  inline-size: var(--vs-close-size);
+  block-size: var(--vs-close-size);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--vs-close-border-color);
+  border-radius: var(--vs-close-radius);
+  background-color: var(--vs-close-bg);
+  color: var(--vs-close-color);
+  padding: 0;
+  cursor: pointer;
+  transition: background-color 150ms ease, color 150ms ease, border-color 150ms ease, box-shadow 150ms ease, transform 120ms ease;
+  text-decoration: none;
+  line-height: 1;
+  font-family: var(--font-family-sans);
+  user-select: none;
+}
+
+.vs-close__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: 100%;
+  block-size: 100%;
+}
+
+.vs-close__icon .vs-icon {
+  --vs-icon-size: var(--vs-close-icon-size);
+  --vs-icon-color: var(--vs-close-icon-color);
+}
+
+/* Interaction states */
+.vs-close:hover:not(.is-disabled):not(:disabled),
+.vs-close.is-hovered:not(.is-disabled):not(:disabled) {
+  background-color: var(--vs-close-hover-bg);
+  border-color: var(--vs-close-hover-border);
+}
+
+.vs-close:active:not(.is-disabled):not(:disabled),
+.vs-close.is-active:not(.is-disabled):not(:disabled) {
+  background-color: var(--vs-close-active-bg);
+  border-color: var(--vs-close-active-border);
+  transform: translateY(1px);
+}
+
+.vs-close:focus-visible:not(.is-disabled):not(:disabled),
+.vs-close.is-focus-visible:not(.is-disabled):not(:disabled) {
+  outline: var(--space-2) solid var(--vs-close-focus-outline);
+  outline-offset: var(--space-2);
+  box-shadow: 0 0 0 var(--space-4) var(--vs-close-focus-ring);
+}
+
+/* Disabled state */
+.vs-close.is-disabled,
+.vs-close:disabled {
+  opacity: var(--vs-close-opacity-disabled);
+  cursor: not-allowed;
+  pointer-events: none;
+  box-shadow: none;
+  outline: none;
+}
+
+/* Shape modifiers */
+.vs-close--round {
+  --vs-close-radius: var(--radius-round, var(--radius-full));
+}
+
+.vs-close--square {
+  --vs-close-radius: var(--radius-0, 0);
+}
+
+.vs-close--soft {
+  --vs-close-radius: var(--radius-sm);
+}
+
+/* =========================================================================
+   VARIANTS & SIZE MODIFIERS
+   ========================================================================= */
+/* Visual variants */
+.vs-close--default {
+  --vs-close-bg: var(--neutral-0);
+  --vs-close-border-color: var(--neutral-300);
+  --vs-close-hover-bg: var(--neutral-100);
+  --vs-close-hover-border: var(--neutral-400);
+  --vs-close-active-bg: var(--neutral-200);
+  --vs-close-active-border: var(--neutral-500);
+  --vs-close-color: var(--text-primary);
+  --vs-close-icon-color: var(--text-primary);
+  --vs-close-focus-ring: color-mix(in srgb, var(--primary-500) 24%, transparent);
+  --vs-close-focus-outline: var(--primary-600);
+}
+
+.vs-close--primary {
+  --vs-close-bg: color-mix(in srgb, var(--primary-600) 10%, transparent);
+  --vs-close-border-color: color-mix(in srgb, var(--primary-600) 35%, transparent);
+  --vs-close-hover-bg: color-mix(in srgb, var(--primary-600) 18%, transparent);
+  --vs-close-hover-border: color-mix(in srgb, var(--primary-600) 45%, transparent);
+  --vs-close-active-bg: color-mix(in srgb, var(--primary-600) 28%, transparent);
+  --vs-close-active-border: color-mix(in srgb, var(--primary-600) 55%, transparent);
+  --vs-close-color: var(--primary-700);
+  --vs-close-icon-color: var(--primary-700);
+  --vs-close-focus-ring: color-mix(in srgb, var(--primary-500) 32%, transparent);
+  --vs-close-focus-outline: var(--primary-700);
+}
+
+.vs-close--inverse {
+  --vs-close-bg: color-mix(in srgb, var(--neutral-0) 14%, transparent);
+  --vs-close-border-color: color-mix(in srgb, var(--neutral-0) 28%, transparent);
+  --vs-close-hover-bg: color-mix(in srgb, var(--neutral-0) 24%, transparent);
+  --vs-close-hover-border: color-mix(in srgb, var(--neutral-0) 32%, transparent);
+  --vs-close-active-bg: color-mix(in srgb, var(--neutral-0) 32%, transparent);
+  --vs-close-active-border: color-mix(in srgb, var(--neutral-0) 36%, transparent);
+  --vs-close-color: var(--neutral-0);
+  --vs-close-icon-color: var(--neutral-0);
+  --vs-close-focus-ring: color-mix(in srgb, var(--neutral-0) 25%, transparent);
+  --vs-close-focus-outline: var(--neutral-0);
+}
+
+.vs-close--muted {
+  --vs-close-bg: var(--neutral-50);
+  --vs-close-border-color: var(--neutral-100);
+  --vs-close-hover-bg: var(--neutral-100);
+  --vs-close-hover-border: var(--neutral-200);
+  --vs-close-active-bg: var(--neutral-200);
+  --vs-close-active-border: var(--neutral-300);
+  --vs-close-color: var(--text-secondary);
+  --vs-close-icon-color: var(--text-secondary);
+  --vs-close-focus-ring: color-mix(in srgb, var(--neutral-500) 20%, transparent);
+  --vs-close-focus-outline: var(--neutral-700);
+}
+
+.vs-close--danger {
+  --vs-close-bg: color-mix(in srgb, var(--error-600) 10%, transparent);
+  --vs-close-border-color: color-mix(in srgb, var(--error-600) 35%, transparent);
+  --vs-close-hover-bg: color-mix(in srgb, var(--error-600) 18%, transparent);
+  --vs-close-hover-border: color-mix(in srgb, var(--error-600) 45%, transparent);
+  --vs-close-active-bg: color-mix(in srgb, var(--error-600) 28%, transparent);
+  --vs-close-active-border: color-mix(in srgb, var(--error-600) 55%, transparent);
+  --vs-close-color: var(--error-700);
+  --vs-close-icon-color: var(--error-700);
+  --vs-close-focus-ring: color-mix(in srgb, var(--error-500) 32%, transparent);
+  --vs-close-focus-outline: var(--error-700);
+}
+
+/* Size modifiers */
+.vs-close--sm {
+  --vs-close-size: var(--space-28, 28px);
+  --vs-close-icon-size: var(--space-12);
+}
+
+.vs-close--md {
+  --vs-close-size: var(--space-32);
+  --vs-close-icon-size: var(--space-16);
+}
+
+.vs-close--lg {
+  --vs-close-size: var(--space-40);
+  --vs-close-icon-size: var(--space-20);
+}
+
+/* Notes & Variant Behavior Rules
+   - Apply visual modifiers on the root `.vs-close` element alongside shape and size modifiers.
+   - `.is-disabled` or the `disabled` attribute should override hover/active/focus visuals across all variants.
+   - Focus-visible styling is driven by the modifier-specific `--vs-close-focus-*` tokens and applies across light/dark contexts.
+   - Variants remain token-driven and should not be combined with external colors or inline styles. */
