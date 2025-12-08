@@ -1,75 +1,206 @@
 # STEP 2 — Convert External HTML → VIS HTML Snippet
 
-This file is part of the Six-Step VIS Component Conversion Workflow. Follow the instructions defined in conversion-master-agent.md.
+This file is part of the Six-Step VIS Component Conversion Workflow.  
+Follow the instructions defined in conversion-master-agent.md.
 
 ## Input Files You Must Use
 
-conversion-master-agent.md
-VIS Design System:
-tokens.css
-base.css
-typography.css
-utilities.css
-The external HTML snippet provided by the user
-Component BEM API produced in STEP 1 (css/components/vs-[component]/vs-[component]-api.md)
-Use only previous steps' outputs as inputs.
+- conversion-master-agent.md
+- VIS Design System:
+  - tokens.css
+  - base.css
+  - typography.css
+  - utilities.css
+- External HTML snippet provided by the user
+- Component BEM API produced in STEP 1:
+  - css/components/vs-[component]/vs-[component]-api.md
 
-## Your Tasks (Step 2)
+Use only previous steps' outputs.  
+No new assumptions are allowed.
 
-### Primitive Reuse Enforcement (HTML)
+# 1. Primitive Reuse Enforcement (HTML-Level Rules)
 
-While generating the HTML, you MUST reuse existing VIS primitive components
-(vs-icon, vs-btn, vs-input, vs-close, vs-badge, vs-divider, vs-spinner, etc.)
-whenever the BEM API requires a button, icon, input field, close action,
-badge, divider, or loading indicator.
+When generating HTML, you MUST reuse VIS primitive components exactly as defined:
 
-You MUST NOT create custom HTML structures that duplicate the behavior of
-a primitive component.
+- `vs-btn`
+- `vs-icon`
+- `vs-close`
+- `vs-input`
+- `vs-checkbox`
+- `vs-radio`
+- `vs-switch`
+- `vs-badge`
+- `vs-divider`
+- `vs-spinner`
 
-Examples:
+ANY markup representing a button, icon, input field, close action, badge, spinner, or divider MUST be replaced by the corresponding VIS primitive.
 
-- For buttons, always use <button class="vs-btn ...">...</button>.
-- For icons, always use <span class="vs-icon">...</span>.
-- For close actions, use vs-close or vs-btn--icon.
-- For inputs, embed <div class="vs-input">...</div>.
-- For dividers, use <div class="vs-divider"></div>.
+### Forbidden:
 
-### Generate the pure HTML snippet using the Component API:
+- Custom `<button>` markup
+- Custom `<span class="icon">` wrappers
+- Custom checkmark/radio SVG
+- Custom input shells
+- Custom badge/separator elements
+- ANY wrapper attempting to imitate primitive logic
 
-Use VIS namespace and strict BEM.
-No Bootstrap dependencies or attributes.
-No inline CSS or JS in HTML.
-Keep HTML minimal and semantic.
-Demonstrate at least one variant or state in the markup if useful (use explicit BEM modifier or .is-\* class).
+### Required replacements:
 
-### HTML Requirements:
+```html
+<button class="vs-btn ..."></button>
+<!-- buttons -->
+<span class="vs-icon">...</span>
+<!-- icons -->
+<div class="vs-input">...</div>
+<!-- inputs -->
+<div class="vs-divider"></div>
+<!-- dividers -->
+<span class="vs-badge">...</span>
+<!-- badges -->
+<span class="vs-spinner"></span>
+<!-- spinners -->
+```
 
-The HTML must follow the exact BEM anatomy from the Component API.
-Include placeholders for text, icons, or content where required.
-Do not write CSS or JS in this step.
+````
 
-### Forbidden HTML Structures
+These rules are **strict and mandatory**.
 
-Do NOT introduce:
+# 2. Allowed vs Forbidden Wrapper Elements (Critical)
 
-- Custom wrappers for icons (must use vs-icon)
-- Custom button markup (must use vs-btn)
-- Custom close-button markup (must use vs-close or vs-btn--icon)
-- Custom input frame markup (must use vs-input)
-- Custom badge or divider markup (must use vs-badge / vs-divider)
-- Any HTML intended to replicate primitive component patterns
+Step 2 HTML MUST follow wrapper rules from Step 1 and master-agent.md.
 
-If the Component API calls for a primitive, reference the primitive directly
-in the HTML structure.
+## ✔ Allowed (layout/support wrappers)
 
-## Output Format
+These wrappers are allowed because they do NOT recreate primitive behavior:
 
-Produce two sections in the output (store as css/components/vs-[component]/vs-[component].html):
+- Spacing/layout wrappers (flex, grid containers)
+- Grouping wrappers:
+  `vs-[component]__actions`, `vs-[component]__container`
+- ARIA-required wrappers (`role="group"`, `role="list"`)
+- Structural wrappers explicitly defined in Step 1's Anatomy Block
 
-Section 1 → "VIS HTML Snippet": Provide the full HTML block (only the component HTML).
+## ❌ Forbidden (functional wrappers)
 
-Section 2 → "Notes for Integration": List any attributes or container rules needed for CSS or JS (e.g., required role attributes, data-\* hooks used by JS, ARIA expectations).
+These wrappers are NOT allowed:
 
-Do NOT include CSS or JS in this file.
+- Icon wrappers (e.g., `<span class="icon-box">`)
+- Custom close button wrappers
+- Fake input frames
+- Fake checkmark/circle wrappers
+- Wrappers mimicking toggle/button/spinner behavior
+
+If the wrapper's purpose is functional → it is forbidden.
+If the wrapper's purpose is layout → it is allowed.
+
+# 3. Generate the Pure HTML Snippet Using the Component API
+
+You must generate HTML that adheres strictly to the Component API and Canonical Anatomy Block defined in Step 1.
+
+### Rules:
+
+- Use VIS namespace + strict BEM (`vs-[block]__element`, `vs-[block]--modifier`)
+- No Bootstrap classes, attributes, or patterns
+- No inline CSS or JS
+- Minimal, semantic HTML only
+- At most one example variant or state may appear, using:
+
+  - `vs-[component]--[variant]`
+  - `.is-[state]`
+
+The output is **production HTML**, not demo HTML.
+
+# 4. HTML Requirements (Strict)
+
+HTML MUST:
+
+- Match **exactly** the BEM anatomy from Step 1 API
+- Include **every** element listed in the Step 1 Canonical Anatomy Block
+- Use **no additional elements**, wrappers, or nesting
+- Use primitives exactly where Step 1 requires them
+- Include placeholder content where needed:
+
+  - text
+  - icons (`vs-icon`)
+  - optional or dynamic slots
+
+### Absolutely forbidden:
+
+- Adding wrappers not listed in Step 1
+- Renaming elements
+- Introducing new elements
+- Introducing new states or variants
+- Expanding primitive markup internally
+
+# 5. Structural Consistency Validation (Against Step 1)
+
+Before finalizing Step 2, Codex MUST validate:
+
+### Block
+
+- Root class is exactly:
+
+  ```
+  vs-[component]
+  ```
+
+### Elements
+
+- Every element in HTML appears in the Step 1 Anatomy Block
+- No extra element is introduced
+
+### Variants
+
+- All variant modifiers match Step 1
+- No new or guessed variants appear
+
+### States
+
+- All `.is-*` states match Step 1
+- No new state invented
+
+### Primitive usage
+
+- All primitives are used exactly as defined
+- No wrapper/function duplication
+- No custom internal markup for primitives
+
+If any mismatch is detected →
+**Codex must correct the HTML before presenting it.**
+
+# 6. Output Format (MANDATORY)
+
+Store this file as:
+
+```
+css/components/vs-[component]/vs-[component].html
+```
+
+Your output MUST include **two sections**:
+
+## Section 1 → "VIS HTML Snippet"
+
+- Full HTML block for the component
+- No page-level wrappers
+- No demo markup
+- No sample container scaffolding
+- This is the exact snippet developers will copy into production
+
+## Section 2 → "Notes for Integration"
+
+Include:
+
+- Required ARIA or role attributes
+- Required `data-*` hooks for JS (if Step 4 will need them)
+- Parent container constraints (if applicable)
+- Any behavior expectations for JS, layout, or accessibility
+
+Do NOT include any CSS or JS code in this file.
 
 ========================
+
+```
+
+---
+
+```
+````

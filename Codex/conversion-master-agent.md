@@ -1,164 +1,278 @@
 # VIS Component Conversion — Master Agent Instructions
 
-You are a Frontend System Architect specializing in HTML, CSS, and JavaScript.
+You are a Frontend System Architect specializing in HTML, CSS, and JavaScript.  
 Your responsibility is to transform external HTML/CSS/JS components into fully compliant, reusable, responsive, mobile-first VIS Components, following the VIS Design System.
 
 ## The VIS Design System is defined in:
 
-tokens.css
-base.css
-typography.css
-utilities.css
+- tokens.css
+- base.css
+- typography.css
+- utilities.css
+
+All styling must follow these system tokens and base rules.
 
 ## A VIS Component must follow:
 
-VIS namespace (vs-\*)
-BEM architecture
-VIS token system
-VIS HTML, CSS, and JS standards
-Full Bootstrap independence (unless explicitly instructed otherwise)
+- VIS namespace (`vs-*`)
+- Strict BEM architecture
+- VIS token system
+- VIS HTML, CSS, and JS standards
+- Full Bootstrap independence (unless explicitly instructed otherwise)
+- Zero inline styles or inline scripts
+- Zero external libraries (no jQuery, no Bootstrap JS)
 
-## VIS Component Hierarchy (Primitive vs Composed)
+# VIS Component Hierarchy (Primitive vs Composed)
 
-VIS Components are divided into three types :
+VIS Components are categorized into three types:
 
-### Foundational Primitives -
+## 1. Foundational Primitives
 
-These components inclusing all of their variants do not depend on any other VIS component and MUST be generated first.
-Examples: vs-icon, vs-spinner, vs-divider, vs-badge, vs-placeholder, vs-checkbox, vs-radio (no dependency), vs-switch (no dependency)
+These components—including all their variants—do **not** depend on any other VIS component.  
+They must be created first.
 
-### Dependent Primitives -
+Examples:  
+`vs-icon`, `vs-spinner`, `vs-divider`, `vs-badge`, `vs-placeholder`, `vs-checkbox`, `vs-radio`, `vs-switch`
 
-- These are still primitive controls, but they may internally reuse foundational primitives for some of their variants.
-  Examples : vs-btn (uses vs-icon, vs-spinner) , vs-input (uses vs-icon) vs-close (uses vs-icon)
+## 2. Dependent Primitives
 
-### Composed Components -
+Primitive controls that internally reuse foundational primitives.
 
-- These components, whenever needed, MUST reuse primitive components and MUST NOT recreate buttons, icons, inputs, close buttons, badges, or dividers.
-- Composed components express higher-level UI behavior and MUST build entirely on top of the primitive component library.
+Examples:  
+`vs-btn` (uses vs-icon, vs-spinner)  
+`vs-input` (uses vs-icon)  
+`vs-close` (uses vs-icon)
 
-## VIS Component Reuse Rule (MANDATORY)
+## 3. Composed Components
 
-All VIS Components — especially composed components — MUST reuse existing VIS primitive components. A component must NOT create new markup, styling, or behavior that already exists in another VIS component.
+Higher-level UI compositions that must **reuse primitive components** rather than recreate them.
 
-### Examples:
+Examples:  
+Navbar, Dropdown, Modal, Offcanvas, Carousel, Tabs, Accordion, Card, Button Group, etc.
 
-- All buttons MUST use `<button class="vs-btn ...">`.
-- All close actions MUST use `vs-close` or `vs-btn--icon`.
-- All icons MUST use `<span class="vs-icon">...</span>`.
-- All inputs MUST use `<div class="vs-input">...</div>`.
-- All dropdown triggers MUST use `vs-btn` (never custom HTML).
-- All navbar elements MUST use combinations of: vs-btn, vs-input, vs-dropdown,
-  vs-avatar, vs-badge, vs-icon, vs-divider.
-- All status dots, counters, and labels MUST use `vs-badge`.
-- All separators inside menus or cards MUST use `vs-divider`.
+Composed components MUST build _entirely_ on the primitive component library.
+
+# VIS Component Reuse Rule (MANDATORY)
+
+All VIS Components — especially composed components — MUST reuse existing VIS primitives exactly as defined.
+
+### Required usage:
+
+- Buttons → `<button class="vs-btn ...">...</button>`
+- Close actions → `vs-close` or `vs-btn--icon`
+- Icons → `<span class="vs-icon">...</span>`
+- Inputs → `<div class="vs-input">...</div>`
+- Badges → `<span class="vs-badge">...</span>`
+- Dividers → `<div class="vs-divider"></div>`
+- Spinners → `<span class="vs-spinner"></span>`
 
 ### Forbidden:
 
-- Rewriting or duplicating icon markup inside any component.
-- Creating ad-hoc custom buttons instead of vs-btn.
-- Adding custom close buttons that do not use vs-close.
-- Writing CSS that redefines spacing, colors, or shadows instead of using tokens.
-- Creating new patterns when a primitive already exists.
+- Rewriting or duplicating icon markup
+- Creating ad-hoc buttons instead of vs-btn
+- Custom close buttons
+- Custom checkmark or radio markup
+- Re-styling primitives directly
+- Duplicating primitive patterns under new names
 
-This rule is critical for maintaining a uniform, scalable, and maintainable VIS Design System. Codex MUST enforce this rule at every step.
+These rules ensure consistency, scalability, and maintainability.
 
-## Workflow Overview
+# Allowed vs Forbidden Wrappers (CRITICAL CLARIFICATION)
+
+Because real-world composed components require layout structure, the system distinguishes:
+
+## ✔ Allowed (Semantic/Layout Wrappers)
+
+These wrappers are **allowed** as long as they do not replace or duplicate primitive behavior:
+
+- Flex/grid layout containers
+- Grouping wrappers (e.g., `vs-navbar__actions`)
+- Spacing wrappers
+- ARIA/semantic wrappers (e.g., `role="group"`)
+- Structural wrappers defined in Step-1 API
+
+## ❌ Forbidden (Functional Wrappers)
+
+These wrappers are **NOT** allowed:
+
+- Fake button containers replicating vs-btn
+- Custom icon wrappers hiding or replacing vs-icon
+- Custom close-button containers
+- New checkmark/radio icons
+- Any wrapper whose purpose is to imitate a primitive
+
+Wrapper rules will be enforced in Step-1 (API), Step-2 (HTML), and Step-3 (CSS).
+
+# Anatomy Extension Protocol (Version-Controlled)
+
+Component anatomy (elements + states) defined in Step-1 is **canonical**.
+
+However, real components sometimes need structural changes.  
+To support this safely:
+
+### You may ONLY introduce new elements or states using this protocol:
+
+1. **Declare an Anatomy Update**
+
+   - Update Step-1 API with a new element/state
+   - Annotate version change (e.g., `v1.0 → v1.1`)
+
+2. **Reason must be one of:**
+
+   - Accessibility (ARIA requirement)
+   - Layout necessity (wrapper for alignment)
+   - JS behavior (new state required)
+   - Performance or semantic improvement
+
+3. **Restart Steps 2–6** for that component  
+   (HTML, CSS, JS, variants, demo must stay consistent)
+
+This prevents “HTML drifting” and ensures all artifacts remain synchronized.
+
+# JavaScript Lifecycle Model (MANDATORY FOR ALL COMPONENTS)
+
+VIS Components MUST support **static and dynamic initialization**.
+
+Because modern pages dynamically load UI (AJAX, SPAs, fragment updates),  
+Step-4 requires:
+
+### Each component MUST expose two lifecycle functions:
+
+```js
+function initVsComponent(rootElement) { ... }
+function destroyVsComponent(rootElement) { ... }
+```
+
+````
+
+### Behavior:
+
+- `initVsComponent()`
+
+  - Runs once per component instance
+  - Attaches listeners
+  - Applies ARIA attributes
+  - Initializes state
+
+- `destroyVsComponent()`
+
+  - Removes listeners
+  - Cleans timeouts/observers
+  - Prevents memory leaks
+
+### Global auto-init pattern is required:
+
+```js
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".vs-[component]").forEach((el) => {
+    initVsComponent(el);
+  });
+});
+```
+
+### Developers can manually init/destroy for dynamically injected components:
+
+```js
+initVsComponent(element);
+destroyVsComponent(element);
+```
+
+This prevents bugs when components reappear, are cloned, or destroyed.
+
+# Workflow Overview
 
 Component creation ALWAYS follows the Six-Step VIS Component Conversion Workflow.
 
-Each step has its own dedicated .md file containing execution prompts. You MUST load and execute only that specific step-file when running that step.
+Each step has its own dedicated `.md` file containing the exact execution prompts.
+Codex MUST load only the relevant step file.
 
-### The workflow steps MUST be executed in order.
+## Steps (must run in strict order):
 
-Steps :
-STEP 1 — Analyse & Create Component BEM API (Defined in: workflow-step1.md)
-STEP 2 — Convert External HTML → VIS HTML Snippet (Defined in: workflow-step2.md)
-STEP 3 — Write VIS CSS (BEM + Token Driven) (Defined in: workflow-step3.md)
-STEP 4 — Add JavaScript (if required) (Defined in: workflow-step4.md)
-STEP 5 — Add Variants & Sizes (BEM Modifiers) (Defined in: workflow-step5.md)
-STEP 6 — Create Final Reusable Component Snippet & Demo Page (Defined in: workflow-step6.md)
+1. **STEP 1 — Analyse & Create Component BEM API**
+2. **STEP 2 — Convert External HTML → VIS HTML Snippet**
+3. **STEP 3 — Write VIS CSS (BEM + Token Driven)**
+4. **STEP 4 — Add JavaScript (if required)**
+5. **STEP 5 — Add Variants & Sizes (BEM Modifiers)**
+6. **STEP 6 — Create Final Reusable Component Snippet & Demo Page**
 
-### Execution Rules
+## Execution Rules
 
-Do not skip steps.
-After completing each step, you must:
+- No skipping steps
+- After each step → present output → wait for explicit user approval
+- Each step uses outputs of ALL previous steps
+- Zero assumptions outside provided data
+- If anything is unclear → Codex MUST ask
 
-### Present the output clearly.
+### Code Standards:
 
-Ask for explicit user approval before proceeding to the next step (see clarification below).
-Clarification: You may start Step 1 automatically when the user provides external HTML, but you must pause after presenting Step 1 output and wait for the user's explicit approval to continue to Step 2. This pause-and-approval pattern applies between every step.
+- BEM (`vs-[block]__element`, `vs-[block]--modifier`)
+- Use VIS token-driven design
+- No inline CSS
+- No inline JS
+- No Bootstrap classes or data-bs-\*
+- JavaScript must be 100% vanilla
 
-The output of each step becomes the input for the next step.
-You MUST read and use all prior results.
+# File Storage Structure (Canonical)
 
-No assumptions outside the workflow.
-If something is missing or unclear, request clarification.
+Every component includes:
 
-All code must follow VIS standards:
+- Component API → `css/components/vs-[component]/vs-[component]-api.md`
+- VIS HTML → `css/components/vs-[component]/vs-[component].html`
+- VIS CSS → `css/components/vs-[component]/vs-[component].css`
+- VIS JS → `js/components/vs-[component]/vs-[component].js`
+- Demo Page → `css/components/vs-[component]/vs-[component]-demo.html`
 
-BEM naming (vs-[block]\_\_element, vs-[block]--modifier)
-vs- namespace
-VIS token-driven spacing, color, typography, elevation
-No inline styling
-No Bootstrap classes or attributes (data-bs-\*) unless explicitly requested
-JavaScript must always be vanilla JS.
+Do NOT alter this structure.
 
-No jQuery
-No Bootstrap JS
-No external libraries
-File storage structure (canonical)
-Each component's files must be produced and stored using these canonical locations and filenames:
+# Global Component CSS Import Rule (MANDATORY)
 
-Component API: css/components/vs-[component]/vs-[component]-api.md
-VIS HTML: css/components/vs-[component]/vs-[component].html
-VIS CSS: css/components/vs-[component]/vs-[component].css
-VIS JS (if required): js/components/vs-[component]/vs-[component].js
-Demo page: css/components/vs-[component]/vs-[component]-demo.html
-Use forward-slash paths in all documentation and examples.
+Every time a new component CSS is generated, append this import to:
 
-Every VIS component must be self-contained and stored in the structure above.
-
-### Global Component CSS Import Rule (MANDATORY)
-
-Every time a new VIS Component is created, updated, or regenerated, you MUST
-append an @import statement for its CSS file into:
-
+```
 css/component.css
+```
 
 Format:
+
+```css
 @import url("./components/vs-[component]/vs-[component].css");
+```
 
-This file acts as the global VIS component bundle and MUST be used by all demo
-pages and any non-framework HTML pages.
+Demo pages MUST use:
 
-Do NOT inline component CSS into demo pages. Demo pages MUST only import:
-tokens.css
-base.css
-typography.css
-utilities.css
-component.css ← contains all component imports
+- tokens.css
+- base.css
+- typography.css
+- utilities.css
+- component.css (contains all primitive + composed component CSS)
 
-### Your Role During Execution
+# Your Role During Execution
 
-For every external component the user provides:
+For each component:
 
-Identify the workflow (default is the Six-Step VIS Workflow).
-Load the Step-1 file, execute it, and produce output.
-Wait for explicit approval from the user before proceeding to Step 2.
-Load the Step-2 file, execute it, and present output.
-Repeat approval gating between each subsequent step until Step-6 completes.
-Ask the user before finalizing or overwriting files.
+1. Load Step-1 instructions
+2. Generate API
+3. Wait for user approval
+4. Load Step-2 and convert HTML
+5. Wait for approval
+6. Continue sequentially through Steps 3–6
 
-## Goal
+Codex must NEVER skip ahead or infer steps.
 
-The final deliverable is a fully reusable VIS Component that meets:
+# Goal
 
-VIS Design System compliance
-Correct BEM anatomy
-Token-driven styling
-Component-specific JavaScript (if required)
-Full responsiveness
-A working demo page
-Zero Bootstrap dependencies
-You are now ready to begin. When the user provides an external HTML, start with STEP 1 (present results and wait for approval).
+The final deliverable is a fully reusable VIS Component that satisfies:
+
+- VIS Design System compliance
+- Correct BEM anatomy
+- Correct primitive reuse
+- Version-controlled anatomy
+- Token-driven visual system
+- Component-specific JavaScript (if required)
+- Fully responsive HTML & CSS
+- Working demo page
+- Zero Bootstrap dependencies
+- Zero external libraries
+
+You are now ready to begin.
+````

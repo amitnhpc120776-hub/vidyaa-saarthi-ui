@@ -4,55 +4,72 @@
    ======================================================================== */
 
 document.addEventListener("DOMContentLoaded", () => {
-  const radioComponents = document.querySelectorAll(".vs-radio[data-vs-radio]");
+  const radios = document.querySelectorAll(".vs-radio");
 
-  radioComponents.forEach((radio) => {
-    const input = radio.querySelector(".vs-radio__input");
-    if (!input) return;
+  radios.forEach((radio) => {
+    const input = radio.querySelector("input[type='radio']");
+    const isDisabled = input.hasAttribute("disabled");
+    const isReadonly = input.hasAttribute("readonly");
 
-    const defaultTabIndex = input.tabIndex;
-    let lastChecked = input.checked;
+    // INITIAL STATE SYNC
+    // -------------------------
+    // Preserve existing functional classes (.is-error, .is-success, etc.)
+    if (isDisabled) radio.classList.add("is-disabled");
+    if (isReadonly) radio.classList.add("is-readonly");
+    if (input.checked) radio.classList.add("is-checked");
 
-    const syncState = () => {
-      const isDisabled = input.disabled || radio.classList.contains("is-disabled");
-      const isReadonly = input.hasAttribute("readonly") || radio.classList.contains("is-readonly");
-      const isChecked = input.checked;
+    // When unchecked, remove only is-checked (do NOT remove error/success/etc.)
+    if (!input.checked) radio.classList.remove("is-checked");
 
-      radio.classList.toggle("is-disabled", isDisabled);
-      radio.classList.toggle("is-readonly", isReadonly);
-      radio.classList.toggle("is-checked", isChecked);
+    // STATE CHANGE HANDLER
+    // -------------------------
+    input.addEventListener("change", () => {
+      // Remove is-checked from ALL radios in the same group
+      const groupName = input.getAttribute("name");
+      document
+        .querySelectorAll(`input[name="${groupName}"]`)
+        .forEach((otherInput) => {
+          const otherRadio = otherInput.closest(".vs-radio");
+          if (otherRadio) otherRadio.classList.remove("is-checked");
+        });
 
-      input.setAttribute("aria-readonly", isReadonly ? "true" : "false");
-      input.tabIndex = isDisabled ? -1 : defaultTabIndex;
+      // Apply is-checked to the current component
+      if (input.checked) radio.classList.add("is-checked");
+    });
 
-      lastChecked = isChecked;
-    };
+    // KEYBOARD ACCESSIBILITY
+    // -------------------------
+    radio.addEventListener("keydown", (e) => {
+      if (isDisabled || isReadonly) return;
 
-    const handleChange = (event) => {
-      const isReadonly = radio.classList.contains("is-readonly") || input.hasAttribute("readonly");
-      if (isReadonly) {
-        event.preventDefault();
-        input.checked = lastChecked;
-        return;
+      if (e.key === " " || e.key === "Enter") {
+        e.preventDefault();
+        input.click();
       }
-      syncState();
-    };
+    });
 
-    const handleFocus = (event) => {
-      if (event.target.matches(":focus-visible")) {
-        radio.classList.add("is-focus-visible");
-      }
-    };
+    // FOCUS-VISIBLE SUPPORT
+    // -------------------------
+    input.addEventListener("focus", () => {
+      radio.classList.add("is-focus-visible");
+    });
 
-    const handleBlur = () => {
+    input.addEventListener("blur", () => {
       radio.classList.remove("is-focus-visible");
-    };
+    });
 
-    input.addEventListener("change", handleChange);
-    input.addEventListener("input", handleChange);
-    input.addEventListener("focus", handleFocus);
-    input.addEventListener("blur", handleBlur);
+    // MOUSE STATES (optional, improves UX)
+    // -------------------------
+    radio.addEventListener("mousedown", () => {
+      radio.classList.add("is-active");
+    });
 
-    syncState();
+    radio.addEventListener("mouseup", () => {
+      radio.classList.remove("is-active");
+    });
+
+    radio.addEventListener("mouseleave", () => {
+      radio.classList.remove("is-active");
+    });
   });
 });

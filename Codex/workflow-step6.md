@@ -1,106 +1,260 @@
 # STEP 6 — Create Final Reusable Component Snippet & Demo Page
 
-This file is part of the Six-Step VIS Component Conversion Workflow. Follow the instructions defined in conversion-master-agent.md.
+This file is part of the Six-Step VIS Component Conversion Workflow.  
+Follow the instructions defined in conversion-master-agent.md.
 
 ## Input Files You Must Use
 
-conversion-master-agent.md
-VIS Design System:
-tokens.css
-base.css
-typography.css
-utilities.css
-VIS Component Files (outputs of previous steps):
-VIS HTML → css/components/vs-[component]/vs-[component].html
-VIS CSS → css/components/vs-[component]/vs-[component].css
-VIS JS → js/components/vs-[component]/vs-[component].js (if the component requires JS)
-Only use previous steps of this workflow.
+- conversion-master-agent.md
+- VIS Design System:
+  - tokens.css
+  - base.css
+  - typography.css
+  - utilities.css
+- VIS Component Files (outputs of previous steps):
+  - VIS HTML → css/components/vs-[component]/vs-[component].html
+  - VIS CSS → css/components/vs-[component]/vs-[component].css
+  - VIS JS → js/components/vs-[component]/vs-[component].js (if required)
+
+Use only previous steps’ outputs.  
+No new assumptions are allowed.
 
 ## Your Tasks (Step 6)
 
-### Produce:
+### 1. Produce the Final Reusable Component HTML Snippet
 
-Final Reusable Component HTML Snippet — exact snippet developers will copy into pages. No wrapper demo markup. Follow the BEM anatomy exactly.
+This snippet MUST be:
 
-A Fully Working Demo/Test Page — ready-to-run HTML page that loads VIS system files and shows the component in default + at least one variant + one size + one interactive state where applicable.
+- Exactly the canonical markup defined in Step 2
+- Matching the Canonical Anatomy Block from Step 1
+- Free from demo wrappers, experimental markup, or layout scaffolding
+- Strict VIS namespace + BEM
+- Strict primitive usage (vs-icon, vs-btn, vs-input, vs-badge, etc.)
 
-### RULES
+This is the **production-ready** copy-paste block for developers.
 
-No inline CSS, <style> blocks, inline JS, or external CDNs.
-Use only VIS system + component files.
-All demo/test pages MUST import css/component.css (the global component bundle).
-They MUST NOT import individual component CSS files directly.
+You MUST NOT:
+
+- Add or remove elements versus Step 1 anatomy
+- Introduce new wrappers or states
+- Change primitive markup
+
+### 2. Produce a Fully Working Demo/Test Page
+
+The demo page MUST:
+
+- Import ONLY VIS system files + global `component.css`
+- MUST NOT import individual component CSS files
+- Use canonical import patterns, for example:
 
 Correct:
 
-<link rel="stylesheet" href="../../component.css">
+```html
+<link rel="stylesheet" href="../../component.css" />
+```
 
 Incorrect:
 
-<link rel="stylesheet" href="../vs-[component]/vs-[component].css">  ❌
+```html
+<link rel="stylesheet" href="../vs-[component]/vs-[component].css" />
+<!-- ❌ -->
+```
 
-Demo must import VIS system CSS using canonical vs-designSystem path.
-Demo/Test Page Requirements
-Include VIS system stylesheet imports in <head>:
-Include VIS JavaScript (if applicable) at the end of <body>:
-Insert Component HTML into a preview container:
-Do NOT modify the component HTML.
+> Note: The exact relative path may differ depending on your project root,
+> but the intent is: **use the global component bundle, not per-component CSS.**
 
-Do NOT create alternative or demo-only markup for VIS primitives
-(vs-btn, vs-input, vs-icon, vs-close, vs-badge, vs-divider, vs-spinner, etc.).
-Use primitives exactly as defined in their own components and only through
-their public BEM classes.
+### Demo/Test Page Requirements
 
-Provide multiple preview blocks — each variant/size/state shown inside:
-Show at minimum:
+You MUST:
 
-Default component
-One visual variant
-One size variant
-One interactive state (if possible)
-Use VIS utilities for spacing and alignment (e.g., utility classes like mt-24).
+1. Include VIS system stylesheets in `<head>`:
 
-Layout Rules
-No external layout frameworks
-Keep page simple
-Use VIS utilities only
+   - tokens.css
+   - base.css
+   - typography.css
+   - utilities.css
+   - component.css
 
-## Output
+2. Include the component JS file (if required) at the end of `<body>`,
+   using the appropriate relative path, e.g.:
 
-Your output must contain the following sections:
+   ```html
+   <script src="[relative-path-to]/js/components/vs-[component]/vs-[component].js"></script>
+   ```
+
+3. Insert the component HTML snippet **exactly as-is** inside preview blocks
+   (no structural modifications).
+
+4. Use VIS utility classes for layout/spacing (`mt-24`, `mb-16`, `p-12`, flex utilities, etc.).
+
+5. Show at minimum:
+
+   - Default component
+   - One visual variant
+   - One size variant
+   - One interactive state (if applicable)
+
+6. Use NO external libraries, CDNs, or inline scripts.
+
+7. Use NO custom wrappers around VIS primitives.
+
+8. Add NO markup that contradicts or extends the BEM anatomy from Step 1.
+
+### Strict Primitive Reuse in Demo Pages
+
+You MUST NOT create alternative markup for core primitives:
+
+- vs-btn
+- vs-input
+- vs-icon
+- vs-close
+- vs-checkbox
+- vs-radio
+- vs-switch
+- vs-badge
+- vs-divider
+- vs-spinner
+
+Use them exactly as defined in their own components, with their public BEM classes only.
+
+---
+
+## Structural Consistency Validation (Against Steps 1–5)
+
+Before finalizing Step 6 output, Codex MUST validate:
+
+### Snippet validation
+
+- Snippet matches Step 1 Canonical Anatomy exactly.
+- No extra/unlisted elements.
+- No missing required elements.
+- No invented wrappers.
+- Uses only variants & states defined in Step 1.
+- Uses primitives where Step 1/2 indicate them.
+
+### Demo validation
+
+- Demo renders the snippet exactly (no structural modifications).
+- No conflicts between snippet, CSS, and JS behavior.
+- Variants/sizes/states demoed match the Step 1 API.
+- JS selectors from Step 4 match the demo HTML structure.
+- The demo uses the same `.vs-[component]` root as defined previously.
+
+If any mismatch exists, Codex MUST correct the snippet or demo before presenting output.
+
+---
+
+## Output Format (Mandatory)
 
 ### OUTPUT SECTION 1 → Final Reusable Component HTML Snippet
 
-Provide the exact final snippet developers will use in production pages (no demo wrappers).
+Provide the exact snippet developers will use in production:
+
+- No demo wrappers.
+- No extra containers beyond the block root and its BEM elements.
+- No placeholder elements outside the defined anatomy.
+- Must match:
+
+  - Step 1 Canonical Anatomy Block, and
+  - Step 2 VIS HTML structure.
 
 ### OUTPUT SECTION 2 → Full Demo/Test HTML Page
 
-A complete, ready-to-run HTML page including <html>, <head>, imports, component HTML, and scripts as described above. Store as:
+Provide a complete, ready-to-run HTML page including:
 
+- `<html>`, `<head>`, VIS system imports
+- `<body>` containing:
+
+  - one or more preview blocks
+  - each block using the canonical snippet with:
+
+    - default
+    - one variant
+    - one size
+    - one interactive state (when applicable)
+
+- Component JS import (if the component requires JS)
+
+This file MUST be stored as:
+
+```text
 css/components/vs-[component]/vs-[component]-demo.html
+```
 
 ### OUTPUT SECTION 3 → Usage Notes
 
-Explain:
+Explain clearly:
 
-How developers should use this component.
-How to apply variants: vs-[component]--primary, etc.
-How to apply sizes: vs-[component]--lg, etc.
-JS initialization instructions (if required).
-Accessibility requirements.
-Quality Checklist (MANDATORY BEFORE COMPLETING OUTPUT)
-HTML uses only VIS BEM classes.
-No Bootstrap classes.
-No inline styles or scripts.
-Demo imports correct design-system files (canonical vs-designSystem).
-Component uses VIS tokens.
-JS (if any) is vanilla and scoped.
-Storage Rule
-Store final component demo as:
+- How developers should embed this component in production pages.
 
+- How to apply variants (`vs-[component]--primary`, etc.).
+
+- How to apply sizes (`vs-[component]--lg`, etc.).
+
+- How the JS lifecycle works, for example:
+
+  ```javascript
+  // If using plain HTML:
+  // Auto-init will run on DOMContentLoaded inside vs-[component].js
+
+  // If dynamically inserting a component:
+  initVs[ComponentName](rootElement);
+
+  // If removing a component:
+  destroyVs[ComponentName](rootElement);
+  ```
+
+- Any accessibility requirements (ARIA attributes, keyboard behavior).
+
+- Any required parent structure (only if dictated by the API/Anatomy).
+
+---
+
+## OUTPUT SECTION 4 — Quality Checklist (MANDATORY BEFORE COMPLETING OUTPUT)
+
+Before finalizing Step 6, validate:
+
+### Snippet Requirements
+
+- Uses ONLY VIS BEM classes.
+- Matches Step 1 Canonical Anatomy EXACTLY.
+- No Bootstrap classes.
+- No inline styles or inline scripts.
+- No invented wrappers.
+- No missing BEM elements.
+- Correct and consistent use of primitives (vs-btn, vs-input, vs-icon, etc.).
+
+### Demo Requirements
+
+- Imports all required VIS system files.
+- Imports only the global `component.css` (no direct per-component CSS).
+- Includes at least:
+
+  - one default example
+  - one visual variant
+  - one size variant
+  - one interactive state (if the component is interactive)
+
+- Does NOT introduce alternative markup for VIS primitives.
+- Demonstrates correct interactive behavior where JS exists.
+- Visual behavior is token-driven (no ad-hoc styling).
+
+### Behavior & Accessibility
+
+- Component JS file is correctly referenced.
+- No JS errors when running the demo.
+- ARIA attributes are present where required and updated by JS.
+- Keyboard navigation and focus behavior work as expected.
+- For overlays/dialogs, focus is managed correctly, and ESC closes where applicable.
+
+### Final Storage Validation
+
+Confirm that the demo file is stored exactly at:
+
+```text
 css/components/vs-[component]/vs-[component]-demo.html
+```
 
-### OUTPUT Section 4 Quality Checklist (MANDATORY BEFORE COMPLETING OUTPUT)
+and uses only the approved VIS system + component bundle imports.
 
-Demo does not introduce new markup or behavior for VIS primitive components
-(vs-btn, vs-input, vs-icon, vs-close, vs-checkbox, vs-radio, vs-switch, vs-badge, vs-divider, vs-spinner).
+========================
