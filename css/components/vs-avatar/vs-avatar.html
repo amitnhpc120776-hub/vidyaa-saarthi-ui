@@ -1,0 +1,25 @@
+<!-- VIS HTML Snippet -->
+<div class="vs-avatar vs-avatar--md vs-avatar--circle vs-avatar--image">
+  <div class="vs-avatar__item">
+    <span class="vs-avatar__media" role="img" aria-label="Profile photo of Jamie Doe">
+      <img class="vs-avatar__image" src="assets/images/avatar-default.jpg" alt="Profile photo of Jamie Doe" />
+      <span class="vs-avatar__initials" aria-hidden="true">JD</span>
+      <span class="vs-avatar__icon" aria-hidden="true" data-icon="user"></span>
+    </span>
+    <span class="vs-avatar__status" aria-hidden="true"></span>
+    <span class="vs-avatar__status-label">Online</span>
+  </div>
+</div>
+
+<!-- Notes for Integration -->
+<!--
+- Apply shape modifiers to the root (.vs-avatar--square, .vs-avatar--rounded, .vs-avatar--circle).
+- Apply size modifiers to the root (.vs-avatar--xs through .vs-avatar--xxl); md is default.
+- Apply content modifiers on the root to control which media is visible (.vs-avatar--image, .vs-avatar--initials, .vs-avatar--icon).
+- Apply status modifiers on the root (.vs-avatar--status-online, -offline, -away, -busy, -custom) to style the indicator; status label conveys accessible text.
+- Use border/surface modifiers (.vs-avatar--bordered, .vs-avatar--no-border, .vs-avatar--ring) as needed.
+- Background color modifiers (.vs-avatar--primary, .vs-avatar--secondary, .vs-avatar--success, .vs-avatar--warning, .vs-avatar--danger, .vs-avatar--info, .vs-avatar--light, .vs-avatar--dark, .vs-avatar--neutral) can be combined with content types.
+- For grouped layouts, wrap multiple .vs-avatar__item elements inside a root with .vs-avatar--group and add .vs-avatar--group-overlap, .vs-avatar--inline, or .vs-avatar--stacked to control alignment.
+- Keep only one active content element visible through modifiers; unused elements stay available for fallbacks.
+- Provide descriptive aria-labels on .vs-avatar__media when using images or initials. Keep .vs-avatar__status-label text in sync with the status modifier.
+-->
