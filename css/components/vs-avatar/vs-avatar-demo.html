@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>vs-avatar Demo</title>
+    <link rel="stylesheet" href="../../vs-designSystem/tokens.css" />
+    <link rel="stylesheet" href="../../vs-designSystem/base.css" />
+    <link rel="stylesheet" href="../../vs-designSystem/typography.css" />
+    <link rel="stylesheet" href="../../vs-designSystem/utilities.css" />
+    <link rel="stylesheet" href="./vs-avatar.css" />
+  </head>
+  <body class="p-24 bg-neutral-50">
+    <main class="stack-24">
+      <section class="stack-12">
+        <h1 class="text-h4">vs-avatar — Demo</h1>
+        <p class="text-body-md">Default avatar with image content and online status.</p>
+        <div class="vs-avatar vs-avatar--md vs-avatar--circle vs-avatar--image vs-avatar--status-online">
+          <div class="vs-avatar__item">
+            <span class="vs-avatar__media" role="img" aria-label="Profile photo of Jamie Doe">
+              <img class="vs-avatar__image" src="assets/images/avatar-default.jpg" alt="Profile photo of Jamie Doe" />
+              <span class="vs-avatar__initials" aria-hidden="true">JD</span>
+              <span class="vs-avatar__icon" aria-hidden="true" data-icon="user"></span>
+            </span>
+            <span class="vs-avatar__status" aria-hidden="true"></span>
+            <span class="vs-avatar__status-label">Online</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="stack-12">
+        <h2 class="text-h5">Visual &amp; Surface Variants</h2>
+        <div class="flex gap-12 flex-wrap">
+          <div class="vs-avatar vs-avatar--sm vs-avatar--rounded vs-avatar--initials vs-avatar--primary vs-avatar--status-away">
+            <div class="vs-avatar__item">
+              <span class="vs-avatar__media" role="img" aria-label="Initials for Taylor Lee">
+                <span class="vs-avatar__initials">TL</span>
+                <span class="vs-avatar__icon" aria-hidden="true" data-icon="user"></span>
+              </span>
+              <span class="vs-avatar__status" aria-hidden="true"></span>
+              <span class="vs-avatar__status-label">Away</span>
+            </div>
+          </div>
+
+          <div class="vs-avatar vs-avatar--lg vs-avatar--square vs-avatar--icon vs-avatar--warning vs-avatar--ring vs-avatar--status-busy">
+            <div class="vs-avatar__item">
+              <span class="vs-avatar__media" role="img" aria-label="Warning icon avatar">
+                <span class="vs-avatar__icon" data-icon="⚠" aria-hidden="false"></span>
+              </span>
+              <span class="vs-avatar__status" aria-hidden="true"></span>
+              <span class="vs-avatar__status-label">Busy</span>
+            </div>
+          </div>
+
+          <div class="vs-avatar vs-avatar--xl vs-avatar--circle vs-avatar--image vs-avatar--dark vs-avatar--bordered vs-avatar--status-offline">
+            <div class="vs-avatar__item">
+              <span class="vs-avatar__media" role="img" aria-label="Profile photo of Jordan Ray">
+                <img class="vs-avatar__image" src="assets/images/avatar-dark.jpg" alt="Profile photo of Jordan Ray" />
+                <span class="vs-avatar__initials" aria-hidden="true">JR</span>
+                <span class="vs-avatar__icon" aria-hidden="true" data-icon="user"></span>
+              </span>
+              <span class="vs-avatar__status" aria-hidden="true"></span>
+              <span class="vs-avatar__status-label">Offline</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="stack-12">
+        <h2 class="text-h5">Size Variants</h2>
+        <div class="flex gap-12 flex-wrap align-center">
+          <div class="vs-avatar vs-avatar--xs vs-avatar--circle vs-avatar--initials vs-avatar--status-online">
+            <div class="vs-avatar__item">
+              <span class="vs-avatar__media" role="img" aria-label="Initials for Ava Kim">
+                <span class="vs-avatar__initials">AK</span>
+                <span class="vs-avatar__icon" aria-hidden="true" data-icon="user"></span>
+              </span>
+              <span class="vs-avatar__status" aria-hidden="true"></span>
+              <span class="vs-avatar__status-label">Online</span>
+            </div>
+          </div>
+          <div class="vs-avatar vs-avatar--sm vs-avatar--rounded vs-avatar--image vs-avatar--status-custom">
+            <div class="vs-avatar__item">
+              <span class="vs-avatar__media" role="img" aria-label="Profile photo of Casey Roy">
+                <img class="vs-avatar__image" src="assets/images/avatar-small.jpg" alt="Profile photo of Casey Roy" />
+                <span class="vs-avatar__initials" aria-hidden="true">CR</span>
+                <span class="vs-avatar__icon" aria-hidden="true" data-icon="user"></span>
+              </span>
+              <span class="vs-avatar__status" aria-hidden="true"></span>
+              <span class="vs-avatar__status-label">Custom status</span>
+            </div>
+          </div>
+          <div class="vs-avatar vs-avatar--lg vs-avatar--circle vs-avatar--image vs-avatar--status-away">
+            <div class="vs-avatar__item">
+              <span class="vs-avatar__media" role="img" aria-label="Profile photo of Riley Quinn">
+                <img class="vs-avatar__image" src="assets/images/avatar-large.jpg" alt="Profile photo of Riley Quinn" />
+                <span class="vs-avatar__initials" aria-hidden="true">RQ</span>
+                <span class="vs-avatar__icon" aria-hidden="true" data-icon="user"></span>
+              </span>
+              <span class="vs-avatar__status" aria-hidden="true"></span>
+              <span class="vs-avatar__status-label">Away</span>
+            </div>
+          </div>
+          <div class="vs-avatar vs-avatar--xxl vs-avatar--circle vs-avatar--initials vs-avatar--info vs-avatar--status-online">
+            <div class="vs-avatar__item">
+              <span class="vs-avatar__media" role="img" aria-label="Initials for Morgan Lee">
+                <span class="vs-avatar__initials">ML</span>
+                <span class="vs-avatar__icon" aria-hidden="true" data-icon="user"></span>
+              </span>
+              <span class="vs-avatar__status" aria-hidden="true"></span>
+              <span class="vs-avatar__status-label">Online</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="stack-12">
+        <h2 class="text-h5">Grouped Avatars</h2>
+        <p class="text-body-sm">Overlap and inline variants with mixed statuses.</p>
+        <div class="vs-avatar vs-avatar--group vs-avatar--group-overlap vs-avatar--md">
+          <div class="vs-avatar__item">
+            <span class="vs-avatar__media" role="img" aria-label="Profile photo of Harper Day">
+              <img class="vs-avatar__image" src="assets/images/avatar-one.jpg" alt="Profile photo of Harper Day" />
+              <span class="vs-avatar__initials" aria-hidden="true">HD</span>
+              <span class="vs-avatar__icon" aria-hidden="true" data-icon="user"></span>
+            </span>
+            <span class="vs-avatar__status" aria-hidden="true"></span>
+            <span class="vs-avatar__status-label">Online</span>
+          </div>
+          <div class="vs-avatar__item vs-avatar--status-away">
+            <span class="vs-avatar__media" role="img" aria-label="Initials for Jamie Fox">
+              <span class="vs-avatar__initials">JF</span>
+              <span class="vs-avatar__icon" aria-hidden="true" data-icon="user"></span>
+            </span>
+            <span class="vs-avatar__status" aria-hidden="true"></span>
+            <span class="vs-avatar__status-label">Away</span>
+          </div>
+          <div class="vs-avatar__item vs-avatar--status-busy">
+            <span class="vs-avatar__media" role="img" aria-label="Initials for Kasey Poe">
+              <span class="vs-avatar__initials">KP</span>
+              <span class="vs-avatar__icon" aria-hidden="true" data-icon="user"></span>
+            </span>
+            <span class="vs-avatar__status" aria-hidden="true"></span>
+            <span class="vs-avatar__status-label">Busy</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="../../js/components/vs-avatar/vs-avatar.js"></script>
+  </body>
+</html>
