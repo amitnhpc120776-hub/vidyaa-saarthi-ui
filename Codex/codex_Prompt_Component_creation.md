@@ -29,8 +29,6 @@ You MUST execute the workflow in strict order:
 5. Step 5 → Add variants & sizes
 6. Step 6 → Produce final snippet + demo page
 
-Stop after each step and wait for approval.
-
 ## 3. VIS Design System Requirements
 
 All styling MUST strictly use tokens from:
@@ -48,53 +46,6 @@ You MUST follow:
 - Strict BEM structure
 - No inline styles or inline scripts
 - No Bootstrap classes, no jQuery, no external libraries
-
-## 4. Variant, Size & State Requirements (Generic Template)
-
-When designing the Component API in **Step 1**, you MUST define variants, sizes, and states appropriate for the component.  
-Examples (YOU MUST CUSTOMIZE PER COMPONENT):
-
-### Visual Variants (examples)
-
-- `vs-[component]--default`
-- `vs-[component]--primary`
-- `vs-[component]--success`
-- `vs-[component]--warning`
-- `vs-[component]--danger`
-- `vs-[component]--info`
-
-### Size Variants
-
-- `vs-[component]--sm`
-- `vs-[component]--md` (default)
-- `vs-[component]--lg`
-
-### Layout Variants (examples)
-
-- `vs-[component]--inline`
-- `vs-[component]--block`
-- `vs-[component]--with-icon-left`
-- `vs-[component]--with-icon-right`
-
-### Functional States (.is-\* states)
-
-- `.is-active`
-- `.is-disabled`
-- `.is-focused`
-- `.is-selected`
-- `.is-loading` (must use `vs-spinner`)
-- `.is-success`
-- `.is-error`
-
-### Optional BEM Elements (examples)
-
-- `vs-[component]__label`
-- `vs-[component]__icon`
-- `vs-[component]__description`
-- `vs-[component]__wrapper`
-- `vs-[component]__content`
-
-(You must define the exact canonical anatomy in Step 1.)
 
 ## 5. Codex MUST NOT:
 
