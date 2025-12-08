@@ -11,6 +11,6 @@
    - workflow-step6.md
 5. IMPORTANT: This component must reflect the full behavior and structural flexibility of the Bootstrap 5.3
 6. You must follow the VIS Design System strictly.
-7. ## Required variants of **vs-input** ( fill the list below if needed)
+7. ## Required variants of **...........** ( fill the list below if needed)
    -
    -
