@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VIS Component Demo — vs-checkbox</title>
+    <link rel="stylesheet" href="../../vs-designSystem/tokens.css" />
+    <link rel="stylesheet" href="../../vs-designSystem/base.css" />
+    <link rel="stylesheet" href="../../vs-designSystem/typography.css" />
+    <link rel="stylesheet" href="../../vs-designSystem/utilities.css" />
+    <link rel="stylesheet" href="../../component.css" />
+  </head>
+  <body class="p-24">
+    <section class="test-area">
+      <h2>Component Test: vs-checkbox</h2>
+
+      <div class="demo-block">
+        <p>Default (canonical snippet)</p>
+        <label class="vs-checkbox">
+          <input class="vs-checkbox__input" type="checkbox" name="default" />
+          <span class="vs-checkbox__control" aria-hidden="true">
+            <span class="vs-checkbox__icon"></span>
+          </span>
+          <span class="vs-checkbox__label">Default checkbox</span>
+          <span class="vs-checkbox__support">Supporting helper text goes here.</span>
+        </label>
+      </div>
+
+      <div class="demo-block">
+        <p>Size modifier (small)</p>
+        <label class="vs-checkbox vs-checkbox--sm">
+          <input class="vs-checkbox__input" type="checkbox" name="size-small" />
+          <span class="vs-checkbox__control" aria-hidden="true">
+            <span class="vs-checkbox__icon"></span>
+          </span>
+          <span class="vs-checkbox__label">Small size checkbox</span>
+          <span class="vs-checkbox__support">Compact spacing for dense lists.</span>
+        </label>
+      </div>
+
+      <div class="demo-block">
+        <p>Invalid visual treatment</p>
+        <label class="vs-checkbox is-invalid">
+          <input class="vs-checkbox__input" type="checkbox" name="invalid" aria-invalid="true" />
+          <span class="vs-checkbox__control" aria-hidden="true">
+            <span class="vs-checkbox__icon"></span>
+          </span>
+          <span class="vs-checkbox__label">Requires confirmation</span>
+          <span class="vs-checkbox__support">This field must be accepted before continuing.</span>
+        </label>
+      </div>
+
+      <div class="demo-block">
+        <p>Interactive state (indeterminate)</p>
+        <label class="vs-checkbox">
+          <input class="vs-checkbox__input" type="checkbox" name="indeterminate" data-vs-indeterminate="true" />
+          <span class="vs-checkbox__control" aria-hidden="true">
+            <span class="vs-checkbox__icon"></span>
+          </span>
+          <span class="vs-checkbox__label">Partial selection</span>
+          <span class="vs-checkbox__support">Click to cycle off or on; initialized as mixed.</span>
+        </label>
+      </div>
+    </section>
+
+    <script src="../../js/components/vs-checkbox/vs-checkbox.js"></script>
+  </body>
+</html>

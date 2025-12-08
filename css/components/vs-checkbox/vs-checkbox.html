@@ -1,0 +1,17 @@
+<!-- VIS HTML Snippet -->
+<label class="vs-checkbox">
+  <input class="vs-checkbox__input" type="checkbox" name="vs-checkbox" />
+  <span class="vs-checkbox__control" aria-hidden="true">
+    <span class="vs-checkbox__icon"></span>
+  </span>
+  <span class="vs-checkbox__label">Checkbox label</span>
+  <span class="vs-checkbox__support">Supporting helper text goes here.</span>
+</label>
+
+<!-- Notes for integration -->
+<!--
+- Wrap the native checkbox with the .vs-checkbox root as shown; the label tag ensures click/keyboard activation.
+- Apply aria-invalid="true" on the input to show the invalid state; use the disabled attribute on the input to disable.
+- Add data-vs-indeterminate="true" on the input to initialize the indeterminate/mixed state (JS sets input.indeterminate).
+- If you separate the input from the label, connect them with matching id and for attributes; the snippet keeps them together by default.
+-->
