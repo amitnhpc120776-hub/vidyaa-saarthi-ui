@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VIS Component Demo — vs-radio</title>
+    <link rel="stylesheet" href="../../vs-designSystem/tokens.css" />
+    <link rel="stylesheet" href="../../vs-designSystem/base.css" />
+    <link rel="stylesheet" href="../../vs-designSystem/typography.css" />
+    <link rel="stylesheet" href="../../vs-designSystem/utilities.css" />
+    <link rel="stylesheet" href="../../component.css" />
+  </head>
+  <body>
+    <section class="test-area">
+      <h2>Component Test: vs-radio</h2>
+
+      <div class="demo-block">
+        <p>Default and checked radios</p>
+        <div class="vs-radio vs-radio--default vs-radio--md vs-radio--block" data-vs-radio>
+          <input class="vs-radio__input" type="radio" id="demo-radio-default" name="demo-radio-group" aria-describedby="demo-radio-default-desc" />
+          <span class="vs-radio__control" aria-hidden="true"></span>
+          <label class="vs-radio__label" for="demo-radio-default">Default radio</label>
+          <p class="vs-radio__description" id="demo-radio-default-desc">Unselected state with helper text.</p>
+        </div>
+
+        <div class="vs-radio vs-radio--primary vs-radio--md vs-radio--block is-checked" data-vs-radio>
+          <input class="vs-radio__input" type="radio" id="demo-radio-checked" name="demo-radio-group" checked aria-describedby="demo-radio-checked-desc" />
+          <span class="vs-radio__control" aria-hidden="true"></span>
+          <label class="vs-radio__label" for="demo-radio-checked">Checked radio</label>
+          <p class="vs-radio__description" id="demo-radio-checked-desc">Primary accent applied.</p>
+        </div>
+      </div>
+
+      <div class="demo-block">
+        <p>Visual variants</p>
+        <div class="vs-radio vs-radio--secondary vs-radio--inline" data-vs-radio>
+          <input class="vs-radio__input" type="radio" id="demo-radio-secondary" name="demo-radio-variants" />
+          <span class="vs-radio__control" aria-hidden="true"></span>
+          <label class="vs-radio__label" for="demo-radio-secondary">Secondary</label>
+        </div>
+
+        <div class="vs-radio vs-radio--success vs-radio--inline is-checked" data-vs-radio>
+          <input class="vs-radio__input" type="radio" id="demo-radio-success" name="demo-radio-variants" checked />
+          <span class="vs-radio__control" aria-hidden="true"></span>
+          <label class="vs-radio__label" for="demo-radio-success">Success</label>
+        </div>
+
+        <div class="vs-radio vs-radio--warning vs-radio--inline" data-vs-radio>
+          <input class="vs-radio__input" type="radio" id="demo-radio-warning" name="demo-radio-variants" />
+          <span class="vs-radio__control" aria-hidden="true"></span>
+          <label class="vs-radio__label" for="demo-radio-warning">Warning</label>
+        </div>
+
+        <div class="vs-radio vs-radio--danger vs-radio--inline is-error" data-vs-radio>
+          <input class="vs-radio__input" type="radio" id="demo-radio-danger" name="demo-radio-variants" />
+          <span class="vs-radio__control" aria-hidden="true"></span>
+          <label class="vs-radio__label" for="demo-radio-danger">Danger</label>
+        </div>
+      </div>
+
+      <div class="demo-block">
+        <p>Sizes, layout, and disabled/read-only states</p>
+        <div class="vs-radio vs-radio--sm vs-radio--inline" data-vs-radio>
+          <input class="vs-radio__input" type="radio" id="demo-radio-small" name="demo-radio-misc" />
+          <span class="vs-radio__control" aria-hidden="true"></span>
+          <label class="vs-radio__label" for="demo-radio-small">Small size</label>
+        </div>
+
+        <div class="vs-radio vs-radio--md vs-radio--inline is-readonly" data-vs-radio>
+          <input class="vs-radio__input" type="radio" id="demo-radio-readonly" name="demo-radio-misc" readonly aria-describedby="demo-radio-readonly-desc" />
+          <span class="vs-radio__control" aria-hidden="true"></span>
+          <label class="vs-radio__label" for="demo-radio-readonly">Read-only</label>
+          <p class="vs-radio__description" id="demo-radio-readonly-desc">State cannot be changed.</p>
+        </div>
+
+        <div class="vs-radio vs-radio--lg vs-radio--inline is-disabled" data-vs-radio>
+          <input class="vs-radio__input" type="radio" id="demo-radio-disabled" name="demo-radio-misc" disabled aria-describedby="demo-radio-disabled-desc" />
+          <span class="vs-radio__control" aria-hidden="true"></span>
+          <label class="vs-radio__label" for="demo-radio-disabled">Disabled large</label>
+          <p class="vs-radio__description" id="demo-radio-disabled-desc">Non-interactive example.</p>
+        </div>
+      </div>
+    </section>
+    <script src="../../js/custom.js"></script>
+    <script src="../../../js/components/vs-radio/vs-radio.js"></script>
+  </body>
+</html>
