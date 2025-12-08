@@ -1,3 +1,5 @@
+# prompt for Component creation
+
 You must now create a new VIS Component using the Six-Step VIS Component Conversion Workflow.
 
 ## 1. Component Definition
@@ -71,3 +73,57 @@ Across Steps 1–6, Codex must generate:
 All outputs must follow the VIS Design System, BEM, and token rules.
 
 Codex must ALWAYS request clarification when something is ambiguous.
+
+# prompt for component modifications
+
+I want to update an existing **VIS component** by adding new variants.
+Follow the Anatomy Extension Protocol strictly.
+
+1. Load the existing API file for this component from my repository:
+   css/components/vs-[component]/vs-[component]-api.md
+
+2. Modify the API by:
+
+   - Adding the following new variants: **[LIST YOUR NEW VARIANTS HERE]**
+   - Adding short descriptions for each new variant
+   - Adding a version bump (e.g., v1.0 → v1.1)
+   - Adding a one-line justification for the structural change
+
+3. After updating API file, regenerate the entire component according to the VIS Workflow. Follow ALL rules defined in:
+
+- conversion-master-agent.md
+- workflow-step1.md
+- workflow-step2.md
+- workflow-step3.md
+- workflow-step4.md
+- workflow-step5.md
+- workflow-step6.md
+
+You MUST execute the workflow in strict order:
+
+      - Step 2: VIS HTML Snippet
+
+- Step 3: VIS CSS (base styles only)
+- Step 4: Component JavaScript (if applicable)
+- Step 5: Variant & Size Modifiers (include the new variants)
+- Step 6: Final reusable component snippet and demo page
+
+4. Ensure structural consistency across all steps.
+   The new variants must:
+
+   - Be valid BEM modifiers (vs-[component]--[variant])
+   - Not modify or override primitive components
+   - Use token-driven styling (no raw px, no hex values)
+   - Use only elements defined in the Step-1 anatomy
+
+5. Before producing each step, validate:
+
+   - No invented elements
+   - No missing elements
+   - No HTML drifting from the Step-1 canonical structure
+   - No modification of VIS primitives
+
+6. Wait for my approval after Step-1 is presented before proceeding to Step-2.
+
+Start by presenting ONLY the updated Step-1 API (with the version increment).
+Do not generate Steps 2–6 until I approve Step-1.
