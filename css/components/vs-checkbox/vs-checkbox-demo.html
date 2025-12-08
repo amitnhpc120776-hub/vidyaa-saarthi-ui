@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VIS Component Demo — vs-checkbox</title>
+    <link rel="stylesheet" href="../../vs-designSystem/tokens.css" />
+    <link rel="stylesheet" href="../../vs-designSystem/base.css" />
+    <link rel="stylesheet" href="../../vs-designSystem/typography.css" />
+    <link rel="stylesheet" href="../../vs-designSystem/utilities.css" />
+    <link rel="stylesheet" href="../../component.css" />
+  </head>
+  <body class="p-24">
+    <section class="test-area">
+      <h2>Component Test: vs-checkbox</h2>
+
+      <div class="demo-block">
+        <p>Default layouts</p>
+        <div class="vs-checkbox__group">
+          <label class="vs-checkbox vs-checkbox--md vs-checkbox--default vs-checkbox--inline" role="checkbox" aria-checked="false" tabindex="0">
+            <input class="vs-checkbox__input" type="checkbox" tabindex="-1" aria-hidden="true" />
+            <span class="vs-checkbox__box" aria-hidden="true">
+              <span class="vs-checkbox__icon vs-checkbox__icon--check vs-icon" aria-hidden="true">✔</span>
+              <span class="vs-checkbox__icon vs-checkbox__icon--indeterminate vs-icon" aria-hidden="true">−</span>
+            </span>
+            <span class="vs-checkbox__label">Inline checkbox</span>
+            <span class="vs-checkbox__description">Helper text aligned with inline layout.</span>
+          </label>
+
+          <label class="vs-checkbox vs-checkbox--md vs-checkbox--primary vs-checkbox--block" role="checkbox" aria-checked="false" tabindex="0">
+            <input class="vs-checkbox__input" type="checkbox" tabindex="-1" aria-hidden="true" />
+            <span class="vs-checkbox__box" aria-hidden="true">
+              <span class="vs-checkbox__icon vs-checkbox__icon--check vs-icon" aria-hidden="true">✔</span>
+              <span class="vs-checkbox__icon vs-checkbox__icon--indeterminate vs-icon" aria-hidden="true">−</span>
+            </span>
+            <span class="vs-checkbox__label">Block checkbox</span>
+            <span class="vs-checkbox__description">Description appears below in block layout.</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="demo-block">
+        <p>States</p>
+        <div class="vs-checkbox__group">
+          <label class="vs-checkbox vs-checkbox--md vs-checkbox--success is-checked" role="checkbox" aria-checked="true" tabindex="0">
+            <input class="vs-checkbox__input" type="checkbox" tabindex="-1" aria-hidden="true" checked />
+            <span class="vs-checkbox__box" aria-hidden="true">
+              <span class="vs-checkbox__icon vs-checkbox__icon--check vs-icon" aria-hidden="true">✔</span>
+              <span class="vs-checkbox__icon vs-checkbox__icon--indeterminate vs-icon" aria-hidden="true">−</span>
+            </span>
+            <span class="vs-checkbox__label">Checked</span>
+            <span class="vs-checkbox__description">Shows the checked state.</span>
+          </label>
+
+          <label class="vs-checkbox vs-checkbox--md vs-checkbox--info is-indeterminate" role="checkbox" aria-checked="mixed" tabindex="0">
+            <input class="vs-checkbox__input" type="checkbox" tabindex="-1" aria-hidden="true" />
+            <span class="vs-checkbox__box" aria-hidden="true">
+              <span class="vs-checkbox__icon vs-checkbox__icon--check vs-icon" aria-hidden="true">✔</span>
+              <span class="vs-checkbox__icon vs-checkbox__icon--indeterminate vs-icon" aria-hidden="true">−</span>
+            </span>
+            <span class="vs-checkbox__label">Indeterminate</span>
+            <span class="vs-checkbox__description">Tri-state example.</span>
+          </label>
+
+          <label class="vs-checkbox vs-checkbox--md vs-checkbox--danger is-error" role="checkbox" aria-checked="false" tabindex="0">
+            <input class="vs-checkbox__input" type="checkbox" tabindex="-1" aria-hidden="true" />
+            <span class="vs-checkbox__box" aria-hidden="true">
+              <span class="vs-checkbox__icon vs-checkbox__icon--check vs-icon" aria-hidden="true">✔</span>
+              <span class="vs-checkbox__icon vs-checkbox__icon--indeterminate vs-icon" aria-hidden="true">−</span>
+            </span>
+            <span class="vs-checkbox__label">Error state</span>
+            <span class="vs-checkbox__description">Use `.is-error` for validation feedback.</span>
+          </label>
+
+          <label class="vs-checkbox vs-checkbox--md vs-checkbox--success is-success is-disabled" role="checkbox" aria-checked="true" aria-disabled="true" tabindex="0">
+            <input class="vs-checkbox__input" type="checkbox" tabindex="-1" aria-hidden="true" checked disabled />
+            <span class="vs-checkbox__box" aria-hidden="true">
+              <span class="vs-checkbox__icon vs-checkbox__icon--check vs-icon" aria-hidden="true">✔</span>
+              <span class="vs-checkbox__icon vs-checkbox__icon--indeterminate vs-icon" aria-hidden="true">−</span>
+            </span>
+            <span class="vs-checkbox__label">Disabled</span>
+            <span class="vs-checkbox__description">Disabled checkboxes are non-interactive.</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="demo-block">
+        <p>Sizes and density</p>
+        <div class="vs-checkbox__group">
+          <label class="vs-checkbox vs-checkbox--sm vs-checkbox--warning" role="checkbox" aria-checked="false" tabindex="0">
+            <input class="vs-checkbox__input" type="checkbox" tabindex="-1" aria-hidden="true" />
+            <span class="vs-checkbox__box" aria-hidden="true">
+              <span class="vs-checkbox__icon vs-checkbox__icon--check vs-icon" aria-hidden="true">✔</span>
+              <span class="vs-checkbox__icon vs-checkbox__icon--indeterminate vs-icon" aria-hidden="true">−</span>
+            </span>
+            <span class="vs-checkbox__label">Small size</span>
+            <span class="vs-checkbox__description">Compact form factor.</span>
+          </label>
+
+          <label class="vs-checkbox vs-checkbox--md vs-checkbox--default" role="checkbox" aria-checked="false" tabindex="0">
+            <input class="vs-checkbox__input" type="checkbox" tabindex="-1" aria-hidden="true" />
+            <span class="vs-checkbox__box" aria-hidden="true">
+              <span class="vs-checkbox__icon vs-checkbox__icon--check vs-icon" aria-hidden="true">✔</span>
+              <span class="vs-checkbox__icon vs-checkbox__icon--indeterminate vs-icon" aria-hidden="true">−</span>
+            </span>
+            <span class="vs-checkbox__label">Medium size</span>
+            <span class="vs-checkbox__description">Default spacing.</span>
+          </label>
+
+          <label class="vs-checkbox vs-checkbox--lg vs-checkbox--primary" role="checkbox" aria-checked="false" tabindex="0">
+            <input class="vs-checkbox__input" type="checkbox" tabindex="-1" aria-hidden="true" />
+            <span class="vs-checkbox__box" aria-hidden="true">
+              <span class="vs-checkbox__icon vs-checkbox__icon--check vs-icon" aria-hidden="true">✔</span>
+              <span class="vs-checkbox__icon vs-checkbox__icon--indeterminate vs-icon" aria-hidden="true">−</span>
+            </span>
+            <span class="vs-checkbox__label">Large size</span>
+            <span class="vs-checkbox__description">More prominent hit area.</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="demo-block">
+        <p>Grouped usage</p>
+        <div class="vs-checkbox__group">
+          <label class="vs-checkbox vs-checkbox--md vs-checkbox--info vs-checkbox--inline" role="checkbox" aria-checked="false" tabindex="0">
+            <input class="vs-checkbox__input" type="checkbox" tabindex="-1" aria-hidden="true" />
+            <span class="vs-checkbox__box" aria-hidden="true">
+              <span class="vs-checkbox__icon vs-checkbox__icon--check vs-icon" aria-hidden="true">✔</span>
+              <span class="vs-checkbox__icon vs-checkbox__icon--indeterminate vs-icon" aria-hidden="true">−</span>
+            </span>
+            <span class="vs-checkbox__label">Option A</span>
+            <span class="vs-checkbox__description">Inline alignment for multiple choices.</span>
+          </label>
+
+          <label class="vs-checkbox vs-checkbox--md vs-checkbox--info vs-checkbox--inline" role="checkbox" aria-checked="false" tabindex="0">
+            <input class="vs-checkbox__input" type="checkbox" tabindex="-1" aria-hidden="true" />
+            <span class="vs-checkbox__box" aria-hidden="true">
+              <span class="vs-checkbox__icon vs-checkbox__icon--check vs-icon" aria-hidden="true">✔</span>
+              <span class="vs-checkbox__icon vs-checkbox__icon--indeterminate vs-icon" aria-hidden="true">−</span>
+            </span>
+            <span class="vs-checkbox__label">Option B</span>
+            <span class="vs-checkbox__description">Use `.vs-checkbox__group` for spacing.</span>
+          </label>
+        </div>
+      </div>
+    </section>
+    <script src="../../js/components/vs-checkbox/vs-checkbox.js"></script>
+  </body>
+</html>
