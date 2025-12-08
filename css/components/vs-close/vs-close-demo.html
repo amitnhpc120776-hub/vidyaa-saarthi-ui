@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VIS Component Demo — vs-close</title>
+    <link rel="stylesheet" href="../../vs-designSystem/tokens.css" />
+    <link rel="stylesheet" href="../../vs-designSystem/base.css" />
+    <link rel="stylesheet" href="../../vs-designSystem/typography.css" />
+    <link rel="stylesheet" href="../../vs-designSystem/utilities.css" />
+    <link rel="stylesheet" href="../vs-close/vs-close.css" />
+    <link rel="stylesheet" href="../../custom.css" />
+    <style>
+      .demo-card {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--space-12);
+        padding: var(--space-12) var(--space-16);
+        border: 1px solid var(--neutral-200);
+        border-radius: var(--radius-md);
+        background: var(--surface-default);
+        color: var(--text-primary);
+      }
+
+      .demo-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-8);
+        padding: var(--space-8) var(--space-12);
+        border-radius: var(--radius-lg);
+        background: var(--neutral-50);
+        border: 1px solid var(--neutral-200);
+      }
+    </style>
+  </head>
+  <body class="p-24">
+    <header class="mb-24">
+      <h1 class="mb-12">vs-close Component Demo</h1>
+      <p class="text-secondary">Reusable close control with shape, style, color, icon, hover, and behavior variants.</p>
+    </header>
+
+    <section class="mb-24">
+      <h2 class="mb-12">Shapes & Sizes</h2>
+      <div class="flex gap-12 flex-wrap">
+        <button class="vs-close vs-close--default vs-close--sm vs-close--square vs-close--text" type="button">
+          <span class="vs-close__icon" aria-hidden="true"><span class="vs-close__glyph">&times;</span></span>
+        </button>
+        <button class="vs-close vs-close--default vs-close--md vs-close--rounded vs-close--text" type="button">
+          <span class="vs-close__icon" aria-hidden="true"><span class="vs-close__glyph">&times;</span></span>
+        </button>
+        <button class="vs-close vs-close--default vs-close--lg vs-close--circle vs-close--icon" type="button" aria-label="Close">
+          <span class="vs-close__icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+        </button>
+      </div>
+    </section>
+
+    <section class="mb-24">
+      <h2 class="mb-12">Style & Color Combinations</h2>
+      <div class="flex gap-12 flex-wrap">
+        <button class="vs-close vs-close--subtle vs-close--primary vs-close--md vs-close--text" type="button">
+          <span class="vs-close__icon" aria-hidden="true"><span class="vs-close__glyph">&times;</span></span>
+        </button>
+        <button class="vs-close vs-close--solid vs-close--secondary vs-close--icon vs-close--hover-strong" type="button" aria-label="Close">
+          <span class="vs-close__icon" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M15 9l-6 6m0-6l6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+        </button>
+        <button class="vs-close vs-close--bordered vs-close--warning vs-close--hover-subtle" type="button" aria-label="Close warning">
+          <span class="vs-close__icon" aria-hidden="true"><span class="vs-close__glyph">&times;</span></span>
+        </button>
+        <button class="vs-close vs-close--default vs-close--danger vs-close--hover-strong" type="button" aria-label="Remove">
+          <span class="vs-close__icon" aria-hidden="true"><span class="vs-close__glyph">&times;</span></span>
+        </button>
+      </div>
+    </section>
+
+    <section class="mb-24">
+      <h2 class="mb-12">Behavior Variants</h2>
+      <div class="demo-card mb-12" data-vs-closable>
+        <div>
+          <strong>Dismiss parent</strong>
+          <p class="text-secondary">Clicking removes this banner wrapper.</p>
+        </div>
+        <button class="vs-close vs-close--subtle vs-close--neutral vs-close--dismiss-parent" type="button" aria-label="Dismiss banner">
+          <span class="vs-close__icon" aria-hidden="true"><span class="vs-close__glyph">&times;</span></span>
+        </button>
+      </div>
+      <div class="demo-card" id="custom-card" data-vs-closable>
+        <div>
+          <strong>Custom target</strong>
+          <p class="text-secondary">Targets #custom-card using <code>data-vs-close-target</code>.</p>
+        </div>
+        <button
+          class="vs-close vs-close--bordered vs-close--success vs-close--icon vs-close--hover-strong"
+          type="button"
+          data-vs-close-target="#custom-card"
+          aria-label="Dismiss success card"
+        >
+          <span class="vs-close__icon" aria-hidden="true">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M6 6l12 12M6 18L18 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </span>
+        </button>
+      </div>
+      <p class="mt-12 text-secondary">
+        Use <code>vs-close--no-dismiss</code> to disable removal while keeping the click event for custom handlers.
+      </p>
+    </section>
+
+    <section class="mb-24">
+      <h2 class="mb-12">Pills with Close</h2>
+      <div class="flex gap-12 flex-wrap">
+        <span class="demo-pill" data-vs-closable>
+          Chip label
+          <button class="vs-close vs-close--default vs-close--sm vs-close--circle vs-close--text vs-close--dismiss-parent" type="button" aria-label="Remove chip">
+            <span class="vs-close__icon" aria-hidden="true"><span class="vs-close__glyph">&times;</span></span>
+          </button>
+        </span>
+        <span class="demo-pill" data-vs-closable>
+          Solid pill
+          <button class="vs-close vs-close--solid vs-close--primary vs-close--sm vs-close--circle vs-close--icon" type="button" aria-label="Remove">
+            <span class="vs-close__icon" aria-hidden="true">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M7 7l10 10M7 17L17 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+          </button>
+        </span>
+      </div>
+    </section>
+
+    <script src="../../js/components/vs-close/vs-close.js"></script>
+  </body>
+</html>
