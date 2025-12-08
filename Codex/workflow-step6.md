@@ -28,12 +28,28 @@ A Fully Working Demo/Test Page — ready-to-run HTML page that loads VIS system 
 
 No inline CSS, <style> blocks, inline JS, or external CDNs.
 Use only VIS system + component files.
+All demo/test pages MUST import css/component.css (the global component bundle).
+They MUST NOT import individual component CSS files directly.
+
+Correct:
+
+<link rel="stylesheet" href="../../component.css">
+
+Incorrect:
+
+<link rel="stylesheet" href="../vs-[component]/vs-[component].css">  ❌
+
 Demo must import VIS system CSS using canonical vs-designSystem path.
 Demo/Test Page Requirements
 Include VIS system stylesheet imports in <head>:
 Include VIS JavaScript (if applicable) at the end of <body>:
 Insert Component HTML into a preview container:
 Do NOT modify the component HTML.
+
+Do NOT create alternative or demo-only markup for VIS primitives
+(vs-btn, vs-input, vs-icon, vs-close, vs-badge, vs-divider, vs-spinner, etc.).
+Use primitives exactly as defined in their own components and only through
+their public BEM classes.
 
 Provide multiple preview blocks — each variant/size/state shown inside:
 Show at minimum:
@@ -83,3 +99,8 @@ Storage Rule
 Store final component demo as:
 
 css/components/vs-[component]/vs-[component]-demo.html
+
+### OUTPUT Section 4 Quality Checklist (MANDATORY BEFORE COMPLETING OUTPUT)
+
+Demo does not introduce new markup or behavior for VIS primitive components
+(vs-btn, vs-input, vs-icon, vs-close, vs-checkbox, vs-radio, vs-switch, vs-badge, vs-divider, vs-spinner).

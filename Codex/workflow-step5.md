@@ -55,6 +55,31 @@ All selectors MUST follow BEM and be scoped:
 
 .vs-[component]--primary .vs-[component]\_\_element { ... }
 
+### Primitive Variant Protection
+
+Variant and size modifiers MUST NOT redefine or override the internal
+variants of VIS primitive components (vs-btn, vs-input, vs-icon, vs-close,
+vs-checkbox, vs-radio, vs-switch, vs-badge, vs-divider, vs-spinner).
+
+If the composed component requires different visual behavior for a primitive,
+you MUST apply variant modifiers ONLY to the component’s own block or wrapper.
+
+Correct:
+.vs-navbar--primary .vs-btn { … } // Scoped to composed component
+
+Incorrect:
+.vs-btn--primary { … } ❌ redefining primitive variant
+
+### Variant Source Rule
+
+Only implement variants and sizes that were explicitly defined in the
+Component API (Step 1). Do NOT invent new variants or modifiers in Step 5.
+
+Each variant MUST correspond to a modifier listed in:
+css/components/vs-[component]/vs-[component]-api.md
+
+If a variant is missing from the API, ask the user before adding it.
+
 ## Output Format (MANDATORY)
 
 Your output must follow this structure exactly:

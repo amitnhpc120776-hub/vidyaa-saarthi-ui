@@ -22,6 +22,28 @@ Add all required JavaScript behavior to make the component functional.
 
 ### Rules (strict)
 
+#### Primitive Behavior Protection (strict)
+
+JavaScript MUST NOT modify, override, or recreate the internal behavior of VIS
+primitive components such as vs-btn, vs-input, vs-icon, vs-close, vs-checkbox,
+vs-radio, vs-switch, vs-badge, vs-divider, or vs-spinner.
+
+If a composed component requires interaction with a primitive
+(e.g., clicking a button, toggling a close action, showing a spinner), you MUST
+use the primitive exactly as defined. Do NOT implement duplicate logic.
+
+Examples:
+
+- Do NOT attach custom behavior to inner SVGs of vs-icon.
+- Do NOT override focus, active, or disabled behavior of vs-btn.
+- Do NOT modify typing or validation behavior of vs-input.
+- Do NOT alter vs-close click handling except to trigger component-level logic.
+
+JS in this step MUST ONLY manage component-level behavior (open/close, expand,
+collapse, toggle states) and MUST NOT redefine primitive functionality.
+
+#### Other Rules (Strict)
+
 JS must be independent (NO Bootstrap, NO jQuery).
 Use only vanilla JavaScript.
 Do NOT use Bootstrap’s data-bs-\* attributes or external libraries.

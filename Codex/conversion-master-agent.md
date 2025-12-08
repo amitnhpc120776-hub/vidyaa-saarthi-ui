@@ -18,6 +18,51 @@ VIS token system
 VIS HTML, CSS, and JS standards
 Full Bootstrap independence (unless explicitly instructed otherwise)
 
+## VIS Component Hierarchy (Primitive vs Composed)
+
+VIS Components are divided into three types :
+
+### Foundational Primitives -
+
+These components inclusing all of their variants do not depend on any other VIS component and MUST be generated first.
+Examples: vs-icon, vs-spinner, vs-divider, vs-badge, vs-placeholder, vs-checkbox, vs-radio (no dependency), vs-switch (no dependency)
+
+### Dependent Primitives -
+
+- These are still primitive controls, but they may internally reuse foundational primitives for some of their variants.
+  Examples : vs-btn (uses vs-icon, vs-spinner) , vs-input (uses vs-icon) vs-close (uses vs-icon)
+
+### Composed Components -
+
+- These components, whenever needed, MUST reuse primitive components and MUST NOT recreate buttons, icons, inputs, close buttons, badges, or dividers.
+- Composed components express higher-level UI behavior and MUST build entirely on top of the primitive component library.
+
+## VIS Component Reuse Rule (MANDATORY)
+
+All VIS Components — especially composed components — MUST reuse existing VIS primitive components. A component must NOT create new markup, styling, or behavior that already exists in another VIS component.
+
+### Examples:
+
+- All buttons MUST use `<button class="vs-btn ...">`.
+- All close actions MUST use `vs-close` or `vs-btn--icon`.
+- All icons MUST use `<span class="vs-icon">...</span>`.
+- All inputs MUST use `<div class="vs-input">...</div>`.
+- All dropdown triggers MUST use `vs-btn` (never custom HTML).
+- All navbar elements MUST use combinations of: vs-btn, vs-input, vs-dropdown,
+  vs-avatar, vs-badge, vs-icon, vs-divider.
+- All status dots, counters, and labels MUST use `vs-badge`.
+- All separators inside menus or cards MUST use `vs-divider`.
+
+### Forbidden:
+
+- Rewriting or duplicating icon markup inside any component.
+- Creating ad-hoc custom buttons instead of vs-btn.
+- Adding custom close buttons that do not use vs-close.
+- Writing CSS that redefines spacing, colors, or shadows instead of using tokens.
+- Creating new patterns when a primitive already exists.
+
+This rule is critical for maintaining a uniform, scalable, and maintainable VIS Design System. Codex MUST enforce this rule at every step.
+
 ## Workflow Overview
 
 Component creation ALWAYS follows the Six-Step VIS Component Conversion Workflow.
@@ -73,6 +118,26 @@ Demo page: css/components/vs-[component]/vs-[component]-demo.html
 Use forward-slash paths in all documentation and examples.
 
 Every VIS component must be self-contained and stored in the structure above.
+
+### Global Component CSS Import Rule (MANDATORY)
+
+Every time a new VIS Component is created, updated, or regenerated, you MUST
+append an @import statement for its CSS file into:
+
+css/component.css
+
+Format:
+@import url("./components/vs-[component]/vs-[component].css");
+
+This file acts as the global VIS component bundle and MUST be used by all demo
+pages and any non-framework HTML pages.
+
+Do NOT inline component CSS into demo pages. Demo pages MUST only import:
+tokens.css
+base.css
+typography.css
+utilities.css
+component.css ← contains all component imports
 
 ### Your Role During Execution
 

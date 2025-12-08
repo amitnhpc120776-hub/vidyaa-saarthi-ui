@@ -26,7 +26,26 @@ Do not use any previous component context unless explicitly given.
 
 ## Tasks (Step 1)
 
-Produce the Component BEM API definition:
+### Primitive / Composed Validation
+
+Before creating the API, you must determine whether the component is a
+Foundational Primitive, a Dependent Primitive, or a Composed Component
+(as defined in conversion-master-agent.md).
+
+- If it is a Primitive: DO NOT introduce any elements that depend on
+  composed components.
+- If it is a Composed Component: you MUST use existing VIS primitives
+  (vs-btn, vs-input, vs-icon, vs-close, vs-badge, vs-divider, vs-spinner, etc.)
+  instead of inventing new structural elements.
+
+For any sub-element that represents a button, icon, input, close action,
+badge, spinner, or separator, you MUST reference the corresponding VIS primitive
+in the API description.
+
+### Produce the Component BEM API definition:
+
+Component Type
+Use Foundational Primitive, a Dependent Primitive, or a Composed Component
 
 Component Name
 Use the VIS namespace: vs-[component-name]. Examples: vs-tooltip, vs-modal, vs-dropdown, vs-login-form.
@@ -47,6 +66,27 @@ List dynamic states the component may enter (e.g., .is-active, .is-open, .is-vis
 
 Responsive Behavior
 Provide responsive guidance only if necessary (mobile-first; use VIS breakpoints).
+
+## Primitive Reuse Enforcement
+
+You must NOT define new API elements that duplicate existing VIS primitives.
+
+Examples:
+
+- Do NOT create a custom "icon-wrapper" element; use vs-icon.
+- Do NOT create a custom "close-button"; use vs-close or vs-btn--icon.
+- Do NOT create a custom input container; use vs-input.
+- Do NOT create custom toggle buttons; reuse vs-btn.
+- Do NOT create new badge-like or divider-like structures.
+
+You MUST NOT rename or wrap VIS primitives under new element names.
+Use the primitive component directly without creating wrapper elements.
+
+Modifiers, behavioral variants, or size variants must NOT recreate primitive
+behavior. They must apply on top of the existing VIS primitive.
+
+If a structural requirement matches an existing VIS primitive, you MUST refer
+to that primitive in the API instead of defining a new element.
 
 ## Output
 
