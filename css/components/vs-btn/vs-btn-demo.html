@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VIS Component Demo — vs-btn</title>
+    <link rel="stylesheet" href="../../vs-designSystem/tokens.css" />
+    <link rel="stylesheet" href="../../vs-designSystem/base.css" />
+    <link rel="stylesheet" href="../../vs-designSystem/typography.css" />
+    <link rel="stylesheet" href="../../vs-designSystem/utilities.css" />
+    <link rel="stylesheet" href="../../component.css" />
+  </head>
+  <body>
+    <section class="test-area">
+      <h2>Component Test: vs-btn</h2>
+
+      <div class="demo-block">
+        <p>Solid variants with icon placements</p>
+        <button class="vs-btn vs-btn--primary vs-btn--md vs-btn--icon-left" type="button">
+          <span class="vs-btn__icon" aria-hidden="true">
+            <span class="vs-icon" aria-hidden="true">★</span>
+          </span>
+          <span class="vs-btn__label">Primary action</span>
+        </button>
+        <button class="vs-btn vs-btn--secondary vs-btn--md vs-btn--icon-right" type="button">
+          <span class="vs-btn__label">Secondary</span>
+          <span class="vs-btn__icon" aria-hidden="true">
+            <span class="vs-icon" aria-hidden="true">➔</span>
+          </span>
+        </button>
+        <button class="vs-btn vs-btn--success vs-btn--icon-only" type="button" aria-label="Confirm">
+          <span class="vs-btn__icon" aria-hidden="true">
+            <span class="vs-icon" aria-hidden="true">✔</span>
+          </span>
+        </button>
+      </div>
+
+      <div class="demo-block">
+        <p>Outline and ghost variants</p>
+        <button class="vs-btn vs-btn--outline-primary" type="button">
+          <span class="vs-btn__label">Outline primary</span>
+        </button>
+        <button class="vs-btn vs-btn--outline-secondary vs-btn--sm" type="button">
+          <span class="vs-btn__label">Secondary sm</span>
+        </button>
+        <button class="vs-btn vs-btn--ghost vs-btn--lg" type="button">
+          <span class="vs-btn__label">Ghost large</span>
+        </button>
+        <button class="vs-btn vs-btn--light" type="button">
+          <span class="vs-btn__label">Light</span>
+        </button>
+      </div>
+
+      <div class="demo-block">
+        <p>States: loading, active, disabled, block</p>
+        <button class="vs-btn vs-btn--info is-loading" type="button" disabled>
+          <span class="vs-btn__icon" aria-hidden="true">
+            <span class="vs-spinner vs-spinner--sm" aria-hidden="true">
+              <span class="vs-spinner__circle"></span>
+            </span>
+          </span>
+          <span class="vs-btn__label">Loading</span>
+        </button>
+        <button class="vs-btn vs-btn--warning is-active" type="button">
+          <span class="vs-btn__label">Active warning</span>
+        </button>
+        <button class="vs-btn vs-btn--danger is-disabled" type="button" disabled>
+          <span class="vs-btn__label">Disabled danger</span>
+        </button>
+        <button class="vs-btn vs-btn--neutral vs-btn--block" type="button">
+          <span class="vs-btn__label">Full width neutral</span>
+        </button>
+      </div>
+    </section>
+    <script src="../../js/custom.js"></script>
+  </body>
+</html>
