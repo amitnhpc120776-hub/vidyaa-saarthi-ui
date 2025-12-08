@@ -1,0 +1,17 @@
+<!-- VIS HTML Snippet -->
+<label class="vs-switch">
+  <input class="vs-switch__input" type="checkbox" name="vs-switch" role="switch" />
+  <span class="vs-switch__control" aria-hidden="true">
+    <span class="vs-switch__thumb"></span>
+  </span>
+  <span class="vs-switch__label">Switch label</span>
+  <span class="vs-switch__support">Supporting helper text goes here.</span>
+</label>
+
+<!-- Notes for integration -->
+<!--
+- Use the native checkbox input with role="switch" for accurate semantics; checked/unchecked controls the visual state.
+- Apply the disabled attribute on the input to disable interaction; the root gains .is-disabled via JS sync.
+- If separating the label and input, connect them with matching id/for attributes; the snippet keeps them together by default.
+- Optional support text can be removed if not needed.
+-->
