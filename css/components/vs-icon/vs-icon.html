@@ -1,0 +1,30 @@
+<!-- VIS HTML Snippet -->
+<span class="vs-icon vs-icon--md" role="img" aria-label="Check icon">
+  <span class="vs-icon__text">✓</span>
+</span>
+
+<span class="vs-icon vs-icon--lg" aria-hidden="true">
+  <span class="vs-icon__svg" aria-hidden="true">
+    <svg viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+      <path d="M12 2L15 8.5L22 9.5L17 14.5L18.5 21.5L12 18L5.5 21.5L7 14.5L2 9.5L9 8.5Z" fill="currentColor" />
+    </svg>
+  </span>
+</span>
+
+<span class="vs-icon vs-icon--sm vs-icon--spin" aria-hidden="true">
+  <span class="vs-icon__svg" aria-hidden="true">
+    <!-- External or injected SVG content is wrapped to inherit sizing and color -->
+    <svg viewBox="0 0 16 16" focusable="false" aria-hidden="true">
+      <circle cx="8" cy="8" r="6" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-dasharray="28" />
+    </svg>
+  </span>
+</span>
+
+<!-- Notes for Integration -->
+<!--
+- Use role="img" with aria-label when the icon conveys meaning; add aria-hidden="true" when decorative.
+- Inline SVGs should use currentColor so they inherit token-driven color from .vs-icon.
+- Externally injected SVGs should be placed inside .vs-icon__svg to inherit sizing and alignment rules.
+- Apply rotation utilities (vs-icon--rotate-90/180/270) or vs-icon--spin on the root element as needed.
+- The component remains inline by default; add .is-inline when enforcing inline alignment within flex containers.
+-->
