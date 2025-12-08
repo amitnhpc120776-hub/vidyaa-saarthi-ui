@@ -1,5 +1,5 @@
 1. You must now create a new VIS Component using the Six-Step VIS Component Conversion Workflow.
-2. Component name: vs-input. This is a **Dependent Primitive Component**
+2. Component name: vs-switch ((Responsive Switch. They are to be used to activate or deactivate a specific setting like on/off button.)). This is a **Dependent Primitive Component**
 3. There is NO external HTML/CSS.
 4. Follow all rules defined in:
    - conversion-master-agent.md
