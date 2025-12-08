@@ -1,0 +1,259 @@
+/* =========================================================================
+   VIS Dependent Primitive: vs-input
+   ========================================================================= */
+.vs-input {
+  --vs-input-bg: var(--neutral-0);
+  --vs-input-text: var(--text-primary);
+  --vs-input-border: var(--neutral-300);
+  --vs-input-placeholder: var(--text-subtle);
+  --vs-input-radius: var(--radius-md);
+  --vs-input-padding-block: var(--space-12);
+  --vs-input-padding-inline: var(--space-12);
+  --vs-input-gap: var(--space-8);
+  --vs-input-font-size: var(--body-md-size);
+  --vs-input-line-height: var(--body-md-line-height);
+  --vs-input-focus-outline: var(--primary-600);
+  --vs-input-focus-ring: color-mix(in srgb, var(--primary-600) 18%, transparent);
+  --vs-input-disabled-bg: var(--neutral-100);
+  --vs-input-disabled-text: var(--text-disabled);
+  --vs-input-shadow: none;
+  --vs-input-counter-color: var(--text-subtle);
+  --vs-input-help-color: var(--text-secondary);
+  --vs-input-icon-color: var(--text-secondary);
+  --vs-input-status-success: var(--success-600);
+  --vs-input-status-error: var(--error-600);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  color: var(--vs-input-text);
+  font-family: var(--font-family-sans);
+}
+
+.vs-input__field {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--vs-input-gap);
+  padding: var(--vs-input-padding-block) var(--vs-input-padding-inline);
+  background-color: var(--vs-input-bg);
+  border: 1px solid var(--vs-input-border);
+  border-radius: var(--vs-input-radius);
+  box-shadow: var(--vs-input-shadow);
+  transition: border-color 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+}
+
+.vs-input__control {
+  flex: 1;
+  min-width: 0;
+  border: none;
+  background-color: transparent;
+  color: var(--vs-input-text);
+  font-family: inherit;
+  font-size: var(--vs-input-font-size);
+  line-height: var(--vs-input-line-height);
+  padding: 0;
+  outline: none;
+}
+
+.vs-input__control::placeholder {
+  color: var(--vs-input-placeholder);
+}
+
+.vs-input__icon,
+.vs-input__status-icon {
+  display: none;
+  color: var(--vs-input-icon-color);
+  flex-shrink: 0;
+}
+
+.vs-input__spinner {
+  display: none;
+  margin-left: auto;
+}
+
+.vs-input__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-12);
+  justify-content: space-between;
+  font-size: var(--body-sm-size);
+  line-height: var(--body-sm-line-height);
+}
+
+.vs-input__help-text {
+  color: var(--vs-input-help-color);
+}
+
+.vs-input__counter {
+  color: var(--vs-input-counter-color);
+  margin-left: auto;
+}
+
+/* Layout modifiers */
+.vs-input--inline {
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-12);
+}
+
+.vs-input--inline .vs-input__meta {
+  margin-left: var(--space-12);
+}
+
+.vs-input--block {
+  width: 100%;
+}
+
+.vs-input--with-icon-left .vs-input__icon--left,
+.vs-input--with-icon-right .vs-input__icon--right {
+  display: inline-flex;
+}
+
+.vs-input--with-icon-right .vs-input__status-icon {
+  margin-left: var(--space-8);
+}
+
+/* Interaction & states */
+.vs-input.is-focused .vs-input__field,
+.vs-input .vs-input__control:focus-visible + .vs-input__spinner,
+.vs-input .vs-input__control:focus-visible {
+  border-color: var(--vs-input-focus-outline);
+  box-shadow: 0 0 0 var(--space-4) var(--vs-input-focus-ring);
+}
+
+.vs-input.is-disabled .vs-input__field,
+.vs-input.is-disabled .vs-input__control,
+.vs-input .vs-input__control:disabled {
+  background-color: var(--vs-input-disabled-bg);
+  color: var(--vs-input-disabled-text);
+  pointer-events: none;
+  border-color: var(--vs-input-border);
+}
+
+.vs-input.is-readonly .vs-input__control,
+.vs-input .vs-input__control[readonly] {
+  color: var(--vs-input-text);
+  background-color: var(--neutral-50);
+  cursor: default;
+}
+
+.vs-input.is-error .vs-input__field {
+  border-color: var(--vs-input-status-error);
+  box-shadow: 0 0 0 var(--space-4) color-mix(in srgb, var(--vs-input-status-error) 20%, transparent);
+}
+
+.vs-input.is-error .vs-input__status-icon {
+  display: inline-flex;
+  color: var(--vs-input-status-error);
+}
+
+.vs-input.is-success .vs-input__field {
+  border-color: var(--vs-input-status-success);
+  box-shadow: 0 0 0 var(--space-4) color-mix(in srgb, var(--vs-input-status-success) 18%, transparent);
+}
+
+.vs-input.is-success .vs-input__status-icon {
+  display: inline-flex;
+  color: var(--vs-input-status-success);
+}
+
+.vs-input.is-loading .vs-input__spinner {
+  display: inline-flex;
+}
+
+.vs-input.is-loading .vs-input__control {
+  pointer-events: none;
+}
+
+/* Status alignment */
+.vs-input__status-icon {
+  margin-left: auto;
+}
+
+/* ========================================================================
+   VARIANTS & SIZE MODIFIERS
+   ======================================================================== */
+/* DEFAULT */
+.vs-input--default {
+  --vs-input-bg: var(--neutral-0);
+  --vs-input-border: var(--neutral-300);
+  --vs-input-focus-outline: var(--primary-600);
+  --vs-input-focus-ring: color-mix(in srgb, var(--primary-500) 18%, transparent);
+}
+
+/* PRIMARY */
+.vs-input--primary {
+  --vs-input-bg: var(--primary-50);
+  --vs-input-border: var(--primary-400);
+  --vs-input-text: var(--primary-900);
+  --vs-input-placeholder: color-mix(in srgb, var(--primary-800) 50%, transparent);
+  --vs-input-focus-outline: var(--primary-700);
+  --vs-input-focus-ring: color-mix(in srgb, var(--primary-600) 28%, transparent);
+  --vs-input-radius: var(--space-0) var(--space-0) var(--space-0) var(--space-16);
+}
+
+/* SECONDARY */
+.vs-input--secondary {
+  --vs-input-bg: var(--secondary-50);
+  --vs-input-border: var(--secondary-400);
+  --vs-input-text: var(--secondary-900);
+  --vs-input-placeholder: color-mix(in srgb, var(--secondary-800) 50%, transparent);
+  --vs-input-focus-outline: var(--secondary-700);
+  --vs-input-focus-ring: color-mix(in srgb, var(--secondary-500) 28%, transparent);
+  --vs-input-radius: var(--space-0) var(--space-0) var(--space-0) var(--space-16);
+}
+
+/* SUCCESS */
+.vs-input--success {
+  --vs-input-border: var(--success-500);
+  --vs-input-focus-outline: var(--success-700);
+  --vs-input-focus-ring: color-mix(in srgb, var(--success-600) 24%, transparent);
+}
+
+/* WARNING */
+.vs-input--warning {
+  --vs-input-border: var(--warning-500);
+  --vs-input-focus-outline: var(--warning-700);
+  --vs-input-focus-ring: color-mix(in srgb, var(--warning-500) 24%, transparent);
+}
+
+/* DANGER */
+.vs-input--danger {
+  --vs-input-border: var(--error-500);
+  --vs-input-text: var(--error-900);
+  --vs-input-focus-outline: var(--error-700);
+  --vs-input-focus-ring: color-mix(in srgb, var(--error-600) 24%, transparent);
+}
+
+/* INFO */
+.vs-input--info {
+  --vs-input-border: var(--info-500);
+  --vs-input-focus-outline: var(--info-700);
+  --vs-input-focus-ring: color-mix(in srgb, var(--info-500) 24%, transparent);
+}
+
+/* SIZE MODIFIERS */
+.vs-input--sm {
+  --vs-input-padding-block: var(--space-8);
+  --vs-input-padding-inline: var(--space-12);
+  --vs-input-gap: var(--space-6);
+  --vs-input-font-size: var(--body-sm-size);
+  --vs-input-line-height: var(--body-sm-line-height);
+}
+
+.vs-input--md {
+  --vs-input-padding-block: var(--space-12);
+  --vs-input-padding-inline: var(--space-16);
+  --vs-input-gap: var(--space-8);
+  --vs-input-font-size: var(--body-md-size);
+  --vs-input-line-height: var(--body-md-line-height);
+}
+
+.vs-input--lg {
+  --vs-input-padding-block: var(--space-16);
+  --vs-input-padding-inline: var(--space-20);
+  --vs-input-gap: calc(var(--space-8) + var(--space-4));
+  --vs-input-font-size: var(--body-lg-size);
+  --vs-input-line-height: var(--body-lg-line-height);
+}

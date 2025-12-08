@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VIS Component Demo — vs-input</title>
+    <link rel="stylesheet" href="../../vs-designSystem/tokens.css" />
+    <link rel="stylesheet" href="../../vs-designSystem/base.css" />
+    <link rel="stylesheet" href="../../vs-designSystem/typography.css" />
+    <link rel="stylesheet" href="../../vs-designSystem/utilities.css" />
+    <link rel="stylesheet" href="../../component.css" />
+  </head>
+  <body class="p-24">
+    <section class="test-area">
+      <h2>Component Test: vs-input</h2>
+
+      <div class="demo-block">
+        <p>Default and brand variants</p>
+        <div class="vs-input vs-input--default vs-input--md vs-input--with-icon-left">
+          <div class="vs-input__field">
+            <span class="vs-input__icon vs-input__icon--left vs-icon" aria-hidden="true">🔍</span>
+            <input class="vs-input__control" type="text" placeholder="Search" />
+          </div>
+          <div class="vs-input__meta">
+            <span class="vs-input__help-text">Helpful instructions go here.</span>
+            <span class="vs-input__counter">0</span>
+          </div>
+        </div>
+
+        <div class="vs-input vs-input--primary vs-input--md vs-input--with-icon-right">
+          <div class="vs-input__field">
+            <input class="vs-input__control" type="text" placeholder="Primary input" />
+            <span class="vs-input__status-icon vs-icon" aria-hidden="true">★</span>
+          </div>
+          <div class="vs-input__meta">
+            <span class="vs-input__help-text">Brand styling with asymmetric radius.</span>
+            <span class="vs-input__counter">0</span>
+          </div>
+        </div>
+
+        <div class="vs-input vs-input--secondary vs-input--md">
+          <div class="vs-input__field">
+            <input class="vs-input__control" type="text" placeholder="Secondary input" />
+          </div>
+          <div class="vs-input__meta">
+            <span class="vs-input__help-text">Secondary styling.</span>
+            <span class="vs-input__counter">0</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="demo-block">
+        <p>States and feedback</p>
+        <div class="vs-input vs-input--success vs-input--md is-success">
+          <div class="vs-input__field">
+            <input class="vs-input__control" type="text" value="Validated" />
+            <span class="vs-input__status-icon vs-icon" aria-hidden="true">✔</span>
+          </div>
+          <div class="vs-input__meta">
+            <span class="vs-input__help-text">Looks good!</span>
+            <span class="vs-input__counter">8</span>
+          </div>
+        </div>
+
+        <div class="vs-input vs-input--danger vs-input--md is-error">
+          <div class="vs-input__field">
+            <input class="vs-input__control" type="text" value="Invalid" />
+            <span class="vs-input__status-icon vs-icon" aria-hidden="true">!</span>
+          </div>
+          <div class="vs-input__meta">
+            <span class="vs-input__help-text">Please correct this field.</span>
+            <span class="vs-input__counter">7</span>
+          </div>
+        </div>
+
+        <div class="vs-input vs-input--info vs-input--md is-loading vs-input--with-icon-right">
+          <div class="vs-input__field">
+            <input class="vs-input__control" type="text" value="Loading data" disabled />
+            <span class="vs-input__spinner vs-spinner vs-spinner--sm" aria-hidden="true">
+              <span class="vs-spinner__circle"></span>
+            </span>
+          </div>
+          <div class="vs-input__meta">
+            <span class="vs-input__help-text">Fetching results...</span>
+            <span class="vs-input__counter">12</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="demo-block">
+        <p>Sizes and layouts</p>
+        <div class="vs-input vs-input--sm vs-input--default vs-input--inline">
+          <div class="vs-input__field">
+            <input class="vs-input__control" type="text" placeholder="Inline small" />
+          </div>
+          <div class="vs-input__meta">
+            <span class="vs-input__help-text">Inline layout</span>
+            <span class="vs-input__counter">0</span>
+          </div>
+        </div>
+
+        <div class="vs-input vs-input--lg vs-input--warning vs-input--block">
+          <div class="vs-input__field">
+            <input class="vs-input__control" type="text" placeholder="Large block" maxlength="120" />
+            <span class="vs-input__icon vs-input__icon--right vs-icon" aria-hidden="true">ℹ</span>
+          </div>
+          <div class="vs-input__meta">
+            <span class="vs-input__help-text">Full width example with counter.</span>
+            <span class="vs-input__counter">0 / 120</span>
+          </div>
+        </div>
+
+        <div class="vs-input vs-input--md vs-input--default is-disabled">
+          <div class="vs-input__field">
+            <input class="vs-input__control" type="text" value="Disabled input" disabled />
+          </div>
+          <div class="vs-input__meta">
+            <span class="vs-input__help-text">Disabled state</span>
+            <span class="vs-input__counter">14</span>
+          </div>
+        </div>
+      </div>
+    </section>
+    <script src="../../js/components/vs-input/vs-input.js"></script>
+  </body>
+</html>
