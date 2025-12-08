@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VIS Component Demo — vs-btn-group</title>
+    <link rel="stylesheet" href="../../vs-designSystem/tokens.css" />
+    <link rel="stylesheet" href="../../vs-designSystem/base.css" />
+    <link rel="stylesheet" href="../../vs-designSystem/typography.css" />
+    <link rel="stylesheet" href="../../vs-designSystem/utilities.css" />
+    <link rel="stylesheet" href="../../component.css" />
+  </head>
+  <body class="p-24">
+    <header class="mb-24">
+      <h1 class="mb-8">vs-btn-group Component Demo</h1>
+      <p class="text-secondary">
+        Composed wrapper that aligns multiple vs-btn instances into unified horizontal or vertical groups with shared borders,
+        spacing, and keyboard-friendly segmented controls.
+      </p>
+    </header>
+
+    <section class="mb-24">
+      <h2 class="mb-12">Horizontal Groups (default)</h2>
+      <div class="flex flex-col gap-12">
+        <div class="vs-btn-group vs-btn-group--horizontal vs-btn-group--rounded vs-btn-group--md" role="group" aria-label="Default horizontal actions">
+          <div class="vs-btn-group__item">
+            <button class="vs-btn vs-btn--secondary vs-btn--md" type="button">
+              <span class="vs-btn__label">Left</span>
+            </button>
+          </div>
+          <div class="vs-btn-group__item">
+            <button class="vs-btn vs-btn--primary vs-btn--md" type="button">
+              <span class="vs-btn__label">Middle</span>
+            </button>
+          </div>
+          <div class="vs-btn-group__item">
+            <button class="vs-btn vs-btn--outline-primary vs-btn--md" type="button">
+              <span class="vs-btn__label">Right</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="vs-btn-group vs-btn-group--horizontal vs-btn-group--segmented vs-btn-group--smooth vs-btn-group--sm" role="group" aria-label="Segmented horizontal filters">
+          <div class="vs-btn-group__item">
+            <button class="vs-btn vs-btn--neutral vs-btn--sm" type="button">
+              <span class="vs-btn__label">Day</span>
+            </button>
+          </div>
+          <div class="vs-btn-group__item">
+            <button class="vs-btn vs-btn--primary vs-btn--sm" type="button">
+              <span class="vs-btn__label">Week</span>
+            </button>
+          </div>
+          <div class="vs-btn-group__item">
+            <button class="vs-btn vs-btn--outline-primary vs-btn--sm" type="button">
+              <span class="vs-btn__label">Month</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-24">
+      <h2 class="mb-12">Vertical & Pill Groups</h2>
+      <div class="flex flex-wrap gap-16 items-start">
+        <div class="vs-btn-group vs-btn-group--vertical vs-btn-group--pill vs-btn-group--segmented vs-btn-group--md" role="group" aria-label="Stacked navigation" aria-orientation="vertical">
+          <div class="vs-btn-group__item">
+            <button class="vs-btn vs-btn--secondary vs-btn--md" type="button">
+              <span class="vs-btn__label">Overview</span>
+            </button>
+          </div>
+          <div class="vs-btn-group__item">
+            <button class="vs-btn vs-btn--primary vs-btn--md" type="button">
+              <span class="vs-btn__label">Details</span>
+            </button>
+          </div>
+          <div class="vs-btn-group__item">
+            <button class="vs-btn vs-btn--outline-primary vs-btn--md" type="button">
+              <span class="vs-btn__label">Export</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="vs-btn-group vs-btn-group--vertical vs-btn-group--rounded vs-btn-group--lg vs-btn-group--block" role="group" aria-label="Full-height actions" aria-orientation="vertical">
+          <div class="vs-btn-group__item">
+            <button class="vs-btn vs-btn--neutral vs-btn--lg" type="button">
+              <span class="vs-btn__label">Upload</span>
+            </button>
+          </div>
+          <div class="vs-btn-group__item">
+            <button class="vs-btn vs-btn--primary vs-btn--lg" type="button">
+              <span class="vs-btn__label">Save draft</span>
+            </button>
+          </div>
+          <div class="vs-btn-group__item">
+            <button class="vs-btn vs-btn--outline-primary vs-btn--lg" type="button">
+              <span class="vs-btn__label">Publish</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-24">
+      <h2 class="mb-12">Layout: Block & Justified</h2>
+      <div class="flex flex-col gap-12">
+        <div class="vs-btn-group vs-btn-group--horizontal vs-btn-group--block vs-btn-group--justified vs-btn-group--smooth" role="group" aria-label="Full width actions">
+          <div class="vs-btn-group__item">
+            <button class="vs-btn vs-btn--secondary vs-btn--md" type="button">
+              <span class="vs-btn__label">Back</span>
+            </button>
+          </div>
+          <div class="vs-btn-group__item">
+            <button class="vs-btn vs-btn--primary vs-btn--md" type="button">
+              <span class="vs-btn__label">Continue</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="vs-btn-group vs-btn-group--horizontal vs-btn-group--block vs-btn-group--justified vs-btn-group--pill vs-btn-group--segmented" role="group" aria-label="Segmented steps">
+          <div class="vs-btn-group__item">
+            <button class="vs-btn vs-btn--outline-primary vs-btn--md" type="button">
+              <span class="vs-btn__label">Step 1</span>
+            </button>
+          </div>
+          <div class="vs-btn-group__item">
+            <button class="vs-btn vs-btn--primary vs-btn--md" type="button">
+              <span class="vs-btn__label">Step 2</span>
+            </button>
+          </div>
+          <div class="vs-btn-group__item">
+            <button class="vs-btn vs-btn--neutral vs-btn--md" type="button">
+              <span class="vs-btn__label">Step 3</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="mb-12">Size Modifiers</h2>
+      <div class="flex flex-col gap-12">
+        <div class="vs-btn-group vs-btn-group--horizontal vs-btn-group--segmented vs-btn-group--sm" role="group" aria-label="Small group">
+          <div class="vs-btn-group__item">
+            <button class="vs-btn vs-btn--ghost vs-btn--sm" type="button">
+              <span class="vs-btn__label">S</span>
+            </button>
+          </div>
+          <div class="vs-btn-group__item">
+            <button class="vs-btn vs-btn--ghost vs-btn--sm" type="button">
+              <span class="vs-btn__label">M</span>
+            </button>
+          </div>
+          <div class="vs-btn-group__item">
+            <button class="vs-btn vs-btn--ghost vs-btn--sm" type="button">
+              <span class="vs-btn__label">L</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="vs-btn-group vs-btn-group--horizontal vs-btn-group--segmented vs-btn-group--lg" role="group" aria-label="Large group">
+          <div class="vs-btn-group__item">
+            <button class="vs-btn vs-btn--outline-secondary vs-btn--lg" type="button">
+              <span class="vs-btn__label">Previous</span>
+            </button>
+          </div>
+          <div class="vs-btn-group__item">
+            <button class="vs-btn vs-btn--secondary vs-btn--lg" type="button">
+              <span class="vs-btn__label">Next</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <script src="../../../js/components/vs-btn-group/vs-btn-group.js"></script>
+  </body>
+</html>
