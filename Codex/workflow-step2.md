@@ -38,171 +38,51 @@ ANY markup representing a button, icon, input field, close action, badge, spinne
 ### Forbidden:
 
 - Custom `<button>` markup
-- Custom `<span class="icon">` wrappers
-- Custom checkmark/radio SVG
-- Custom input shells
-- Custom badge/separator elements
-- ANY wrapper attempting to imitate primitive logic
 
-### Required replacements:
+# STEP 2 — Convert External HTML → VIS HTML Snippet
 
-```html
-<button class="vs-btn ..."></button>
-<!-- buttons -->
+Purpose
 
-<span class="vs-icon">...</span>
-<!-- icons -->
+- Convert the external HTML into a production-ready VIS HTML snippet that exactly matches the Canonical Anatomy from Step 1.
 
-<div class="vs-input">...</div>
-<!-- inputs -->
+Inputs (required)
 
-<div class="vs-divider"></div>
-<!-- dividers -->
+- `conversion-master-agent.md`
+- `css/components/vs-[component]/vs-[component]-api.md` (Step 1 API)
+- Design system files under `css/vs-designSystem/`
+- External HTML provided by the user
 
-<span class="vs-badge">...</span>
-<!-- badges -->
+Key rules (summary)
 
-<span class="vs-spinner"></span>
-<!-- spinners -->
-```
+- Reuse VIS primitives exactly: `vs-btn`, `vs-input`, `vs-icon`, `vs-close`, `vs-badge`, `vs-divider`, `vs-spinner`, `vs-checkbox`, `vs-radio`, `vs-switch`.
+- The Step 2 snippet must be pure production HTML with NO variant modifiers (`vs-[component]--*`) and NO `.is-*` state classes.
+- No inline styles or scripts. No Bootstrap or other framework classes.
 
-````
+Allowed wrappers
 
-These rules are **strict and mandatory**.
+- Structural/layout wrappers defined in the Step 1 anatomy (e.g., `vs-[component]__actions`, `vs-[component]__body`).
 
-# 2. Allowed vs Forbidden Wrapper Elements (Critical)
+Forbidden wrappers
 
-Step 2 HTML MUST follow wrapper rules from Step 1 and master-agent.md.
+- Any wrapper that attempts to recreate primitive behavior (custom buttons, fake inputs, custom icon containers).
 
-## ✔ Allowed (layout/support wrappers)
+Validation requirements
 
-These wrappers are allowed because they do NOT recreate primitive behavior:
+- Root element must be exactly `vs-[component]`.
+- All elements present in the snippet must be listed in the Step 1 Canonical Anatomy and only those elements may appear.
+- Primitive usage must match published primitives (no alternative markup for a primitive).
 
-- Spacing/layout wrappers (flex, grid containers)
-- Grouping wrappers:
-  `vs-[component]__actions`, `vs-[component]__container`
-- ARIA-required wrappers (`role="group"`, `role="list"`)
-- Structural wrappers explicitly defined in Step 1's Anatomy Block
+Output file and structure
+Save as: `css/components/vs-[component]/vs-[component].html`
 
-## ❌ Forbidden (functional wrappers)
+Section 1 — VIS HTML Snippet
 
-These wrappers are NOT allowed:
+- Provide the exact copy-paste block developers will use. No demo scaffolding. No variant or state classes.
 
-- Icon wrappers (e.g., `<span class="icon-box">`)
-- Custom close button wrappers
-- Fake input frames
-- Fake checkmark/circle wrappers
-- Wrappers mimicking toggle/button/spinner behavior
+Section 2 — Notes for integration
 
-If the wrapper's purpose is functional → it is forbidden.
-If the wrapper's purpose is layout → it is allowed.
+- Describe required ARIA attributes, `data-*` hooks for JS (if Step 4 needs them), and any parent/container constraints.
 
-# 3. Generate the Pure HTML Snippet Using the Component API
+When ready
 
-You must generate HTML that adheres strictly to the Component API and Canonical Anatomy Block defined in Step 1.
-
-### Rules:
-
-- Use VIS namespace + strict BEM (`vs-[block]__element`, `vs-[block]--modifier`)
-- No Bootstrap classes, attributes, or patterns
-- No inline CSS or JS
-- Minimal, semantic HTML only
-- **Do NOT include variants or states.**
-  The Step-2 snippet MUST be **pure**, containing:
-
-  - NO `vs-[component]--[variant]`
-  - NO `.is-[state]`
-
-- Variants/states will be shown **only in Step-6 demo**, not here.
-
-The output is **production HTML**, not demo HTML.
-
-# 4. HTML Requirements (Strict)
-
-HTML MUST:
-
-- Match **exactly** the BEM anatomy from Step 1 API
-- Include **every** element listed in the Step 1 Canonical Anatomy Block
-- Use **no additional elements**, wrappers, or nesting
-- Use primitives exactly where Step 1 requires them
-- Include placeholder content where needed:
-
-  - text
-  - icons (`vs-icon`)
-  - optional or dynamic slots
-
-### Absolutely forbidden:
-
-- Adding wrappers not listed in Step 1
-- Renaming elements
-- Introducing new elements
-- Introducing new states or variants
-- Expanding primitive markup internally
-
-# 5. Structural Consistency Validation (Against Step 1)
-
-Before finalizing Step 2, Codex MUST validate:
-
-### Block
-
-Root class is exactly:
-
-```
-vs-[component]
-```
-
-### Elements
-
-- Every element in HTML appears in the Step 1 Anatomy Block
-- No extra element is introduced
-
-### Variants
-
-- No variant modifiers (`--primary`, `--success`, etc.) may appear here
-
-### States
-
-- No `.is-*` states may appear here
-
-### Primitive usage
-
-- All primitives are used exactly as defined
-- No wrapper/function duplication
-- No custom internal markup for primitives
-
-If any mismatch is detected →
-**Codex must correct the HTML before presenting it.**
-
-# 6. Output Format (MANDATORY)
-
-Store this file as:
-
-```
-css/components/vs-[component]/vs-[component].html
-```
-
-Your output MUST include **two sections**:
-
-## Section 1 → "VIS HTML Snippet"
-
-- Full HTML block for the component
-- No page-level wrappers
-- No demo markup
-- No sample container scaffolding
-- This is the exact snippet developers will copy into production
-
-## Section 2 → "Notes for Integration"
-
-Include:
-
-- Required ARIA or role attributes
-- Required `data-*` hooks for JS (if Step 4 will need them)
-- Parent container constraints (if applicable)
-- Any behavior expectations for JS, layout, or accessibility
-
-Do NOT include any CSS or JS code in this file.
-
-```
-
----
-````
+- Validate the snippet against the Step 1 anatomy; if mismatches are found, correct them before presenting the file.

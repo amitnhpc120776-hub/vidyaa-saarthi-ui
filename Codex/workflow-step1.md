@@ -31,280 +31,74 @@ It creates the Component API, which drives everything that follows.
   - base.css
   - typography.css
   - utilities.css
+
+# STEP 1 — Analyse & Create Component BEM API
+
+Purpose
+
+- Define the canonical component anatomy (BEM elements, variants, states). This API is the single source of truth for Steps 2–6.
+
+Inputs (required)
+
+- `conversion-master-agent.md`
+- Design system tokens & core CSS under `css/vs-designSystem/` (`tokens.css`, `base.css`, `typography.css`, `utilities.css`)
 - External HTML snippet provided by the user (if any)
 
-Do NOT use any previous component context unless explicitly given.
+What Step 1 produces
 
-# 1. Primitive / Composed Validation
+- A component API document stored at `css/components/vs-[component]/vs-[component]-api.md` that ends with the Canonical Anatomy Block (JSON-like).
 
-Before generating the API, Codex MUST classify the component as:
+Process & rules (high level)
 
-- **Foundational Primitive**
-- **Dependent Primitive**
-- **Composed Component**
+- Classify the component as one of: Foundational Primitive, Dependent Primitive, or Composed Component.
+- If the component is composed, reference existing primitives exactly (no duplication): `vs-btn`, `vs-input`, `vs-icon`, `vs-close`, `vs-badge`, `vs-divider`, `vs-spinner`, `vs-checkbox`, `vs-radio`, `vs-switch`.
+- Allowed wrappers are structural/layout only (e.g., `vs-card__body`, `vs-modal__footer`). Forbidden wrappers attempt to recreate primitives (custom button wrappers, icon wrappers, fake input frames).
 
-(as defined in conversion-master-agent.md)
+Required artifacts inside the API
 
-### Rules:
+- Component Type (one of the three categories)
+- Component name (e.g., `vs-login-form`)
+- Canonical anatomy: list each BEM element with a short one-line description, e.g.:
+  - `vs-login-form__header` — title and optional branding
+  - `vs-login-form__body` — form fields
+  - `vs-login-form__actions` — submit/cancel controls
+- Variants (BEM modifiers) listed as `vs-[component]--[variant]` (only variants discovered/required).
+- States listed as `.is-[state]` with a one-line description (e.g., `.is-open`, `.is-loading`).
+- Responsive notes only if the component changes structure across breakpoints.
 
-### ✔ If it is a **Primitive**
+Canonical Anatomy Block (mandatory)
 
-- Do NOT introduce elements that depend on composed components.
-- Do NOT introduce wrappers around primitives.
-- Do NOT recreate primitive controls internally.
+- Produce a JSON-like block at the end of the API file. Example:
 
-### ✔ If it is a **Composed Component**
-
-You MUST reuse existing VIS primitives:
-
-- vs-btn
-- vs-input
-- vs-icon
-- vs-close
-- vs-badge
-- vs-divider
-- vs-spinner
-- vs-checkbox / vs-radio / vs-switch
-
-Replace any external markup representing these controls with the correct VIS primitive names.
-
-# 2. Allowed vs Forbidden Wrapper Elements (CRITICAL)
-
-Real components require layout wrappers, but wrappers must NOT imitate primitives.
-
-### ✔ Allowed Layout/Semantic Wrappers
-
-These **are allowed** because they do NOT replace primitive behavior:
-
-- Flex/grid wrappers (e.g., `vs-navbar__actions`)
-- Grouping containers (`vs-card__body`)
-- Structural layout containers (`vs-modal__footer`)
-- ARIA-required wrappers (role="group", role="list")
-- Containers needed for spacing or alignment
-
-### ❌ Forbidden Functional Wrappers
-
-These **are NOT allowed** because they attempt to recreate primitives:
-
-- Custom button wrappers
-- Custom icon wrappers
-- Custom close-button wrappers
-- Fake toggles, checkmarks, radios
-- Ad-hoc “input frames”
-- Anything duplicating a primitive’s internal logic
-
-If the external component uses functionality provided by a primitive,  
-the API MUST reference the primitive directly.
-
-# 3. Produce the Component BEM API Definition
-
-You MUST define the following:
-
-## Component Type
-
-Choose one:
-
-- Foundational Primitive
-- Dependent Primitive
-- Composed Component
-
-## Component Name
-
-Use VIS namespace:
-
-```
-
-vs-[component-name]
-
-```
-
-## Component Anatomy (BEM Elements)
-
-List structural elements:
-
-```
-
-vs-[component]__element-name — description
-
-```
-
-### Rules:
-
-- Include only essential structural elements.
-- No styling decisions.
-- No HTML attributes (added later in Step 2 or Step 4).
-- DO NOT rename, wrap, or alias VIS primitives.
-
-If the component includes a button, icon, input, spinner, etc.,  
-the anatomy MUST reference the **actual VIS primitive**.
-
-## Variants (BEM Modifiers)
-
-List all variants:
-
-```
-
-vs-[component]--[variant-name]
-
-```
-
-Include applicable categories:
-
-- visual variants
-- behavioral variants
-- size variants
-- layout variants (if any)
-
-Variants MUST NOT recreate primitive variants.
-
-## Component States
-
-List dynamic states:
-
-```
-
-.is-[state-name]
-
-```
-
-Examples:
-
-- `.is-active`
-- `.is-open`
-- `.is-visible`
-- `.is-disabled`
-- `.is-error`
-- `.is-success`
-
-Each MUST include a one-line description of when it applies.
-
-States MUST NOT duplicate existing primitive internal states.
-
-## Responsive Behavior (If Needed)
-
-Include notes ONLY if the component has explicit responsive structural differences.  
-Default assumption: **mobile-first using VIS breakpoints**.
-
-# 4. Canonical Anatomy Freeze (MANDATORY)
-
-After defining:
-
-- Component Type
-- Component Anatomy
-- Variants
-- States
-
-You MUST produce a **Canonical Anatomy Block** using a JSON-like structure:
-
-```
-
+```json
 {
-"block": "vs-[component]",
-"elements": [
-"vs-[component]__element1",
-"vs-[component]__element2"
-],
-"states": [
-"is-active",
-"is-disabled"
-],
-"variants": [
-"vs-[component]--primary",
-"vs-[component]--lg"
-]
+  "block": "vs-login-form",
+  "elements": [
+    "vs-login-form__header",
+    "vs-login-form__body",
+    "vs-login-form__field",
+    "vs-login-form__actions"
+  ],
+  "states": ["is-loading", "is-disabled"],
+  "variants": ["vs-login-form--inline", "vs-login-form--compact"]
 }
-
 ```
 
-### Rules:
+Anatomy Extension Protocol (if changes are required later)
 
-- This Anatomy Block becomes the authoritative model.
-- Steps 2–6 MUST implement exactly this structure.
-- NO later steps may introduce new elements, remove elements, rename elements, or add new states/variants.
+- To change the canonical anatomy after Step 1 you MUST:
+  1.  Update the API and explain the reason (accessibility, layout, JS behavior, or performance).
 
-Any change requires the **Anatomy Extension Protocol** (below).
+2.  Bump the API version (e.g., `v1.0 → v1.1`).
+3.  Re-run Steps 2–6 so all artifacts remain consistent.
 
-# 5. Anatomy Extension Protocol (Version-Controlled)
+Validation criteria before finishing Step 1
 
-Because real-world components evolve, Codex MUST follow this protocol  
-when adding a new element, state, or variant after Step 1:
+- BEM syntax is correct and consistent.
+- No element duplicates a VIS primitive; primitives are referenced directly.
+- Variants and states are scoped and meaningful.
+- The Canonical Anatomy Block accurately reflects the elements used.
 
-### Changes allowed ONLY when:
+Deliverable
 
-- Required for **accessibility**
-- Required for **layout correctness**
-- Required for **JS behavior**
-- Required for **performance**
-
-### Protocol:
-
-1. Update Step 1 API  
-   → Add new element/state/variant with justification
-2. Add a version bump:  
-   `v1.0 → v1.1`
-3. Regenerate **Steps 2–6** for consistency
-
-NO step may introduce new structure silently.  
-This ensures system integrity and prevents “HTML drift.”
-
-# 6. Structural Consistency Validation (Cross-Step Rule)
-
-Codex MUST validate:
-
-- BEM syntax correctness
-- No element duplicates a primitive
-- No primitive is wrapped or renamed
-- States follow `.is-*` format
-- Variants strictly follow BEM modifier rules
-- No invented wrapper structures
-- No external naming (Bootstrap, Tailwind, etc.)
-
-If violations are found, Codex MUST correct the API before proceeding.
-
-# 7. Primitive Reuse Enforcement (Mandatory)
-
-Codex MUST NOT define new elements that duplicate existing VIS primitives.
-
-Forbidden:
-
-- `"icon-wrapper"` → use `vs-icon`
-- `"close-button"` → use `vs-close`
-- `"input-wrapper"` → use `vs-input`
-- `"toggle-button"` → use `vs-btn`
-- `"badge-container"` → use `vs-badge`
-- `"divider-line"` → use `vs-divider`
-
-Rules:
-
-- Do NOT rename or alias primitives
-- Do NOT wrap primitives with structural names
-- Do NOT override primitive behavior
-- Do NOT define states belonging to primitives
-- ALWAYS reference primitives directly
-
-If something looks like a primitive → it IS a primitive.
-
-# Output
-
-Store Step 1 output as:
-
-```
-
-css/components/vs-[component]/vs-[component]-api.md
-
-```
-
-Step 1 output MUST end with the **Canonical Anatomy Block**.
-
-# Rules
-
-- Do NOT generate HTML or CSS in this step.
-- Use BEM naming strictly.
-- No Bootstrap dependencies.
-- Keep everything clean, minimal, and system-driven.
-- All future steps MUST follow this API exactly.
-- Changes after Step 1 require the Anatomy Extension Protocol.
-
-```
-
-```
+- `css/components/vs-[component]/vs-[component]-api.md` containing the full API and Canonical Anatomy Block.
