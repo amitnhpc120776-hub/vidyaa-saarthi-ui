@@ -1,0 +1,238 @@
+/* ========================================================================
+   VIS Component: vs-switch
+   ======================================================================== */
+
+.vs-switch {
+  --vs-switch-track-width: var(--space-40);
+  --vs-switch-track-height: var(--space-24);
+  --vs-switch-thumb-size: var(--space-16);
+  --vs-switch-thumb-offset: var(--space-2);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-12);
+  color: var(--text-primary);
+  font-size: var(--body-md-size);
+  line-height: var(--body-md-line-height);
+  font-weight: var(--body-md-weight);
+  cursor: pointer;
+  user-select: none;
+}
+
+.vs-switch--block {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-8);
+}
+
+.vs-switch__control {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  overflow: hidden;
+}
+
+.vs-switch__visual {
+  position: relative;
+  width: var(--vs-switch-track-width);
+  height: var(--vs-switch-track-height);
+  display: inline-flex;
+  align-items: center;
+  padding: var(--vs-switch-thumb-offset);
+  background-color: var(--neutral-200);
+  border: 1px solid var(--neutral-300);
+  border-radius: var(--radius-full);
+  box-shadow: var(--elevation-0);
+  transition: background-color var(--motion-duration-medium) var(--motion-ease-standard),
+    border-color var(--motion-duration-medium) var(--motion-ease-standard),
+    box-shadow var(--motion-duration-medium) var(--motion-ease-standard);
+}
+
+.vs-switch__thumb {
+  width: var(--vs-switch-thumb-size);
+  height: var(--vs-switch-thumb-size);
+  background-color: var(--neutral-0);
+  border-radius: var(--radius-full);
+  box-shadow: var(--elevation-2);
+  transform: translateX(0);
+  transition: transform var(--motion-duration-medium) var(--motion-ease-standard),
+    background-color var(--motion-duration-medium) var(--motion-ease-standard);
+}
+
+.vs-switch__label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-6);
+  font-size: var(--body-md-size);
+  line-height: var(--body-md-line-height);
+  font-weight: var(--body-md-weight);
+  color: var(--text-primary);
+}
+
+.vs-switch__description {
+  display: block;
+  font-size: var(--body-sm-size);
+  line-height: var(--body-sm-line-height);
+  font-weight: var(--body-sm-weight);
+  color: var(--text-secondary);
+}
+
+/* Interactive States */
+.vs-switch.is-checked .vs-switch__visual,
+.vs-switch__control:checked + .vs-switch__visual {
+  background-color: var(--primary-500);
+  border-color: var(--primary-500);
+}
+
+.vs-switch.is-checked .vs-switch__thumb,
+.vs-switch__control:checked + .vs-switch__visual .vs-switch__thumb {
+  transform: translateX(calc(var(--vs-switch-track-width) - var(--vs-switch-thumb-size) - (var(--vs-switch-thumb-offset) * 2)));
+}
+
+.vs-switch.is-disabled,
+.vs-switch.is-readonly {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.vs-switch.is-error .vs-switch__visual {
+  border-color: var(--danger-500);
+  background-color: var(--danger-50);
+}
+
+.vs-switch.is-success .vs-switch__visual {
+  border-color: var(--success-500);
+  background-color: var(--success-50);
+}
+
+.vs-switch.is-focus-visible .vs-switch__visual,
+.vs-switch__control:focus-visible + .vs-switch__visual {
+  box-shadow: var(--focus-ring);
+}
+
+.vs-switch--inline .vs-switch__description {
+  margin-left: calc(var(--vs-switch-track-width) + var(--space-12));
+}
+
+/* =============================================================================
+   VARIANTS & SIZE MODIFIERS
+   ============================================================================= */
+
+/* OUTPUT SECTION 1 — Visual Variants (BEM Modifiers) */
+/* DEFAULT */
+.vs-switch--default.is-checked .vs-switch__visual,
+.vs-switch--default .vs-switch__control:checked + .vs-switch__visual {
+  background-color: var(--primary-500);
+  border-color: var(--primary-500);
+}
+
+/* PRIMARY */
+.vs-switch--primary.is-checked .vs-switch__visual,
+.vs-switch--primary .vs-switch__control:checked + .vs-switch__visual {
+  background-color: var(--primary-600);
+  border-color: var(--primary-600);
+}
+
+/* SECONDARY */
+.vs-switch--secondary.is-checked .vs-switch__visual,
+.vs-switch--secondary .vs-switch__control:checked + .vs-switch__visual {
+  background-color: var(--secondary-500);
+  border-color: var(--secondary-500);
+}
+
+/* SUCCESS */
+.vs-switch--success.is-checked .vs-switch__visual,
+.vs-switch--success .vs-switch__control:checked + .vs-switch__visual {
+  background-color: var(--success-500);
+  border-color: var(--success-500);
+}
+
+/* WARNING */
+.vs-switch--warning.is-checked .vs-switch__visual,
+.vs-switch--warning .vs-switch__control:checked + .vs-switch__visual {
+  background-color: var(--warning-500);
+  border-color: var(--warning-500);
+}
+
+/* DANGER */
+.vs-switch--danger.is-checked .vs-switch__visual,
+.vs-switch--danger .vs-switch__control:checked + .vs-switch__visual {
+  background-color: var(--danger-500);
+  border-color: var(--danger-500);
+}
+
+/* INFO */
+.vs-switch--info.is-checked .vs-switch__visual,
+.vs-switch--info .vs-switch__control:checked + .vs-switch__visual {
+  background-color: var(--info-500);
+  border-color: var(--info-500);
+}
+
+.vs-switch.is-disabled .vs-switch__visual,
+.vs-switch.is-readonly .vs-switch__visual {
+  background-color: var(--neutral-100);
+  border-color: var(--neutral-200);
+}
+
+.vs-switch.is-disabled .vs-switch__thumb,
+.vs-switch.is-readonly .vs-switch__thumb {
+  box-shadow: var(--elevation-0);
+}
+
+/* OUTPUT SECTION 2 — Size Modifiers (BEM Modifiers) */
+/* SMALL */
+.vs-switch--sm {
+  --vs-switch-track-width: var(--space-32);
+  --vs-switch-track-height: var(--space-20);
+  --vs-switch-thumb-size: var(--space-12);
+  --vs-switch-thumb-offset: var(--space-2);
+  font-size: var(--body-sm-size);
+  line-height: var(--body-sm-line-height);
+  font-weight: var(--body-sm-weight);
+  gap: var(--space-8);
+}
+
+/* MEDIUM (default) */
+.vs-switch--md {
+  --vs-switch-track-width: var(--space-40);
+  --vs-switch-track-height: var(--space-24);
+  --vs-switch-thumb-size: var(--space-16);
+  --vs-switch-thumb-offset: var(--space-2);
+}
+
+/* LARGE */
+.vs-switch--lg {
+  --vs-switch-track-width: var(--space-48);
+  --vs-switch-track-height: calc(var(--space-24) + var(--space-4));
+  --vs-switch-thumb-size: var(--space-20);
+  --vs-switch-thumb-offset: var(--space-4);
+  font-size: var(--body-lg-size);
+  line-height: var(--body-lg-line-height);
+  font-weight: var(--body-lg-weight);
+  gap: var(--space-16);
+}
+
+/* OUTPUT SECTION 3 — Notes & Variant Behavior Rules */
+/*
+- Visual modifiers apply brand/semantic colors to the checked state while retaining neutral off state.
+- Size modifiers adjust track dimensions, thumb size, and text sizing; they inherit responsive typography tokens.
+- Layout modifiers can be combined with visual and size modifiers; `.vs-switch--block` stacks label/description while `.vs-switch--inline` keeps text inline.
+- State classes (.is-disabled, .is-readonly) reduce interactivity and visual prominence and take precedence over variants.
+- Focus styles rely on `.is-focus-visible` or native :focus-visible.
+*/
+
+/* OUTPUT SECTION 4 — Quality Check List (MANDATORY)
+- BEM compliant and token-driven.
+- Scoped to .vs-switch only; no primitive overrides.
+- No Bootstrap dependencies or raw values beyond opacity adjustments.
+- States and variants combine without conflict; disabled/readonly should visually override accent colors via opacity.
+*/
+
+/* OUTPUT SECTION 5 — Storage Instructions (MANDATORY)
+- Keep this block appended under the variants header within css/components/vs-switch/vs-switch.css.
+*/
