@@ -156,7 +156,7 @@
   --vs-btn-active-border: var(--primary-800);
   --vs-btn-focus-outline: var(--primary-700);
   --vs-btn-focus-ring: color-mix(in srgb, var(--primary-600) 25%, transparent);
-  --vs-btn-radius: 0 0 0 32px;
+  --vs-btn-radius: var(--space-0) var(--space-0) var(--space-0) var(--space-16);
 }
 
 .vs-btn--secondary {
@@ -169,7 +169,7 @@
   --vs-btn-active-border: var(--secondary-800);
   --vs-btn-focus-outline: var(--secondary-700);
   --vs-btn-focus-ring: color-mix(in srgb, var(--secondary-500) 30%, transparent);
-  --vs-btn-radius: 0 0 0 32px;
+  --vs-btn-radius: var(--space-0) var(--space-0) var(--space-0) var(--space-16);
 }
 
 .vs-btn--success {
