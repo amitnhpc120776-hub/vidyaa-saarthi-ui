@@ -1,0 +1,146 @@
+/* =============================================================================
+   VIS Composed Component: vs-btn-group
+   Builds grouped layouts for vs-btn primitives with orientation, shape,
+   layout, and size modifiers using VIS tokens.
+   ============================================================================= */
+
+/* Base Component CSS */
+.vs-btn-group {
+  --vs-btn-group-gap: 0;
+  --vs-btn-group-radius: var(--radius-md);
+  --vs-btn-group-border-overlap: -1px;
+  --vs-btn-group-padding: var(--space-4);
+  --vs-btn-group-surface: transparent;
+  --vs-btn-group-border: transparent;
+
+  display: inline-flex;
+  flex-direction: row;
+  align-items: stretch;
+  gap: var(--vs-btn-group-gap);
+  padding: var(--vs-btn-group-padding);
+  border-radius: var(--vs-btn-group-radius);
+  background-color: var(--vs-btn-group-surface);
+  border: 1px solid var(--vs-btn-group-border);
+}
+
+.vs-btn-group__item {
+  display: flex;
+  align-items: stretch;
+  position: relative;
+}
+
+.vs-btn-group .vs-btn {
+  border-radius: 0;
+  height: 100%;
+}
+
+.vs-btn-group .vs-btn:focus-visible {
+  z-index: 1;
+}
+
+.vs-btn-group--horizontal .vs-btn-group__item + .vs-btn-group__item {
+  margin-inline-start: var(--vs-btn-group-border-overlap);
+}
+
+.vs-btn-group--vertical {
+  flex-direction: column;
+}
+
+.vs-btn-group--vertical .vs-btn-group__item + .vs-btn-group__item {
+  margin-block-start: var(--vs-btn-group-border-overlap);
+}
+
+.vs-btn-group--horizontal .vs-btn-group__item:first-child .vs-btn {
+  border-top-left-radius: var(--vs-btn-group-radius);
+  border-bottom-left-radius: var(--vs-btn-group-radius);
+}
+
+.vs-btn-group--horizontal .vs-btn-group__item:last-child .vs-btn {
+  border-top-right-radius: var(--vs-btn-group-radius);
+  border-bottom-right-radius: var(--vs-btn-group-radius);
+}
+
+.vs-btn-group--vertical .vs-btn-group__item:first-child .vs-btn {
+  border-top-left-radius: var(--vs-btn-group-radius);
+  border-top-right-radius: var(--vs-btn-group-radius);
+}
+
+.vs-btn-group--vertical .vs-btn-group__item:last-child .vs-btn {
+  border-bottom-left-radius: var(--vs-btn-group-radius);
+  border-bottom-right-radius: var(--vs-btn-group-radius);
+}
+
+/* State Styles */
+.vs-btn-group.is-disabled {
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.vs-btn-group.is-focus-within,
+.vs-btn-group:focus-within {
+  box-shadow: 0 0 0 var(--space-4) color-mix(in srgb, var(--primary-600) 16%, transparent);
+}
+
+/* Variants (BEM Modifiers) */
+.vs-btn-group--rounded {
+  --vs-btn-group-radius: var(--radius-md);
+}
+
+.vs-btn-group--smooth {
+  --vs-btn-group-radius: var(--radius-lg);
+}
+
+.vs-btn-group--pill {
+  --vs-btn-group-radius: var(--radius-full);
+}
+
+.vs-btn-group--block {
+  display: flex;
+  width: 100%;
+}
+
+.vs-btn-group--block .vs-btn-group__item,
+.vs-btn-group--block .vs-btn {
+  width: 100%;
+}
+
+.vs-btn-group--justified .vs-btn-group__item {
+  flex: 1 1 0;
+}
+
+.vs-btn-group--justified .vs-btn {
+  width: 100%;
+}
+
+.vs-btn-group--segmented {
+  --vs-btn-group-gap: 0;
+  --vs-btn-group-padding: var(--space-2);
+  --vs-btn-group-surface: var(--surface-subtle);
+  --vs-btn-group-border: var(--neutral-200);
+  box-shadow: var(--elevation-1);
+}
+
+/* Size Variants */
+.vs-btn-group--sm {
+  --vs-btn-group-gap: 0;
+  --vs-btn-group-padding: var(--space-2);
+  --vs-btn-group-radius: var(--radius-sm);
+}
+
+.vs-btn-group--md {
+  --vs-btn-group-gap: 0;
+  --vs-btn-group-padding: var(--space-4);
+  --vs-btn-group-radius: var(--radius-md);
+}
+
+.vs-btn-group--lg {
+  --vs-btn-group-gap: 0;
+  --vs-btn-group-padding: var(--space-6);
+  --vs-btn-group-radius: var(--radius-xl);
+}
+
+/* Optional Notes/Dependencies */
+/*
+- Arrow-key navigation is handled in js/components/vs-btn-group/vs-btn-group.js for segmented groups.
+- Combine .vs-btn size modifiers independently; the group only manages layout and spacing.
+*/
