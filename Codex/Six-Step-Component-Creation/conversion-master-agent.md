@@ -63,12 +63,13 @@ JavaScript lifecycle (mandatory)
 
 Workflow (strict sequence)
 
-1. `workflow-step1.md` — Analyse & create BEM API
-2. `workflow-step2.md` — Convert external HTML → VIS HTML snippet
-3. `workflow-step3.md` — Write VIS CSS (BEM + token-driven)
-4. `workflow-step4.md` — Add JavaScript (if required)
-5. `workflow-step5.md` — Add variants & sizes (BEM modifiers)
-6. `workflow-step6.md` — Create final snippet & demo
+1. Codex MUST read the file: Codex\compRequirment.md
+2. `workflow-step1.md` — Analyse & create BEM API
+3. `workflow-step2.md` — Convert external HTML → VIS HTML snippet
+4. `workflow-step3.md` — Write VIS CSS (BEM + token-driven)
+5. `workflow-step4.md` — Add JavaScript (if required)
+6. `workflow-step5.md` — Add variants & sizes (BEM modifiers)
+7. `workflow-step6.md` — Create final snippet & demo
 
 Execution rules
 
