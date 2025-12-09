@@ -1,0 +1,24 @@
+<!-- Section 1 → VIS HTML Snippet -->
+<div class="vs-alerts" role="alert">
+  <span class="vs-alerts__icon" aria-hidden="true">
+    <span class="vs-icon vs-icon--md">
+      <span class="vs-icon__text">!</span>
+    </span>
+  </span>
+  <div class="vs-alerts__body">
+    <p class="vs-alerts__message">This is a contextual alert message with supporting details.</p>
+  </div>
+  <button class="vs-alerts__close vs-close vs-close--muted vs-close--round vs-close--sm" type="button" aria-label="Dismiss alert">
+    <span class="vs-close__icon">
+      <span class="vs-icon" aria-hidden="true">&times;</span>
+    </span>
+  </button>
+</div>
+
+<!-- Section 2 → Notes for Integration -->
+<!--
+- Root element uses `role="alert"` for assistive announcements. Use `aria-live="polite"` if the alert content updates dynamically.
+- The dismiss control is optional; remove `.vs-alerts__close` when not needed. If using JS dismissal, toggle `.is-dismissed` on `.vs-alerts`.
+- Swap the inner `vs-icon` glyph per variant (e.g., info/check/error/warning/compass icons) while keeping the `vs-alerts__icon` wrapper.
+- Keep text inside `.vs-alerts__message`; inline links/buttons should reuse VIS primitives.
+-->
