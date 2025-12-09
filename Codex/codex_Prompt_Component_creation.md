@@ -4,10 +4,10 @@ You must now create a new VIS Component using the Six-Step VIS Component Convers
 
 ## 1. Component Definition
 
-- Component name: **vs-alerts**
-- Component description:
-  - Responsive Alerts is flash messages that shows contextual feedback messages for attracts the user’s attention without interrupting the user’s task.Alerts are available for any length of text, as well as an optional close button. Vrainats required : Primary, Success, Danger, Warning, Discovery. Each Variant should have an appropriate circle icon on the left.
-- Component type: **[Dependent Primitive]**, uses vs-icon
+- Component name: **vs-rangeSlider**
+- Component description: Range slider component lets users choose a numeric value from the given values on a slider.Study the features at https://fastbootstrap.com/components/range/
+
+- Component type: **[Dependent Primitive]**
 
 There is **NO external HTML/CSS** provided for this component unless explicitly included by the user.
 
@@ -74,6 +74,8 @@ Across Steps 1–6, Codex must generate:
 All outputs must follow the VIS Design System, BEM, and token rules.
 
 Codex must ALWAYS request clarification when something is ambiguous.
+
+After generating the output of each step, you must automatically run a structural and compliance self-test to verify adherence to VIS rules (BEM, tokens, primitives, workflow constraints). If any violation is detected, correct it before presenting the final output
 
 # prompt for component modifications
 
