@@ -4,9 +4,10 @@ You must now create a new VIS Component using the Six-Step VIS Component Convers
 
 ## 1. Component Definition
 
-- Component name: **vs-[component]**
-- Component description: **[Describe functional purpose of component]**
-- Component type: **[Foundational Primitive / Dependent Primitive / Composed Component]**
+- Component name: **vs-alerts**
+- Component description:
+  - Responsive Alerts is flash messages that shows contextual feedback messages for attracts the user’s attention without interrupting the user’s task.Alerts are available for any length of text, as well as an optional close button. Vrainats required : Primary, Success, Danger, Warning, Discovery. Each Variant should have an appropriate circle icon on the left.
+- Component type: **[Dependent Primitive]**, uses vs-icon
 
 There is **NO external HTML/CSS** provided for this component unless explicitly included by the user.
 
