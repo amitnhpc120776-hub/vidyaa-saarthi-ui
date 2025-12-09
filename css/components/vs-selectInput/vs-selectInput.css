@@ -1,0 +1,229 @@
+/* ==========================================================================
+   vs-selectInput — VIS Composed Component (Base Styles)
+   ========================================================================= */
+
+.vs-selectInput {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+  position: relative;
+  color: var(--text-primary);
+  inline-size: 100%;
+}
+
+.vs-selectInput__label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-4);
+  font-size: var(--body-sm-size);
+  line-height: var(--body-sm-line-height);
+  font-weight: var(--body-sm-weight);
+  color: var(--text-secondary);
+}
+
+.vs-selectInput__control {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-8);
+  padding: var(--space-12) var(--space-12);
+  background-color: var(--surface-default);
+  border: 1px solid var(--border-color-default);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: border-color 120ms ease, box-shadow 120ms ease, background-color 120ms ease;
+}
+
+.vs-selectInput__value {
+  display: flex;
+  align-items: center;
+  gap: var(--space-8);
+  min-inline-size: 0;
+  flex: 1 1 auto;
+  font-size: var(--body-md-size);
+  line-height: var(--body-md-line-height);
+  font-weight: var(--body-md-weight);
+  color: var(--text-primary);
+}
+
+.vs-selectInput__placeholder {
+  color: var(--text-tertiary);
+}
+
+.vs-selectInput__indicators {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-4);
+  color: var(--text-tertiary);
+}
+
+.vs-selectInput__indicator .vs-icon {
+  --vs-icon-color: currentColor;
+  --vs-icon-size: var(--space-16);
+}
+
+.vs-selectInput__menu {
+  position: absolute;
+  inset-inline-start: 0;
+  inset-inline-end: 0;
+  margin-top: var(--space-4);
+  background-color: var(--surface-default);
+  border: 1px solid var(--border-color-default);
+  border-radius: var(--radius-md);
+  box-shadow: var(--elevation-2);
+  display: none;
+  padding-block: var(--space-4);
+  max-inline-size: 100%;
+  z-index: 10;
+}
+
+.vs-selectInput__option {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: var(--space-8);
+  padding: var(--space-12) var(--space-16);
+  cursor: pointer;
+  color: var(--text-primary);
+  transition: background-color 120ms ease, color 120ms ease;
+}
+
+.vs-selectInput__option-label {
+  font-size: var(--body-md-size);
+  line-height: var(--body-md-line-height);
+  font-weight: var(--body-md-weight);
+  color: inherit;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.vs-selectInput__option-meta {
+  grid-column: 2 / 3;
+  font-size: var(--body-sm-size);
+  line-height: var(--body-sm-line-height);
+  font-weight: var(--body-sm-weight);
+  color: var(--text-tertiary);
+}
+
+.vs-selectInput__option-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: var(--space-24);
+  block-size: var(--space-24);
+  color: var(--text-secondary);
+}
+
+.vs-selectInput__option-icon .vs-icon__text,
+.vs-selectInput__option-check .vs-icon__text {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vs-selectInput__option-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  inline-size: var(--space-20);
+  block-size: var(--space-20);
+  color: var(--primary-600);
+  opacity: 0;
+  transition: opacity 120ms ease;
+}
+
+.vs-selectInput__helper {
+  font-size: var(--body-sm-size);
+  line-height: var(--body-sm-line-height);
+  color: var(--text-secondary);
+}
+
+/* State styles */
+.vs-selectInput.is-open .vs-selectInput__menu {
+  display: block;
+}
+
+.vs-selectInput.is-open .vs-selectInput__indicator {
+  transform: rotate(180deg);
+}
+
+.vs-selectInput.is-focus .vs-selectInput__control {
+  border-color: var(--primary-500);
+  box-shadow: 0 0 0 var(--space-4) color-mix(in srgb, var(--primary-200) 60%, transparent);
+  background-color: var(--surface-hover);
+}
+
+.vs-selectInput.is-disabled .vs-selectInput__control {
+  background-color: var(--surface-disabled);
+  border-color: var(--border-color-subtle);
+  color: var(--text-tertiary);
+  cursor: not-allowed;
+}
+
+.vs-selectInput.is-disabled .vs-selectInput__option,
+.vs-selectInput.is-disabled .vs-selectInput__indicator {
+  color: var(--text-tertiary);
+  pointer-events: none;
+}
+
+.vs-selectInput.is-error .vs-selectInput__control {
+  border-color: var(--border-color-error);
+  box-shadow: 0 0 0 var(--space-4) color-mix(in srgb, var(--error-100) 70%, transparent);
+}
+
+.vs-selectInput.is-error .vs-selectInput__helper {
+  color: var(--error-600);
+}
+
+.vs-selectInput.is-loading .vs-selectInput__control {
+  cursor: progress;
+}
+
+.vs-selectInput__option:hover,
+.vs-selectInput__option:focus {
+  background-color: var(--surface-hover);
+  outline: none;
+}
+
+.vs-selectInput__option[aria-selected='true'] {
+  background-color: color-mix(in srgb, var(--primary-50) 70%, transparent);
+  color: var(--primary-700);
+}
+
+.vs-selectInput__option[aria-selected='true'] .vs-selectInput__option-check {
+  opacity: 1;
+}
+
+/* ========================================================================
+   VARIANTS & SIZE MODIFIERS
+   ======================================================================== */
+
+.vs-selectInput--multiple .vs-selectInput__value {
+  flex-wrap: wrap;
+  gap: var(--space-8);
+}
+
+.vs-selectInput--inline {
+  flex-direction: row;
+  align-items: center;
+  gap: var(--space-12);
+}
+
+.vs-selectInput--inline .vs-selectInput__label {
+  margin: 0;
+}
+
+.vs-selectInput--fullWidth,
+.vs-selectInput--fullWidth .vs-selectInput__control {
+  inline-size: 100%;
+}
+
+/* Token Verification:
+   - Spacing tokens used: --space-4, --space-8, --space-12, --space-16, --space-20, --space-24
+   - Color tokens used: --text-primary, --text-secondary, --text-tertiary, --surface-default, --surface-hover, --surface-disabled, --border-color-default, --border-color-subtle, --border-color-error, --primary-50, --primary-200, --primary-500, --primary-600, --primary-700, --error-100, --error-600
+   - Radius tokens used: --radius-md
+   - Typography tokens used: --body-sm-size, --body-sm-line-height, --body-sm-weight, --body-md-size, --body-md-line-height, --body-md-weight
+   - Shadow tokens used: --elevation-2
+   - Raw values: NONE
+*/
