@@ -1,0 +1,35 @@
+<!-- Section 1 → VIS HTML Snippet -->
+<div class="vs-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-describedby="modal-description">
+  <div class="vs-modal__overlay" data-vs-modal="overlay"></div>
+  <div class="vs-modal__dialog" role="document">
+    <div class="vs-modal__header">
+      <h2 class="vs-modal__title" id="modal-title">Modal title</h2>
+      <button class="vs-close vs-modal__close vs-close--default vs-close--round vs-close--md" type="button" aria-label="Close" data-vs-modal="close">
+        <span class="vs-close__icon">
+          <span class="vs-icon" aria-hidden="true">&times;</span>
+        </span>
+      </button>
+    </div>
+    <div class="vs-modal__body" id="modal-description">
+      <p>Body content goes here. Add paragraphs, forms, or other interactive elements.</p>
+    </div>
+    <div class="vs-modal__footer">
+      <div class="vs-modal__actions">
+        <button class="vs-btn vs-btn--secondary vs-btn--md" type="button" data-vs-modal="cancel">
+          <span class="vs-btn__label">Cancel</span>
+        </button>
+        <button class="vs-btn vs-btn--primary vs-btn--md" type="button" data-vs-modal="confirm">
+          <span class="vs-btn__label">Confirm</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Section 2 → Notes for Integration -->
+<!--
+- Root element uses `role="dialog"` with `aria-modal="true"`; ensure `aria-labelledby` and `aria-describedby` reference title and description when present.
+- Data hooks: `data-vs-modal="overlay"` for overlay clicks, `data-vs-modal="close"` for close control, `data-vs-modal="cancel"` and `data-vs-modal="confirm"` for action buttons. Used by modal JS in Step 4.
+- Manage focus trapping, ESC key handling, and scroll locking via JavaScript (Step 4).
+- Do not add variant modifiers or state classes in this base snippet; apply them when needed after Step 5.
+-->
