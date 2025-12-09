@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VIS Component Demo — vs-selectInput</title>
+    <link rel="stylesheet" href="../vs-designSystem/tokens.css" />
+    <link rel="stylesheet" href="../vs-designSystem/base.css" />
+    <link rel="stylesheet" href="../vs-designSystem/typography.css" />
+    <link rel="stylesheet" href="../vs-designSystem/utilities.css" />
+    <link rel="stylesheet" href="../component.css" />
+  </head>
+  <body class="p-24">
+    <h1 class="h2 mb-16">vs-selectInput — Demo</h1>
+
+    <section class="mb-32">
+      <h2 class="h3 mb-12">Default</h2>
+      <!-- Canonical snippet -->
+      <div class="vs-selectInput" data-vs-selectinput>
+        <label class="vs-selectInput__label" for="selectInput-demo-1">Choose an option</label>
+        <div
+          class="vs-selectInput__control"
+          role="button"
+          tabindex="0"
+          aria-haspopup="listbox"
+          aria-expanded="false"
+          aria-labelledby="selectInput-demo-1"
+          data-vs-selectinput-toggle
+        >
+          <span class="vs-selectInput__value" id="selectInput-demo-1">
+            <span class="vs-selectInput__placeholder">Select an option</span>
+          </span>
+          <span class="vs-selectInput__indicators">
+            <span class="vs-selectInput__indicator" aria-hidden="true">
+              <span class="vs-icon vs-icon--sm">
+                <span class="vs-icon__text">⌄</span>
+              </span>
+            </span>
+          </span>
+        </div>
+        <div class="vs-selectInput__menu" role="listbox" tabindex="-1" aria-labelledby="selectInput-demo-1">
+          <div class="vs-selectInput__option" role="option" aria-selected="false" data-value="alpha">
+            <span class="vs-selectInput__option-icon vs-icon vs-icon--sm" aria-hidden="true">
+              <span class="vs-icon__text">A</span>
+            </span>
+            <span class="vs-selectInput__option-label">Alpha</span>
+            <span class="vs-selectInput__option-meta">Primary option</span>
+            <span class="vs-selectInput__option-check" aria-hidden="true">
+              <span class="vs-icon vs-icon--sm">
+                <span class="vs-icon__text">✓</span>
+              </span>
+            </span>
+          </div>
+          <div class="vs-selectInput__option" role="option" aria-selected="false" data-value="beta">
+            <span class="vs-selectInput__option-label">Beta</span>
+            <span class="vs-selectInput__option-meta">Secondary option</span>
+            <span class="vs-selectInput__option-check" aria-hidden="true">
+              <span class="vs-icon vs-icon--sm">
+                <span class="vs-icon__text">✓</span>
+              </span>
+            </span>
+          </div>
+          <div class="vs-selectInput__option" role="option" aria-selected="false" data-value="gamma">
+            <span class="vs-selectInput__option-label">Gamma</span>
+            <span class="vs-selectInput__option-check" aria-hidden="true">
+              <span class="vs-icon vs-icon--sm">
+                <span class="vs-icon__text">✓</span>
+              </span>
+            </span>
+          </div>
+        </div>
+        <div class="vs-selectInput__helper" role="status">Select one option</div>
+      </div>
+    </section>
+
+    <section class="mb-32">
+      <h2 class="h3 mb-12">Multiple selection (variant)</h2>
+      <div class="vs-selectInput vs-selectInput--multiple" data-vs-selectinput>
+        <label class="vs-selectInput__label" for="selectInput-demo-2">Select tags</label>
+        <div
+          class="vs-selectInput__control"
+          role="button"
+          tabindex="0"
+          aria-haspopup="listbox"
+          aria-expanded="false"
+          aria-labelledby="selectInput-demo-2"
+          data-vs-selectinput-toggle
+        >
+          <span class="vs-selectInput__value" id="selectInput-demo-2">
+            <span class="vs-selectInput__placeholder">Choose tags</span>
+          </span>
+          <span class="vs-selectInput__indicators">
+            <span class="vs-selectInput__indicator" aria-hidden="true">
+              <span class="vs-icon vs-icon--sm">
+                <span class="vs-icon__text">⌄</span>
+              </span>
+            </span>
+          </span>
+        </div>
+        <div class="vs-selectInput__menu" role="listbox" tabindex="-1" aria-labelledby="selectInput-demo-2">
+          <div class="vs-selectInput__option" role="option" aria-selected="true" data-value="design">
+            <span class="vs-selectInput__option-label">Design</span>
+            <span class="vs-selectInput__option-check" aria-hidden="true">
+              <span class="vs-icon vs-icon--sm">
+                <span class="vs-icon__text">✓</span>
+              </span>
+            </span>
+          </div>
+          <div class="vs-selectInput__option" role="option" aria-selected="false" data-value="frontend">
+            <span class="vs-selectInput__option-label">Frontend</span>
+            <span class="vs-selectInput__option-check" aria-hidden="true">
+              <span class="vs-icon vs-icon--sm">
+                <span class="vs-icon__text">✓</span>
+              </span>
+            </span>
+          </div>
+          <div class="vs-selectInput__option" role="option" aria-selected="true" data-value="ux">
+            <span class="vs-selectInput__option-label">UX</span>
+            <span class="vs-selectInput__option-check" aria-hidden="true">
+              <span class="vs-icon vs-icon--sm">
+                <span class="vs-icon__text">✓</span>
+              </span>
+            </span>
+          </div>
+        </div>
+        <div class="vs-selectInput__helper" role="status">Multiple selections enabled</div>
+      </div>
+    </section>
+
+    <section class="mb-32">
+      <h2 class="h3 mb-12">Inline layout (variant)</h2>
+      <div class="vs-selectInput vs-selectInput--inline" data-vs-selectinput>
+        <label class="vs-selectInput__label" for="selectInput-demo-3">Inline</label>
+        <div
+          class="vs-selectInput__control"
+          role="button"
+          tabindex="0"
+          aria-haspopup="listbox"
+          aria-expanded="false"
+          aria-labelledby="selectInput-demo-3"
+          data-vs-selectinput-toggle
+        >
+          <span class="vs-selectInput__value" id="selectInput-demo-3">
+            <span class="vs-selectInput__placeholder">Pick one</span>
+          </span>
+          <span class="vs-selectInput__indicators">
+            <span class="vs-selectInput__indicator" aria-hidden="true">
+              <span class="vs-icon vs-icon--sm">
+                <span class="vs-icon__text">⌄</span>
+              </span>
+            </span>
+          </span>
+        </div>
+        <div class="vs-selectInput__menu" role="listbox" tabindex="-1" aria-labelledby="selectInput-demo-3">
+          <div class="vs-selectInput__option" role="option" aria-selected="false" data-value="small">
+            <span class="vs-selectInput__option-label">Small</span>
+            <span class="vs-selectInput__option-check" aria-hidden="true">
+              <span class="vs-icon vs-icon--sm">
+                <span class="vs-icon__text">✓</span>
+              </span>
+            </span>
+          </div>
+          <div class="vs-selectInput__option" role="option" aria-selected="true" data-value="medium">
+            <span class="vs-selectInput__option-label">Medium</span>
+            <span class="vs-selectInput__option-check" aria-hidden="true">
+              <span class="vs-icon vs-icon--sm">
+                <span class="vs-icon__text">✓</span>
+              </span>
+            </span>
+          </div>
+          <div class="vs-selectInput__option" role="option" aria-selected="false" data-value="large">
+            <span class="vs-selectInput__option-label">Large</span>
+            <span class="vs-selectInput__option-check" aria-hidden="true">
+              <span class="vs-icon vs-icon--sm">
+                <span class="vs-icon__text">✓</span>
+              </span>
+            </span>
+          </div>
+        </div>
+        <div class="vs-selectInput__helper" role="status">Label and control align inline</div>
+      </div>
+    </section>
+
+    <section class="mb-32">
+      <h2 class="h3 mb-12">Error and loading state</h2>
+      <div class="vs-selectInput is-error is-loading" data-vs-selectinput>
+        <label class="vs-selectInput__label" for="selectInput-demo-4">Error example</label>
+        <div
+          class="vs-selectInput__control"
+          role="button"
+          tabindex="0"
+          aria-haspopup="listbox"
+          aria-expanded="false"
+          aria-labelledby="selectInput-demo-4"
+          data-vs-selectinput-toggle
+        >
+          <span class="vs-selectInput__value" id="selectInput-demo-4">
+            <span class="vs-selectInput__placeholder">Data loading...</span>
+          </span>
+          <span class="vs-selectInput__indicators">
+            <span class="vs-selectInput__indicator" aria-hidden="true">
+              <span class="vs-icon vs-icon--sm">
+                <span class="vs-icon__text">⌄</span>
+              </span>
+            </span>
+          </span>
+        </div>
+        <div class="vs-selectInput__menu" role="listbox" tabindex="-1" aria-labelledby="selectInput-demo-4">
+          <div class="vs-selectInput__option" role="option" aria-selected="false" data-value="placeholder" aria-disabled="true">
+            <span class="vs-selectInput__option-label">Loading options...</span>
+            <span class="vs-selectInput__option-check" aria-hidden="true">
+              <span class="vs-icon vs-icon--sm">
+                <span class="vs-icon__text">✓</span>
+              </span>
+            </span>
+          </div>
+        </div>
+        <div class="vs-selectInput__helper" role="status">There was an error loading choices</div>
+      </div>
+    </section>
+
+    <script src="../../js/components/vs-selectInput/vs-selectInput.js"></script>
+  </body>
+</html>
