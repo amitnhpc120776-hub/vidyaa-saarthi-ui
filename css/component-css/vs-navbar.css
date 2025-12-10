@@ -1,0 +1,36 @@
+.vs-navbar {
+  background-color: var(--bg-secondary);
+}
+/* Make all menu text white */
+.vs-navbar .nav-link {
+  color: var(--text-white) !important;
+  margin: 0 32 px;
+}
+
+/* Hover effect */
+.vs-navbar .nav-link:hover,
+.vs-navbar .nav-link:focus {
+  color: var(--neutral-500) !important;
+}
+
+.vs-navbar .nav-link {
+  margin: 0 32px;
+}
+
+/* Navbar brand logo */
+.vs-navbar .navbar-brand img {
+  height: 40px;
+  width: auto;
+  max-height: 48px; /* prevents it from getting too large */
+}
+.vs-navbar .navbar-brand {
+  padding: 0 !important;
+  background: transparent !important;
+}
+/* Navbar avatar image */
+.vs-navbar .avatar-img {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}

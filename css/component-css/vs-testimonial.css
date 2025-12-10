@@ -1,0 +1,69 @@
+/* =============================== Testimonial Card
+    ================================ */
+.vs-testimonial__card {
+  background: var(--neutral-0);
+  border: 1px solid var(--border-neutral);
+  border-radius: 8px;
+  padding: 30px;
+  position: relative;
+  overflow: hidden;
+} /* Bottom hover
+    accent */
+.vs-testimonial__card::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 4px;
+  width: 0;
+  background: var(--bg-primary);
+  transition: width 0.3s ease;
+}
+.vs-testimonial__card:hover::after {
+  width: 100%;
+} /* =============================== Avatar
+    ================================ */
+.avatar-img {
+  height: 120px;
+  width: 120px;
+  object-fit: cover;
+}
+
+.avatar {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  margin: auto;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 1px solid var(--bg-primary);
+}
+/* Quote badge */
+.vs-testimonial__quote {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--bg-primary);
+  color: var(--text-white);
+  display: grid;
+  place-items: center;
+  transform: rotate(180deg);
+} /*
+    =============================== Rating (Stars)
+    ================================ */
+.vs-testimonial__rating {
+  margin: 12px 0 16px;
+  line-height: 1;
+  text-align: center;
+}
+.vs-star {
+  font-size: 18px;
+  color: var(--neutral-300);
+  margin: 0 1px;
+}
+.vs-star--filled {
+  color: var(--accent-500);
+}

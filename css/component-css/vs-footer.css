@@ -1,0 +1,73 @@
+.vs-footer {
+  background-color: var(--bg-secondary); /* Deep brand background */
+  color: var(--text-white); /* All text should be white */
+  font-size: var(--text-body-sm);
+}
+
+/* Links */
+.vs-footer a {
+  color: var(--text-white);
+  text-decoration: none;
+}
+
+.vs-footer a:hover {
+  color: var(--accent-200); /* Gold-ish highlight */
+}
+
+/* Section titles */
+.vs-footer .footer-title,
+.vs-footer h5,
+.vs-footer h6 {
+  color: var(--text-white);
+  font-weight: 600;
+  margin-bottom: var(--space-8);
+}
+
+/* Divider line */
+.vs-footer .footer-line {
+  border-bottom: 1px solid var(--neutral-100); /* Faint line visible on dark bg */
+  margin: 8px 0 16px 0;
+}
+
+/* Paragraphs & list text */
+.vs-footer p,
+.vs-footer li {
+  color: var(--text-white);
+  line-height: 1.6;
+  margin-bottom: var(--space-12);
+}
+
+/* Social icons */
+/* Footer social icons */
+.vs-footer .vs-footer-icon {
+  height: 24px !important;
+  width: 24px !important;
+  object-fit: contain;
+  display: inline-block;
+  filter: brightness(0) invert(1); /* Converts black → white */
+}
+
+.vs-footer .vs-footer-icon:hover {
+  opacity: 0.7;
+}
+
+/* Pills */
+.vs-footer .location-pill,
+.vs-footer .btn-outline-secondary {
+  border-radius: 20px;
+  padding: 6px 18px;
+  border: 1px solid var(--neutral-0);
+  color: var(--neutral-0);
+  background: transparent;
+}
+
+.vs-footer .location-pill:hover,
+.vs-footer .btn-outline-secondary:hover {
+  border-color: var(--accent-200);
+  color: var(--accent-200);
+}
+
+.footer-line {
+  border-bottom: 1px solid #ddd;
+  margin: 8px 0 16px 0;
+}
