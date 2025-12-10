@@ -1,0 +1,504 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title><!-- Insert page title here --></title>
+
+    <!-- BOOOTSTRAP 5.3.8 CSS (CDN)-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <!--VIS DESIGN SYSTEM FILES -->
+    <link rel="stylesheet" href="../../css/VS-Design-System.css" />
+    <link rel="stylesheet" href="../../css/custom-component.css" />
+    <!-- PAGE-SPECIFIC CSS (Optional) -->
+    <style>
+      /* Insert page specific CSS here */
+    </style>
+
+    <!--END OF HEAD-->
+  </head>
+
+  <body>
+    <!-- ===== 1. HEADER========== -->
+    <header>
+      <section id="navbar-guest" class="py-2">
+        <nav class="navbar sticky-top navbar-expand-lg vs-navbar">
+          <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center gap-2" href="#"
+              ><img
+                src="../../assets/logo/VSLogo-Withouttext.svg"
+                alt="Vidyaa Saarthi Logo"
+            /></a>
+
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNavDropdown"
+              aria-controls="navbarNavDropdown"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+              <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="#"
+                    >Home</a
+                  >
+                </li>
+                <li class="nav-item dropdown">
+                  <a
+                    class="nav-link dropdown-toggle"
+                    href="#"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    Who We Serve
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">For Students</a></li>
+                    <li><a class="dropdown-item" href="#">For Parents</a></li>
+                    <li>
+                      <a class="dropdown-item" href="#">For Schools</a>
+                    </li>
+                  </ul>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">How It Works</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Pricing</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a
+                    class="nav-link dropdown-toggle"
+                    href="#"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    About Us
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Our Vision</a></li>
+                    <li><a class="dropdown-item" href="#">Our Team</a></li>
+                  </ul>
+                </li>
+                <li class="nav-item dropdown">
+                  <a
+                    class="nav-link dropdown-toggle"
+                    href="#"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    Log In / Sign up
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="#">Student</a></li>
+                    <li><a class="dropdown-item" href="#">Parent</a></li>
+                    <li><a class="dropdown-item" href="#">School</a></li>
+                    <li><a class="dropdown-item" href="#">Teacher</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+      </section>
+    </header>
+
+    <!-- Add Sections -->
+    <!-- ____________________________________________________________________________________--->
+
+    <!-- Hero Section -->
+    <section id="Hero" class="py-5 bg-white">
+      <div class="container">
+        <div class="row align-items-center">
+          <!-- LEFT COLUMN : TEXT CONTENT -->
+          <div class="col-lg-6 mb-4 mb-lg-0">
+            <!-- Title -->
+            <h1 class="fw-bold mb-3">
+              Personalized Learning <br />
+              Aligned to Every <br />
+              Student’s Needs
+            </h1>
+
+            <!-- Pills -->
+            <div class="d-flex flex-wrap gap-2 mb-3">
+              <span
+                class="badge rounded-pill text-white border border-white"
+                style="background-color: #0d6efd"
+              >
+                Ethical
+              </span>
+              <span
+                class="badge rounded-pill text-white border border-white"
+                style="background-color: #0d6efd"
+              >
+                Student-Centric
+              </span>
+              <span
+                class="badge rounded-pill text-white border border-white"
+                style="background-color: #0d6efd"
+              >
+                Textbook-Aligned
+              </span>
+            </div>
+
+            <!-- Subtext -->
+            <p class="mb-4">
+              Our vision is to transform self-study into a guided and
+              textbook-aligned learning experience for every school student.
+            </p>
+
+            <!-- Buttons -->
+            <div class="d-flex flex-wrap gap-3">
+              <a href="#" class="btn btn-primary d-flex align-items-center">
+                Signup It’s Free
+                <span class="ms-2">→</span>
+              </a>
+
+              <a
+                href="#"
+                class="btn btn-warning text-white d-flex align-items-center"
+              >
+                How It Works
+                <span class="ms-2">→</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- RIGHT COLUMN : HERO IMAGE -->
+          <div class="col-lg-6 text-center">
+            <img
+              src="../../../assets/illustration/Home/Happy-Jumping-Students.svg"
+              alt="Hero Illustration"
+              class="img-fluid"
+              style="height: 360px; transform: rotate(20deg)"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- TRUSTED BY SECTION -->
+    <section id="Trusted By" class="py-2 bg-dark-subtle">
+      <div class="container">
+        <div class="row align-items-center text-center text-lg-start">
+          <!-- LEFT LABEL -->
+          <div class="col-lg-2 mb-4 mb-lg-0">
+            <h4 class="fw-semibold mb-0">Trusted by</h4>
+          </div>
+
+          <!-- STAT 1 -->
+          <div class="col-12 col-sm-4 col-lg-3 mb-4 mb-lg-0">
+            <div class="d-flex justify-content-center">
+              <!-- ICON -->
+              <div class="d-flex align-items-center">
+                <img
+                  src="../../../assets/illustration/Home/school-bldg.svg"
+                  alt="Schools"
+                  style="height: 96px"
+                />
+              </div>
+
+              <div style="margin-top: 80px">
+                <h5 class="fw-bold mb-1">50+</h5>
+                <div class="text-muted text-uppercase small lh-sm">
+                  Satisfied Schools
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- STAT 2 -->
+          <div class="col-12 col-sm-4 col-lg-3 mb-4 mb-lg-0">
+            <div class="d-flex justify-content-center">
+              <!-- ICON -->
+              <div class="d-flex align-items-center">
+                <img
+                  src="../../../assets/illustration/Home/Happy-Teacher.svg"
+                  alt="Schools"
+                  style="height: 96px"
+                />
+              </div>
+
+              <div style="margin-top: 80px">
+                <h5 class="fw-bold mb-1">500+</h5>
+                <div class="text-muted text-uppercase small lh-sm">
+                  Happy Teachers
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- STAT 3 -->
+          <div class="col-12 col-sm-4 col-lg-3 mb-4 mb-lg-0">
+            <div class="d-flex justify-content-center">
+              <!-- ICON -->
+              <div class="d-flex align-items-center">
+                <img
+                  src="../../../assets/illustration/Home/engaged-student.svg"
+                  alt="Schools"
+                  style="height: 144px"
+                />
+              </div>
+
+              <div style="margin-top: 80px">
+                <h5 class="fw-bold mb-1">3,500+</h5>
+                <div class="text-muted text-uppercase small lh-sm">
+                  Engeged Students
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonial -->
+    <section class="vs-testimonial bg-light py-5">
+      <div class="container">
+        <!-- Title -->
+        <div class="vs-testimonial__header text-center mb-5">
+          <h2 class="fw-bold">Our Students, Parents and Teachers love us</h2>
+          <p class="text-muted">
+            See how Vidyaa Saarthi is helping students learn with confidence..
+          </p>
+        </div>
+
+        <!-- Carousel -->
+        <div
+          id="testimonialCarousel"
+          class="carousel slide"
+          data-bs-ride="carousel"
+        >
+          <!-- Indicators -->
+          <div class="carousel-indicators">
+            <button
+              data-bs-target="#testimonialCarousel"
+              data-bs-slide-to="0"
+              class="active"
+            ></button>
+            <button
+              data-bs-target="#testimonialCarousel"
+              data-bs-slide-to="1"
+            ></button>
+          </div>
+
+          <div class="carousel-inner">
+            <!-- Slide 1 -->
+            <div class="carousel-item active">
+              <div class="row g-4 justify-content-center">
+                <!-- Card 1-->
+                <div class="col-md-6 col-lg-4">
+                  <div class="vs-testimonial__card text-center">
+                    <div class="avatar">
+                      <img
+                        class="avatar-img"
+                        src="../../../assets/illustration/Home/Aarav-Sharma.svg"
+                        alt="Google"
+                      />
+                    </div>
+                    <div
+                      class="vs-testimonial__rating"
+                      aria-label="4 out of 5 stars"
+                    >
+                      <span class="vs-star vs-star--filled">★</span>
+                      <span class="vs-star vs-star--filled">★</span>
+                      <span class="vs-star vs-star--filled">★</span>
+                      <span class="vs-star vs-star--filled">★</span>
+                      <span class="vs-star">☆</span>
+                    </div>
+                    <p>
+                      Vidyaa Saarthi makes tough concepts simple and boosts my
+                      confidence in every subject
+                    </p>
+                    <h6 class="fw-semibold mt-3">Aarav Sharma</h6>
+                    <span class="text-muted small">Class 9 Student, Agra</span>
+                  </div>
+                </div>
+                <!-- Card 2-->
+                <div class="col-md-6 col-lg-4">
+                  <div class="vs-testimonial__card text-center">
+                    <div class="avatar">
+                      <img
+                        class="avatar-img"
+                        src="../../assets/illustration/Home/Shilpi-Jain.svg"
+                        alt="Google"
+                      />
+                    </div>
+                    <div
+                      class="vs-testimonial__rating"
+                      aria-label="4 out of 5 stars"
+                    >
+                      <span class="vs-star vs-star--filled">★</span>
+                      <span class="vs-star vs-star--filled">★</span>
+                      <span class="vs-star vs-star--filled">★</span>
+                      <span class="vs-star vs-star--filled">★</span>
+                      <span class="vs-star">☆</span>
+                    </div>
+                    <p>
+                      My son studies independently now—Vidyaa Saarthi makes
+                      every chapter easy to understand
+                    </p>
+                    <h6 class="fw-semibold mt-3">Shilpi Jain</h6>
+                    <span class="text-muted small">Parent, Gurugram</span>
+                  </div>
+                </div>
+                <!-- Card 3-->
+                <div class="col-md-6 col-lg-4">
+                  <div class="vs-testimonial__card text-center">
+                    <div class="avatar">
+                      <img
+                        class="avatar-img"
+                        src="../../assets/illustration/Home/Anju-Jain.svg"
+                        alt="Google"
+                      />
+                    </div>
+                    <div
+                      class="vs-testimonial__rating"
+                      aria-label="4 out of 5 stars"
+                    >
+                      <span class="vs-star vs-star--filled">★</span>
+                      <span class="vs-star vs-star--filled">★</span>
+                      <span class="vs-star vs-star--filled">★</span>
+                      <span class="vs-star vs-star--filled">★</span>
+                      <span class="vs-star">☆</span>
+                    </div>
+                    <p>
+                      Vidyaa Saarthi’s data insights help me identify student
+                      gaps quickly and teach more effectively.
+                    </p>
+                    <h6 class="fw-semibold mt-3">Anjna Gupta</h6>
+                    <span class="text-muted small"
+                      >Science Teacher, Jaipur</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Slide 2 -->
+            <div class="carousel-item active">
+              <div class="row g-4 justify-content-center">
+                <!-- Card 1-->
+                <div class="col-md-6 col-lg-4">
+                  <div class="vs-testimonial__card text-center">
+                    <div class="avatar">
+                      <img
+                        class="avatar-img"
+                        src="../../assets/illustration/Home/Adya-Bansal.svg"
+                        alt="Adya Bansal"
+                      />
+                    </div>
+                    <div
+                      class="vs-testimonial__rating"
+                      aria-label="4 out of 5 stars"
+                    >
+                      <span class="vs-star vs-star--filled">★</span>
+                      <span class="vs-star vs-star--filled">★</span>
+                      <span class="vs-star vs-star--filled">★</span>
+                      <span class="vs-star vs-star--filled">★</span>
+                      <span class="vs-star">☆</span>
+                    </div>
+                    <p>
+                      Vidyaa Saarthi helps me understand chapters faster and
+                      stay confident during self-study.
+                    </p>
+                    <h6 class="fw-semibold mt-3">Adya Bansal</h6>
+                    <span class="text-muted small">Class 10 Student</span>
+                  </div>
+                </div>
+                <!-- Card 2-->
+                <div class="col-md-6 col-lg-4">
+                  <div class="vs-testimonial__card text-center">
+                    <div class="avatar">
+                      <img
+                        class="avatar-img"
+                        src="../../assets/illustration/Home/Arushi-Singh.svg"
+                        alt="Arushi Singh"
+                      />
+                    </div>
+                    <div
+                      class="vs-testimonial__rating"
+                      aria-label="4 out of 5 stars"
+                    >
+                      <span class="vs-star vs-star--filled">★</span>
+                      <span class="vs-star vs-star--filled">★</span>
+                      <span class="vs-star vs-star--filled">★</span>
+                      <span class="vs-star vs-star--filled">★</span>
+                      <span class="vs-star">☆</span>
+                    </div>
+                    <p>
+                      My child finally understands concepts, not just
+                      memorizes—Vidyaa Saarthi changed our study routine.
+                    </p>
+                    <h6 class="fw-semibold mt-3">Arushi Singh</h6>
+                    <span class="text-muted small">Parent, Agra</span>
+                  </div>
+                </div>
+                <!-- Card 3-->
+                <div class="col-md-6 col-lg-4">
+                  <div class="vs-testimonial__card text-center">
+                    <div class="avatar">
+                      <img
+                        class="avatar-img"
+                        src="../../assets/illustration/Home/Anju-Jain.svg"
+                        alt="Google"
+                      />
+                    </div>
+                    <div
+                      class="vs-testimonial__rating"
+                      aria-label="4 out of 5 stars"
+                    >
+                      <span class="vs-star vs-star--filled">★</span>
+                      <span class="vs-star vs-star--filled">★</span>
+                      <span class="vs-star vs-star--filled">★</span>
+                      <span class="vs-star vs-star--filled">★</span>
+                      <span class="vs-star">☆</span>
+                    </div>
+                    <p>
+                      Vidyaa Saarthi’s data insights help me identify student
+                      gaps quickly and teach more effectively.
+                    </p>
+                    <h6 class="fw-semibold mt-3">Anjna Gupta</h6>
+                    <span class="text-muted small"
+                      >Science Teacher, Jaipur</span
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- ==== 9. FOOTER ========= -->
+    <footer>
+      <!-- vs-footer.html (footer already contains container-fluid internally) -->
+    </footer>
+
+    <!-- Java Script CDN-->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
+      integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
+      crossorigin="anonymous"
+    ></script>
+
+    <!--  END of Body-->
+  </body>
+</html>
