@@ -1,69 +1,86 @@
-/* =============================== Testimonial Card
-    ================================ */
-.vs-testimonial__card {
-  background: var(--neutral-0);
-  border: 1px solid var(--border-neutral);
-  border-radius: 8px;
-  padding: 30px;
-  position: relative;
-  overflow: hidden;
-} /* Bottom hover
-    accent */
-.vs-testimonial__card::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  height: 4px;
-  width: 0;
-  background: var(--bg-primary);
-  transition: width 0.3s ease;
+/* ================================
+   TESTIMONIAL SECTION STYLES
+================================ */
+
+/* Scrollable wrapper */
+.testimonial-scroll {
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  scrollbar-width: none; /* Firefox */
 }
-.vs-testimonial__card:hover::after {
+.testimonial-scroll::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
+/* Navigation arrows */
+.testimonial-nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  background-color: var(--primary-600);
+  border-radius: 50%;
+  color: white;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 10;
+}
+.testimonial-nav-btn:hover {
+  opacity: 0.9;
+}
+
+.testimonial-nav-left {
+  left: -20px;
+}
+
+.testimonial-nav-right {
+  right: -20px;
+}
+
+/* Testimonial card */
+.testimonial-card {
+  min-width: 280px;
+  border: 1px solid var(--neutral-300);
+  border-radius: 8px;
+  background-color: var(--neutral-0);
+  text-align: center;
+  padding: 1.5rem;
+}
+
+/* Avatar */
+.testimonial-avatar {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 12px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.testimonial-avatar img {
   width: 100%;
-} /* =============================== Avatar
-    ================================ */
-.avatar-img {
-  height: 120px;
-  width: 120px;
+  height: 100%;
   object-fit: cover;
 }
 
-.avatar {
-  position: relative;
-  width: 120px;
-  height: 120px;
-  margin: auto;
-  border-radius: 50%;
-  overflow: hidden;
-  border: 1px solid var(--bg-primary);
+/* Quote text */
+.testimonial-quote {
+  font-size: 15px;
+  margin-bottom: 10px;
 }
-/* Quote badge */
-.vs-testimonial__quote {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 32px;
-  height: 32px;
-  border-radius: 50%;
-  background: var(--bg-primary);
-  color: var(--text-white);
-  display: grid;
-  place-items: center;
-  transform: rotate(180deg);
-} /*
-    =============================== Rating (Stars)
-    ================================ */
-.vs-testimonial__rating {
-  margin: 12px 0 16px;
-  line-height: 1;
-  text-align: center;
+
+/* Name */
+.testimonial-name {
+  font-weight: 700;
 }
-.vs-star {
-  font-size: 18px;
-  color: var(--neutral-300);
-  margin: 0 1px;
+
+/* Subtext */
+.testimonial-subtext {
+  font-size: 13px;
+  color: var(--neutral-600);
 }
-.vs-star--filled {
-  color: var(--accent-500);
-}
+/* ============================
+   END OF TESTIMONIAL STYLES
