@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Student Signup - Vidyaa Saarthi</title>
+
+    <!-- BOOOTSTRAP 5.3.8 CSS (CDN)-->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <!--VIS DESIGN SYSTEM FILES -->
+    <link rel="stylesheet" href="../../css/VS-Design-System.css" />
+    <link rel="stylesheet" href="../../css/custom-component.css" />
+    <!-- PAGE-SPECIFIC CSS (Optional) -->
+    <style>
+      /* Insert page specific CSS here */
+    </style>
+
+    <!--END OF HEAD-->
+  </head>
+
+  <body class="bg-light">
+    <!-- TOP LEFT LOGO -->
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12 d-flex justify-content-start py-3 px-4">
+          <a href="../../../index.html">
+            <img
+              src="../../../assets/logo/vsLogoWithouText.svg"
+              alt="Vidyaa Saarthi Logo"
+              height="64"
+            />
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row min-vh-100 align-items-start pt-0 mt-0">
+        <!-- LEFT COLUMN — SIGNUP FORM -->
+        <div
+          class="col-12 col-md-5 d-flex flex-column justify-content-start align-items-center"
+        >
+          <div class="w-100" style="max-width: 380px">
+            <h3 class="mb-2 text-center">Create your account</h3>
+
+            <!-- Name -->
+            <div class="mb-3 position-relative">
+              <label class="form-label small">Full Name</label>
+              <input
+                type="text"
+                class="form-control pe-5"
+                placeholder="Enter your name"
+              />
+              <img
+                src="../../../assets/icon/person.svg"
+                class="position-absolute"
+                style="
+                  right: 12px;
+                  top: 70%;
+                  transform: translateY(-50%);
+                  width: 16px;
+                  height: 16px;
+                "
+              />
+            </div>
+
+            <!-- Email -->
+            <div class="mb-3 position-relative">
+              <label class="form-label small">Email Address</label>
+              <input
+                type="email"
+                class="form-control pe-5"
+                placeholder="Enter your email"
+              />
+              <img
+                src="../../../assets/icon/envelope.svg"
+                class="position-absolute"
+                style="
+                  right: 12px;
+                  top: 70%;
+                  transform: translateY(-50%);
+                  width: 16px;
+                  height: 16px;
+                "
+              />
+            </div>
+
+            <!-- Password -->
+            <div class="mb-3 position-relative">
+              <label class="form-label small">Password</label>
+              <input
+                id="passwordOne"
+                type="password"
+                class="form-control pe-5"
+                placeholder="Create password"
+              />
+              <img
+                id="togglePassOne"
+                src="../../../assets/icon/eye-slash.svg"
+                class="position-absolute"
+                style="
+                  right: 12px;
+                  top: 70%;
+                  transform: translateY(-50%);
+                  width: 18px;
+                  cursor: pointer;
+                "
+              />
+            </div>
+
+            <!-- Confirm Password -->
+            <div class="mb-3 position-relative">
+              <label class="form-label small">Confirm Password</label>
+              <input
+                id="passwordTwo"
+                type="password"
+                class="form-control pe-5"
+                placeholder="Re-enter password"
+              />
+              <img
+                id="togglePassTwo"
+                src="../../../assets/icon/eye-slash.svg"
+                class="position-absolute"
+                style="
+                  right: 12px;
+                  top: 70%;
+                  transform: translateY(-50%);
+                  width: 18px;
+                  cursor: pointer;
+                "
+              />
+            </div>
+
+            <!-- JS: Password Visibility Toggle -->
+            <script>
+              function attachToggle(inputId, iconId) {
+                const input = document.getElementById(inputId);
+                const icon = document.getElementById(iconId);
+
+                icon.addEventListener("click", () => {
+                  const isPassword = input.type === "password";
+                  input.type = isPassword ? "text" : "password";
+                  icon.src = isPassword
+                    ? "../../../assets/icon/eye.svg"
+                    : "../../../assets/icon/eye-slash.svg";
+                });
+              }
+
+              attachToggle("passwordOne", "togglePassOne");
+              attachToggle("passwordTwo", "togglePassTwo");
+            </script>
+
+            <!-- Signup Button -->
+            <div class="d-grid mb-2">
+              <button class="btn btn-primary">Sign Up</button>
+            </div>
+
+            <!-- Social Signup -->
+            <div class="d-grid gap-2 mt-2">
+              <button
+                class="btn btn-light border d-flex align-items-center justify-content-center gap-2"
+              >
+                <img src="../../../assets/icon/google.svg" height="20" />
+                Continue with Google
+              </button>
+
+              <button
+                class="btn btn-light border d-flex align-items-center justify-content-center gap-2"
+              >
+                <img src="../../../assets/icon/facebook.svg" height="20" />
+                Continue with Facebook
+              </button>
+            </div>
+
+            <!-- Already have account -->
+            <p class="text-center mt-1 small text-muted">
+              Already have an account?
+              <a
+                href="../../../Pages/website/studentLogIn.html"
+                class="text-decoration-none"
+                >Log in</a
+              >
+            </p>
+
+            <!-- Terms Notice -->
+            <p
+              class="small text-muted mt-1"
+              style="text-align: left; white-space: nowrap"
+            >
+              This site is protected by the Google Privacy Policy and
+              <a href="https://policies.google.com/terms" target="_blank"
+                >Terms of Service</a
+              >
+              apply.
+            </p>
+          </div>
+        </div>
+
+        <!-- RIGHT IMAGE (Shown on md & above) -->
+        <div class="col-md-7 d-none d-md-block p-0">
+          <img
+            src="your-image.jpg"
+            class="img-fluid w-100 h-100 object-fit-cover"
+            alt="Signup Illustration"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Java Script CDN-->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
+      integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
+      crossorigin="anonymous"
+    ></script>
+
+    <!--  END of Body-->
+  </body>
+</html>

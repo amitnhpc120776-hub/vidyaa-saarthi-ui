@@ -25,16 +25,22 @@
   </head>
 
   <body>
-    <!-- SECTION 1 — Variant 1 (Guest Navbar – Login/Signup Only)-->
-    <section id="navbar-guest" class="py-2">
-      <nav class="navbar sticky-top navbar-expand-lg vs-navbar">
+    <!-- Navigation Bar ===== -->
+    <section class="py-2">
+      <nav class="navbar navbar-expand-lg vs-navbar">
         <div class="container-fluid">
-          <a class="navbar-brand d-flex align-items-center gap-2" href="#"
-            ><img
-              src="../../assets/logo/VSLogo-Withouttext.svg"
+          <!-- ===Brand Logo (Left Aligned) ======== -->
+          <a
+            class="navbar-brand d-flex align-items-center gap-2"
+            href="../../../index.html"
+          >
+            <img
+              src="../../assets/logo/vsLogoWithouText.svg"
               alt="Vidyaa Saarthi Logo"
-          /></a>
+            />
+          </a>
 
+          <!-- ===Mobile Menu Toggler (Hamburger Icon) Controls collapsing of main navigation ====== -->
           <button
             class="navbar-toggler"
             type="button"
@@ -46,69 +52,83 @@
           >
             <span class="navbar-toggler-icon"></span>
           </button>
+
+          <!-- =====Collapsible Navigation Menu ============= -->
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav">
+              <!-- ===Menu Item: Home====== -->
               <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Home</a>
+                <a
+                  class="nav-link active"
+                  aria-current="page"
+                  href="../../../index.html"
+                  >Home</a
+                >
               </li>
+
+              <!-- ====Menu Item: Who We Serve Dropdown with 3 child items ====== -->
               <li class="nav-item dropdown">
                 <a
                   class="nav-link dropdown-toggle"
                   href="#"
-                  role="button"
                   data-bs-toggle="dropdown"
-                  aria-expanded="false"
                 >
                   Who We Serve
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">For Students</a></li>
-                  <li><a class="dropdown-item" href="#">For Parents</a></li>
-                  <li>
-                    <a class="dropdown-item" href="#">For Schools</a>
-                  </li>
+                  <li><a class="dropdown-item" href="#">Students</a></li>
+                  <li><a class="dropdown-item" href="#">Teachers</a></li>
+                  <li><a class="dropdown-item" href="#">Schools</a></li>
                 </ul>
               </li>
+
+              <!-- ========== Menu Item: How It Works =============== -->
               <li class="nav-item">
                 <a class="nav-link" href="#">How It Works</a>
               </li>
+
+              <!-- ====== Menu Item: Pricing =========== -->
               <li class="nav-item">
                 <a class="nav-link" href="#">Pricing</a>
               </li>
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  About Us
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Our Vision</a></li>
-                  <li><a class="dropdown-item" href="#">Our Team</a></li>
-                </ul>
+
+              <!-- ===== Menu Item: About Us ===== -->
+              <li class="nav-item">
+                <a class="nav-link" href="#">About Us</a>
               </li>
+
+              <!-- ====Menu Item: Log in Dropdown with 2 child items ================== -->
               <li class="nav-item dropdown">
                 <a
                   class="nav-link dropdown-toggle"
                   href="#"
-                  role="button"
                   data-bs-toggle="dropdown"
-                  aria-expanded="false"
                 >
-                  Log In / Sign up
+                  Log in
                 </a>
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="#">Student</a></li>
-                  <li><a class="dropdown-item" href="#">Parent</a></li>
-                  <li><a class="dropdown-item" href="#">School</a></li>
-                  <li><a class="dropdown-item" href="#">Teacher</a></li>
+                  <li><a class="dropdown-item" href="#">school</a></li>
+                </ul>
+              </li>
+
+              <!-- ====Menu Item: Sign up Dropdown with 2 child items ================== -->
+              <li class="nav-item dropdown">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  data-bs-toggle="dropdown"
+                >
+                  Sign up
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#">Student</a></li>
+                  <li><a class="dropdown-item" href="#">school</a></li>
                 </ul>
               </li>
             </ul>
           </div>
+          <!-- End Collapse -->
         </div>
       </nav>
     </section>
