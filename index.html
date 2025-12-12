@@ -93,7 +93,9 @@
 
               <!-- ===== Menu Item: About Us ===== -->
               <li class="nav-item">
-                <a class="nav-link" href="#">About Us</a>
+                <a class="nav-link" href="../../../Pages/website/aboutUs.html"
+                  >About Us</a
+                >
               </li>
 
               <!-- ====Menu Item: Log in Dropdown with 2 child items ================== -->
@@ -145,445 +147,335 @@
     </section>
 
     <!--==== 2. Page Content =========-->
-    <div class="container-fluid text-center">
-      <!--First Section - Hero Section-->
-      <div class="row align-items-center py-5">
-        <!-- COLUMN 1 : Text &  CTA's-->
-        <div class="col-12 col-md-6 mb-4 mb-md-0 text-start">
-          <h1>Personalized Learning aligned to every Student’s needs</h1>
-          <!--Badges-->
-          <div>
-            <span
-              class="badge rounded-pill"
-              style="
-                background-color: var(--primary-900);
-                border: 4px solid var(--neutral-0);
-                color: var(--neutral-0);
-                padding: 12px 24px;
-                font-size: 16px;
-                height: auto;
-                display: inline-block;
-              "
-            >
-              Ethical
-            </span>
-            <span
-              class="badge rounded-pill"
-              style="
-                background-color: var(--primary-900);
-                border: 4px solid var(--neutral-0);
-                color: var(--neutral-0);
-                padding: 12px 24px;
-                font-size: 16px;
-                height: auto;
-                display: inline-block;
-              "
-            >
-              Affordable
-            </span>
-            <span
-              class="badge rounded-pill"
-              style="
-                background-color: var(--primary-900);
-                border: 4px solid var(--neutral-0);
-                color: var(--neutral-0);
-                padding: 12px 24px;
-                font-size: 16px;
-                height: auto;
-                display: inline-block;
-              "
-            >
-              Student-Centric
-            </span>
-            <span
-              class="badge rounded-pill"
-              style="
-                background-color: var(--primary-900);
-                border: 4px solid var(--neutral-0);
-                color: var(--neutral-0);
-                padding: 12px 24px;
-                font-size: 16px;
-                height: auto;
-                display: inline-block;
-              "
-            >
-              Textbook-Aligned
-            </span>
-          </div>
-          <!-- Subtext -->
-          <p class="mb-4">
-            Our vision is to transform self-study into a guided and
-            textbook-aligned learning experience for every school student.
-          </p>
-          <!-- Buttons -->
-          <div class="d-flex flex-wrap gap-3">
-            <a href="#" class="btn btn-primary d-flex align-items-center">
-              Signup It’s Free
-              <span class="ms-2">→</span>
-            </a>
+    <div class="container-fluid">
+      <!-- ==================================
+       HERO SECTION
+  ================================== -->
+      <section class="py-5">
+        <div class="container">
+          <div class="row align-items-center g-4">
+            <!-- LEFT CONTENT -->
+            <div class="col-12 col-md-6 text-start">
+              <h1 class="fw-bold mb-4" style="max-width: 540px">
+                Personalized Learning aligned to every Student’s needs
+              </h1>
 
+              <!-- BADGE GROUP -->
+              <div class="d-flex flex-wrap gap-3 mb-4">
+                <span
+                  class="badge rounded-pill px-4 py-2"
+                  style="
+                    background-color: var(--primary-900);
+                    color: var(--neutral-0);
+                    border: 3px solid var(--neutral-0);
+                  "
+                  >Ethical</span
+                >
+                <span
+                  class="badge rounded-pill px-4 py-2"
+                  style="
+                    background-color: var(--primary-900);
+                    color: var(--neutral-0);
+                    border: 3px solid var(--neutral-0);
+                  "
+                  >Affordable</span
+                >
+                <span
+                  class="badge rounded-pill px-4 py-2"
+                  style="
+                    background-color: var(--primary-900);
+                    color: var(--neutral-0);
+                    border: 3px solid var(--neutral-0);
+                  "
+                  >Student-Centric</span
+                >
+                <span
+                  class="badge rounded-pill px-4 py-2"
+                  style="
+                    background-color: var(--primary-900);
+                    color: var(--neutral-0);
+                    border: 3px solid var(--neutral-0);
+                  "
+                  >Textbook-Aligned</span
+                >
+              </div>
+
+              <!-- CTA BUTTONS -->
+              <div class="d-flex flex-wrap gap-3 mt-3">
+                <a href="#" class="btn btn-primary d-flex align-items-center">
+                  Signup — It’s Free <span class="ms-2">→</span>
+                </a>
+                <a
+                  href="#"
+                  class="btn btn-warning text-white d-flex align-items-center"
+                >
+                  How It Works <span class="ms-2">→</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- RIGHT ILLUSTRATION -->
+            <div class="col-12 col-md-6 text-center">
+              <img
+                src="../../../assets/illustration/Home/Happy-Jumping-Students.svg"
+                alt="Hero Illustration"
+                class="img-fluid"
+                style="height: 340px; transform: rotate(12deg)"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================================
+       TRUSTED BY SECTION
+  ================================== -->
+      <section class="py-5" style="background-color: var(--neutral-200)">
+        <div class="container">
+          <div class="row align-items-center text-center text-md-start g-4">
+            <!-- Trusted By Label -->
+            <div class="col-12 col-md-3">
+              <h2 class="fw-semibold">Trusted by</h2>
+            </div>
+
+            <!-- Schools -->
+            <div class="col-12 col-md-3">
+              <div class="d-flex align-items-center gap-3">
+                <img
+                  src="../../../assets/illustration/Home/school-bldg.svg"
+                  style="height: 70px"
+                />
+                <h2 class="fw-bold mb-0">50+</h2>
+              </div>
+              <p class="small mt-1">SATISFIED SCHOOLS</p>
+            </div>
+
+            <!-- Teachers -->
+            <div class="col-12 col-md-3">
+              <div class="d-flex align-items-center gap-3">
+                <img
+                  src="../../../assets/illustration/Home/Happy-Teacher.svg"
+                  style="height: 70px"
+                />
+                <h2 class="fw-bold mb-0">500+</h2>
+              </div>
+              <p class="small mt-1">HAPPY TEACHERS</p>
+            </div>
+
+            <!-- Students -->
+            <div class="col-12 col-md-3">
+              <div class="d-flex align-items-center gap-3">
+                <img
+                  src="../../../assets/illustration/Home/engaged-student.svg"
+                  style="height: 70px"
+                />
+                <h2 class="fw-bold mb-0">3,500+</h2>
+              </div>
+              <p class="small mt-1">ENGAGED STUDENTS</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==================================
+     TESTIMONIALS SECTION
+================================== -->
+      <section class="py-5">
+        <div class="container text-center">
+          <!-- Heading -->
+          <h2 class="fw-bold mb-2">
+            Our Students, Parents and Teachers love us
+          </h2>
+          <p class="text-muted mb-4">
+            See how Vidyaa Saarthi is helping students, parents & teachers.
+          </p>
+
+          <!-- SCROLLABLE TESTIMONIAL WRAPPER -->
+          <div class="position-relative">
+            <!-- LEFT NAV (Desktop Only) -->
+            <button
+              class="testimonial-nav-btn testimonial-nav-left d-none d-md-flex justify-content-center align-items-center"
+              onclick="this.parentElement.querySelector('.testimonial-scroll').scrollBy({ left: -300, behavior: 'smooth' })"
+            >
+              ‹
+            </button>
+
+            <!-- RIGHT NAV (Desktop Only) -->
+            <button
+              class="testimonial-nav-btn testimonial-nav-right d-none d-md-flex justify-content-center align-items-center"
+              onclick="this.parentElement.querySelector('.testimonial-scroll').scrollBy({ left: 300, behavior: 'smooth' })"
+            >
+              ›
+            </button>
+
+            <!-- SCROLL AREA (THE ONLY ONE) -->
+            <div
+              class="testimonial-scroll d-flex flex-md-row flex-column gap-4 px-3"
+            >
+              <!-- CARD 1 -->
+              <div class="testimonial-card">
+                <div class="testimonial-avatar">
+                  <img
+                    src="../../../assets/illustration/Home/Aarav-Sharma.svg"
+                    alt="Aarav Sharma"
+                  />
+                </div>
+                <p class="testimonial-quote">
+                  Vidyaa Saarthi makes tough concepts simple and boosts my
+                  confidence in every subject.
+                </p>
+                <div class="testimonial-name">Aarav Sharma</div>
+                <div class="testimonial-subtext">Class 9 | Agra</div>
+              </div>
+
+              <!-- CARD 2 -->
+              <div class="testimonial-card">
+                <div class="testimonial-avatar">
+                  <img
+                    src="../../../assets/illustration/Home/Shilpi-Jain.svg"
+                    alt="Shilpi Jain"
+                  />
+                </div>
+                <p class="testimonial-quote">
+                  My son studies independently now—Vidyaa Saarthi makes every
+                  chapter easy to understand.
+                </p>
+                <div class="testimonial-name">Shilpi Jain</div>
+                <div class="testimonial-subtext">Parent | Gurugram</div>
+              </div>
+
+              <!-- CARD 3 -->
+              <div class="testimonial-card">
+                <div class="testimonial-avatar">
+                  <img
+                    src="../../../assets/illustration/Home/Anju-Jain.svg"
+                    alt="Anjna Gupta"
+                  />
+                </div>
+                <p class="testimonial-quote">
+                  Vidyaa Saarthi’s data insights help me identify student gaps
+                  quickly and teach more effectively.
+                </p>
+                <div class="testimonial-name">Anjna Gupta</div>
+                <div class="testimonial-subtext">Science Teacher | Jaipur</div>
+              </div>
+
+              <!-- CARD 4 -->
+              <div class="testimonial-card">
+                <div class="testimonial-avatar">
+                  <img
+                    src="../../../assets/illustration/Home/Adya-Bansal.svg"
+                    alt="Adya Bansal"
+                  />
+                </div>
+                <p class="testimonial-quote">
+                  Vidyaa Saarthi helps me understand chapters faster and stay
+                  confident during self-study.
+                </p>
+                <div class="testimonial-name">Adya Bansal</div>
+                <div class="testimonial-subtext">Class XII | Jaipur</div>
+              </div>
+
+              <!-- CARD 5 -->
+              <div class="testimonial-card">
+                <div class="testimonial-avatar">
+                  <img
+                    src="../../../assets/illustration/Home/Arushi-Singh.svg"
+                    alt="Arushi Singh"
+                  />
+                </div>
+                <p class="testimonial-quote">
+                  My child finally understands concepts, not just
+                  memorizes—Vidyaa Saarthi changed our study routine.
+                </p>
+                <div class="testimonial-name">Arushi Singh</div>
+                <div class="testimonial-subtext">Parent | Gurugram</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CTA BUTTONS -->
+          <div class="d-flex justify-content-center flex-wrap gap-3 mt-4">
+            <a href="#" class="btn btn-primary d-flex align-items-center">
+              Signup — It’s Free <span class="ms-2">→</span>
+            </a>
             <a
               href="#"
               class="btn btn-warning text-white d-flex align-items-center"
             >
-              How It Works
-              <span class="ms-2">→</span>
+              How It Works <span class="ms-2">→</span>
             </a>
           </div>
         </div>
+      </section>
 
-        <!-- COLUMN 2 : Image / Visual-->
-        <div class="col-12 col-md-6">
-          <img
-            src="../../../assets/illustration/Home/Happy-Jumping-Students.svg"
-            alt="Hero Illustration"
-            class="img-fluid"
-            style="height: 360px; transform: rotate(20deg)"
-          />
-        </div>
-      </div>
-      <!-- End of First Section-->
+      <!-- ==================================
+       ADVANTAGES SECTION
+  ================================== -->
+      <section class="py-5" style="background-color: var(--neutral-200)">
+        <div class="container text-center">
+          <h2 class="fw-bold mb-5">Vidyaa Saarthi Advantages</h2>
 
-      <!-- Second Section Trusted By Strip-->
-      <div
-        class="row py-5"
-        style="
-          background-color: var(--neutral-200);
-          color: var(--neutral-900);
-          display: flex;
-          align-items: center;
-        "
-      >
-        <!-- Column 1 : Trusted By -->
-        <div
-          class="col-12 col-md-3"
-          style="text-align: left; display: flex; align-items: center"
-        >
-          <span style="font-size: 32px; font-weight: 600"> Trusted by </span>
-        </div>
-
-        <!-- Column 2 : Schools -->
-        <div class="col-12 col-md-3" style="text-align: left">
-          <!-- Icon + Metric inline -->
-          <div style="display: flex; align-items: center; gap: 12px">
-            <img
-              src="../../../assets/illustration/Home/school-bldg.svg"
-              alt="Satisfied Schools"
-              style="height: 80px"
-            />
-            <span style="font-size: 40px; font-weight: 700">50+</span>
-          </div>
-
-          <!-- Subtext -->
-          <div style="font-size: 13px; letter-spacing: 0.5px; margin-top: 4px">
-            SATISFIED SCHOOLS
-          </div>
-        </div>
-
-        <!-- Column 3 : Teachers -->
-        <div class="col-12 col-md-3" style="text-align: left">
-          <div style="display: flex; align-items: center; gap: 12px">
-            <img
-              src="../../../assets/illustration/Home/Happy-Teacher.svg"
-              alt="Happy Teachers"
-              style="height: 80px"
-            />
-            <span style="font-size: 40px; font-weight: 700">500+</span>
-          </div>
-
-          <div style="font-size: 13px; letter-spacing: 0.5px; margin-top: 4px">
-            HAPPY TEACHERS
-          </div>
-        </div>
-
-        <!-- Column 4 : Students -->
-        <div class="col-12 col-md-3" style="text-align: left">
-          <div style="display: flex; align-items: center; gap: 12px">
-            <img
-              src="../../../assets/illustration/Home/engaged-student.svg"
-              alt="Engaged Students"
-              style="height: 80px"
-            />
-            <span style="font-size: 40px; font-weight: 700">3,500+</span>
-          </div>
-
-          <div style="font-size: 13px; letter-spacing: 0.5px; margin-top: 4px">
-            ENGAGED STUDENTS
-          </div>
-        </div>
-      </div>
-      <!-- End of Second Section-->
-
-      <!-- THIRD SECTION — TESTIMONIALS -->
-      <div class="container-fluid py-5">
-        <!-- Heading -->
-        <h2 class="text-center mb-4">
-          Our Students, Parents and Teachers love us
-        </h2>
-        <p class="text-muted">
-          See how Vidyaa Saarthi is helping students, parents & teachers.
-        </p>
-
-        <!-- Outer Wrapper -->
-        <div class="position-relative">
-          <!-- Left Scroll Button -->
-          <button
-            class="testimonial-nav-btn testimonial-nav-left d-none d-md-flex justify-content-center align-items-center"
-            onclick="this.parentElement.querySelector('.testimonial-scroll').scrollBy({left: -300, behavior: 'smooth'})"
-          >
-            ‹
-          </button>
-
-          <!-- Right Scroll Button -->
-          <button
-            class="testimonial-nav-btn testimonial-nav-right d-none d-md-flex justify-content-center align-items-center"
-            onclick="this.parentElement.querySelector('.testimonial-scroll').scrollBy({left: 300, behavior: 'smooth'})"
-          >
-            ›
-          </button>
-
-          <!-- Scrollable Cards -->
-          <div
-            class="testimonial-scroll d-flex flex-md-row flex-column gap-4 px-3"
-          >
-            <!-- CARD 1 -->
-            <div class="testimonial-card">
-              <div class="testimonial-avatar">
+          <div class="row g-4 justify-content-center">
+            <!-- Card 1 -->
+            <div class="col-12 col-md-4 d-flex justify-content-center">
+              <div class="card shadow-sm" style="width: 18rem">
                 <img
-                  src="../../../assets/illustration/Home/Aarav-Sharma.svg"
-                  alt="Aarav-Sharma"
+                  src="../../assets/illustration/Home/Personalized learning.svg"
+                  class="card-img-top"
                 />
+                <div class="card-body">
+                  <h5 class="card-title">Personalized Concept Teaching</h5>
+                  <p class="card-text">
+                    Curriculum-aligned explanations that ensure conceptual
+                    mastery.
+                  </p>
+                </div>
               </div>
-              <p class="testimonial-quote">
-                Vidyaa Saarthi makes tough concepts simple and boosts my
-                confidence in every subject.
-              </p>
-              <div class="testimonial-name">Aarav Sharma</div>
-              <div class="testimonial-subtext">Class 9 | Agra</div>
             </div>
 
-            <!-- CARD 2 -->
-            <div class="testimonial-card">
-              <div class="testimonial-avatar">
+            <!-- Card 2 -->
+            <div class="col-12 col-md-4 d-flex justify-content-center">
+              <div class="card shadow-sm" style="width: 18rem">
                 <img
-                  src="../../assets/illustration/Home/Shilpi-Jain.svg"
-                  alt="Shilpi-Jain"
+                  src="../../assets/illustration/Home/Personalized learning.svg"
+                  class="card-img-top"
                 />
+                <div class="card-body">
+                  <h5 class="card-title">Interactive Doubt Resolution</h5>
+                  <p class="card-text">
+                    On-demand guided support that complements classroom
+                    teaching.
+                  </p>
+                </div>
               </div>
-              <p class="testimonial-quote">
-                My son studies independently now—Vidyaa Saarthi makes every
-                chapter easy to understand.
-              </p>
-              <div class="testimonial-name">Shilpi Jain</div>
-              <div class="testimonial-subtext">Parent | Gurugram</div>
             </div>
 
-            <!-- CARD 3 -->
-            <div class="testimonial-card">
-              <div class="testimonial-avatar">
+            <!-- Card 3 -->
+            <div class="col-12 col-md-4 d-flex justify-content-center">
+              <div class="card shadow-sm" style="width: 18rem">
                 <img
-                  src="../../assets/illustration/Home/Anju-Jain.svg"
-                  alt="Anju-Jain"
+                  src="../../assets/illustration/Home/Personalized learning.svg"
+                  class="card-img-top"
                 />
+                <div class="card-body">
+                  <h5 class="card-title">Mastery Support</h5>
+                  <p class="card-text">
+                    NEP-aligned feedback and continuous improvement through
+                    competency-based learning.
+                  </p>
+                </div>
               </div>
-              <p class="testimonial-quote">
-                Vidyaa Saarthi’s data insights help me identify student gaps
-                quickly and teach more effectively.
-              </p>
-              <div class="testimonial-name">Anjna Gupta</div>
-              <div class="testimonial-subtext">Science Teacher | Jaipur</div>
-            </div>
-
-            <!-- CARD 4 -->
-            <div class="testimonial-card">
-              <div class="testimonial-avatar">
-                <img
-                  src="../../assets/illustration/Home/Adya-Bansal.svg"
-                  alt="Adya Bansal"
-                />
-              </div>
-              <p class="testimonial-quote">
-                Vidyaa Saarthi helps me understand chapters faster and stay
-                confident during self-study.
-              </p>
-              <div class="testimonial-name">Adya Bansal</div>
-              <div class="testimonial-subtext">Class XII | Jaipur</div>
-            </div>
-
-            <!-- CARD 5 -->
-            <div class="testimonial-card">
-              <div class="testimonial-avatar">
-                <img
-                  src="../../assets/illustration/Home/Arushi-Singh.svg"
-                  alt="Arushi Singh"
-                />
-              </div>
-              <p class="testimonial-quote">
-                My child finally understands concepts, not just memorizes—Vidyaa
-                Saarthi changed our study routine.
-              </p>
-              <div class="testimonial-name">Arushi Singh</div>
-              <div class="testimonial-subtext">Parent | Gurugram</div>
             </div>
           </div>
+
+          <p class="mt-4 fw-semibold" style="max-width: 720px; margin: auto">
+            Available anytime, anywhere—on mobile and web—the platform empowers
+            students to learn, reflect, and grow with confidence at their own
+            pace.
+          </p>
         </div>
-        <!-- Buttons -->
-        <div class="d-flex flex-wrap gap-3">
-          <a href="#" class="btn btn-primary d-flex align-items-center">
-            Signup It’s Free
-            <span class="ms-2">→</span>
-          </a>
-
-          <a
-            href="#"
-            class="btn btn-warning text-white d-flex align-items-center"
-          >
-            How It Works
-            <span class="ms-2">→</span>
-          </a>
-        </div>
-      </div>
-      <!-- End of Third Section-->
-
-      <!-- FOURTH SECTION — ADVANTAGES -->
-      <div
-        class="container-fluid py-5"
-        style="background-color: var(--neutral-200)"
-      >
-        <!-- Heading -->
-        <h2 class="text-center mb-5">Vidyaa Saarthi Advantages</h2>
-
-        <!-- Row of Cards -->
-        <div class="row justify-content-center g-4">
-          <!-- CARD 1 -->
-          <div class="col-12 col-md-4 d-flex justify-content-center">
-            <div
-              class="card"
-              style="width: 18rem; border: 1px solid var(--neutral-300)"
-            >
-              <img
-                src="../../assets/illustration/Home/Personalized learning.svg"
-                class="card-img-top"
-                alt="Personalized learning"
-              />
-
-              <div class="card-body text-center">
-                <p class="card-text">
-                  Personalized learning paths that make every concept simple and
-                  easy to understand
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- CARD 2 -->
-          <div class="col-12 col-md-4 d-flex justify-content-center">
-            <div
-              class="card"
-              style="width: 18rem; border: 1px solid var(--neutral-300)"
-            >
-              <img
-                src="../../assets/illustration/Home/Smart Data Insight.svg"
-                class="card-img-top"
-                alt="Smart Data Insight"
-              />
-
-              <div class="card-body text-center">
-                <p class="card-text">
-                  Smart data insights that help teachers track progress and
-                  support every learner better
-                </p>
-              </div>
-            </div>
-          </div>
-
-          <!-- CARD 3 -->
-          <div class="col-12 col-md-4 d-flex justify-content-center">
-            <div
-              class="card"
-              style="width: 18rem; border: 1px solid var(--neutral-300)"
-            >
-              <img
-                src="../../assets/illustration/Home/AI Powerd Improvement.svg"
-                class="card-img-top"
-                alt="AI-powered academic improvement"
-              />
-
-              <div class="card-body text-center">
-                <p class="card-text">
-                  AI-powered academic improvement that strengthens learning
-                  outcomes across the entire school, fully aligned with NEP 2020
-                </p>
-              </div>
-            </div>
-          </div>
-          <!--End of Cards -->
-        </div>
-      </div>
-
-      <!-- FIFTH SECTION — WWHOM WE SERVE -->
-      <div class="container-fluid py-5">
-        <!-- Heading -->
-        <h2 class="text-center mb-5">Whom We Serve</h2>
-
-        <!-- Row of Cards -->
-        <div class="row justify-content-center g-4">
-          <!-- CARD 1 -->
-          <div class="col-12 col-md-4 d-flex justify-content-center">
-            <div
-              class="card"
-              style="width: 18rem; border: 1px solid var(--neutral-300)"
-            >
-              <img
-                src="../../assets/illustration/Home/Student.svg"
-                class="card-img-top"
-                alt="Student"
-              />
-
-              <div class="card-body text-center">
-                <h4 class="card-title">Students</h4>
-              </div>
-            </div>
-          </div>
-
-          <!-- CARD 2 -->
-          <div class="col-12 col-md-4 d-flex justify-content-center">
-            <div
-              class="card"
-              style="width: 18rem; border: 1px solid var(--neutral-300)"
-            >
-              <img
-                src="../../assets/illustration/Home/Teacher.svg"
-                class="card-img-top"
-                alt="Teacher"
-              />
-
-              <div class="card-body text-center">
-                <h4 class="card-title">Teachers</h4>
-              </div>
-            </div>
-          </div>
-
-          <!-- CARD 3 -->
-          <div class="col-12 col-md-4 d-flex justify-content-center">
-            <div
-              class="card"
-              style="width: 18rem; border: 1px solid var(--neutral-300)"
-            >
-              <img
-                src="../../assets/illustration/Home/School.svg"
-                class="card-img-top"
-                alt="School"
-              />
-
-              <div class="card-body text-center">
-                <h4 class="card-title">Schools</h4>
-              </div>
-            </div>
-          </div>
-          <!--End of Cards -->
-        </div>
-      </div>
+      </section>
     </div>
 
     <!-- ==== 3. FOOTER ========= -->
