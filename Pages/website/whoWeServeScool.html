@@ -1,0 +1,1567 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Schools – How We Serve | Vidyaa Saarthi</title>
+
+    <!-- BOOTSTRAP 5.3.8 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- VIS DESIGN SYSTEM -->
+    <link rel="stylesheet" href="../../css/VS-Design-System.css" />
+    <link rel="stylesheet" href="../../css/custom-component.css" />
+    <style>
+      /* =============================== DASHBOARD C – ACCORDION POLISH
+    =============================== */
+      #dashboard-c-container .accordion-item {
+        border: 0;
+        border-radius: 12px;
+        overflow: hidden;
+        margin-bottom: 10px;
+        background: var(--neutral-50, #f8fafc);
+      }
+      #dashboard-c-container .accordion-button {
+        padding: 12px 14px;
+        font-size: 0.9rem;
+        font-weight: 600;
+        background: transparent;
+        box-shadow: none;
+      }
+      #dashboard-c-container .accordion-button:not(.collapsed) {
+        background: #eaf2ff; /* very light
+    primary tint */
+        color: var(--primary-700, #1d4ed8);
+      }
+      #dashboard-c-container .accordion-button::after {
+        transform: scale(0.85);
+      } /* Accordion body */
+      #dashboard-c-container .accordion-body {
+        padding: 12px 14px 14px;
+        background: #ffffff;
+      } /* Topic blocks inside accordion */
+      #dashboard-c-container .accordion-body > div {
+        padding: 10px 12px;
+        border-radius: 10px;
+        background: var(--neutral-50, #f8fafc);
+        margin-bottom: 10px;
+      } /* Topic title */
+      #dashboard-c-container .accordion-body .fw-semibold {
+        font-size: 0.8rem;
+        margin-bottom: 6px;
+      } /* Badges spacing */
+      #dashboard-c-container .badge {
+        font-size: 0.75rem;
+        font-weight: 600;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- NAVBAR -->
+    <div id="vs-navbar"></div>
+
+    <main>
+      <!-- SECTION 1 — School-Wide Academic Visibility-->
+      <section class="py-5">
+        <div class="container">
+          <!-- Intro -->
+          <div class="text-center mb-5">
+            <div class="mx-auto" style="max-width: 760px">
+              <h2 class="fw-semibold mb-3">School-Wide Academic Visibility</h2>
+
+              <p class="text-muted mb-2">
+                Vidyaa Saarthi provides school leaders with a consolidated,
+                evidence-based view of academic mastery across classes and
+                subjects — focused on conceptual understanding rather than exam
+                scores alone.
+              </p>
+
+              <p class="fw-semibold mb-0">
+                Outcome: A clear and reliable picture of institutional academic
+                health.
+              </p>
+            </div>
+          </div>
+
+          <!-- NEP Alignment Strip -->
+          <div class="d-flex flex-column align-items-center mb-5">
+            <!-- Seal -->
+            <div class="d-inline-flex align-items-center gap-2 mb-3">
+              <span
+                class="d-inline-flex align-items-center justify-content-center rounded-circle"
+                style="
+                  width: 28px;
+                  height: 28px;
+                  background-color: var(--primary-100);
+                  color: var(--primary-600);
+                  font-weight: 700;
+                  font-size: 12px;
+                "
+              >
+                NEP
+              </span>
+              <span class="small fw-semibold" style="color: var(--neutral-700)">
+                NEP 2020 Aligned
+              </span>
+            </div>
+
+            <!-- Badges -->
+            <div class="row g-2 justify-content-center">
+              <div class="col-auto">
+                <span class="badge rounded-pill px-4 py-2 bg-primary">
+                  Conceptual Mastery over Marks
+                </span>
+              </div>
+              <div class="col-auto">
+                <span class="badge rounded-pill px-4 py-2 bg-success">
+                  Continuous & Formative Assessment
+                </span>
+              </div>
+              <div class="col-auto">
+                <span class="badge rounded-pill px-4 py-2 bg-warning text-dark">
+                  Inclusive & Differentiated Learning
+                </span>
+              </div>
+              <div class="col-auto">
+                <span class="badge rounded-pill px-4 py-2 bg-info text-dark">
+                  Transparent Academic Insights
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Divider before dashboards -->
+          <hr class="mb-5" style="border-color: var(--neutral-200)" />
+          <!-- DASHBOARDS ROW -->
+
+          <div class="row g-4 align-items-stretch">
+            <!-- ================= DASHBOARD A ================= -->
+            <div class="col-12 col-md-6 col-lg-4">
+              <div class="border rounded-4 bg-white p-4 shadow-sm h-100">
+                <div class="mb-4">
+                  <p class="text-uppercase text-muted small mb-1">
+                    Dashboard A · Subject-Level Mastery
+                  </p>
+                  <h5 class="fw-semibold mb-1">Class-wise Subject Overview</h5>
+                  <p class="text-muted small mb-0">
+                    Review subject mastery distribution for the selected class.
+                  </p>
+                </div>
+
+                <!-- Class Selector -->
+                <div class="mb-4">
+                  <label class="form-label small fw-semibold mb-1"
+                    >Select Class</label
+                  >
+                  <select
+                    id="dashboard-a-class-selector"
+                    class="form-select form-select-sm"
+                  >
+                    <option disabled>Class VI</option>
+                    <option disabled>Class VII</option>
+                    <option value="VIII" selected>Class VIII</option>
+                    <option disabled>Class IX</option>
+                    <option value="X">Class X</option>
+                    <option disabled>Class XI</option>
+                    <option disabled>Class XII</option>
+                  </select>
+                </div>
+
+                <!-- ================= CLASS VIII ================= -->
+                <div id="dashboard-a-VIII" style="display: none">
+                  <!-- VIII · PHY -->
+                  <div class="mb-3">
+                    <div class="fw-semibold small mb-1">Physics (PHY)</div>
+                    <div class="vs-mastery-bar">
+                      <div
+                        class="vs-mastery-segment vs-mastery--mastered"
+                        style="width: 48%"
+                      >
+                        48%
+                      </div>
+                      <div
+                        class="vs-mastery-segment vs-mastery--developing"
+                        style="width: 26%"
+                      >
+                        26%
+                      </div>
+                      <div
+                        class="vs-mastery-segment vs-mastery--moderate"
+                        style="width: 16%"
+                      >
+                        16%
+                      </div>
+                      <div
+                        class="vs-mastery-segment vs-mastery--weak"
+                        style="width: 10%"
+                      >
+                        10%
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- VIII · MAT -->
+                  <div class="mb-3">
+                    <div class="fw-semibold small mb-1">Mathematics (MAT)</div>
+                    <div class="vs-mastery-bar">
+                      <div
+                        class="vs-mastery-segment vs-mastery--mastered"
+                        style="width: 38%"
+                      >
+                        38%
+                      </div>
+                      <div
+                        class="vs-mastery-segment vs-mastery--developing"
+                        style="width: 36%"
+                      >
+                        36%
+                      </div>
+                      <div
+                        class="vs-mastery-segment vs-mastery--moderate"
+                        style="width: 16%"
+                      >
+                        16%
+                      </div>
+                      <div
+                        class="vs-mastery-segment vs-mastery--weak"
+                        style="width: 10%"
+                      >
+                        10%
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- VIII · ENG -->
+                  <div class="mb-3">
+                    <div class="fw-semibold small mb-1">English (ENG)</div>
+                    <div class="vs-mastery-bar">
+                      <div
+                        class="vs-mastery-segment vs-mastery--mastered"
+                        style="width: 38%"
+                      >
+                        38%
+                      </div>
+                      <div
+                        class="vs-mastery-segment vs-mastery--developing"
+                        style="width: 36%"
+                      >
+                        36%
+                      </div>
+                      <div
+                        class="vs-mastery-segment vs-mastery--moderate"
+                        style="width: 16%"
+                      >
+                        16%
+                      </div>
+                      <div
+                        class="vs-mastery-segment vs-mastery--weak"
+                        style="width: 10%"
+                      >
+                        10%
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- VIII · SOC -->
+                  <div class="mb-3">
+                    <div class="fw-semibold small mb-1">
+                      Social Science (SOC)
+                    </div>
+                    <div class="vs-mastery-bar">
+                      <div
+                        class="vs-mastery-segment vs-mastery--mastered"
+                        style="width: 38%"
+                      >
+                        38%
+                      </div>
+                      <div
+                        class="vs-mastery-segment vs-mastery--developing"
+                        style="width: 36%"
+                      >
+                        36%
+                      </div>
+                      <div
+                        class="vs-mastery-segment vs-mastery--moderate"
+                        style="width: 16%"
+                      >
+                        16%
+                      </div>
+                      <div
+                        class="vs-mastery-segment vs-mastery--weak"
+                        style="width: 10%"
+                      >
+                        10%
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- VIII · HIN -->
+                  <div class="mb-3">
+                    <div class="fw-semibold small mb-1">Hindi (HIN)</div>
+                    <div class="vs-mastery-bar">
+                      <div
+                        class="vs-mastery-segment vs-mastery--mastered"
+                        style="width: 38%"
+                      >
+                        38%
+                      </div>
+                      <div
+                        class="vs-mastery-segment vs-mastery--developing"
+                        style="width: 36%"
+                      >
+                        36%
+                      </div>
+                      <div
+                        class="vs-mastery-segment vs-mastery--moderate"
+                        style="width: 16%"
+                      >
+                        16%
+                      </div>
+                      <div
+                        class="vs-mastery-segment vs-mastery--weak"
+                        style="width: 10%"
+                      >
+                        10%
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- ================= CLASS X ================= -->
+                <div id="dashboard-a-X" style="display: none">
+                  <!-- X · PHY -->
+                  <div class="mb-3">
+                    <div class="fw-semibold small mb-1">Physics (PHY)</div>
+                    <div class="vs-mastery-bar">
+                      <div
+                        class="vs-mastery-segment vs-mastery--mastered"
+                        style="width: 25%"
+                      >
+                        25%
+                      </div>
+                      <div
+                        class="vs-mastery-segment vs-mastery--developing"
+                        style="width: 25%"
+                      >
+                        25%
+                      </div>
+                      <div
+                        class="vs-mastery-segment vs-mastery--moderate"
+                        style="width: 25%"
+                      >
+                        25%
+                      </div>
+                      <div
+                        class="vs-mastery-segment vs-mastery--weak"
+                        style="width: 25%"
+                      >
+                        25%
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- X · MAT -->
+                  <div class="mb-3">
+                    <div class="fw-semibold small mb-1">Mathematics (MAT)</div>
+                    <div class="vs-mastery-bar">
+                      <div
+                        class="vs-mastery-segment vs-mastery--mastered"
+                        style="width: 38%"
+                      >
+                        38%
+                      </div>
+                      <div
+                        class="vs-mastery-segment vs-mastery--developing"
+                        style="width: 36%"
+                      >
+                        36%
+                      </div>
+                      <div
+                        class="vs-mastery-segment vs-mastery--moderate"
+                        style="width: 16%"
+                      >
+                        16%
+                      </div>
+                      <div
+                        class="vs-mastery-segment vs-mastery--weak"
+                        style="width: 10%"
+                      >
+                        10%
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- X · ENG -->
+                  <div class="mb-3">
+                    <div class="fw-semibold small mb-1">English (ENG)</div>
+                    <div class="vs-mastery-bar">
+                      <div
+                        class="vs-mastery-segment vs-mastery--mastered"
+                        style="width: 38%"
+                      >
+                        38%
+                      </div>
+                      <div
+                        class="vs-mastery-segment vs-mastery--developing"
+                        style="width: 36%"
+                      >
+                        36%
+                      </div>
+                      <div
+                        class="vs-mastery-segment vs-mastery--moderate"
+                        style="width: 16%"
+                      >
+                        16%
+                      </div>
+                      <div
+                        class="vs-mastery-segment vs-mastery--weak"
+                        style="width: 10%"
+                      >
+                        10%
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- X · SOC -->
+                  <div class="mb-3">
+                    <div class="fw-semibold small mb-1">
+                      Social Science (SOC)
+                    </div>
+                    <div class="vs-mastery-bar">
+                      <div
+                        class="vs-mastery-segment vs-mastery--mastered"
+                        style="width: 38%"
+                      >
+                        38%
+                      </div>
+                      <div
+                        class="vs-mastery-segment vs-mastery--developing"
+                        style="width: 36%"
+                      >
+                        36%
+                      </div>
+                      <div
+                        class="vs-mastery-segment vs-mastery--moderate"
+                        style="width: 16%"
+                      >
+                        16%
+                      </div>
+                      <div
+                        class="vs-mastery-segment vs-mastery--weak"
+                        style="width: 10%"
+                      >
+                        10%
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- X · HIN -->
+                  <div class="mb-3">
+                    <div class="fw-semibold small mb-1">Hindi (HIN)</div>
+                    <div class="vs-mastery-bar">
+                      <div
+                        class="vs-mastery-segment vs-mastery--mastered"
+                        style="width: 38%"
+                      >
+                        38%
+                      </div>
+                      <div
+                        class="vs-mastery-segment vs-mastery--developing"
+                        style="width: 36%"
+                      >
+                        36%
+                      </div>
+                      <div
+                        class="vs-mastery-segment vs-mastery--moderate"
+                        style="width: 16%"
+                      >
+                        16%
+                      </div>
+                      <div
+                        class="vs-mastery-segment vs-mastery--weak"
+                        style="width: 10%"
+                      >
+                        10%
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- End of Dashboard A-->
+
+            <!-- ================= DASHBOARD B ================= -->
+            <div class="col-12 col-md-6 col-lg-4">
+              <div class="border rounded-4 bg-white p-4 shadow-sm h-100">
+                <!-- Header -->
+                <div class="mb-4">
+                  <p class="text-uppercase text-muted small mb-1">
+                    Dashboard B · Chapter-Level Mastery
+                  </p>
+                  <h5 class="fw-semibold mb-1">Chapter-wise Overview</h5>
+                  <p class="text-muted small mb-0">
+                    Identify chapters needing focused academic attention.
+                  </p>
+                </div>
+
+                <!-- Filters -->
+                <div class="row g-3 mb-4">
+                  <div class="col-6">
+                    <label class="form-label small fw-semibold mb-1"
+                      >Class</label
+                    >
+                    <div
+                      id="dashboard-b-class-label"
+                      class="form-control form-control-sm bg-light"
+                    >
+                      Class VIII
+                    </div>
+                  </div>
+
+                  <div class="col-6">
+                    <label class="form-label small fw-semibold mb-1"
+                      >Subject</label
+                    >
+                    <select
+                      id="dashboard-b-subject-selector"
+                      class="form-select form-select-sm"
+                    >
+                      <option value="math" selected>Mathematics</option>
+                      <option value="physics">Physics</option>
+                    </select>
+                  </div>
+                </div>
+
+                <!-- ================================================= -->
+                <!-- CLASS VIII · MATHEMATICS (DEFAULT)                -->
+                <!-- ================================================= -->
+                <div id="dashboard-b-VIII-math">
+                  <div class="mb-3">
+                    <div class="fw-semibold small mb-1">VIII-MAT-CHAP1</div>
+                    <div class="vs-mastery-bar">
+                      <div
+                        class="vs-mastery-segment vs-mastery--mastered"
+                        style="width: 56%"
+                      >
+                        56%
+                      </div>
+                      <div
+                        class="vs-mastery-segment vs-mastery--developing"
+                        style="width: 22%"
+                      >
+                        22%
+                      </div>
+                      <div
+                        class="vs-mastery-segment vs-mastery--moderate"
+                        style="width: 14%"
+                      >
+                        14%
+                      </div>
+                      <div
+                        class="vs-mastery-segment vs-mastery--weak"
+                        style="width: 8%"
+                      >
+                        8%
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <div class="fw-semibold small mb-1">VIII-MAT-CHAP2</div>
+                    <div class="vs-mastery-bar">
+                      <div
+                        class="vs-mastery-segment vs-mastery--mastered"
+                        style="width: 42%"
+                      >
+                        42%
+                      </div>
+                      <div
+                        class="vs-mastery-segment vs-mastery--developing"
+                        style="width: 28%"
+                      >
+                        28%
+                      </div>
+                      <div
+                        class="vs-mastery-segment vs-mastery--moderate"
+                        style="width: 18%"
+                      >
+                        18%
+                      </div>
+                      <div
+                        class="vs-mastery-segment vs-mastery--weak"
+                        style="width: 12%"
+                      >
+                        12%
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- ================================================= -->
+                <!-- CLASS VIII · PHYSICS                              -->
+                <!-- ================================================= -->
+                <div id="dashboard-b-VIII-physics" style="display: none">
+                  <div class="mb-3">
+                    <div class="fw-semibold small mb-1">VIII-PHY-CHAP1</div>
+                    <div class="vs-mastery-bar">
+                      <div
+                        class="vs-mastery-segment vs-mastery--mastered"
+                        style="width: 38%"
+                      >
+                        38%
+                      </div>
+                      <div
+                        class="vs-mastery-segment vs-mastery--developing"
+                        style="width: 32%"
+                      >
+                        32%
+                      </div>
+                      <div
+                        class="vs-mastery-segment vs-mastery--moderate"
+                        style="width: 18%"
+                      >
+                        18%
+                      </div>
+                      <div
+                        class="vs-mastery-segment vs-mastery--weak"
+                        style="width: 12%"
+                      >
+                        12%
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <div class="fw-semibold small mb-1">VIII-PHY-CHAP2</div>
+                    <div class="vs-mastery-bar">
+                      <div
+                        class="vs-mastery-segment vs-mastery--mastered"
+                        style="width: 44%"
+                      >
+                        44%
+                      </div>
+                      <div
+                        class="vs-mastery-segment vs-mastery--developing"
+                        style="width: 26%"
+                      >
+                        26%
+                      </div>
+                      <div
+                        class="vs-mastery-segment vs-mastery--moderate"
+                        style="width: 16%"
+                      >
+                        16%
+                      </div>
+                      <div
+                        class="vs-mastery-segment vs-mastery--weak"
+                        style="width: 14%"
+                      >
+                        14%
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- ================================================= -->
+                <!-- CLASS X · MATHEMATICS                             -->
+                <!-- ================================================= -->
+                <div id="dashboard-b-X-math" style="display: none">
+                  <div class="mb-3">
+                    <div class="fw-semibold small mb-1">X-MAT-CHAP1</div>
+                    <div class="vs-mastery-bar">
+                      <div
+                        class="vs-mastery-segment vs-mastery--mastered"
+                        style="width: 56%"
+                      >
+                        56%
+                      </div>
+                      <div
+                        class="vs-mastery-segment vs-mastery--developing"
+                        style="width: 22%"
+                      >
+                        22%
+                      </div>
+                      <div
+                        class="vs-mastery-segment vs-mastery--moderate"
+                        style="width: 14%"
+                      >
+                        14%
+                      </div>
+                      <div
+                        class="vs-mastery-segment vs-mastery--weak"
+                        style="width: 8%"
+                      >
+                        8%
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <div class="fw-semibold small mb-1">X-MAT-CHAP2</div>
+                    <div class="vs-mastery-bar">
+                      <div
+                        class="vs-mastery-segment vs-mastery--mastered"
+                        style="width: 42%"
+                      >
+                        42%
+                      </div>
+                      <div
+                        class="vs-mastery-segment vs-mastery--developing"
+                        style="width: 28%"
+                      >
+                        28%
+                      </div>
+                      <div
+                        class="vs-mastery-segment vs-mastery--moderate"
+                        style="width: 18%"
+                      >
+                        18%
+                      </div>
+                      <div
+                        class="vs-mastery-segment vs-mastery--weak"
+                        style="width: 12%"
+                      >
+                        12%
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- ================================================= -->
+                <!-- CLASS X · PHYSICS                                 -->
+                <!-- ================================================= -->
+                <div id="dashboard-b-X-physics" style="display: none">
+                  <div class="mb-3">
+                    <div class="fw-semibold small mb-1">X-PHY-CHAP1</div>
+                    <div class="vs-mastery-bar">
+                      <div
+                        class="vs-mastery-segment vs-mastery--mastered"
+                        style="width: 38%"
+                      >
+                        38%
+                      </div>
+                      <div
+                        class="vs-mastery-segment vs-mastery--developing"
+                        style="width: 32%"
+                      >
+                        32%
+                      </div>
+                      <div
+                        class="vs-mastery-segment vs-mastery--moderate"
+                        style="width: 18%"
+                      >
+                        18%
+                      </div>
+                      <div
+                        class="vs-mastery-segment vs-mastery--weak"
+                        style="width: 12%"
+                      >
+                        12%
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <div class="fw-semibold small mb-1">X-PHY-CHAP2</div>
+                    <div class="vs-mastery-bar">
+                      <div
+                        class="vs-mastery-segment vs-mastery--mastered"
+                        style="width: 44%"
+                      >
+                        44%
+                      </div>
+                      <div
+                        class="vs-mastery-segment vs-mastery--developing"
+                        style="width: 26%"
+                      >
+                        26%
+                      </div>
+                      <div
+                        class="vs-mastery-segment vs-mastery--moderate"
+                        style="width: 16%"
+                      >
+                        16%
+                      </div>
+                      <div
+                        class="vs-mastery-segment vs-mastery--weak"
+                        style="width: 14%"
+                      >
+                        14%
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- =============== END DASHBOARD B ================= -->
+
+            <!-- ================= DASHBOARD C · TOPIC-LEVEL DIAGNOSTIC ================= -->
+            <div id="dashboard-c-container" class="col-12 col-md-6 col-lg-4">
+              <div class="border rounded-4 bg-white p-4 shadow-sm h-100">
+                <div class="mb-4">
+                  <p class="text-uppercase text-muted small mb-1">
+                    Dashboard C · Topic-Level Diagnostic
+                  </p>
+                  <h5 class="fw-semibold mb-1">Topic-wise Skill Mastery</h5>
+                  <p class="text-muted small mb-0">
+                    Deep dive into topic-level recall, understanding, and
+                    application.
+                  </p>
+                </div>
+
+                <!-- ================================================= -->
+                <!-- CLASS VIII · PHYSICS                              -->
+                <!-- ================================================= -->
+                <div id="dashboard-c-VIII-physics" style="display: none">
+                  <h6 class="fw-bold mb-3">Class VIII · Physics</h6>
+
+                  <div class="accordion" id="accordion-VIII-physics">
+                    <!-- VIII-PHY-CHAP1 -->
+                    <div class="accordion-item mb-2">
+                      <h2 class="accordion-header">
+                        <button
+                          class="accordion-button collapsed fw-semibold small"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#VIII-PHY-CHAP1"
+                        >
+                          VIII-PHY-CHAP1
+                        </button>
+                      </h2>
+                      <div
+                        id="VIII-PHY-CHAP1"
+                        class="accordion-collapse collapse"
+                      >
+                        <div class="accordion-body">
+                          <div class="mb-3">
+                            <div class="fw-semibold small mb-1">
+                              VIII-PHY-CHAP1-TOP1
+                            </div>
+                            <div class="d-flex flex-wrap gap-2">
+                              <span class="badge bg-success px-3"
+                                >Recall 70%</span
+                              >
+                              <span class="badge bg-warning text-dark px-3"
+                                >Understanding 55%</span
+                              >
+                              <span class="badge bg-danger px-3"
+                                >Application 42%</span
+                              >
+                              <span class="badge bg-secondary px-3"
+                                >Overall 54%</span
+                              >
+                            </div>
+                          </div>
+
+                          <div>
+                            <div class="fw-semibold small mb-1">
+                              VIII-PHY-CHAP1-TOP2
+                            </div>
+                            <div class="d-flex flex-wrap gap-2">
+                              <span class="badge bg-success px-3"
+                                >Recall 68%</span
+                              >
+                              <span class="badge bg-warning text-dark px-3"
+                                >Understanding 52%</span
+                              >
+                              <span class="badge bg-danger px-3"
+                                >Application 40%</span
+                              >
+                              <span class="badge bg-secondary px-3"
+                                >Overall 51%</span
+                              >
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- VIII-PHY-CHAP2 -->
+                    <div class="accordion-item mb-2">
+                      <h2 class="accordion-header">
+                        <button
+                          class="accordion-button collapsed fw-semibold small"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#VIII-PHY-CHAP2"
+                        >
+                          VIII-PHY-CHAP2
+                        </button>
+                      </h2>
+                      <div
+                        id="VIII-PHY-CHAP2"
+                        class="accordion-collapse collapse"
+                      >
+                        <div class="accordion-body">
+                          <div class="mb-3">
+                            <div class="fw-semibold small mb-1">
+                              VIII-PHY-CHAP2-TOP1
+                            </div>
+                            <div class="d-flex flex-wrap gap-2">
+                              <span class="badge bg-success px-3"
+                                >Recall 72%</span
+                              >
+                              <span class="badge bg-warning text-dark px-3"
+                                >Understanding 58%</span
+                              >
+                              <span class="badge bg-danger px-3"
+                                >Application 44%</span
+                              >
+                              <span class="badge bg-secondary px-3"
+                                >Overall 58%</span
+                              >
+                            </div>
+                          </div>
+
+                          <div>
+                            <div class="fw-semibold small mb-1">
+                              VIII-PHY-CHAP2-TOP2
+                            </div>
+                            <div class="d-flex flex-wrap gap-2">
+                              <span class="badge bg-success px-3"
+                                >Recall 69%</span
+                              >
+                              <span class="badge bg-warning text-dark px-3"
+                                >Understanding 54%</span
+                              >
+                              <span class="badge bg-danger px-3"
+                                >Application 41%</span
+                              >
+                              <span class="badge bg-secondary px-3"
+                                >Overall 55%</span
+                              >
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- ================================================= -->
+                <!-- CLASS VIII · MATHEMATICS                          -->
+                <!-- ================================================= -->
+                <div id="dashboard-c-VIII-math" style="display: none">
+                  <h6 class="fw-bold mb-3">Class VIII · Mathematics</h6>
+
+                  <div class="accordion" id="accordion-VIII-math">
+                    <!-- VIII-MAT-CHAP1 -->
+                    <div class="accordion-item mb-2">
+                      <h2 class="accordion-header">
+                        <button
+                          class="accordion-button collapsed fw-semibold small"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#VIII-MAT-CHAP1"
+                        >
+                          VIII-MAT-CHAP1
+                        </button>
+                      </h2>
+                      <div
+                        id="VIII-MAT-CHAP1"
+                        class="accordion-collapse collapse"
+                      >
+                        <div class="accordion-body">
+                          <div class="mb-3">
+                            <div class="fw-semibold small mb-1">
+                              VIII-MAT-CHAP1-TOP1
+                            </div>
+                            <div class="d-flex flex-wrap gap-2">
+                              <span class="badge bg-success px-3"
+                                >Recall 78%</span
+                              >
+                              <span class="badge bg-warning text-dark px-3"
+                                >Understanding 64%</span
+                              >
+                              <span class="badge bg-danger px-3"
+                                >Application 46%</span
+                              >
+                              <span class="badge bg-secondary px-3"
+                                >Overall 60%</span
+                              >
+                            </div>
+                          </div>
+
+                          <div>
+                            <div class="fw-semibold small mb-1">
+                              VIII-MAT-CHAP1-TOP2
+                            </div>
+                            <div class="d-flex flex-wrap gap-2">
+                              <span class="badge bg-success px-3"
+                                >Recall 75%</span
+                              >
+                              <span class="badge bg-warning text-dark px-3"
+                                >Understanding 61%</span
+                              >
+                              <span class="badge bg-danger px-3"
+                                >Application 44%</span
+                              >
+                              <span class="badge bg-secondary px-3"
+                                >Overall 58%</span
+                              >
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- VIII-MAT-CHAP2 -->
+                    <div class="accordion-item mb-2">
+                      <h2 class="accordion-header">
+                        <button
+                          class="accordion-button collapsed fw-semibold small"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#VIII-MAT-CHAP2"
+                        >
+                          VIII-MAT-CHAP2
+                        </button>
+                      </h2>
+                      <div
+                        id="VIII-MAT-CHAP2"
+                        class="accordion-collapse collapse"
+                      >
+                        <div class="accordion-body">
+                          <div class="mb-3">
+                            <div class="fw-semibold small mb-1">
+                              VIII-MAT-CHAP2-TOP1
+                            </div>
+                            <div class="d-flex flex-wrap gap-2">
+                              <span class="badge bg-success px-3"
+                                >Recall 73%</span
+                              >
+                              <span class="badge bg-warning text-dark px-3"
+                                >Understanding 59%</span
+                              >
+                              <span class="badge bg-danger px-3"
+                                >Application 41%</span
+                              >
+                              <span class="badge bg-secondary px-3"
+                                >Overall 56%</span
+                              >
+                            </div>
+                          </div>
+
+                          <div>
+                            <div class="fw-semibold small mb-1">
+                              VIII-MAT-CHAP2-TOP2
+                            </div>
+                            <div class="d-flex flex-wrap gap-2">
+                              <span class="badge bg-success px-3"
+                                >Recall 70%</span
+                              >
+                              <span class="badge bg-warning text-dark px-3"
+                                >Understanding 56%</span
+                              >
+                              <span class="badge bg-danger px-3"
+                                >Application 39%</span
+                              >
+                              <span class="badge bg-secondary px-3"
+                                >Overall 53%</span
+                              >
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- ================================================= -->
+                <!-- CLASS X · MATHEMATICS                             -->
+                <!-- ================================================= -->
+                <div id="dashboard-c-X-math" style="display: none">
+                  <h6 class="fw-bold mb-3">Class X · Mathematics</h6>
+                  <div class="accordion" id="accordion-X-math">
+                    <!-- X-MAT-CHAP1 -->
+                    <div class="accordion-item mb-2">
+                      <h2 class="accordion-header">
+                        <button
+                          class="accordion-button collapsed fw-semibold small"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#X-MAT-CHAP1"
+                        >
+                          VIII-MAT-CHAP1
+                        </button>
+                      </h2>
+                      <div id="X-MAT-CHAP1" class="accordion-collapse collapse">
+                        <div class="accordion-body">
+                          <div class="mb-3">
+                            <div class="fw-semibold small mb-1">
+                              X-MAT-CHAP1-TOP1
+                            </div>
+                            <div class="d-flex flex-wrap gap-2">
+                              <span class="badge bg-success px-3"
+                                >Recall 78%</span
+                              >
+                              <span class="badge bg-warning text-dark px-3"
+                                >Understanding 64%</span
+                              >
+                              <span class="badge bg-danger px-3"
+                                >Application 46%</span
+                              >
+                              <span class="badge bg-secondary px-3"
+                                >Overall 60%</span
+                              >
+                            </div>
+                          </div>
+
+                          <div>
+                            <div class="fw-semibold small mb-1">
+                              X-MAT-CHAP1-TOP2
+                            </div>
+                            <div class="d-flex flex-wrap gap-2">
+                              <span class="badge bg-success px-3"
+                                >Recall 75%</span
+                              >
+                              <span class="badge bg-warning text-dark px-3"
+                                >Understanding 61%</span
+                              >
+                              <span class="badge bg-danger px-3"
+                                >Application 44%</span
+                              >
+                              <span class="badge bg-secondary px-3"
+                                >Overall 58%</span
+                              >
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- X-MAT-CHAP2 -->
+                    <div class="accordion-item mb-2">
+                      <h2 class="accordion-header">
+                        <button
+                          class="accordion-button collapsed fw-semibold small"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#X-MAT-CHAP2"
+                        >
+                          X-MAT-CHAP2
+                        </button>
+                      </h2>
+                      <div id="X-MAT-CHAP2" class="accordion-collapse collapse">
+                        <div class="accordion-body">
+                          <div class="mb-3">
+                            <div class="fw-semibold small mb-1">
+                              X-MAT-CHAP2-TOP1
+                            </div>
+                            <div class="d-flex flex-wrap gap-2">
+                              <span class="badge bg-success px-3"
+                                >Recall 73%</span
+                              >
+                              <span class="badge bg-warning text-dark px-3"
+                                >Understanding 59%</span
+                              >
+                              <span class="badge bg-danger px-3"
+                                >Application 41%</span
+                              >
+                              <span class="badge bg-secondary px-3"
+                                >Overall 56%</span
+                              >
+                            </div>
+                          </div>
+
+                          <div>
+                            <div class="fw-semibold small mb-1">
+                              X-MAT-CHAP2-TOP2
+                            </div>
+                            <div class="d-flex flex-wrap gap-2">
+                              <span class="badge bg-success px-3"
+                                >Recall 70%</span
+                              >
+                              <span class="badge bg-warning text-dark px-3"
+                                >Understanding 56%</span
+                              >
+                              <span class="badge bg-danger px-3"
+                                >Application 39%</span
+                              >
+                              <span class="badge bg-secondary px-3"
+                                >Overall 53%</span
+                              >
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- ================================================= -->
+                <!-- CLASS X · PHYSICS                                 -->
+                <!-- ================================================= -->
+                <div id="dashboard-c-X-physics" style="display: none">
+                  <h6 class="fw-bold mb-3">Class X · Physics</h6>
+                  <div class="accordion" id="accordion-X-physics">
+                    <!-- X-PHY-CHAP1 -->
+                    <div class="accordion-item mb-2">
+                      <h2 class="accordion-header">
+                        <button
+                          class="accordion-button collapsed fw-semibold small"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#X-PHY-CHAP1"
+                        >
+                          X-PHY-CHAP1
+                        </button>
+                      </h2>
+                      <div id="X-PHY-CHAP1" class="accordion-collapse collapse">
+                        <div class="accordion-body">
+                          <div class="mb-3">
+                            <div class="fw-semibold small mb-1">
+                              X-PHY-CHAP1-TOP1
+                            </div>
+                            <div class="d-flex flex-wrap gap-2">
+                              <span class="badge bg-success px-3"
+                                >Recall 70%</span
+                              >
+                              <span class="badge bg-warning text-dark px-3"
+                                >Understanding 55%</span
+                              >
+                              <span class="badge bg-danger px-3"
+                                >Application 42%</span
+                              >
+                              <span class="badge bg-secondary px-3"
+                                >Overall 54%</span
+                              >
+                            </div>
+                          </div>
+
+                          <div>
+                            <div class="fw-semibold small mb-1">
+                              X-PHY-CHAP1-TOP2
+                            </div>
+                            <div class="d-flex flex-wrap gap-2">
+                              <span class="badge bg-success px-3"
+                                >Recall 68%</span
+                              >
+                              <span class="badge bg-warning text-dark px-3"
+                                >Understanding 52%</span
+                              >
+                              <span class="badge bg-danger px-3"
+                                >Application 40%</span
+                              >
+                              <span class="badge bg-secondary px-3"
+                                >Overall 51%</span
+                              >
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <!-- X-PHY-CHAP2 -->
+                    <div class="accordion-item mb-2">
+                      <h2 class="accordion-header">
+                        <button
+                          class="accordion-button collapsed fw-semibold small"
+                          data-bs-toggle="collapse"
+                          data-bs-target="#X-PHY-CHAP2"
+                        >
+                          X-PHY-CHAP2
+                        </button>
+                      </h2>
+                      <div id="X-PHY-CHAP2" class="accordion-collapse collapse">
+                        <div class="accordion-body">
+                          <div class="mb-3">
+                            <div class="fw-semibold small mb-1">
+                              X-PHY-CHAP2-TOP1
+                            </div>
+                            <div class="d-flex flex-wrap gap-2">
+                              <span class="badge bg-success px-3"
+                                >Recall 72%</span
+                              >
+                              <span class="badge bg-warning text-dark px-3"
+                                >Understanding 58%</span
+                              >
+                              <span class="badge bg-danger px-3"
+                                >Application 44%</span
+                              >
+                              <span class="badge bg-secondary px-3"
+                                >Overall 58%</span
+                              >
+                            </div>
+                          </div>
+
+                          <div>
+                            <div class="fw-semibold small mb-1">
+                              X-PHY-CHAP2-TOP2
+                            </div>
+                            <div class="d-flex flex-wrap gap-2">
+                              <span class="badge bg-success px-3"
+                                >Recall 69%</span
+                              >
+                              <span class="badge bg-warning text-dark px-3"
+                                >Understanding 54%</span
+                              >
+                              <span class="badge bg-danger px-3"
+                                >Application 41%</span
+                              >
+                              <span class="badge bg-secondary px-3"
+                                >Overall 55%</span
+                              >
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!----End of Dashboard C-------->
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <div id="vs-footer"></div>
+
+    <!-- BOOTSTRAP JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../../../component-js/include-components.js"></script>
+
+    <!-- DASHBOARD JS -->
+
+    <!-- JS for Dashboard A CLASS & SUBJECT OVERVIEW-->
+    <script>
+      (function () {
+        const classSelect = document.getElementById(
+          "dashboard-a-class-selector"
+        );
+
+        const dashboardABlocks = {
+          VIII: document.getElementById("dashboard-a-VIII"),
+          X: document.getElementById("dashboard-a-X"),
+        };
+
+        if (!classSelect) return;
+
+        /* ---------------------------------------------
+     Helpers
+  --------------------------------------------- */
+        function hideAllDashboardA() {
+          Object.values(dashboardABlocks).forEach((block) => {
+            if (block) block.style.display = "none";
+          });
+        }
+
+        function updateDashboardA() {
+          const selectedClass = classSelect.value; // "VIII" | "X"
+
+          hideAllDashboardA();
+
+          if (dashboardABlocks[selectedClass]) {
+            dashboardABlocks[selectedClass].style.display = "";
+          }
+        }
+
+        /* ---------------------------------------------
+     Event Wiring
+  --------------------------------------------- */
+        classSelect.addEventListener("change", updateDashboardA);
+
+        /* ---------------------------------------------
+     Initial Load
+  --------------------------------------------- */
+        updateDashboardA();
+      })();
+    </script>
+
+    <!--JS for DASHBOARD B — CHAPTER LEVEL-->
+    <script>
+      (function () {
+        function onReady(fn) {
+          if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", fn);
+          } else {
+            fn();
+          }
+        }
+
+        onReady(function () {
+          // External driver (Dashboard A selector)
+          const classSelectA = document.getElementById(
+            "dashboard-a-class-selector"
+          );
+
+          // Dashboard B UI
+          const subjectSelectB = document.getElementById(
+            "dashboard-b-subject-selector"
+          );
+          const dashboardBClassLabel = document.getElementById(
+            "dashboard-b-class-label"
+          );
+
+          // Dashboard B blocks (per your cleaned HTML)
+          const blocksB = {
+            VIII: {
+              math: document.getElementById("dashboard-b-VIII-math"),
+              physics: document.getElementById("dashboard-b-VIII-physics"),
+            },
+            X: {
+              math: document.getElementById("dashboard-b-X-math"),
+              physics: document.getElementById("dashboard-b-X-physics"),
+            },
+          };
+
+          if (!classSelectA || !subjectSelectB || !dashboardBClassLabel) return;
+
+          function hideAllDashboardB() {
+            Object.values(blocksB).forEach((subjects) => {
+              Object.values(subjects).forEach((el) => {
+                if (el) el.style.display = "none";
+              });
+            });
+          }
+
+          function getSelectedClassText() {
+            const opt = classSelectA.options[classSelectA.selectedIndex];
+            return (opt && opt.textContent ? opt.textContent : "").trim();
+          }
+
+          function getClassKeyFromText(txt) {
+            // Works even if you later add value="" attributes
+            if (/Class\s*VIII/i.test(txt) || /\bVIII\b/i.test(txt))
+              return "VIII";
+            if (/Class\s*X\b/i.test(txt) || /\bX\b/i.test(txt)) return "X";
+            return null;
+          }
+
+          function setClassLabel(classKey) {
+            dashboardBClassLabel.textContent = classKey
+              ? `Class ${classKey}`
+              : "";
+          }
+
+          function updateDashboardB() {
+            const classText = getSelectedClassText();
+            const classKey = getClassKeyFromText(classText);
+            const subjectKey = subjectSelectB.value; // "math" | "physics"
+
+            hideAllDashboardB();
+            setClassLabel(classKey);
+
+            const block =
+              classKey && blocksB[classKey] && blocksB[classKey][subjectKey];
+            if (block) block.style.display = "";
+          }
+
+          // ---- Class change: reset subject to math & show matching block ----
+          classSelectA.addEventListener("change", function () {
+            subjectSelectB.value = "math";
+            updateDashboardB();
+          });
+
+          // ---- Subject change: only switch within the current class ----
+          subjectSelectB.addEventListener("change", updateDashboardB);
+
+          // ---- Initial state ----
+          (function init() {
+            subjectSelectB.value = subjectSelectB.value || "math";
+            updateDashboardB();
+          })();
+        });
+      })();
+    </script>
+
+    <!--JS for DASHBOARD C — TOPIC LEVEL-->
+    <script>
+      (function () {
+        function onReady(fn) {
+          if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", fn);
+          } else {
+            fn();
+          }
+        }
+
+        onReady(function () {
+          /* ----------------------------------------
+         External Drivers
+      ---------------------------------------- */
+          const classSelectA = document.getElementById(
+            "dashboard-a-class-selector"
+          );
+          const subjectSelectB = document.getElementById(
+            "dashboard-b-subject-selector"
+          );
+
+          if (!classSelectA || !subjectSelectB) return;
+
+          /* ----------------------------------------
+         Dashboard C Blocks (LOCKED IDS)
+      ---------------------------------------- */
+          const dashboardCBlocks = {
+            VIII: {
+              math: document.getElementById("dashboard-c-VIII-math"),
+              physics: document.getElementById("dashboard-c-VIII-physics"),
+            },
+            X: {
+              math: document.getElementById("dashboard-c-X-math"),
+              physics: document.getElementById("dashboard-c-X-physics"),
+            },
+          };
+
+          /* ----------------------------------------
+         Helpers
+      ---------------------------------------- */
+          function hideAllDashboardC() {
+            Object.values(dashboardCBlocks).forEach((subjects) => {
+              Object.values(subjects).forEach((el) => {
+                if (el) el.style.display = "none";
+              });
+            });
+          }
+
+          function collapseAllAccordions() {
+            document
+              .querySelectorAll(
+                "#dashboard-c-container .accordion-collapse.show"
+              )
+              .forEach((el) => el.classList.remove("show"));
+          }
+
+          function getClassKey() {
+            const opt = classSelectA.options[classSelectA.selectedIndex];
+            if (!opt) return null;
+            if (/VIII/i.test(opt.textContent)) return "VIII";
+            if (/Class\s*X\b/i.test(opt.textContent)) return "X";
+            return null;
+          }
+
+          /* ----------------------------------------
+         Core Update Logic
+      ---------------------------------------- */
+          function updateDashboardC() {
+            const classKey = getClassKey(); // "VIII" | "X"
+            const subjectKey = subjectSelectB.value; // "math" | "physics"
+
+            hideAllDashboardC();
+            collapseAllAccordions();
+
+            const block =
+              classKey &&
+              dashboardCBlocks[classKey] &&
+              dashboardCBlocks[classKey][subjectKey];
+
+            if (block) block.style.display = "";
+          }
+
+          /* ----------------------------------------
+         Event Wiring
+      ---------------------------------------- */
+          classSelectA.addEventListener("change", updateDashboardC);
+          subjectSelectB.addEventListener("change", updateDashboardC);
+
+          /* ----------------------------------------
+         Initial Load
+      ---------------------------------------- */
+          updateDashboardC();
+        });
+      })();
+    </script>
+
+    <!-- End of JS Block-->
+  </body>
+</html>

@@ -1,0 +1,41 @@
+/* =====================================================
+     DASHBOARD MASTERY BAR COLORS (INTERNAL UTILITIES)
+     ===================================================== */
+
+.vs-mastery-bar {
+  height: 18px;
+  display: flex;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: var(--neutral-100);
+}
+
+.vs-mastery-segment {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Classification Colors */
+.vs-mastery--mastered {
+  background-color: var(--success-600);
+  color: #fff;
+}
+
+.vs-mastery--developing {
+  background-color: var(--primary-400);
+  color: #fff;
+}
+
+.vs-mastery--moderate {
+  background-color: var(--neutral-500);
+  color: #fff;
+}
+
+.vs-mastery--weak {
+  background-color: var(--warning-400);
+  color: #000;
+}

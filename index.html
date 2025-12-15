@@ -3,282 +3,95 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Vidyaa Sarthi</title>
+    <title>Vidyaa Saarthi</title>
 
-    <!-- BOOOTSTRAP 5.3.8 CSS (CDN)-->
+    <!-- BOOTSTRAP 5.3.8 CSS -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
       crossorigin="anonymous"
     />
-    <!--VIS DESIGN SYSTEM FILES -->
+
+    <!-- VIS DESIGN SYSTEM -->
     <link rel="stylesheet" href="../../css/VS-Design-System.css" />
     <link rel="stylesheet" href="../../css/custom-component.css" />
-    <!-- PAGE-SPECIFIC CSS (Optional) -->
-    <style>
-      /* Insert page specific CSS here */
-    </style>
-
-    <!--END OF HEAD-->
   </head>
 
   <body>
-    <!-- 1. Navigation Bar ===== -->
-    <section class="py-2">
-      <nav class="navbar navbar-expand-lg vs-navbar">
-        <div class="container-fluid">
-          <!-- ===Brand Logo (Left Aligned) ======== -->
-          <a
-            class="navbar-brand d-flex align-items-center gap-2"
-            href="../../../index.html"
-          >
-            <img
-              src="../../assets/logo/vsLogoWithouText.svg"
-              alt="Vidyaa Saarthi Logo"
-            />
-          </a>
+    <!-- ================= NAVBAR ================= -->
+    <div id="vs-navbar"></div>
 
-          <!-- ===Mobile Menu Toggler (Hamburger Icon) Controls collapsing of main navigation ====== -->
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNavDropdown"
-            aria-controls="navbarNavDropdown"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
-
-          <!-- =====Collapsible Navigation Menu ============= -->
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
-              <!-- ===Menu Item: Home====== -->
-              <li class="nav-item">
-                <a
-                  class="nav-link active"
-                  aria-current="page"
-                  href="../../../index.html"
-                  >Home</a
-                >
-              </li>
-
-              <!-- ====Menu Item: Who We Serve Dropdown with 3 child items ====== -->
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  data-bs-toggle="dropdown"
-                >
-                  Who We Serve
-                </a>
-                <ul class="dropdown-menu">
-                  <li><a class="dropdown-item" href="#">Students</a></li>
-                  <li><a class="dropdown-item" href="#">Teachers</a></li>
-                  <li><a class="dropdown-item" href="#">Schools</a></li>
-                </ul>
-              </li>
-
-              <!-- ========== Menu Item: How It Works =============== -->
-              <li class="nav-item">
-                <a class="nav-link" href="#">How It Works</a>
-              </li>
-
-              <!-- ====== Menu Item: Pricing =========== -->
-              <li class="nav-item">
-                <a class="nav-link" href="#">Pricing</a>
-              </li>
-
-              <!-- ===== Menu Item: About Us ===== -->
-              <li class="nav-item">
-                <a class="nav-link" href="../../../Pages/website/aboutUs.html"
-                  >About Us</a
-                >
-              </li>
-
-              <!-- ====Menu Item: Log in Dropdown with 2 child items ================== -->
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  data-bs-toggle="dropdown"
-                >
-                  Log in
-                </a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      href="../../../Pages\website\studentLogIn.html"
-                      >Student</a
-                    >
-                  </li>
-                  <li><a class="dropdown-item" href="#">school</a></li>
-                </ul>
-              </li>
-
-              <!-- ====Menu Item: Sign up Dropdown with 2 child items ================== -->
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  data-bs-toggle="dropdown"
-                >
-                  Sign up
-                </a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      href="../../../Pages/website/studentSignup.html"
-                      >Student</a
-                    >
-                  </li>
-                  <li><a class="dropdown-item" href="#">school</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-          <!-- End Collapse -->
-        </div>
-      </nav>
-    </section>
-
-    <!--==== 2. Page Content =========-->
-    <div class="container-fluid">
-      <!-- ==================================
-       HERO SECTION
-  ================================== -->
+    <!-- ================= MAIN CONTENT ================= -->
+    <main>
+      <!-- HERO -->
       <section class="py-5">
         <div class="container">
           <div class="row align-items-center g-4">
-            <!-- LEFT CONTENT -->
-            <div class="col-12 col-md-6 text-start">
+            <div class="col-12 col-md-6">
               <h1 class="fw-bold mb-4" style="max-width: 540px">
                 Personalized Learning aligned to every Student’s needs
               </h1>
 
-              <!-- BADGE GROUP -->
               <div class="d-flex flex-wrap gap-3 mb-4">
-                <span
-                  class="badge rounded-pill px-4 py-2"
-                  style="
-                    background-color: var(--primary-900);
-                    color: var(--neutral-0);
-                    border: 3px solid var(--neutral-0);
-                  "
+                <span class="badge rounded-pill px-4 py-2 bg-primary"
                   >Ethical</span
                 >
-                <span
-                  class="badge rounded-pill px-4 py-2"
-                  style="
-                    background-color: var(--primary-900);
-                    color: var(--neutral-0);
-                    border: 3px solid var(--neutral-0);
-                  "
+                <span class="badge rounded-pill px-4 py-2 bg-primary"
                   >Affordable</span
                 >
-                <span
-                  class="badge rounded-pill px-4 py-2"
-                  style="
-                    background-color: var(--primary-900);
-                    color: var(--neutral-0);
-                    border: 3px solid var(--neutral-0);
-                  "
+                <span class="badge rounded-pill px-4 py-2 bg-primary"
                   >Student-Centric</span
                 >
-                <span
-                  class="badge rounded-pill px-4 py-2"
-                  style="
-                    background-color: var(--primary-900);
-                    color: var(--neutral-0);
-                    border: 3px solid var(--neutral-0);
-                  "
+                <span class="badge rounded-pill px-4 py-2 bg-primary"
                   >Textbook-Aligned</span
                 >
               </div>
 
-              <!-- CTA BUTTONS -->
-              <div class="d-flex flex-wrap gap-3 mt-3">
-                <a href="#" class="btn btn-primary d-flex align-items-center">
-                  Signup — It’s Free <span class="ms-2">→</span>
-                </a>
-                <a
-                  href="#"
-                  class="btn btn-warning text-white d-flex align-items-center"
-                >
-                  How It Works <span class="ms-2">→</span>
+              <div class="d-flex flex-wrap gap-3">
+                <a href="#" class="btn btn-primary"> Signup — It’s Free → </a>
+                <a href="#" class="btn btn-warning text-white">
+                  How It Works →
                 </a>
               </div>
             </div>
 
-            <!-- RIGHT ILLUSTRATION -->
             <div class="col-12 col-md-6 text-center">
               <img
                 src="../../../assets/illustration/Home/Happy-Jumping-Students.svg"
-                alt="Hero Illustration"
+                alt="Students learning happily"
                 class="img-fluid"
-                style="height: 340px; transform: rotate(12deg)"
+                style="height: 340px"
               />
             </div>
           </div>
         </div>
       </section>
 
-      <!-- ==================================
-       TRUSTED BY SECTION
-  ================================== -->
-      <section class="py-5" style="background-color: var(--neutral-200)">
+      <!-- TRUSTED BY -->
+      <section class="py-5 bg-light">
         <div class="container">
-          <div class="row align-items-center text-center text-md-start g-4">
-            <!-- Trusted By Label -->
-            <div class="col-12 col-md-3">
-              <h2 class="fw-semibold">Trusted by</h2>
+          <div class="row text-center text-md-start g-4">
+            <div class="col-md-3"><h2 class="fw-semibold">Trusted by</h2></div>
+
+            <div class="col-md-3">
+              <h2 class="fw-bold">50+</h2>
+              <p class="small">SATISFIED SCHOOLS</p>
             </div>
 
-            <!-- Schools -->
-            <div class="col-12 col-md-3">
-              <div class="d-flex align-items-center gap-3">
-                <img
-                  src="../../../assets/illustration/Home/school-bldg.svg"
-                  style="height: 70px"
-                />
-                <h2 class="fw-bold mb-0">50+</h2>
-              </div>
-              <p class="small mt-1">SATISFIED SCHOOLS</p>
+            <div class="col-md-3">
+              <h2 class="fw-bold">500+</h2>
+              <p class="small">HAPPY TEACHERS</p>
             </div>
 
-            <!-- Teachers -->
-            <div class="col-12 col-md-3">
-              <div class="d-flex align-items-center gap-3">
-                <img
-                  src="../../../assets/illustration/Home/Happy-Teacher.svg"
-                  style="height: 70px"
-                />
-                <h2 class="fw-bold mb-0">500+</h2>
-              </div>
-              <p class="small mt-1">HAPPY TEACHERS</p>
-            </div>
-
-            <!-- Students -->
-            <div class="col-12 col-md-3">
-              <div class="d-flex align-items-center gap-3">
-                <img
-                  src="../../../assets/illustration/Home/engaged-student.svg"
-                  style="height: 70px"
-                />
-                <h2 class="fw-bold mb-0">3,500+</h2>
-              </div>
-              <p class="small mt-1">ENGAGED STUDENTS</p>
+            <div class="col-md-3">
+              <h2 class="fw-bold">3,500+</h2>
+              <p class="small">ENGAGED STUDENTS</p>
             </div>
           </div>
         </div>
       </section>
-
       <!-- ==================================
-     TESTIMONIALS SECTION
+ TESTIMONIALS SECTION
 ================================== -->
       <section class="py-5">
         <div class="container text-center">
@@ -308,7 +121,7 @@
               ›
             </button>
 
-            <!-- SCROLL AREA (THE ONLY ONE) -->
+            <!-- SCROLL AREA -->
             <div
               class="testimonial-scroll d-flex flex-md-row flex-column gap-4 px-3"
             >
@@ -388,7 +201,7 @@
                   My child finally understands concepts, not just
                   memorizes—Vidyaa Saarthi changed our study routine.
                 </p>
-                <div class="testimonial-name">Arushi Singh</div>
+                <div class="testimonial-name">Arushi Kumar</div>
                 <div class="testimonial-subtext">Parent | Gurugram</div>
               </div>
             </div>
@@ -409,269 +222,71 @@
         </div>
       </section>
 
-      <!-- ==================================
-       ADVANTAGES SECTION
-  ================================== -->
-      <section class="py-5" style="background-color: var(--neutral-200)">
+      <!-- ADVANTAGES -->
+      <section class="py-5 bg-light">
         <div class="container text-center">
           <h2 class="fw-bold mb-5">Vidyaa Saarthi Advantages</h2>
 
           <div class="row g-4 justify-content-center">
-            <!-- Card 1 -->
-            <div class="col-12 col-md-4 d-flex justify-content-center">
-              <div class="card shadow-sm" style="width: 18rem">
+            <div class="col-md-4">
+              <div class="card h-100 shadow-sm">
                 <img
                   src="../../assets/illustration/Home/Personalized learning.svg"
                   class="card-img-top"
+                  alt="Personalized learning"
                 />
                 <div class="card-body">
                   <h5 class="card-title">Personalized Concept Teaching</h5>
                   <p class="card-text">
-                    Curriculum-aligned explanations that ensure conceptual
-                    mastery.
+                    Curriculum-aligned explanations with conceptual clarity.
                   </p>
                 </div>
               </div>
             </div>
 
-            <!-- Card 2 -->
-            <div class="col-12 col-md-4 d-flex justify-content-center">
-              <div class="card shadow-sm" style="width: 18rem">
+            <div class="col-md-4">
+              <div class="card h-100 shadow-sm">
                 <img
                   src="../../assets/illustration/Home/Personalized learning.svg"
                   class="card-img-top"
+                  alt="Interactive support"
                 />
                 <div class="card-body">
                   <h5 class="card-title">Interactive Doubt Resolution</h5>
                   <p class="card-text">
-                    On-demand guided support that complements classroom
-                    teaching.
+                    Guided academic support beyond classrooms.
                   </p>
                 </div>
               </div>
             </div>
 
-            <!-- Card 3 -->
-            <div class="col-12 col-md-4 d-flex justify-content-center">
-              <div class="card shadow-sm" style="width: 18rem">
+            <div class="col-md-4">
+              <div class="card h-100 shadow-sm">
                 <img
                   src="../../assets/illustration/Home/Personalized learning.svg"
                   class="card-img-top"
+                  alt="Mastery support"
                 />
                 <div class="card-body">
                   <h5 class="card-title">Mastery Support</h5>
                   <p class="card-text">
-                    NEP-aligned feedback and continuous improvement through
-                    competency-based learning.
+                    NEP-aligned competency-based learning.
                   </p>
                 </div>
               </div>
             </div>
           </div>
-
-          <p class="mt-4 fw-semibold" style="max-width: 720px; margin: auto">
-            Available anytime, anywhere—on mobile and web—the platform empowers
-            students to learn, reflect, and grow with confidence at their own
-            pace.
-          </p>
         </div>
       </section>
-    </div>
+    </main>
 
-    <!-- ==== 3. FOOTER ========= -->
-    <footer class="vs-footer pt-5 pb-4">
-      <div class="container-fluid">
-        <div class="row">
-          <!-- ==========================
-           COLUMN 1 — CONTACT US
-          =========================== -->
-          <div class="col-lg-3 col-md-6 mb-5">
-            <h5 class="fw-bold">Contact Us</h5>
-            <div class="footer-line"></div>
-            <p>
-              <strong>Email :</strong>
-              <a
-                href="mailto:support@vidyaasarthi.com"
-                class="text-decoration-none"
-              >
-                support@vidyaasarthi.com
-              </a>
-            </p>
-            <div class="footer-line"></div>
-            <p><strong>Call / WhatsApp :</strong> +91 12345 12345</p>
-            <div class="footer-line"></div>
-            <p>
-              <strong>Timings :</strong><br />
-              8:00 AM to 6:00 PM<br />
-              Monday to Saturday
-            </p>
-            <div class="footer-line"></div>
-
-            <h6 class="footer-title mt-4">
-              <a
-                href="/privacy-policy.html"
-                class="text-decoration-none text-white fw-bold"
-              >
-                Privacy Policy
-              </a>
-            </h6>
-            <div class="footer-line"></div>
-
-            <div class="vs-footer-social d-flex align-items-center gap-3 mt-2">
-              <a href="#" target="_blank">
-                <img
-                  src="../../assets/icon/twitter-x.svg"
-                  alt="Twitter"
-                  class="vs-footer-icon"
-                />
-              </a>
-
-              <a href="#" target="_blank">
-                <img
-                  src="../../assets/icon/WhatsApp.svg"
-                  alt="WhatsApp"
-                  class="vs-footer-icon"
-                />
-              </a>
-
-              <a href="#" target="_blank">
-                <img
-                  src="../../assets/icon/Facebook.svg"
-                  alt="Facebook"
-                  class="vs-footer-icon"
-                />
-              </a>
-
-              <a href="#" target="_blank">
-                <img
-                  src="../../assets/icon/instagram.svg"
-                  alt="Instagram"
-                  class="vs-footer-icon"
-                />
-              </a>
-              <a href="#" target="_blank">
-                <img
-                  src="../../assets/icon/linkedin.svg"
-                  alt="LinkedIn"
-                  class="vs-footer-icon"
-                />
-              </a>
-              <a href="#" target="_blank">
-                <img
-                  src="../../assets/icon/youtube.svg"
-                  alt="YouTube"
-                  class="vs-footer-icon"
-                />
-              </a>
-            </div>
-          </div>
-
-          <!-- ==========================
-           COLUMN 2 — HEAD OFFICE
-      =========================== -->
-          <div class="col-lg-4 col-md-6 mb-5">
-            <h5 class="fw-bold">Head office</h5>
-            <div class="footer-line"></div>
-
-            <p class="mb-1">VIDYAA SAARTHI PRIVATE LIMITED</p>
-            <p class="mb-1">CIN U85500UP2025PTC232678</p>
-            <p class="mb-1">DPIIT DIPP225589</p>
-            <p class="mb-1">
-              7/124, Avas Vikas Sikandra, Avas Vikas Colony, Sadar, Agra-
-              282007, Uttar Pradesh
-            </p>
-
-            <a href="https://maps.app.goo.gl/zBALQnRLH3cw8fr17" target="_blank">
-              <img
-                src="../../assets/icon/geo-alt.svg"
-                alt="Location"
-                class="vs-footer-icon"
-              />
-              Find us on the map
-            </a>
-
-            <h6 class="fw-bold mt-4">Other Office Locations</h6>
-            <div class="footer-line"></div>
-
-            <div class="d-flex flex-wrap gap-3">
-              <span class="btn btn-outline-secondary rounded-pill px-4"
-                >Gurugram</span
-              >
-              <span class="btn btn-outline-secondary rounded-pill px-4"
-                >Jaipur</span
-              >
-              <span class="btn btn-outline-secondary rounded-pill px-4"
-                >Bengaluru</span
-              >
-            </div>
-          </div>
-
-          <!-- ==========================
-           COLUMN 3 — QUICK LINKS (3 SUB-COLUMNS)
-      =========================== -->
-          <div class="col-lg-5 col-md-12">
-            <h5 class="fw-bold">Quick Links</h5>
-            <div class="footer-line"></div>
-
-            <div class="row">
-              <!-- Sub-column 1 -->
-              <div class="col-4">
-                <a
-                  href="/Terms-and-Conditions.html"
-                  class="text-decoration-none text-white"
-                >
-                  <p>Terms and Conditions</p>
-                </a>
-                <div class="footer-line"></div>
-                <a href="/FAQs.html" class="text-decoration-none text-white">
-                  <p>FAQs</p>
-                </a>
-                <div class="footer-line"></div>
-                <a
-                  href="/Refund-Policy.html"
-                  class="text-decoration-none text-white"
-                >
-                  <p>Our Refund Policy</p>
-                </a>
-                <div class="footer-line"></div>
-                <a
-                  href="https://www.education.gov.in/sites/upload_files/mhrd/files/NEP_Final_English.pdf"
-                  class="text-decoration-none text-white"
-                >
-                  <p>NEP 2020</p>
-                </a>
-                <div class="footer-line"></div>
-              </div>
-              <!-- Sub-column 2 -->
-              <div class="col-4 ms-5">
-                <p>School Login</p>
-                <div class="footer-line"></div>
-                <p>Teachers Login</p>
-                <div class="footer-line"></div>
-                <p>Pricing</p>
-                <div class="footer-line"></div>
-                <p>How It Works</p>
-                <div class="footer-line"></div>
-              </div>
-            </div>
-          </div>
-          <div class="footer-line"></div>
-        </div>
-      </div>
-    </footer>
-
-    <!-- Java Script CDN-->
+    <!---- Footer----------------------------->
+    <div id="vs-footer"></div>
+    <!-- BOOTSTRAP JS (BUNDLE) -->
     <script
-      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
       crossorigin="anonymous"
     ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
-      integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
-      crossorigin="anonymous"
-    ></script>
-
-    <!--  END of Body-->
+    <script src="../../../component-js/include-components.js"></script>
   </body>
 </html>
