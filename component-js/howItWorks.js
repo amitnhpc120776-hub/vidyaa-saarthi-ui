@@ -14,7 +14,14 @@ const currentSelection = {
   book: null,
   chapter: null,
   topic: null,
+  topicId: null,
 };
+
+// Holds backend structure if present
+let structureData = null;
+let currentTopicsPage = 1;
+let topicsHasNext = false;
+let topicsLoading = false;
 
 /* =====================================================
    DOM REFERENCES
@@ -99,6 +106,20 @@ function showEl(el) {
 
 function hideEl(el) {
   if (el) el.classList.add("d-none");
+}
+
+function showLoadingIn(container) {
+  if (!container) return;
+  const spinner = document.createElement('div');
+  spinner.className = 'd-flex justify-content-center my-2 topic-spinner';
+  spinner.innerHTML = `<div class="spinner-border spinner-border-sm" role="status"><span class="visually-hidden">Loading...</span></div>`;
+  container.appendChild(spinner);
+}
+
+function hideLoadingIn(container) {
+  if (!container) return;
+  const s = container.querySelector('.topic-spinner');
+  if (s) s.remove();
 }
 
 /* =====================================================
@@ -192,48 +213,60 @@ function resetDownstreamFromChapter() {
    RENDERING HELPERS
 ===================================================== */
 
-function renderBooks(subject) {
-  clearEl(bookMenu);
-  if (!subject || !syllabusData?.[subject]) return;
+function renderTopics(topicsData, append = false) {
+  if (!append) {
+    clearEl(topicsListMobile);
+    clearEl(topicsListDesktop);
+  }
 
-  Object.keys(syllabusData[subject]).forEach((book) => {
-    bookMenu.insertAdjacentHTML(
-      "beforeend",
-      `<li><a class="dropdown-item" href="#" data-book="${book}">${book}</a></li>`
-    );
-  });
-}
+  if (!topicsData) return;
 
-function renderChapters(subject, book) {
-  clearEl(chapterMenu);
-  if (!subject || !book || !syllabusData?.[subject]?.[book]) return;
+  // If the API returned a paginated response ({ results: [...] })
+  let topics = [];
+  if (Array.isArray(topicsData)) {
+    topics = topicsData;
+    topicsHasNext = false;
+  } else if (topicsData.results) {
+    topics = topicsData.results;
+    topicsHasNext = !!topicsData.next;
+  } else if (typeof topicsData === 'object') {
+    // fallback for topic map (static)
+    topics = Object.keys(topicsData).map((t) => ({ topic_title: t }));
+    topicsHasNext = false;
+  }
 
-  Object.keys(syllabusData[subject][book]).forEach((chapter) => {
-    chapterMenu.insertAdjacentHTML(
-      "beforeend",
-      `<li><a class="dropdown-item" href="#" data-chapter="${chapter}">${chapter}</a></li>`
-    );
-  });
-}
-
-function renderTopics(topicsObj) {
-  clearEl(topicsListMobile);
-  clearEl(topicsListDesktop);
-
-  if (!topicsObj) return;
-
-  Object.keys(topicsObj).forEach((topic) => {
+  topics.forEach((t) => {
+    const title = t.topic_title || t.topic_title;
+    const id = t.topic_id || t.topicId || '';
     const li = `
       <li class="list-group-item d-flex align-items-start gap-2 topic-item"
-          data-topic="${topic}" role="button">
+          data-topic="${title}" data-topic-id="${id}" role="button">
         <input class="form-check-input mt-1" type="checkbox" tabindex="-1" />
-        <span>${topic}</span>
+        <span>${title}</span>
       </li>
     `;
     topicsListMobile?.insertAdjacentHTML("beforeend", li);
     topicsListDesktop?.insertAdjacentHTML("beforeend", li);
   });
+
+  // Load more button
+  renderTopicsLoadMore();
 }
+
+function renderTopicsLoadMore() {
+  // Remove existing load more
+  const existingMobile = topicsListMobile?.querySelector('#topicsLoadMore');
+  const existingDesktop = topicsListDesktop?.querySelector('#topicsLoadMore');
+  if (existingMobile) existingMobile.remove();
+  if (existingDesktop) existingDesktop.remove();
+
+  if (!topicsHasNext) return;
+
+  const li = `<li id="topicsLoadMore" class="list-group-item text-center"><button class="btn btn-sm btn-outline-primary" id="topicsLoadMoreBtn">Load more</button></li>`;
+  topicsListMobile?.insertAdjacentHTML('beforeend', li);
+  topicsListDesktop?.insertAdjacentHTML('beforeend', li);
+}
+
 
 /* Check if current topic is what the textbook panel is showing */
 function isTopicVisibleInTextbook(topic) {
@@ -340,7 +373,7 @@ wireFeedback(feedbackDesktop);
    EXPLANATION LOADING
 ===================================================== */
 
-function loadExplanation(studentType) {
+async function loadExplanation(studentType) {
   const { subject, book, chapter, topic } = currentSelection;
 
   // Must have a topic selected
@@ -363,6 +396,39 @@ function loadExplanation(studentType) {
     return;
   }
 
+  const topicId = currentSelection.topicId;
+
+  // Try to generate personalized explanation via demo endpoint (preferred)
+  if (topicId && window.howItWorksApi) {
+    const demoLearnerEl = document.getElementById('demoLearnerId');
+    const learnerId = demoLearnerEl?.dataset?.learnerId || null;
+    try {
+      // show loading and disable student buttons
+      document.querySelectorAll('.btn-student').forEach(btn => btn.disabled = true);
+      showLoadingIn(explanationContentDesktop);
+      showLoadingIn(explanationContentMobile);
+
+      const resp = await howItWorksApi.generatePersonalized({ learner_id: learnerId, topic_id: topicId });
+      const personalizedHtml = resp.personalized_html || resp.personalized_text || "<p class='text-muted'>No personalized explanation available.</p>";
+      const systemBubble = `<div class="chat-msg system">${personalizedHtml}</div>`;
+      appendChat(explanationContentMobile, systemBubble);
+      appendChat(explanationContentDesktop, systemBubble);
+
+      renderFeedback(feedbackMobile);
+      renderFeedback(feedbackDesktop);
+      return;
+    } catch (err) {
+      // fallback to static explanation dataset
+      console.warn('Personalization generation failed, falling back', err);
+    } finally {
+      // hide loading and enable buttons
+      hideLoadingIn(explanationContentDesktop);
+      hideLoadingIn(explanationContentMobile);
+      document.querySelectorAll('.btn-student').forEach(btn => btn.disabled = false);
+    }
+  }
+
+  // Fallback: use static explanationData if present
   const topicData = explanationData?.[subject]?.[book]?.[chapter]?.[topic];
   if (!topicData) {
     setExplanationHtml(
@@ -388,7 +454,6 @@ function loadExplanation(studentType) {
   }
 
   // Show explanation
-  // setExplanationHtml(explanationHtml);
   const systemBubble = `
   <div class="chat-msg system">
     ${explanationHtml}
@@ -515,24 +580,92 @@ explanationContentDesktop?.addEventListener("mouseleave", hideMicroExplanation);
 // Subject → Books
 subjectMenu?.addEventListener("click", (e) => {
   const subject = e.target.dataset.subject;
+  const subjectId = e.target.dataset.subjectId;
   if (!subject) return;
 
   currentSelection.subject = subject;
+  currentSelection.subjectId = subjectId || null;
   setDropdownLabel(subjectDropdown, subject);
 
   resetDownstreamFromSubject();
   renderBooks(subject);
 });
 
+
+function populateStructureToMenus(structure) {
+  // Build subjectMenu from backend structure
+  clearEl(subjectMenu);
+  structure.forEach((s) => {
+    subjectMenu.insertAdjacentHTML(
+      'beforeend',
+      `<li><a class="dropdown-item" href="#" data-subject="${s.subject_name}" data-subject-id="${s.subject_id}">${s.subject_name}</a></li>`
+    );
+  });
+}
+
+function renderBooks(subject) {
+  clearEl(bookMenu);
+  // If backend structure is present, prefer it
+  if (structureData) {
+    const subj = structureData.find((s) => s.subject_name === subject);
+    if (!subj) return;
+    subj.books.forEach((b) => {
+      bookMenu.insertAdjacentHTML(
+        "beforeend",
+        `<li><a class="dropdown-item" href="#" data-book="${b.book_title}" data-book-id="${b.book_id}">${b.book_title}</a></li>`
+      );
+    });
+    return;
+  }
+
+  // Fallback to static syllabusData
+  if (!subject || !syllabusData?.[subject]) return;
+
+  Object.keys(syllabusData[subject]).forEach((book) => {
+    bookMenu.insertAdjacentHTML(
+      "beforeend",
+      `<li><a class="dropdown-item" href="#" data-book="${book}">${book}</a></li>`
+    );
+  });
+}
+
+function renderChapters(subject, book) {
+  clearEl(chapterMenu);
+  // If backend structure present, use it (we expect book title match)
+  if (structureData) {
+    const subj = structureData.find((s) => s.subject_name === subject);
+    if (!subj) return;
+    const bk = subj.books.find((b) => b.book_title === book || b.book_id === book);
+    if (!bk) return;
+    bk.chapters.forEach((c) => {
+      chapterMenu.insertAdjacentHTML(
+        "beforeend",
+        `<li><a class="dropdown-item" href="#" data-chapter="${c.chapter_title}" data-chapter-id="${c.chapter_id}">${c.chapter_title}</a></li>`
+      );
+    });
+    return;
+  }
+
+  // Fallback to static
+  if (!subject || !book || !syllabusData?.[subject]?.[book]) return;
+
+  Object.keys(syllabusData[subject][book]).forEach((chapter) => {
+    chapterMenu.insertAdjacentHTML(
+      "beforeend",
+      `<li><a class="dropdown-item" href="#" data-chapter="${chapter}">${chapter}</a></li>`
+    );
+  });
+}
+
 // Book → Chapters
 bookMenu?.addEventListener("click", (e) => {
   const book = e.target.dataset.book;
+  const bookId = e.target.dataset.bookId;
   if (!book) return;
 
   const subject = currentSelection.subject;
-  if (!subject || !syllabusData?.[subject]?.[book]) return;
-
   currentSelection.book = book;
+  currentSelection.bookId = bookId || null;
   setDropdownLabel(bookDropdown, book);
 
   resetDownstreamFromBook();
@@ -540,18 +673,34 @@ bookMenu?.addEventListener("click", (e) => {
 });
 
 // Chapter → Topics
-chapterMenu?.addEventListener("click", (e) => {
+chapterMenu?.addEventListener("click", async (e) => {
   const chapter = e.target.dataset.chapter;
+  const chapterId = e.target.dataset.chapterId;
   if (!chapter) return;
 
   const { subject, book } = currentSelection;
-  if (!subject || !book || !syllabusData?.[subject]?.[book]?.[chapter]) return;
 
   currentSelection.chapter = chapter;
+  currentSelection.chapterId = chapterId || null;
   setDropdownLabel(chapterDropdown, chapter);
 
   resetDownstreamFromChapter();
 
+  // If we have a backend chapter id, fetch topics via API (paginated)
+  if (chapterId && window.howItWorksApi) {
+    try {
+      const topicsResp = await howItWorksApi.fetchTopics({ chapter: chapterId });
+      renderTopics(topicsResp);
+    } catch (err) {
+      console.warn('Failed to fetch topics:', err);
+      // fallback to static content if available
+      const topicsObj = syllabusData?.[subject]?.[book]?.[chapter]?.topics;
+      renderTopics(topicsObj);
+    }
+    return;
+  }
+
+  // Fallback to static syllabusData
   const topicsObj = syllabusData[subject][book][chapter].topics;
   renderTopics(topicsObj);
 });
@@ -560,11 +709,12 @@ chapterMenu?.addEventListener("click", (e) => {
    TOPIC SELECTION
 ===================================================== */
 
-function handleTopicClick(e) {
+async function handleTopicClick(e) {
   const topicItem = e.target.closest(".topic-item");
   if (!topicItem) return;
 
   const clickedTopic = topicItem.dataset.topic;
+  const topicId = topicItem.dataset.topicId;
   if (!clickedTopic) return;
 
   const isAlreadySelected = currentSelection.topic === clickedTopic;
@@ -577,6 +727,7 @@ function handleTopicClick(e) {
   // If clicking the same topic again → treat as "deselect"
   if (isAlreadySelected) {
     currentSelection.topic = null;
+    currentSelection.topicId = null;
     setTextbook(
       "Textbook",
       "Original NCERT syllabus content will appear here."
@@ -591,20 +742,64 @@ function handleTopicClick(e) {
 
   const { subject, book, chapter } = currentSelection;
 
-  const topicHtml =
-    syllabusData?.[subject]?.[book]?.[chapter]?.topics?.[clickedTopic] ||
-    "Content will be added here.";
-
   currentSelection.topic = clickedTopic;
+  currentSelection.topicId = topicId || null;
 
-  setTextbook(clickedTopic, topicHtml);
+  // Show loading placeholder while fetching
+  setTextbook(clickedTopic, "<p class='text-muted'>Loading content…</p>");
+
+  // If we have a topicId and API is available, fetch detail
+  if (currentSelection.topicId && window.howItWorksApi) {
+    try {
+      const detail = await howItWorksApi.fetchTopicDetail({ topic: currentSelection.topicId });
+      const firstCU = detail.content_units?.[0];
+      const html = firstCU?.content_html || firstCU?.content_text || "Content will be added here.";
+      setTextbook(clickedTopic, html);
+    } catch (err) {
+      console.warn('Failed to fetch topic detail', err);
+      const topicHtml = syllabusData?.[subject]?.[book]?.[chapter]?.topics?.[clickedTopic] || "Content will be added here.";
+      setTextbook(clickedTopic, topicHtml);
+    }
+  } else {
+    // Fallback to static content
+    const topicHtml =
+      syllabusData?.[subject]?.[book]?.[chapter]?.topics?.[clickedTopic] ||
+      "Content will be added here.";
+
+    setTextbook(clickedTopic, topicHtml);
+  }
 
   // When topic changes, clear explanation + feedback
   resetExplanationArea();
 }
 
+
 topicsListMobile?.addEventListener("click", handleTopicClick);
 topicsListDesktop?.addEventListener("click", handleTopicClick);
+
+// Load more topics handler (delegated)
+document.addEventListener('click', async (e) => {
+  const btn = e.target.closest('#topicsLoadMoreBtn');
+  if (!btn) return;
+  if (topicsLoading) return;
+  if (!currentSelection.chapterId) return;
+
+  topicsLoading = true;
+  currentTopicsPage += 1;
+  showLoadingIn(topicsListDesktop);
+  showLoadingIn(topicsListMobile);
+
+  try {
+    const resp = await howItWorksApi.fetchTopics({ chapter: currentSelection.chapterId, page: currentTopicsPage });
+    renderTopics(resp, true);
+  } catch (err) {
+    console.warn('Failed to load more topics', err);
+  } finally {
+    topicsLoading = false;
+    hideLoadingIn(topicsListDesktop);
+    hideLoadingIn(topicsListMobile);
+  }
+});
 
 /* =====================================================
    TEXT-SELECTION EXPLAIN DEMO
@@ -691,4 +886,19 @@ function isDesktopView() {
 
   setTextbook("Textbook", "Original NCERT syllabus content will appear here.");
   resetExplanationArea();
+
+  // Try to load backend structure (non-blocking)
+  if (window.howItWorksApi && howItWorksApi.fetchStructure) {
+    setDropdownLabel(subjectDropdown, 'Loading...');
+    howItWorksApi.fetchStructure().then((res) => {
+      if (res && res.structure) {
+        structureData = res.structure;
+        populateStructureToMenus(structureData);
+        setDropdownLabel(subjectDropdown, 'Select Subject');
+      }
+    }).catch((err) => {
+      console.warn('Failed to fetch structure', err);
+      setDropdownLabel(subjectDropdown, 'Select Subject');
+    });
+  }
 })();
