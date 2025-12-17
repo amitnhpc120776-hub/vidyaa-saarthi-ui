@@ -6,7 +6,7 @@
 ===================================================== */
 
 /* =====================================================
-   STATE
+   1) Single source of truth for current navigation
 ===================================================== */
 
 const currentSelection = {
@@ -17,7 +17,7 @@ const currentSelection = {
 };
 
 /* =====================================================
-   DOM REFERENCES
+   2) DOM REFERENCES
 ===================================================== */
 
 // Dropdowns
@@ -78,11 +78,8 @@ const chatSendBtnDesktop =
   desktopExplainCard?.querySelector(".card-footer .btn-primary") ||
   document.querySelector(".card-footer .btn-primary");
 
-// Selected-text explain demo
-const explainSelectionBtn = document.getElementById("explainSelectionBtn");
-
 /* =====================================================
-   GENERIC HELPERS
+   3) SMALL HELPERS
 ===================================================== */
 
 function setDropdownLabel(el, text) {
@@ -100,10 +97,6 @@ function showEl(el) {
 function hideEl(el) {
   if (el) el.classList.add("d-none");
 }
-
-/* =====================================================
-   UI RESET HELPERS
-===================================================== */
 
 function setTextbook(topicTitle, html) {
   // Title
@@ -188,10 +181,6 @@ function resetDownstreamFromChapter() {
   resetExplanationArea();
 }
 
-/* =====================================================
-   RENDERING HELPERS
-===================================================== */
-
 function renderBooks(subject) {
   clearEl(bookMenu);
   if (!subject || !syllabusData?.[subject]) return;
@@ -243,7 +232,7 @@ function isTopicVisibleInTextbook(topic) {
 }
 
 /* =====================================================
-   CHAT SIMULATION
+   4) CHAT SIMULATION (mobile + desktop)
 ===================================================== */
 
 function simulateTyping(inputEl, text, callback) {
@@ -288,7 +277,7 @@ function getSelectedText() {
 }
 
 /* =====================================================
-   FEEDBACK
+   5) FEEDBACK UI (rebuild every time explanation loads)
 ===================================================== */
 
 function renderFeedback(containerEl) {
@@ -337,7 +326,7 @@ wireFeedback(feedbackMobile);
 wireFeedback(feedbackDesktop);
 
 /* =====================================================
-   EXPLANATION LOADING
+   6) EXPLANATION LOADING
 ===================================================== */
 
 function loadExplanation(studentType) {
@@ -462,7 +451,7 @@ document.addEventListener("click", (e) => {
 });
 
 /* =====================================================
-   MICRO-EXPLANATIONS
+   7) MICRO EXPLANATION (hover/tap on dotted text)
 ===================================================== */
 
 function handleMicroExplanation(e) {
@@ -509,7 +498,7 @@ explanationContentMobile?.addEventListener("mouseleave", hideMicroExplanation);
 explanationContentDesktop?.addEventListener("mouseleave", hideMicroExplanation);
 
 /* =====================================================
-   DROPDOWN FLOW
+   8) DROPDOWN FLOW
 ===================================================== */
 
 // Subject → Books
@@ -557,7 +546,7 @@ chapterMenu?.addEventListener("click", (e) => {
 });
 
 /* =====================================================
-   TOPIC SELECTION
+   9) TOPIC CLICK (single select + allow deselect)
 ===================================================== */
 
 function handleTopicClick(e) {
@@ -607,8 +596,20 @@ topicsListMobile?.addEventListener("click", handleTopicClick);
 topicsListDesktop?.addEventListener("click", handleTopicClick);
 
 /* =====================================================
-   TEXT-SELECTION EXPLAIN DEMO
+   10) INITIAL CLEAN STATE ON PAGE LOAD
 ===================================================== */
+
+(function init() {
+  // Keep everything neutral on load
+  setDropdownLabel(subjectDropdown, "Select Subject");
+  setDropdownLabel(bookDropdown, "Select Book");
+  setDropdownLabel(chapterDropdown, "Select Chapter");
+
+  setTextbook("Textbook", "Original NCERT syllabus content will appear here.");
+  resetExplanationArea();
+})();
+
+const explainSelectionBtn = document.getElementById("explainSelectionBtn");
 
 document.addEventListener("selectionchange", () => {
   const selectedText = getSelectedText();
@@ -678,17 +679,3 @@ explainSelectionBtn.addEventListener("click", () => {
 function isDesktopView() {
   return window.innerWidth >= 992;
 }
-
-/* =====================================================
-   INIT
-===================================================== */
-
-(function init() {
-  // Keep everything neutral on load
-  setDropdownLabel(subjectDropdown, "Select Subject");
-  setDropdownLabel(bookDropdown, "Select Book");
-  setDropdownLabel(chapterDropdown, "Select Chapter");
-
-  setTextbook("Textbook", "Original NCERT syllabus content will appear here.");
-  resetExplanationArea();
-})();
