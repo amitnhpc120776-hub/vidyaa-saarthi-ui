@@ -15,6 +15,28 @@
     <!-- VIS DESIGN SYSTEM -->
     <link rel="stylesheet" href="../../css/VS-Design-System.css" />
     <link rel="stylesheet" href="../../css/custom-component.css" />
+
+    <!-- Page specific Styling-->
+    <style>
+      .vs-card-animation {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .vs-card-animation:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+
+      .testimonial-nav-btn {
+        transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease;
+      }
+
+      .testimonial-nav-btn:hover {
+        opacity: 0.9;
+        transform: translateY(-5px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      }
+    </style>
   </head>
 
   <body>
@@ -24,72 +46,76 @@
     <!-- ================= MAIN CONTENT ================= -->
     <main>
       <!-- HERO -->
-      <section class="py-5">
-        <div class="container">
-          <div class="row align-items-center g-4">
-            <div class="col-12 col-md-6">
-              <h1 class="fw-bold mb-4" style="max-width: 540px">
-                Personalized Learning aligned to every Student’s needs
-              </h1>
+      <section class="py-5" style="min-height: 80vh">
+        <div class="container-fluid">
+          <div
+            class="row align-items-center g-4"
+            style="background-color: var(--neutral-100)"
+          >
+            <div class="col-12 col-md-6 d-flex align-items-center">
+              <!-- Inner wrapper controls spacing + width -->
+              <div
+                class="d-flex flex-column"
+                style="gap: 24px; max-width: 560px"
+              >
+                <!-- Tagline -->
+                <h1
+                  class="text-uppercase fw-bold"
+                  style="color: var(--primary-700); letter-spacing: 1.2px"
+                >
+                  Average to Excellence
+                </h1>
 
-              <div class="d-flex flex-wrap gap-3 mb-4">
-                <span class="badge rounded-pill px-4 py-2 bg-primary"
-                  >Ethical</span
-                >
-                <span class="badge rounded-pill px-4 py-2 bg-primary"
-                  >Affordable</span
-                >
-                <span class="badge rounded-pill px-4 py-2 bg-primary"
-                  >Student-Centric</span
-                >
-                <span class="badge rounded-pill px-4 py-2 bg-primary"
-                  >Textbook-Aligned</span
-                >
-              </div>
+                <!-- Main Heading -->
+                <h3 class="fw-bold">
+                  Personalized Learning aligned to every Student’s needs
+                </h3>
 
-              <div class="d-flex flex-wrap gap-3">
-                <a href="#" class="btn btn-primary"> Signup — It’s Free → </a>
-                <a href="#" class="btn btn-warning text-white">
-                  How It Works →
-                </a>
+                <!-- Badges -->
+                <div class="d-flex flex-wrap gap-3">
+                  <span
+                    class="badge rounded-pill px-4 py-2"
+                    style="background-color: var(--primary-900)"
+                  >
+                    Ethical
+                  </span>
+                  <span
+                    class="badge rounded-pill px-4 py-2"
+                    style="background-color: var(--primary-900)"
+                  >
+                    Affordable
+                  </span>
+                  <span
+                    class="badge rounded-pill px-4 py-2"
+                    style="background-color: var(--primary-900)"
+                  >
+                    Student-Centric
+                  </span>
+                  <span
+                    class="badge rounded-pill px-4 py-2"
+                    style="background-color: var(--primary-900)"
+                  >
+                    Textbook-Aligned
+                  </span>
+                </div>
+
+                <!--CTA Group-->
+                <div class="vs-cta-group"></div>
               </div>
             </div>
-
-            <div class="col-12 col-md-6 text-center">
+            <!--Hero-Iamge-->
+            <div class="col-12 col-md-6 p-0 d-flex">
               <img
-                src="../../../assets/illustration/Home/Happy-Jumping-Students.svg"
+                src="../../../assets/illustration/Home/Hero-Image.svg"
                 alt="Students learning happily"
-                class="img-fluid"
-                style="height: 340px"
+                class="w-100 h-100 vs-hero-image"
+                style="object-fit: cover"
               />
             </div>
           </div>
         </div>
       </section>
 
-      <!-- TRUSTED BY -->
-      <section class="py-5 bg-light">
-        <div class="container">
-          <div class="row text-center text-md-start g-4">
-            <div class="col-md-3"><h2 class="fw-semibold">Trusted by</h2></div>
-
-            <div class="col-md-3">
-              <h2 class="fw-bold">50+</h2>
-              <p class="small">SATISFIED SCHOOLS</p>
-            </div>
-
-            <div class="col-md-3">
-              <h2 class="fw-bold">500+</h2>
-              <p class="small">HAPPY TEACHERS</p>
-            </div>
-
-            <div class="col-md-3">
-              <h2 class="fw-bold">3,500+</h2>
-              <p class="small">ENGAGED STUDENTS</p>
-            </div>
-          </div>
-        </div>
-      </section>
       <!-- ==================================
  TESTIMONIALS SECTION
 ================================== -->
@@ -126,7 +152,7 @@
               class="testimonial-scroll d-flex flex-md-row flex-column gap-4 px-3"
             >
               <!-- CARD 1 -->
-              <div class="testimonial-card">
+              <div class="vs-card-animation">
                 <div class="testimonial-avatar">
                   <img
                     src="../../../assets/illustration/Home/Aarav-Sharma.svg"
@@ -142,7 +168,7 @@
               </div>
 
               <!-- CARD 2 -->
-              <div class="testimonial-card">
+              <div class="vs-card-animation">
                 <div class="testimonial-avatar">
                   <img
                     src="../../../assets/illustration/Home/Shilpi-Jain.svg"
@@ -158,7 +184,7 @@
               </div>
 
               <!-- CARD 3 -->
-              <div class="testimonial-card">
+              <div class="vs-card-animation">
                 <div class="testimonial-avatar">
                   <img
                     src="../../../assets/illustration/Home/Anju-Jain.svg"
@@ -174,7 +200,7 @@
               </div>
 
               <!-- CARD 4 -->
-              <div class="testimonial-card">
+              <div class="vs-card-animation">
                 <div class="testimonial-avatar">
                   <img
                     src="../../../assets/illustration/Home/Adya-Bansal.svg"
@@ -190,7 +216,7 @@
               </div>
 
               <!-- CARD 5 -->
-              <div class="testimonial-card">
+              <div class="vs-card-animation">
                 <div class="testimonial-avatar">
                   <img
                     src="../../../assets/illustration/Home/Arushi-Singh.svg"
@@ -207,18 +233,8 @@
             </div>
           </div>
 
-          <!-- CTA BUTTONS -->
-          <div class="d-flex justify-content-center flex-wrap gap-3 mt-4">
-            <a href="#" class="btn btn-primary d-flex align-items-center">
-              Signup — It’s Free <span class="ms-2">→</span>
-            </a>
-            <a
-              href="#"
-              class="btn btn-warning text-white d-flex align-items-center"
-            >
-              How It Works <span class="ms-2">→</span>
-            </a>
-          </div>
+          <!--CTA Group-->
+          <div class="vs-cta-group"></div>
         </div>
       </section>
 
@@ -226,53 +242,39 @@
       <section class="py-5 bg-light">
         <div class="container text-center">
           <h2 class="fw-bold mb-5">Vidyaa Saarthi Advantages</h2>
-
-          <div class="row g-4 justify-content-center">
-            <div class="col-md-4">
-              <div class="card h-100 shadow-sm">
-                <img
-                  src="../../assets/illustration/Home/Personalized learning.svg"
-                  class="card-img-top"
-                  alt="Personalized learning"
-                />
-                <div class="card-body">
-                  <h5 class="card-title">Personalized Concept Teaching</h5>
-                  <p class="card-text">
-                    Curriculum-aligned explanations with conceptual clarity.
-                  </p>
-                </div>
+        </div>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+          <div class="col">
+            <div class="card h-100">
+              <img src="..." class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  This is a longer card with supporting text below as a natural
+                  lead-in to additional content. This content is a little bit
+                  longer.
+                </p>
               </div>
             </div>
-
-            <div class="col-md-4">
-              <div class="card h-100 shadow-sm">
-                <img
-                  src="../../assets/illustration/Home/Personalized learning.svg"
-                  class="card-img-top"
-                  alt="Interactive support"
-                />
-                <div class="card-body">
-                  <h5 class="card-title">Interactive Doubt Resolution</h5>
-                  <p class="card-text">
-                    Guided academic support beyond classrooms.
-                  </p>
-                </div>
+          </div>
+          <div class="col">
+            <div class="card h-100">
+              <img src="..." class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a short card.</p>
               </div>
             </div>
-
-            <div class="col-md-4">
-              <div class="card h-100 shadow-sm">
-                <img
-                  src="../../assets/illustration/Home/Personalized learning.svg"
-                  class="card-img-top"
-                  alt="Mastery support"
-                />
-                <div class="card-body">
-                  <h5 class="card-title">Mastery Support</h5>
-                  <p class="card-text">
-                    NEP-aligned competency-based learning.
-                  </p>
-                </div>
+          </div>
+          <div class="col">
+            <div class="card h-100">
+              <img src="..." class="card-img-top" alt="..." />
+              <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">
+                  This is a longer card with supporting text below as a natural
+                  lead-in to additional content.
+                </p>
               </div>
             </div>
           </div>
