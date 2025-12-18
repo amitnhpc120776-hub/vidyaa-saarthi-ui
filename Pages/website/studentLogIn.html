@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Student Log in - Vidyaa Sarthi</title>
+    <title>Student Log in - Vidyaa Saarthi</title>
 
     <!-- BOOOTSTRAP 5.3.8 CSS (CDN)-->
     <link
@@ -25,19 +25,6 @@
 
   <body class="bg-light">
     <!-- TOP RIGHT LOGO -->
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-12 d-flex justify-content-start py-3 px-4">
-          <a href="../../../index.html">
-            <img
-              src="../../../assets/logo/vsLogoWithouText.svg"
-              alt="Vidyaa Saarthi Logo"
-              height="64"
-            />
-          </a>
-        </div>
-      </div>
-    </div>
 
     <div class="container-fluid">
       <div class="row min-vh-100 align-items-start pt-0 mt-0">
@@ -46,6 +33,16 @@
           class="col-12 col-md-5 d-flex flex-column justify-content-center align-items-center"
         >
           <div class="w-100" style="max-width: 380px">
+            <div class="col-12 d-flex justify-content-center py-3 px-4">
+              <a href="../../../index.html">
+                <img
+                  src="../../../assets/logo/vsLogoWithouText.svg"
+                  alt="Vidyaa Saarthi Logo"
+                  height="64"
+                />
+              </a>
+            </div>
+
             <h3 class="mb-2 text-center">Log in to your account</h3>
 
             <!-- Email Field -->
@@ -142,7 +139,11 @@
             </div>
 
             <p class="text-center mb-2">
-              <a href="../../../Pages/website/forgotPassword.html" class="text-decoration-none">Forgot password?</a>
+              <a
+                href="../../../Pages/website/forgotPassword.html"
+                class="text-decoration-none"
+                >Forgot password?</a
+              >
             </p>
 
             <!-- SOCIAL LOGIN — ONLY GOOGLE & FACEBOOK -->
@@ -174,21 +175,31 @@
 
             <p class="text-center mt-1 small text-muted">
               New to Vidyaa Saarthi?
-              <a href="../../../Pages/website/studentSignup.html" class="text-decoration-none">Sign up</a>
+              <a
+                href="../../../Pages/website/studentSignup.html"
+                class="text-decoration-none"
+                >Sign up</a
+              >
             </p>
 
             <!-- GOOGLE TERMS (BOTTOM OF LEFT SECTION) -->
             <p class="text-center mt-1 small text-muted">
-              This site is protected by the Google Privacy Policy</p>
-              <p class="text-center mt-1 small text-muted"><a href="#">Terms of Service</a> apply</p>
+              This site is protected by the Google Privacy Policy and
+              <a href="https://policies.google.com/terms" target="_blank"
+                >Terms of Service</a
+              >
+              apply.
             </p>
           </div>
         </div>
 
         <!-- RIGHT COLUMN — IMAGE (MD & ABOVE ONLY) -->
-        <div class="col-md-7 d-none d-md-block p-0">
+        <div
+          class="col-md-7 d-none d-md-flex align-items-stretch p-0"
+          style="background-color: var(--primary-900); min-height: 100vh"
+        >
           <img
-            src="your-image.jpg"
+            src="../../../assets/illustration/signupAndLogin/signupAndLogin.svg"
             class="img-fluid w-100 h-100 object-fit-cover"
             alt="Login Illustration"
           />

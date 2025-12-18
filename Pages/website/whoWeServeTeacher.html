@@ -167,6 +167,20 @@
                     <strong>Insight:</strong> Laws of Motion shows the highest
                     proportion of developing learners.
                   </p>
+
+                  <!-- Legend -->
+                  <div class="small mt-3">
+                    <span class="badge bg-success me-2">Mastered</span>
+                    <span class="badge bg-primary me-2">Developing</span>
+                    <span class="badge bg-secondary me-2">Moderate</span>
+                    <span class="badge bg-warning me-2">Weak</span>
+                  </div>
+
+                  <!-- Footnote -->
+                  <p class="small text-muted mt-2">
+                    * Percentages represent the proportion of students in the
+                    class at each mastery level for the chapter.
+                  </p>
                 </div>
               </div>
             </div>
@@ -280,25 +294,25 @@
                         class="vs-mastery-segment vs-mastery--mastered"
                         style="width: 20%"
                       >
-                        6
+                        20%
                       </div>
                       <div
                         class="vs-mastery-segment vs-mastery--developing"
                         style="width: 40%"
                       >
-                        12
+                        40%
                       </div>
                       <div
                         class="vs-mastery-segment vs-mastery--moderate"
                         style="width: 23%"
                       >
-                        7
+                        23%
                       </div>
                       <div
                         class="vs-mastery-segment vs-mastery--weak"
                         style="width: 17%"
                       >
-                        5
+                        17%
                       </div>
                     </div>
                   </div>
@@ -312,25 +326,25 @@
                         class="vs-mastery-segment vs-mastery--mastered"
                         style="width: 27%"
                       >
-                        8
+                        27%
                       </div>
                       <div
                         class="vs-mastery-segment vs-mastery--developing"
                         style="width: 33%"
                       >
-                        10
+                        33%
                       </div>
                       <div
                         class="vs-mastery-segment vs-mastery--moderate"
                         style="width: 20%"
                       >
-                        6
+                        20%
                       </div>
                       <div
                         class="vs-mastery-segment vs-mastery--weak"
                         style="width: 20%"
                       >
-                        6
+                        20%
                       </div>
                     </div>
                   </div>
@@ -344,25 +358,25 @@
                         class="vs-mastery-segment vs-mastery--mastered"
                         style="width: 17%"
                       >
-                        5
+                        17%
                       </div>
                       <div
                         class="vs-mastery-segment vs-mastery--developing"
                         style="width: 47%"
                       >
-                        14
+                        47%
                       </div>
                       <div
                         class="vs-mastery-segment vs-mastery--moderate"
                         style="width: 20%"
                       >
-                        6
+                        20%
                       </div>
                       <div
                         class="vs-mastery-segment vs-mastery--weak"
                         style="width: 16%"
                       >
-                        5
+                        16%
                       </div>
                     </div>
                   </div>
@@ -371,6 +385,20 @@
                   <p class="small mt-3 mb-0" style="color: var(--neutral-500)">
                     <strong>Teaching insight:</strong> Newton’s First Law may
                     require focused revision before moving ahead.
+                  </p>
+
+                  <!-- Legend -->
+                  <div class="small mt-3">
+                    <span class="badge bg-success me-2">Mastered</span>
+                    <span class="badge bg-primary me-2">Developing</span>
+                    <span class="badge bg-secondary me-2">Moderate</span>
+                    <span class="badge bg-warning me-2">Weak</span>
+                  </div>
+
+                  <!-- Footnote -->
+                  <p class="small text-muted mt-2">
+                    * Percentages represent the proportion of students at each
+                    mastery level for the topic.
                   </p>
                 </div>
               </div>
@@ -640,6 +668,12 @@
 
         hideAllStudentChapters();
         hideAllStudentTopics();
+
+        // Show default for Shewta Verma
+        document.getElementById("chapters-student-a").style.display = "block";
+        document.getElementById(
+          "topics-student-a-laws-of-motion"
+        ).style.display = "block";
 
         /* =========================
      STUDENT SELECTION (SECTION 3)

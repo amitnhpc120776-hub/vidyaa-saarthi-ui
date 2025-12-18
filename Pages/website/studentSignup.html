@@ -24,21 +24,6 @@
   </head>
 
   <body class="bg-light">
-    <!-- TOP LEFT LOGO -->
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-12 d-flex justify-content-start py-3 px-4">
-          <a href="../../../index.html">
-            <img
-              src="../../../assets/logo/vsLogoWithouText.svg"
-              alt="Vidyaa Saarthi Logo"
-              height="64"
-            />
-          </a>
-        </div>
-      </div>
-    </div>
-
     <div class="container-fluid">
       <div class="row min-vh-100 align-items-start pt-0 mt-0">
         <!-- LEFT COLUMN — SIGNUP FORM -->
@@ -46,6 +31,15 @@
           class="col-12 col-md-5 d-flex flex-column justify-content-start align-items-center"
         >
           <div class="w-100" style="max-width: 380px">
+            <div class="col-12 d-flex justify-content-center py-3 px-4">
+              <a href="../../../index.html">
+                <img
+                  src="../../../assets/logo/vsLogoWithouText.svg"
+                  alt="Vidyaa Saarthi Logo"
+                  height="64"
+                />
+              </a>
+            </div>
             <h3 class="mb-2 text-center">Create your account</h3>
 
             <!-- Name -->
@@ -202,9 +196,12 @@
         </div>
 
         <!-- RIGHT IMAGE (Shown on md & above) -->
-        <div class="col-md-7 d-none d-md-block p-0">
+        <div
+          class="col-md-7 d-none d-md-flex align-items-stretch p-0"
+          style="background-color: var(--primary-900); min-height: 100vh"
+        >
           <img
-            src="your-image.jpg"
+            src="../../../assets/illustration/signupAndLogin/signupAndLogin.svg"
             class="img-fluid w-100 h-100 object-fit-cover"
             alt="Signup Illustration"
           />
