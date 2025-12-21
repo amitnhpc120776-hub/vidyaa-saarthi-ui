@@ -1,0 +1,119 @@
+/* =========================================
+   DEMO CONTROLS & INLINE FEEDBACK
+   ========================================= */
+
+/* Header controls adjustment */
+.vs-panel-header {
+    min-height: 56px;
+    /* Ensure vertical space for buttons */
+}
+
+.vs-demo-controls {
+    margin-right: -8px;
+    /* Slight offset to align with edge padding */
+}
+
+/* Demo Buttons */
+.vs-demo-btn {
+    font-weight: 600;
+    border-radius: 20px;
+    /* Pill shape */
+    font-size: 0.8rem;
+    padding: 4px 12px;
+    transition: all 0.2s ease;
+}
+
+.vs-demo-btn:hover {
+    transform: translateY(-1px);
+}
+
+.vs-demo-btn.active {
+    background-color: var(--primary-600, #0d6efd);
+    color: white;
+    border-color: var(--primary-600, #0d6efd);
+    box-shadow: 0 2px 4px rgba(13, 110, 253, 0.2);
+}
+
+/* INLINE FEEDBACK UI (Replaces Popup) */
+.vs-inline-feedback {
+    margin-top: 16px;
+    padding: 16px;
+    background-color: var(--neutral-50, #f8f9fa);
+    border: 1px solid var(--neutral-200, #e9ecef);
+    border-radius: 12px;
+    animation: fadeIn 0.4s ease;
+    width: 100%;
+    max-width: 90%;
+    margin-left: auto;
+    /* Align right like user messages if desired, or keep centered? */
+    margin-right: auto;
+}
+
+/* Align feedback based on chat flow - usually centered or full width block at bottom */
+.vs-inline-feedback-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--neutral-700, #495057);
+    margin-bottom: 12px;
+    text-align: center;
+}
+
+.vs-feedback-options {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.vs-feedback-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 8px 12px;
+    border: 1px solid var(--neutral-300, #dee2e6);
+    border-radius: 8px;
+    background: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    min-width: 80px;
+}
+
+.vs-feedback-option:hover {
+    background-color: var(--primary-50, #e7f1ff);
+    border-color: var(--primary-300, #9ec5fe);
+    transform: translateY(-2px);
+}
+
+.vs-feedback-option.selected {
+    background-color: var(--primary-100, #cfe2ff);
+    border-color: var(--primary-500, #0d6efd);
+    color: var(--primary-900, #084298);
+}
+
+.vs-feedback-option-icon {
+    font-size: 1.5rem;
+}
+
+.vs-feedback-option-label {
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Disabled state for interactions after feedback */
+.vs-inline-feedback.submitted {
+    pointer-events: none;
+    opacity: 0.7;
+}

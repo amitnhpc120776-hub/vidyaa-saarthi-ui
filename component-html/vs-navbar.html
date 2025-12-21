@@ -1,189 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title><!-- Insert page title here --></title>
 
-    <!-- BOOOTSTRAP 5.3.8 CSS (CDN)-->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-      crossorigin="anonymous"
-    />
-    <!--VIS DESIGN SYSTEM FILES -->
-    <link rel="stylesheet" href="../../css/VS-Design-System.css" />
-    <link rel="stylesheet" href="../../css/custom-component.css" />
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title><!-- Insert page title here --></title>
 
-    <!-- PAGE-SPECIFIC CSS (Optional) -->
-    <style>
-      /* Insert page specific CSS here */
-    </style>
+  <!-- BOOOTSTRAP 5.3.8 CSS (CDN)-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
+  <!--VIS DESIGN SYSTEM FILES -->
+  <link rel="stylesheet" href="../../css/VS-Design-System.css" />
+  <link rel="stylesheet" href="../../css/custom-component.css" />
 
-    <!--END OF HEAD-->
-  </head>
+  <!-- PAGE-SPECIFIC CSS (Optional) -->
+  <style>
+    /* Insert page specific CSS here */
+  </style>
 
-  <body>
-    <!-- 1. Navigation Bar ===== -->
-    <section class="py-2">
-      <nav class="navbar navbar-expand-lg vs-navbar">
-        <div class="container-fluid">
-          <!-- ===Brand Logo (Left Aligned) ======== -->
-          <a
-            class="navbar-brand d-flex align-items-center gap-2"
-            href="../../../index.html"
-          >
-            <img
-              src="../../assets/logo/vsLogoWithouText.svg"
-              alt="Vidyaa Saarthi Logo"
-            />
-            <span class="fw-semibold" style="color: var(--neutral-0)"
-              >Vidyaa Sarthi</span
-            >
-          </a>
+  <!--END OF HEAD-->
+</head>
 
-          <!-- ===Mobile Menu Toggler (Hamburger Icon) Controls collapsing of main navigation ====== -->
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNavDropdown"
-            aria-controls="navbarNavDropdown"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
+<body>
+  <!-- 1. Navigation Bar ===== -->
+  <section class="py-2">
+    <nav class="navbar navbar-expand-lg vs-navbar">
+      <div class="container-fluid">
+        <!-- ===Brand Logo (Left Aligned) ======== -->
+        <a class="navbar-brand d-flex align-items-center gap-2" href="../../../index.html">
+          <img src="../../assets/logo/vsLogoWithouText.svg" alt="Vidyaa Saarthi Logo" />
+          <span class="fw-semibold" style="color: var(--neutral-0)">Vidyaa Sarthi</span>
+        </a>
 
-          <!-- =====Collapsible Navigation Menu ============= -->
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav">
-              <!-- ===Menu Item: Home====== -->
-              <li class="nav-item">
-                <a
-                  class="nav-link active"
-                  aria-current="page"
-                  href="../../../index.html"
-                  >Home</a
-                >
-              </li>
+        <!-- ===Mobile Menu Toggler (Hamburger Icon) Controls collapsing of main navigation ====== -->
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+          aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-              <!-- ====Menu Item: Who We Serve Dropdown with 3 child items ====== -->
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  data-bs-toggle="dropdown"
-                >
-                  Who We Serve
-                </a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      href="../../../Pages/website/whoWeServeStudent.html"
-                      >Students</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      href="../../../Pages/website/whoWeServeTeacher.html"
-                      >Teachers</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      href="../../../Pages/website/whoWeServeScool.html"
-                      >Schools</a
-                    >
-                  </li>
-                </ul>
-              </li>
+        <!-- =====Collapsible Navigation Menu ============= -->
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav">
+            <!-- ===Menu Item: Home====== -->
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="../../../index.html">Home</a>
+            </li>
 
-              <!-- ========== Menu Item: How It Works =============== -->
-              <li class="nav-item">
-                <a
-                  class="nav-link"
-                  href="../../../Pages/website/howItWorks.html"
-                  >How It Works</a
-                >
-              </li>
+            <!-- ====Menu Item: Who We Serve Dropdown with 3 child items ====== -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                Who We Serve
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a class="dropdown-item" href="../../../Pages/website/whoWeServeStudent.html">Students</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="../../../Pages/website/whoWeServeTeacher.html">Teachers</a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="../../../Pages/website/whoWeServeScool.html">Schools</a>
+                </li>
+              </ul>
+            </li>
 
-              <!-- ====== Menu Item: Pricing =========== -->
-              <li class="nav-item">
-                <a class="nav-link" href="#">Pricing</a>
-              </li>
+            <!-- ========== Menu Item: How It Works =============== -->
+            <li class="nav-item">
+              <a class="nav-link" href="../../../Pages/website/howitWorksNew.html">How It Works</a>
+            </li>
 
-              <!-- ===== Menu Item: About Us ===== -->
-              <li class="nav-item">
-                <a class="nav-link" href="../../../Pages/website/aboutUs.html"
-                  >About Us</a
-                >
-              </li>
+            <!-- ====== Menu Item: Pricing =========== -->
+            <li class="nav-item">
+              <a class="nav-link" href="#">Pricing</a>
+            </li>
 
-              <!-- ====Menu Item: Log in Dropdown with 2 child items ================== -->
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  data-bs-toggle="dropdown"
-                >
-                  Log in
-                </a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      href="../../../Pages/website/studentLogIn.html"
-                      >Student</a
-                    >
-                  </li>
-                  <li><a class="dropdown-item" href="#">school</a></li>
-                </ul>
-              </li>
+            <!-- ===== Menu Item: About Us ===== -->
+            <li class="nav-item">
+              <a class="nav-link" href="../../../Pages/website/aboutUs.html">About Us</a>
+            </li>
 
-              <!-- ====Menu Item: Sign up Dropdown with 2 child items ================== -->
-              <li class="nav-item dropdown">
-                <a
-                  class="nav-link dropdown-toggle"
-                  href="#"
-                  data-bs-toggle="dropdown"
-                >
-                  Sign up
-                </a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a
-                      class="dropdown-item"
-                      href="../../../Pages/website/studentSignup.html"
-                      >Student</a
-                    >
-                  </li>
-                  <li><a class="dropdown-item" href="#">school</a></li>
-                </ul>
-              </li>
-            </ul>
-          </div>
-          <!-- End Collapse -->
+
+          </ul>
         </div>
-      </nav>
-    </section>
+        <!-- End Collapse -->
+      </div>
+    </nav>
+  </section>
 
-    <!-- Java Script CDN-->
-    <script
-      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
-      integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
-      crossorigin="anonymous"
-    ></script>
+  <!-- Java Script CDN-->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
+    integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
+    crossorigin="anonymous"></script>
 
-    <!--  END of Body-->
-  </body>
+  <!--  END of Body-->
+</body>
+
 </html>
