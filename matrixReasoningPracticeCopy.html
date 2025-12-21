@@ -440,68 +440,373 @@
       crossorigin="anonymous"
     ></script>
 
-    <script src="matrixReasoningCore.js"></script>
+    <script>
+      (() => {
+        const optionButtons = Array.from(
+          document.querySelectorAll("[data-mr-option]")
+        );
+        const confirmButton = document.querySelector("[data-mr-confirm]");
+
+        if (!optionButtons.length) return;
+
+        const setSelected = (selectedButton) => {
+          optionButtons.forEach((button) => {
+            const isSelected = button === selectedButton;
+            button.classList.toggle("is-selected", isSelected);
+            button.setAttribute("aria-pressed", isSelected ? "true" : "false");
+          });
+
+          if (confirmButton) confirmButton.disabled = false;
+        };
+
+        optionButtons.forEach((button) => {
+          button.addEventListener("click", () => setSelected(button));
+        });
+
+        document.addEventListener("keydown", (event) => {
+          if (!/^[1-5]$/.test(event.key)) return;
+          const idx = Number(event.key) - 1;
+          const target = optionButtons[idx];
+          if (!target) return;
+          event.preventDefault();
+          setSelected(target);
+          target.focus();
+        });
+      })();
+    </script>
+
     <script>
       /* =====================================================
-     Matrix Reasoning — TEST (Frontend-only minimal controller)
-     Depends on: matrixReasoningCore.js
+PRACTICE ROUND — STEPS 1–9 (FINAL)
+-----------------------------------------------------
+ Step 1: Config
+ Step 2: Load question images
+ Step 3: Countdown timer
+ Step 4: Option selection
+ Step 5: Confirm → stop timer + lock UI
+ Step 6: Evaluate answer
+ Step 7: Feedback modal
+ Step 8: Auto-next question + reset UI
+ Step 9: Practice complete screen
+===================================================== */
+
+      (() => {
+        /* =====================================================
+   STEP 1 — CONFIGURATION
   ===================================================== */
 
-      document.addEventListener("DOMContentLoaded", () => {
-        const TEST_QUESTIONS = [
+        const PRACTICE_QUESTIONS = [
           {
             id: 1,
             basePath:
-              "../../../assets/graphics/MatrixReasoning/scoredTrialMatrixReasoning/upperPrimary/question1/",
+              "../../../assets/graphics/MatrixReasoning/practiceTrialMatrixReasoning/question1/",
+            correctOption: "d",
+            explanation:
+              "Each column contains at least two stars. Each row and column contains two circles and one cross. The arrows rotate clockwise.",
           },
           {
             id: 2,
             basePath:
-              "../../../assets/graphics/MatrixReasoning/scoredTrialMatrixReasoning/upperPrimary/question2/",
+              "../../../assets/graphics/MatrixReasoning/practiceTrialMatrixReasoning/question2/",
+            correctOption: "d",
+            explanation:
+              "Each row and column contain two arrows pointing up and one arrow pointing down. Shading alternates consistently. The star rotates clockwise across rows.",
           },
         ];
 
         const TIME_LIMIT = 60;
+        const WARNING_THRESHOLD = 5;
 
-        const core = MatrixReasoningCore.create({
-          questions: TEST_QUESTIONS,
-          timeLimit: TIME_LIMIT,
+        let currentQuestionIndex = 0;
+        let selectedOption = null;
+        let isLocked = false;
+        let timeRemaining = TIME_LIMIT;
+        let timerInterval = null;
 
-          onConfirm({ question, selectedOption, timeRemaining, index }) {
-            const timeTaken = TIME_LIMIT - timeRemaining;
+        const optionButtons = Array.from(
+          document.querySelectorAll("[data-mr-option]")
+        );
+        const confirmBtn = document.querySelector("[data-mr-confirm]");
+        const timerWrapper = document.querySelector(".mr-timer");
+        const timerValueEl = document.querySelector(".mr-timer__value");
 
-            console.log("✅ CONFIRM", {
-              index,
-              questionId: question.id,
-              selectedOption,
-              timeRemaining,
-              timeTaken,
-              outcome: "attempted",
+        /* =====================================================
+   STEP 2 — LOAD QUESTION IMAGES
+  ===================================================== */
+
+        function loadPracticeQuestion(index) {
+          const q = PRACTICE_QUESTIONS[index];
+          if (!q) return;
+
+          // Matrix cells 1–8
+          document
+            .querySelectorAll(
+              ".mr-matrix .mr-cell:not(.mr-cell--missing) .mr-cell__img"
+            )
+            .forEach((img, i) => {
+              img.src = `${q.basePath}${i + 1}.svg`;
             });
 
-            core.next();
-          },
+          // Options a–d
+          const keys = ["a", "b", "c", "d"];
+          optionButtons.forEach((btn, i) => {
+            const img = btn.querySelector("img");
+            if (img) img.src = `${q.basePath}${keys[i]}.svg`;
+          });
+        }
 
-          onTimeout({ question, index }) {
-            console.log("⏰ TIMEOUT", {
-              index,
-              questionId: question.id,
-              selectedOption: null,
-              timeRemaining: 0,
-              timeTaken: TIME_LIMIT,
-              outcome: "timeout",
+        /* =====================================================
+   STEP 3 — TIMER + GRACE ANIMATION
+  ===================================================== */
+
+        function startTimer() {
+          stopTimer();
+          timeRemaining = TIME_LIMIT;
+          updateTimerUI();
+
+          timerInterval = setInterval(() => {
+            timeRemaining--;
+            updateTimerUI();
+
+            if (timeRemaining <= 0) {
+              stopTimer();
+              handleTimeout();
+            }
+          }, 1000);
+        }
+
+        function stopTimer() {
+          if (timerInterval) {
+            clearInterval(timerInterval);
+            timerInterval = null;
+          }
+        }
+
+        function updateTimerUI() {
+          timerValueEl.textContent = timeRemaining;
+
+          timerWrapper.classList.remove("is-warning", "is-danger", "pulse");
+
+          if (timeRemaining <= WARNING_THRESHOLD && timeRemaining > 0) {
+            timerWrapper.classList.add("is-warning", "pulse");
+          }
+
+          if (timeRemaining <= 0) {
+            timerWrapper.classList.add("is-danger");
+          }
+        }
+
+        /* =====================================================
+   STEP 4 — OPTION SELECTION
+  ===================================================== */
+
+        optionButtons.forEach((btn) => {
+          btn.addEventListener("click", () => {
+            if (isLocked) return;
+
+            optionButtons.forEach((b) => {
+              b.classList.remove("is-selected");
+              b.setAttribute("aria-pressed", "false");
             });
 
-            core.next();
-          },
+            btn.classList.add("is-selected");
+            btn.setAttribute("aria-pressed", "true");
 
-          onComplete() {
-            console.log("🏁 TEST COMPLETE");
-          },
+            selectedOption = btn.dataset.mrOption;
+            confirmBtn.disabled = false;
+          });
         });
 
-        core.start();
-      });
+        /* =====================================================
+   STEP 5 — CONFIRM
+  ===================================================== */
+
+        confirmBtn.addEventListener("click", () => {
+          if (isLocked || !selectedOption) return;
+          lockUI();
+
+          const q = PRACTICE_QUESTIONS[currentQuestionIndex];
+          const isCorrect = selectedOption === q.correctOption;
+
+          showFeedbackModal({
+            status: isCorrect ? "correct" : "incorrect",
+            correctOption: q.correctOption,
+            explanation: q.explanation,
+          });
+        });
+
+        /* =====================================================
+   TIMEOUT HANDLER (UNATTEMPTED)
+  ===================================================== */
+
+        function handleTimeout() {
+          if (isLocked) return;
+          lockUI();
+
+          const q = PRACTICE_QUESTIONS[currentQuestionIndex];
+
+          showFeedbackModal({
+            status: "timeout",
+            correctOption: q.correctOption,
+            explanation: q.explanation,
+          });
+        }
+
+        function lockUI() {
+          isLocked = true;
+          stopTimer();
+          confirmBtn.disabled = true;
+
+          optionButtons.forEach((btn) => {
+            btn.disabled = true;
+            btn.style.pointerEvents = "none";
+          });
+        }
+
+        /* =====================================================
+   STEP 7 — FEEDBACK MODAL
+  ===================================================== */
+
+        function formatExplanation(text) {
+          return String(text || "")
+            .split(".")
+            .map((s) => s.trim())
+            .filter(Boolean)
+            .join(".<br>");
+        }
+
+        function buildFeedbackHTML({ status, correctOption, explanation }) {
+          const config = {
+            correct: {
+              label: "Correct Answer",
+              color: "text-success",
+              icon: "✅",
+            },
+            incorrect: {
+              label: "Incorrect Answer",
+              color: "text-danger",
+              icon: "❌",
+            },
+            timeout: {
+              label: "Time Over",
+              color: "text-warning",
+              icon: "⏰",
+            },
+          };
+
+          const c = config[status];
+
+          return `
+      <div class="fw-semibold mb-2 ${c.color}">
+        ${c.icon} ${c.label}
+      </div>
+
+      <div class="mb-2">
+        <strong>Correct Answer:</strong> ${correctOption.toUpperCase()}
+      </div>
+
+      <div class="mt-2">
+        <strong>Explanation</strong>
+        <div class="mt-1">${formatExplanation(explanation)}</div>
+      </div>
+    `;
+        }
+
+        function showFeedbackModal(payload) {
+          const modalEl = document.getElementById("mrFeedbackModal");
+          const modalMsg = document.getElementById("mrFeedbackMessage");
+
+          modalMsg.innerHTML = buildFeedbackHTML(payload);
+
+          const modal = bootstrap.Modal.getOrCreateInstance(modalEl, {
+            backdrop: "static",
+            keyboard: false,
+          });
+
+          modal.show();
+
+          modalEl.addEventListener(
+            "hidden.bs.modal",
+            () => {
+              currentQuestionIndex++;
+
+              if (currentQuestionIndex < PRACTICE_QUESTIONS.length) {
+                resetUIForNextQuestion();
+                loadPracticeQuestion(currentQuestionIndex);
+              } else {
+                showPracticeCompletionScreen();
+              }
+            },
+            { once: true }
+          );
+        }
+
+        /* =====================================================
+   STEP 8 — RESET UI
+  ===================================================== */
+
+        function resetUIForNextQuestion() {
+          isLocked = false;
+          selectedOption = null;
+
+          optionButtons.forEach((btn) => {
+            btn.classList.remove("is-selected");
+            btn.setAttribute("aria-pressed", "false");
+            btn.disabled = false;
+            btn.style.pointerEvents = "";
+          });
+
+          confirmBtn.disabled = true;
+          startTimer();
+        }
+
+        /* =====================================================
+   STEP 9 — PRACTICE COMPLETE
+  ===================================================== */
+
+        function showPracticeCompletionScreen() {
+          stopTimer();
+
+          const shell = document.querySelector(".mr-test-shell");
+          shell.innerHTML = `
+      <div class="text-center p-4">
+        <h5 class="fw-semibold mb-3">Practice Complete</h5>
+        <p class="text-muted small mb-4">
+          You’ve completed the practice round.
+        </p>
+        <div class="d-grid gap-2">
+          <button class="btn btn-outline-primary" id="restartPractice">
+            Start Practice Again
+          </button>
+          <button class="btn btn-primary" id="backToInstructions">
+            Back to Instructions
+          </button>
+        </div>
+      </div>
+    `;
+
+          document
+            .getElementById("restartPractice")
+            .addEventListener("click", () => location.reload());
+
+          document
+            .getElementById("backToInstructions")
+            .addEventListener(
+              "click",
+              () => (window.location.href = "matrixReasoningInstruction.html")
+            );
+        }
+
+        /* =====================================================
+   INIT
+  ===================================================== */
+
+        document.addEventListener("DOMContentLoaded", () => {
+          loadPracticeQuestion(currentQuestionIndex);
+          startTimer();
+          confirmBtn.disabled = true;
+        });
+      })();
     </script>
 
     <!--  END of Body-->

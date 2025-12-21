@@ -440,68 +440,242 @@
       crossorigin="anonymous"
     ></script>
 
+    <script>
+      (() => {
+        const optionButtons = Array.from(
+          document.querySelectorAll("[data-mr-option]")
+        );
+        const confirmButton = document.querySelector("[data-mr-confirm]");
+
+        if (!optionButtons.length) return;
+
+        const setSelected = (selectedButton) => {
+          optionButtons.forEach((button) => {
+            const isSelected = button === selectedButton;
+            button.classList.toggle("is-selected", isSelected);
+            button.setAttribute("aria-pressed", isSelected ? "true" : "false");
+          });
+
+          if (confirmButton) confirmButton.disabled = false;
+        };
+
+        optionButtons.forEach((button) => {
+          button.addEventListener("click", () => setSelected(button));
+        });
+
+        document.addEventListener("keydown", (event) => {
+          if (!/^[1-5]$/.test(event.key)) return;
+          const idx = Number(event.key) - 1;
+          const target = optionButtons[idx];
+          if (!target) return;
+          event.preventDefault();
+          setSelected(target);
+          target.focus();
+        });
+      })();
+    </script>
+
     <script src="matrixReasoningCore.js"></script>
+
     <script>
       /* =====================================================
-     Matrix Reasoning — TEST (Frontend-only minimal controller)
-     Depends on: matrixReasoningCore.js
+   Matrix Reasoning — PRACTICE PAGE CONTROLLER
+   -----------------------------------------------------
+   Uses shared matrixReasoningCore.js
+
+   Responsibilities (Practice only):
+   - Provide questions + explanations
+   - Show feedback modal
+   - Handle timeout feedback
+   - Show practice completion screen
+===================================================== */
+
+      (() => {
+        /* =====================================================
+     PRACTICE DATA
   ===================================================== */
 
-      document.addEventListener("DOMContentLoaded", () => {
-        const TEST_QUESTIONS = [
+        const PRACTICE_QUESTIONS = [
           {
             id: 1,
             basePath:
-              "../../../assets/graphics/MatrixReasoning/scoredTrialMatrixReasoning/upperPrimary/question1/",
+              "../../../assets/graphics/MatrixReasoning/practiceTrialMatrixReasoning/question1/",
+            correctOption: "d",
+            explanation:
+              "Each column contains at least two stars. Each row and column contains two circles and one cross. The arrows rotate clockwise.",
           },
           {
             id: 2,
             basePath:
-              "../../../assets/graphics/MatrixReasoning/scoredTrialMatrixReasoning/upperPrimary/question2/",
+              "../../../assets/graphics/MatrixReasoning/practiceTrialMatrixReasoning/question2/",
+            correctOption: "d",
+            explanation:
+              "Each row and column contain two arrows pointing up and one arrow pointing down. Shading alternates consistently. The star rotates clockwise across rows.",
           },
         ];
 
-        const TIME_LIMIT = 60;
+        /* =====================================================
+     FEEDBACK MODAL HELPERS (PRACTICE UI)
+  ===================================================== */
+
+        function formatExplanation(text) {
+          return String(text || "")
+            .split(".")
+            .map((s) => s.trim())
+            .filter(Boolean)
+            .join(".<br>");
+        }
+
+        function buildFeedbackHTML({ status, correctOption, explanation }) {
+          const config = {
+            correct: {
+              label: "Correct Answer",
+              color: "text-success",
+              icon: "✅",
+            },
+            incorrect: {
+              label: "Incorrect Answer",
+              color: "text-danger",
+              icon: "❌",
+            },
+            timeout: {
+              label: "Time Over",
+              color: "text-warning",
+              icon: "⏰",
+            },
+          };
+
+          const c = config[status];
+
+          return `
+      <div class="fw-semibold mb-2 ${c.color}">
+        ${c.icon} ${c.label}
+      </div>
+
+      <div class="mb-2">
+        <strong>Correct Answer:</strong> ${correctOption.toUpperCase()}
+      </div>
+
+      <div class="mt-2">
+        <strong>Explanation</strong>
+        <div class="mt-1">${formatExplanation(explanation)}</div>
+      </div>
+    `;
+        }
+
+        function showFeedbackModal(payload, onClose) {
+          const modalEl = document.getElementById("mrFeedbackModal");
+          const modalMsg = document.getElementById("mrFeedbackMessage");
+
+          modalMsg.innerHTML = buildFeedbackHTML(payload);
+
+          const modal = bootstrap.Modal.getOrCreateInstance(modalEl, {
+            backdrop: "static",
+            keyboard: false,
+          });
+
+          modal.show();
+
+          modalEl.addEventListener(
+            "hidden.bs.modal",
+            () => {
+              onClose && onClose();
+            },
+            { once: true }
+          );
+        }
+
+        /* =====================================================
+     PRACTICE COMPLETE SCREEN
+  ===================================================== */
+
+        function showPracticeCompletionScreen() {
+          const shell = document.querySelector(".mr-test-shell");
+          if (!shell) return;
+
+          shell.innerHTML = `
+      <div class="text-center p-4">
+        <h5 class="fw-semibold mb-3">Practice Complete</h5>
+        <p class="text-muted small mb-4">
+          You’ve completed the practice round.
+        </p>
+        <div class="d-grid gap-2">
+          <button class="btn btn-outline-primary" id="restartPractice">
+            Start Practice Again
+          </button>
+          <button class="btn btn-primary" id="backToInstructions">
+            Back to Instructions
+          </button>
+        </div>
+      </div>
+    `;
+
+          document
+            .getElementById("restartPractice")
+            .addEventListener("click", () => location.reload());
+
+          document
+            .getElementById("backToInstructions")
+            .addEventListener(
+              "click",
+              () => (window.location.href = "matrixReasoningInstruction.html")
+            );
+        }
+
+        /* =====================================================
+     CORE INITIALIZATION
+  ===================================================== */
 
         const core = MatrixReasoningCore.create({
-          questions: TEST_QUESTIONS,
-          timeLimit: TIME_LIMIT,
+          questions: PRACTICE_QUESTIONS,
+          timeLimit: 60,
 
-          onConfirm({ question, selectedOption, timeRemaining, index }) {
-            const timeTaken = TIME_LIMIT - timeRemaining;
+          /* -------------------------------
+       CONFIRM (Attempted)
+    ------------------------------- */
+          onConfirm({ question, selectedOption }) {
+            const isCorrect = selectedOption === question.correctOption;
 
-            console.log("✅ CONFIRM", {
-              index,
-              questionId: question.id,
-              selectedOption,
-              timeRemaining,
-              timeTaken,
-              outcome: "attempted",
-            });
-
-            core.next();
+            showFeedbackModal(
+              {
+                status: isCorrect ? "correct" : "incorrect",
+                correctOption: question.correctOption,
+                explanation: question.explanation,
+              },
+              () => core.next()
+            );
           },
 
-          onTimeout({ question, index }) {
-            console.log("⏰ TIMEOUT", {
-              index,
-              questionId: question.id,
-              selectedOption: null,
-              timeRemaining: 0,
-              timeTaken: TIME_LIMIT,
-              outcome: "timeout",
-            });
-
-            core.next();
+          /* -------------------------------
+       TIMEOUT (Unattempted)
+    ------------------------------- */
+          onTimeout({ question }) {
+            showFeedbackModal(
+              {
+                status: "timeout",
+                correctOption: question.correctOption,
+                explanation: question.explanation,
+              },
+              () => core.next()
+            );
           },
 
+          /* -------------------------------
+       PRACTICE COMPLETE
+    ------------------------------- */
           onComplete() {
-            console.log("🏁 TEST COMPLETE");
+            showPracticeCompletionScreen();
           },
         });
 
-        core.start();
-      });
+        /* =====================================================
+     START PRACTICE
+  ===================================================== */
+
+        document.addEventListener("DOMContentLoaded", () => {
+          core.start();
+        });
+      })();
     </script>
 
     <!--  END of Body-->

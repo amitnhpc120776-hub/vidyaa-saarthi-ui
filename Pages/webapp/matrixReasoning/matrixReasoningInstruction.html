@@ -5,36 +5,37 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Matrix Reasoning - Instructions</title>
 
-    <!-- BOOOTSTRAP 5.3.8 CSS (CDN)-->
+    <!-- BOOTSTRAP 5.3.8 CSS (CDN) -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
       rel="stylesheet"
-      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
-      crossorigin="anonymous"
     />
-    <!--VIS DESIGN SYSTEM FILES -->
+
+    <!-- VIS DESIGN SYSTEM FILES -->
     <link rel="stylesheet" href="../../../css/VS-Design-System.css" />
     <link rel="stylesheet" href="../../../css/custom-component.css" />
-    <!-- PAGE-SPECIFIC CSS (Optional) -->
-    <style>
-      /* Insert page specific CSS here */
-    </style>
 
-    <!--END OF HEAD-->
+    <style>
+      .instruction-text p {
+        margin-bottom: 0.6rem;
+      }
+      .instruction-text ul {
+        padding-left: 1.1rem;
+        margin-bottom: 0.8rem;
+      }
+    </style>
   </head>
 
   <body class="bg-light">
-    <!-- TOP RIGHT LOGO -->
-
     <div class="container-fluid">
-      <div class="row min-vh-100 align-items-start pt-0 mt-0">
-        <!-- LEFT COLUMN — Test Area -->
+      <div class="row min-vh-100 align-items-start">
+        <!-- LEFT COLUMN -->
         <div
           class="col-12 col-md-5 d-flex flex-column justify-content-center align-items-center"
         >
           <div class="w-100" style="max-width: 380px">
-            <!--VS Logo-->
-            <div class="col-12 d-flex justify-content-center py-3 px-4">
+            <!-- Logo -->
+            <div class="d-flex justify-content-center py-3">
               <a href="../../../index.html">
                 <img
                   src="../../../assets/logo/vsLogoWithouText.svg"
@@ -43,49 +44,123 @@
                 />
               </a>
             </div>
+
             <div class="footer-line"></div>
-            <div><h3 class="mb-2 text-center">Instructions</h3></div>
+            <h3 class="text-center my-2">Matrix Reasoning – Instructions</h3>
             <div class="footer-line"></div>
-            <!-- Instructions -->
-            <div class="mb-3 position-relative">
-              <label class="form-label small"
-                >Insert a List of Instructions</label
-              >
+
+            <!-- Instructions Content -->
+            <div class="instruction-text small text-muted mt-3">
+              <p>
+                In this activity, you will see a pattern made of shapes arranged
+                in a grid. One part of the pattern is missing.
+              </p>
+
+              <p>
+                Your task is to find the rule that the pattern follows and
+                choose the correct option that completes it.
+              </p>
+
+              <strong class="d-block mt-2 mb-1">How to do it</strong>
+              <ul>
+                <li>Look carefully at rows and columns of shapes.</li>
+                <li>Notice how shapes change, rotate, repeat, or combine.</li>
+                <li>The pattern always follows a logical rule.</li>
+                <li>Select one best answer from the given options.</li>
+              </ul>
+
+              <p>
+                👉 There is no need for prior knowledge. Just observe, think,
+                and respond.
+              </p>
+
+              <p class="mt-2">
+                You may like to first complete a short practice round to
+                understand the task before the actual game begins.
+              </p>
             </div>
-            <div class="footer-line"></div>
-            <!-- Continue Button -->
-            <div class="mb-3 position-relative">
-              <button type="button" class="btn btn-primary">Start</button>
+
+            <div class="footer-line my-3"></div>
+
+            <!-- Action Buttons -->
+            <div class="d-grid gap-2">
+              <button type="button" class="btn btn-outline-secondary">
+                Watch Demo
+              </button>
+
+              <button
+                type="button"
+                class="btn btn-outline-primary"
+                id="practiceBtn"
+              >
+                Practice
+              </button>
+            </div>
+
+            <!-- Practice Completion Checkbox -->
+            <div class="form-check mt-3">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="practiceCompleted"
+              />
+              <label class="form-check-label small" for="practiceCompleted">
+                I have completed the practice round
+              </label>
+            </div>
+
+            <!-- Let's Play Button -->
+            <div class="d-grid mt-3">
+              <button
+                type="button"
+                id="startGameBtn"
+                class="btn btn-primary"
+                disabled
+              >
+                Let’s Play
+              </button>
             </div>
           </div>
         </div>
 
-        <!-- RIGHT COLUMN — IMAGE (MD & ABOVE ONLY) -->
+        <!-- RIGHT COLUMN — IMAGE -->
         <div
           class="col-md-7 d-none d-md-flex align-items-stretch p-0"
-          style="background-color: var(--primary-900); min-height: 100vh"
+          style="background-color: var(--primary-900)"
         >
           <img
             src="../../../assets/illustration/signupAndLogin/signupAndLogin.svg"
             class="img-fluid w-100 h-100 object-fit-cover"
-            alt="Login Illustration"
+            alt="Instruction Illustration"
           />
         </div>
       </div>
     </div>
 
-    <!-- Java Script CDN-->
-    <script
-      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-      crossorigin="anonymous"
-    ></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
-      integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
-      crossorigin="anonymous"
-    ></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"></script>
 
-    <!--  END of Body-->
+    <!-- Minimal Interaction Logic -->
+    <script>
+      const practiceCheckbox = document.getElementById("practiceCompleted");
+      const startBtn = document.getElementById("startGameBtn");
+      const practiceBtn = document.getElementById("practiceBtn");
+
+      /* Enable "Let's Play" only after practice confirmation */
+      practiceCheckbox.addEventListener("change", () => {
+        startBtn.disabled = !practiceCheckbox.checked;
+      });
+
+      /* Navigate to Practice */
+      practiceBtn.addEventListener("click", () => {
+        window.location.href = "matrixReasoningPractice.html";
+      });
+
+      /* Navigate to Test */
+      startBtn.addEventListener("click", () => {
+        if (startBtn.disabled) return;
+        window.location.href = "matrixReasoningTest.html";
+      });
+    </script>
   </body>
 </html>
