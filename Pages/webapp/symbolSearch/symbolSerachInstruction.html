@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Symbol Search - Instructions</title>
+
+    <!-- BOOTSTRAP 5.3.8 CSS (CDN) -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- VIS DESIGN SYSTEM FILES -->
+    <link rel="stylesheet" href="../../../css/VS-Design-System.css" />
+    <link rel="stylesheet" href="../../../css/custom-component.css" />
+
+    <style>
+      .instruction-text p {
+        margin-bottom: 0.6rem;
+      }
+      .instruction-text ul {
+        padding-left: 1.1rem;
+        margin-bottom: 0.8rem;
+      }
+    </style>
+  </head>
+
+  <body class="bg-light">
+    <div class="container-fluid">
+      <div class="row min-vh-100 align-items-start">
+        <!-- LEFT COLUMN -->
+        <div
+          class="col-12 col-md-5 d-flex flex-column justify-content-center align-items-center"
+        >
+          <div class="w-100" style="max-width: 380px">
+            <!-- Logo -->
+            <div class="d-flex justify-content-center py-3">
+              <a href="../../../index.html">
+                <img
+                  src="../../../assets/logo/vsLogoWithouText.svg"
+                  alt="Vidyaa Saarthi Logo"
+                  height="64"
+                />
+              </a>
+            </div>
+
+            <div class="footer-line"></div>
+            <h3 class="text-center my-2">Symbol Search – Instructions</h3>
+            <div class="footer-line"></div>
+
+            <!-- Instructions Content -->
+            <div class="instruction-text small text-muted mt-3">
+              <p>
+                In this activity, you will see a set of
+                <strong>two target symbols</strong> and a group of other
+                symbols.
+              </p>
+
+              <p>
+                Your task is to quickly check whether
+                <strong>any one of the target symbols</strong>
+                appears in the group.
+              </p>
+
+              <!-- Prominent Rule -->
+              <p class="fw-semibold text-dark mt-2">
+                👉 In each puzzle,
+                <strong
+                  >there can be only one matching symbol or no match at
+                  all</strong
+                >.
+              </p>
+
+              <strong class="d-block mt-2 mb-1">How to do it</strong>
+              <ul>
+                <li>Look at the two target symbols shown at the top.</li>
+                <li>Scan the symbols shown below as quickly as you can.</li>
+                <li>
+                  If you find a matching symbol,
+                  <strong>click on that symbol</strong>.
+                </li>
+                <li>
+                  If none of the target symbols are present, click
+                  <strong>NO</strong>.
+                </li>
+              </ul>
+
+              <p>
+                You will work under a time limit, so try to be both
+                <strong>fast and accurate</strong>.
+              </p>
+
+              <p class="mt-2">
+                It is recommended to complete a short practice round first to
+                understand the task before starting the actual test.
+              </p>
+            </div>
+
+            <div class="footer-line my-3"></div>
+
+            <!-- Action Buttons -->
+            <div class="d-grid gap-2">
+              <button type="button" class="btn btn-outline-secondary">
+                Watch Demo
+              </button>
+
+              <button
+                type="button"
+                class="btn btn-outline-primary"
+                id="practiceBtn"
+              >
+                Practice
+              </button>
+            </div>
+
+            <!-- Practice Completion Checkbox -->
+            <div class="form-check mt-3">
+              <input
+                class="form-check-input"
+                type="checkbox"
+                id="practiceCompleted"
+              />
+              <label class="form-check-label small" for="practiceCompleted">
+                I have completed the practice round
+              </label>
+            </div>
+            <!-- Let's Play Button -->
+            <div class="d-grid mt-3">
+              <button
+                type="button"
+                id="startGameBtn"
+                class="btn btn-primary"
+                disabled
+              >
+                Let’s Play
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT COLUMN — IMAGE -->
+        <div
+          class="col-md-7 d-none d-md-flex align-items-stretch p-0"
+          style="background-color: var(--primary-900)"
+        >
+          <img
+            src="../../../assets/illustration/signupAndLogin/signupAndLogin.svg"
+            class="img-fluid w-100 h-100 object-fit-cover"
+            alt="Instruction Illustration"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"></script>
+
+    <!-- Minimal Interaction Logic -->
+    <script>
+      const practiceCheckbox = document.getElementById("practiceCompleted");
+      const startBtn = document.getElementById("startGameBtn");
+      const practiceBtn = document.getElementById("practiceBtn");
+
+      /* Enable "Let's Play" only after practice confirmation */
+      practiceCheckbox.addEventListener("change", () => {
+        startBtn.disabled = !practiceCheckbox.checked;
+      });
+
+      /* Navigate to Practice */
+      practiceBtn.addEventListener("click", () => {
+        window.location.href = "symbolSearchPractice.html";
+      });
+
+      /* Navigate to Test */
+      startBtn.addEventListener("click", () => {
+        if (startBtn.disabled) return;
+        window.location.href = "symbolSearchTest.html";
+      });
+    </script>
+  </body>
+</html>
