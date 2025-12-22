@@ -212,7 +212,7 @@ async function runSimulation(targets, studentKey) {
   const textBlocks = explanation["adapted*explanation"] || [];
   targets.chatBodies.forEach((chatBody) => {
     textBlocks.forEach((explanationText) => {
-      appendBubble(chatBody, explanationText, "ai");
+      appendAIBubble(chatBody, explanationText);
     });
   });
 
@@ -282,4 +282,38 @@ function appendThinkingBubble(body) {
   body.appendChild(row);
 
   return row;
+}
+function formatInlineText(text) {
+  if (!text) return "";
+
+  // Convert **bold** syntax to <strong>
+  return text.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+}
+
+function appendAIBubble(chatBody, explanationText) {
+  const row = document.createElement("div");
+  row.className = "chat-row chat-row--ai";
+
+  const avatar = document.createElement("div");
+  avatar.className = "chat-avatar";
+  avatar.textContent = "AI";
+
+  const bubble = document.createElement("div");
+  bubble.className = "chat-bubble chat-bubble--ai";
+
+  // Normalize explanation into paragraphs
+  const paragraphs = Array.isArray(explanationText)
+    ? explanationText
+    : explanationText.split(/\n\s*\n/);
+
+  paragraphs.forEach((para) => {
+    if (!para.trim()) return;
+    const p = document.createElement("p");
+    p.innerHTML = formatInlineText(para.trim());
+    bubble.appendChild(p);
+  });
+
+  row.appendChild(bubble);
+  row.appendChild(avatar);
+  chatBody.appendChild(row);
 }
