@@ -15,6 +15,12 @@ import { getCurrentSelection } from "./dropdownController.js";
 const TYPED_PROMPT = "Explain this topic to me";
 const THINKING_DELAY_MS = 1000;
 const TYPING_INTERVAL_MS = 35;
+const FEEDBACK_OPTIONS = [
+  { id: "too-hard", label: "Too Hard" },
+  { id: "just-right", label: "Just Right" },
+  { id: "too-easy", label: "Too Easy" },
+];
+const FEEDBACK_THANK_YOU_TEXT = "Thank you for your feedback.";
 
 /* ---------------- Explanation module registry ---------------- */
 const EXPLANATION_MODULES = {
@@ -49,6 +55,8 @@ const chatState = {
   simulationId: 0,
   typingTimer: null,
   typingResolve: null,
+  feedbackStatus: "idle", // "idle" | "pending" | "submitted"
+  feedbackChoice: null, // one of FEEDBACK_OPTIONS ids
 };
 
 /* ===================== DOM DISCOVERY ===================== */
@@ -102,6 +110,8 @@ function clearChat(targets) {
 
   chatState.phase = "idle";
   chatState.activeStudent = null;
+  chatState.feedbackStatus = "idle";
+  chatState.feedbackChoice = null;
 
   targets.chatBodies.forEach((b) => (b.innerHTML = ""));
   targets.inputFields.forEach((i) => (i.value = ""));
@@ -179,6 +189,67 @@ function normalizeExplanationBlocks(explanation) {
   return [raw];
 }
 
+function removeFeedbackBars(targets) {
+  targets.chatBodies.forEach((chatBody) => {
+    chatBody
+      .querySelectorAll('[data-vs-chat-feedback="bar"]')
+      .forEach((el) => el.remove());
+  });
+}
+
+function appendFeedbackBar(chatBody, onSelect) {
+  const row = document.createElement("div");
+  row.className = "chat-row chat-row--ai";
+  row.setAttribute("data-vs-chat-feedback", "bar");
+
+  const avatar = document.createElement("div");
+  avatar.className = "chat-avatar";
+  avatar.textContent = "AI";
+
+  const bubble = document.createElement("div");
+  bubble.className = "chat-bubble chat-bubble--ai";
+
+  const wrap = document.createElement("div");
+  wrap.className = "d-flex flex-wrap gap-2 justify-content-end";
+
+  FEEDBACK_OPTIONS.forEach(({ id, label }) => {
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "btn btn-outline-secondary btn-sm";
+    btn.textContent = label;
+    btn.setAttribute("data-vs-chat-feedback-choice", id);
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      onSelect(id);
+    });
+    wrap.appendChild(btn);
+  });
+
+  bubble.appendChild(wrap);
+  row.appendChild(bubble);
+  row.appendChild(avatar);
+  chatBody.appendChild(row);
+}
+
+function showFeedbackUI(targets) {
+  removeFeedbackBars(targets);
+  chatState.feedbackStatus = "pending";
+  chatState.feedbackChoice = null;
+
+  const onSelect = (choiceId) => {
+    if (chatState.feedbackStatus !== "pending") return;
+    chatState.feedbackStatus = "submitted";
+    chatState.feedbackChoice = choiceId;
+
+    removeFeedbackBars(targets);
+    targets.chatBodies.forEach((chatBody) => {
+      appendAIBubble(chatBody, FEEDBACK_THANK_YOU_TEXT);
+    });
+  };
+
+  targets.chatBodies.forEach((chatBody) => appendFeedbackBar(chatBody, onSelect));
+}
+
 /* ===================== SIMULATION ===================== */
 
 async function runSimulation(targets, studentKey) {
@@ -251,6 +322,8 @@ async function runSimulation(targets, studentKey) {
       appendAIBubble(chatBody, "Explanation unavailable for this selection.");
     });
     chatState.phase = "done";
+    if (simulationId !== chatState.simulationId) return;
+    showFeedbackUI(targets);
     return;
   }
 
@@ -262,6 +335,8 @@ async function runSimulation(targets, studentKey) {
   });
 
   chatState.phase = "done";
+  if (simulationId !== chatState.simulationId) return;
+  showFeedbackUI(targets);
 }
 
 /* ===================== BINDINGS ===================== */
