@@ -14,11 +14,14 @@ function loadComponent(id, filePath) {
     });
 }
 
+/* load Navigation & Fotter on the page*/
+
 document.addEventListener("DOMContentLoaded", () => {
   loadComponent("vs-navbar", "../../../component-html/vs-navbar.html");
   loadComponent("vs-footer", "../../../component-html/vs-footer.html");
 });
 
+/* CTA Button Groups */
 document.querySelectorAll(".vs-cta-group").forEach((el) => {
   el.innerHTML = `
     <a href="../../../Pages/website/studentSignup.html" class="btn btn-primary">Signup — It’s Free →</a>
