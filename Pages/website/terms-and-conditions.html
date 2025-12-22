@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Terms and Conditions – Vidyaa Saarthi</title>
+
+  <!-- BOOTSTRAP 5.3.8 CSS (CDN) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
+
+  <!-- VS DESIGN SYSTEM FILES -->
+  <link rel="stylesheet" href="../../css/VS-Design-System.css" />
+  <link rel="stylesheet" href="../../css/custom-component.css" />
+
+  <style>
+    /* ================================================
+       TERMS AND CONDITIONS PAGE – CUSTOM STYLES
+       All colors, typography from VS-Design-System
+    ================================================ */
+
+    /* Page heading */
+    .terms-hero {
+      padding: 4rem 1rem;
+      text-align: center;
+      background: linear-gradient(135deg, var(--primary-100) 0%, var(--secondary-100) 100%);
+      border-bottom: 1px solid var(--border-neutral-subtle);
+    }
+
+    .terms-hero h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--neutral-900);
+      margin-bottom: 0.5rem;
+    }
+
+    .terms-hero p {
+      font-size: 1.1rem;
+      color: var(--neutral-600);
+    }
+
+    /* Terms content section */
+    .terms-content {
+      padding: 4rem 1rem;
+    }
+
+    .terms-content-wrapper {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* Term section header */
+    .term-section {
+      margin-bottom: 3rem;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border-neutral-subtle);
+    }
+
+    .term-section:last-child {
+      border-bottom: none;
+    }
+
+    .term-section h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--neutral-900);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .term-number {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.5rem;
+      height: 2.5rem;
+      background: var(--primary-600);
+      color: var(--neutral-0);
+      border-radius: 50%;
+      font-weight: 700;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+
+    .term-section p {
+      color: var(--neutral-700);
+      line-height: 1.8;
+      margin-bottom: 1rem;
+      font-size: 1rem;
+    }
+
+    .term-section ul {
+      color: var(--neutral-700);
+      line-height: 1.8;
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .term-section ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    .term-section strong {
+      color: var(--neutral-900);
+      font-weight: 600;
+    }
+
+    /* Last updated badge */
+    .last-updated {
+      background: var(--primary-50);
+      border-left: 4px solid var(--primary-600);
+      padding: 1rem;
+      border-radius: 0.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .last-updated p {
+      margin: 0;
+      color: var(--neutral-700);
+      font-size: 0.95rem;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .terms-hero h1 {
+        font-size: 1.75rem;
+      }
+
+      .terms-hero {
+        padding: 3rem 1rem;
+      }
+
+      .terms-content {
+        padding: 2rem 1rem;
+      }
+
+      .term-section {
+        margin-bottom: 2rem;
+        padding-bottom: 1.5rem;
+      }
+
+      .term-section h2 {
+        font-size: 1.25rem;
+      }
+
+      .term-number {
+        width: 2rem;
+        height: 2rem;
+        font-size: 1rem;
+      }
+
+      .term-section p {
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+
+  <!--END OF HEAD-->
+</head>
+
+<body>
+  <!-- ================= NAVBAR ================= -->
+  <div id="vs-navbar"></div>
+
+  <!-- ================= TERMS HERO ================= -->
+  <section class="terms-hero">
+    <div class="container">
+      <h1>Terms and Conditions</h1>
+      <p>Please read our terms carefully before using Vidyaa Saarthi</p>
+    </div>
+  </section>
+
+  <!-- ================= TERMS CONTENT ================= -->
+  <section class="terms-content">
+    <div class="terms-content-wrapper">
+
+      <div class="last-updated">
+        <p><strong>Last Updated:</strong> December 2025</p>
+      </div>
+
+      <p style="font-size: 1.05rem; color: var(--neutral-700); margin-bottom: 2rem;">
+        Welcome to Vidyaasaarthi. By accessing or using our website, services, or content, you agree to comply with and be bound by the following Terms and Conditions. If you do not agree, please discontinue use of the platform.
+      </p>
+
+      <!-- SECTION 1 -->
+      <div class="term-section">
+        <h2>
+          <span class="term-number">1</span>
+          Eligibility
+        </h2>
+        <p>
+          Users must be at least 18 years of age to use Vidyaasaarthi independently. Users below 18 may access the platform only with parental or guardian consent. By using this platform, you confirm that you meet the eligibility requirements and have the authority to enter into this agreement.
+        </p>
+      </div>
+
+      <!-- SECTION 2 -->
+      <div class="term-section">
+        <h2>
+          <span class="term-number">2</span>
+          User Accounts
+        </h2>
+        <p>
+          <strong>Account Creation:</strong> You are responsible for maintaining the confidentiality of your account credentials, including your username and password.
+        </p>
+        <p>
+          <strong>Account Security:</strong> You agree not to share your login information with others and to immediately notify us of any unauthorized access to your account.
+        </p>
+        <p>
+          <strong>Account Termination:</strong> Vidyaasaarthi reserves the right to terminate or suspend your account if you violate these Terms and Conditions.
+        </p>
+      </div>
+
+      <!-- SECTION 3 -->
+      <div class="term-section">
+        <h2>
+          <span class="term-number">3</span>
+          Use of the Platform
+        </h2>
+        <p>
+          The platform must be used only for lawful and educational purposes. You agree not to:
+        </p>
+        <ul>
+          <li>Use the platform for any illegal or harmful activities</li>
+          <li>Attempt to hack, disrupt, or damage the platform</li>
+          <li>Harass, abuse, or threaten other users</li>
+          <li>Upload or share malicious software or content</li>
+          <li>Violate any applicable laws or regulations</li>
+        </ul>
+      </div>
+
+      <!-- SECTION 4 -->
+      <div class="term-section">
+        <h2>
+          <span class="term-number">4</span>
+          Educational Content
+        </h2>
+        <p>
+          All content provided on Vidyaasaarthi, including explanations, materials, and assessments, is for <strong>personal learning purposes only</strong>. 
+        </p>
+        <p>
+          You may not:
+        </p>
+        <ul>
+          <li>Reproduce, distribute, or publish content without permission</li>
+          <li>Use content for commercial purposes</li>
+          <li>Claim content as your own original work</li>
+          <li>Sell or resell access to our content</li>
+        </ul>
+      </div>
+
+      <!-- SECTION 5 -->
+      <div class="term-section">
+        <h2>
+          <span class="term-number">5</span>
+          Intellectual Property
+        </h2>
+        <p>
+          All materials, including text, graphics, logos, course content, and software, are the property of Vidyaasaarthi or its licensors and are protected by copyright and intellectual property laws.
+        </p>
+        <p>
+          You are granted a limited, non-exclusive, non-transferable license to access and use the content for personal educational purposes only.
+        </p>
+      </div>
+
+      <!-- SECTION 6 -->
+      <div class="term-section">
+        <h2>
+          <span class="term-number">6</span>
+          Payments and Refunds
+        </h2>
+        <p>
+          Paid services are subject to pricing and refund policies as detailed on our <a href="../../../Pages/website/pricing.html" class="text-decoration-none" style="color: var(--primary-600);">Pricing page</a>.
+        </p>
+        <p>
+          <strong>Subscription Billing:</strong> Subscriptions renew automatically each month unless canceled through your account settings.
+        </p>
+        <p>
+          <strong>7-Day Refund Guarantee:</strong> We offer a full refund within 7 days of purchase if you're unsatisfied with your paid plan.
+        </p>
+      </div>
+
+      <!-- SECTION 7 -->
+      <div class="term-section">
+        <h2>
+          <span class="term-number">7</span>
+          Disclaimer
+        </h2>
+        <p>
+          The platform and all content are provided on an "as is" basis without warranties of any kind, either express or implied. Vidyaasaarthi does not guarantee:
+        </p>
+        <ul>
+          <li>Uninterrupted or error-free access to the platform</li>
+          <li>Specific academic results or outcomes</li>
+          <li>Accuracy or completeness of all content</li>
+          <li>Compatibility with all devices or browsers</li>
+        </ul>
+      </div>
+
+      <!-- SECTION 8 -->
+      <div class="term-section">
+        <h2>
+          <span class="term-number">8</span>
+          Limitation of Liability
+        </h2>
+        <p>
+          To the maximum extent permitted by law, Vidyaasaarthi is not liable for:
+        </p>
+        <ul>
+          <li>Indirect, incidental, or consequential damages</li>
+          <li>Loss of data, revenue, or profits</li>
+          <li>Service interruptions or technical issues</li>
+          <li>Any damages resulting from your use or inability to use the platform</li>
+        </ul>
+        <p>
+          Our total liability to you shall not exceed the amount you paid for the service, if any.
+        </p>
+      </div>
+
+      <!-- SECTION 9 -->
+      <div class="term-section">
+        <h2>
+          <span class="term-number">9</span>
+          Governing Law
+        </h2>
+        <p>
+          These Terms and Conditions are governed by and construed in accordance with the laws of India. Any disputes arising out of or in connection with these terms shall be subject to the exclusive jurisdiction of the courts in Agra, Uttar Pradesh.
+        </p>
+      </div>
+
+      <!-- SECTION 10 -->
+      <div class="term-section">
+        <h2>
+          <span class="term-number">10</span>
+          Contact Us
+        </h2>
+        <p>
+          If you have any questions about these Terms and Conditions, please contact us:
+        </p>
+        <ul>
+          <li><strong>Email:</strong> <a href="mailto:support@vidyaasarthi.com" class="text-decoration-none" style="color: var(--primary-600);">support@vidyaasarthi.com</a></li>
+          <li><strong>Call / WhatsApp:</strong> +91 12345 12345</li>
+          <li><strong>Address:</strong> 7/124, Avas Vikas Sikandra, Avas Vikas Colony, Sadar, Agra- 282007, Uttar Pradesh</li>
+        </ul>
+      </div>
+
+      <!-- AMENDMENTS SECTION -->
+      <div class="term-section">
+        <h2>
+          <span class="term-number">11</span>
+          Amendments
+        </h2>
+        <p>
+          Vidyaasaarthi reserves the right to modify these Terms and Conditions at any time. Changes will be effective immediately upon posting to the website. Continued use of the platform constitutes your acceptance of the updated terms.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <div id="vs-footer"></div>
+
+  <!-- BOOTSTRAP JS (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
+    integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
+    crossorigin="anonymous"></script>
+
+  <!-- INCLUDE NAVBAR & FOOTER -->
+  <script src="../../component-js/include-components.js"></script>
+
+  <!--END OF BODY-->
+</body>
+
+</html>

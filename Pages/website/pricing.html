@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pricing & Plans – Vidyaa Saarthi</title>
+
+  <!-- BOOTSTRAP 5.3.8 CSS (CDN) -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
+
+  <!-- VS DESIGN SYSTEM FILES -->
+  <link rel="stylesheet" href="../../css/VS-Design-System.css" />
+  <link rel="stylesheet" href="../../css/custom-component.css" />
+
+  <style>
+    /* ================================================
+       PRICING PAGE – CUSTOM STYLES (Minimal)
+       All colors, typography from VS-Design-System
+    ================================================ */
+
+    /* Page heading */
+    .pricing-hero {
+      padding: 4rem 1rem;
+      text-align: center;
+      background: linear-gradient(135deg, var(--primary-100) 0%, var(--secondary-100) 100%);
+      border-bottom: 1px solid var(--border-neutral-subtle);
+    }
+
+    .pricing-hero h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--neutral-900);
+      margin-bottom: 0.5rem;
+    }
+
+    .pricing-hero p {
+      font-size: 1.1rem;
+      color: var(--neutral-600);
+    }
+
+    /* Pricing cards container */
+    .pricing-cards {
+      padding: 4rem 1rem;
+    }
+
+    /* Individual pricing card */
+    .pricing-card {
+      border: 1px solid var(--border-neutral);
+      border-radius: 0.75rem;
+      background: var(--neutral-0);
+      padding: 2rem;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      transition: all 0.3s ease;
+    }
+
+    .pricing-card:hover {
+      border-color: var(--primary-600);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    /* Highlight the Pro plan (recommended) */
+    .pricing-card.featured {
+      border: 2px solid var(--primary-600);
+      transform: translateY(-10px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+    }
+
+    .pricing-card.featured .plan-badge {
+      display: inline-block;
+      background: var(--primary-600);
+      color: var(--neutral-0);
+      padding: 0.35rem 0.75rem;
+      border-radius: 0.25rem;
+      font-size: 0.75rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Plan name */
+    .plan-name {
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--neutral-900);
+      margin-bottom: 0.5rem;
+    }
+
+    /* Plan price */
+    .plan-price {
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--primary-600);
+      margin: 1rem 0;
+    }
+
+    .plan-price-period {
+      font-size: 0.9rem;
+      color: var(--neutral-600);
+      font-weight: 400;
+    }
+
+    /* Best for text */
+    .plan-best-for {
+      font-size: 0.9rem;
+      color: var(--neutral-600);
+      margin-bottom: 1.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid var(--border-neutral-subtle);
+    }
+
+    /* Features list */
+    .plan-features {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+
+    .plan-features li {
+      padding: 0.5rem 0;
+      color: var(--neutral-700);
+      font-size: 0.95rem;
+    }
+
+    .plan-features li:before {
+      content: "✓ ";
+      color: var(--primary-600);
+      font-weight: 700;
+      margin-right: 0.5rem;
+    }
+
+    /* Plan CTA button */
+    .plan-button {
+      margin-top: auto;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem;
+      font-weight: 600;
+      text-align: center;
+      transition: all 0.2s ease;
+    }
+
+    .plan-button-primary {
+      background: var(--primary-600);
+      color: var(--neutral-0);
+      border: none;
+    }
+
+    .plan-button-primary:hover {
+      background: var(--primary-700);
+      color: var(--neutral-0);
+      text-decoration: none;
+    }
+
+    .plan-button-secondary {
+      background: var(--neutral-100);
+      color: var(--primary-600);
+      border: 1px solid var(--border-neutral);
+    }
+
+    .plan-button-secondary:hover {
+      background: var(--neutral-200);
+      color: var(--primary-700);
+      text-decoration: none;
+    }
+
+    /* Information sections */
+    .pricing-info-section {
+      padding: 3rem 1rem;
+      background: var(--neutral-50);
+      border-top: 1px solid var(--border-neutral-subtle);
+    }
+
+    .pricing-info-section h2 {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--neutral-900);
+      margin-bottom: 1.5rem;
+    }
+
+    .pricing-info-section p {
+      color: var(--neutral-700);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .pricing-hero h1 {
+        font-size: 1.75rem;
+      }
+
+      .pricing-hero {
+        padding: 3rem 1rem;
+      }
+
+      .pricing-cards {
+        padding: 2rem 1rem;
+      }
+
+      .pricing-card {
+        padding: 1.5rem;
+      }
+
+      .pricing-card.featured {
+        transform: none;
+      }
+
+      .plan-price {
+        font-size: 2rem;
+      }
+
+      .plan-name {
+        font-size: 1.1rem;
+      }
+
+      .pricing-info-section {
+        padding: 2rem 1rem;
+      }
+
+      .pricing-info-section h2 {
+        font-size: 1.35rem;
+      }
+    }
+  </style>
+
+  <!--END OF HEAD-->
+</head>
+
+<body>
+  <!-- ================= NAVBAR ================= -->
+  <div id="vs-navbar"></div>
+
+  <!-- ================= PRICING HERO ================= -->
+  <section class="pricing-hero">
+    <div class="container">
+      <h1>Pricing & Plans</h1>
+      <p>Choose the perfect plan for your educational journey</p>
+    </div>
+  </section>
+
+  <!-- ================= PRICING CARDS ================= -->
+  <section class="pricing-cards">
+    <div class="container">
+      <div class="row g-4">
+
+        <!-- FREE PLAN -->
+        <div class="col-lg-3 col-md-6">
+          <div class="pricing-card">
+            <h3 class="plan-name">Free</h3>
+            <div class="plan-price">
+              ₹0
+              <span class="plan-price-period">/month</span>
+            </div>
+            <p class="plan-best-for">Best for: Exploring the platform</p>
+            <ul class="plan-features">
+              <li>Basic topic exploration</li>
+              <li>Limited explanations per day</li>
+              <li>Community support</li>
+              <li>Access to learning resources</li>
+            </ul>
+            <a href="#contact" class="btn plan-button plan-button-secondary">Get Started</a>
+          </div>
+        </div>
+
+        <!-- BASIC PLAN -->
+        <div class="col-lg-3 col-md-6">
+          <div class="pricing-card">
+            <h3 class="plan-name">Basic</h3>
+            <div class="plan-price">
+              ₹999
+              <span class="plan-price-period">/month</span>
+            </div>
+            <p class="plan-best-for">Best for: Individual learners</p>
+            <ul class="plan-features">
+              <li>Unlimited explanations</li>
+              <li>Personalized learning paths</li>
+              <li>Progress tracking</li>
+              <li>Email support</li>
+              <li>Access to all subjects</li>
+            </ul>
+            <a href="#contact" class="btn plan-button plan-button-secondary">Choose Plan</a>
+          </div>
+        </div>
+
+        <!-- PRO PLAN (FEATURED) -->
+        <div class="col-lg-3 col-md-6">
+          <div class="pricing-card featured">
+            <div class="plan-badge">Recommended</div>
+            <h3 class="plan-name">Pro</h3>
+            <div class="plan-price">
+              ₹2,499
+              <span class="plan-price-period">/month</span>
+            </div>
+            <p class="plan-best-for">Best for: Serious learners</p>
+            <ul class="plan-features">
+              <li>All Basic features</li>
+              <li>Advanced analytics</li>
+              <li>Custom study plans</li>
+              <li>Priority support</li>
+              <li>Offline access</li>
+              <li>Interactive assessments</li>
+            </ul>
+            <a href="#contact" class="btn plan-button plan-button-primary">Choose Plan</a>
+          </div>
+        </div>
+
+        <!-- ENTERPRISE PLAN -->
+        <div class="col-lg-3 col-md-6">
+          <div class="pricing-card">
+            <h3 class="plan-name">Enterprise / Institutional</h3>
+            <div class="plan-price">
+              Custom
+              <span class="plan-price-period">Pricing</span>
+            </div>
+            <p class="plan-best-for">Best for: Schools & institutions</p>
+            <ul class="plan-features">
+              <li>All Pro features</li>
+              <li>Multi-user accounts</li>
+              <li>Custom integrations</li>
+              <li>Dedicated account manager</li>
+              <li>Institution-wide analytics</li>
+              <li>SLA guarantee</li>
+            </ul>
+            <a href="#contact" class="btn plan-button plan-button-secondary">Contact Us</a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PAYMENT INFORMATION ================= -->
+  <section class="pricing-info-section">
+    <div class="container">
+      <h2>Payment Information</h2>
+      <p><strong>Flexible Payment Options:</strong> We accept all major credit/debit cards, UPI, and net banking for seamless transactions.</p>
+      <p><strong>Billing Cycle:</strong> All plans are billed on a monthly basis. You can upgrade or downgrade your plan at any time.</p>
+      <p><strong>Free Trial:</strong> Start with our Free plan and explore before upgrading to a paid plan.</p>
+      <p><strong>Auto-Renewal:</strong> Your subscription will automatically renew each month unless you cancel it through your account settings.</p>
+    </div>
+  </section>
+
+  <!-- ================= REFUND POLICY ================= -->
+  <section class="pricing-info-section" style="background: var(--neutral-0); border-top: 1px solid var(--border-neutral-subtle); border-bottom: 1px solid var(--border-neutral-subtle);">
+    <div class="container">
+      <h2>Refund Policy</h2>
+      <p><strong>7-Day Money Back Guarantee:</strong> If you're not satisfied with your paid plan within 7 days of purchase, we offer a full refund—no questions asked.</p>
+      <p><strong>How to Request a Refund:</strong> Contact our support team at <a href="mailto:support@vidyaasarthi.com" class="text-decoration-none" style="color: var(--primary-600);">support@vidyaasarthi.com</a> with your order details, and we'll process your refund within 5-7 business days.</p>
+      <p><strong>Refund Processing:</strong> Refunds are credited back to your original payment method.</p>
+      <p><strong>Cancellation:</strong> You can cancel your subscription at any time. Your access will continue until the end of your current billing cycle.</p>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT SECTION ================= -->
+  <section class="pricing-info-section" id="contact">
+    <div class="container">
+      <h2>Questions About Plans?</h2>
+      <p>We're here to help! If you have any questions about our pricing or need a custom solution for your institution, please reach out to us.</p>
+      <div class="row mt-4">
+        <div class="col-md-6 mb-3">
+          <p><strong>Email:</strong><br>
+            <a href="mailto:support@vidyaasarthi.com" class="text-decoration-none" style="color: var(--primary-600);">support@vidyaasarthi.com</a>
+          </p>
+        </div>
+        <div class="col-md-6 mb-3">
+          <p><strong>Call / WhatsApp:</strong><br>
+            <a href="tel:+91-12345-12345" class="text-decoration-none" style="color: var(--primary-600);">+91 12345 12345</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <div id="vs-footer"></div>
+
+  <!-- BOOTSTRAP JS (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
+    integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
+    crossorigin="anonymous"></script>
+
+  <!-- INCLUDE NAVBAR & FOOTER -->
+  <script src="../../component-js/include-components.js"></script>
+
+  <!--END OF BODY-->
+</body>
+
+</html>
