@@ -1,0 +1,285 @@
+/* ============================================================
+   Chat Simulation Controller
+   Page: howItWorks.html (Desktop + Mobile)
+   Responsibility:
+   - Deterministic chat simulation based on:
+     Class → Subject → Book → Chapter → Topic → Student Persona
+   - Clears chat on ANY upstream change
+   - Simulates typing → send → thinking → explanation
+   ============================================================ */
+
+import { getCurrentSelection } from "./dropdownController.js";
+
+/* ===================== CONFIG ===================== */
+
+const TYPED_PROMPT = "Explain this topic to me";
+const THINKING_DELAY_MS = 1000;
+const TYPING_INTERVAL_MS = 35;
+
+/* ---------------- Explanation module registry ---------------- */
+const EXPLANATION_MODULES = {
+  VIII: {
+    mathematics: "../data/explanations/VIII/explanationVIIImathematics.js",
+    science: "../data/explanations/VIII/explanationVIIIscience.js",
+    "social-science":
+      "../data/explanations/VIII/explanationVIIIsocialScience.js",
+  },
+  X: {
+    mathematics: "../data/explanations/X/explanationXmathematics.js",
+    science: "../data/explanations/X/explanationXscience.js",
+    "social-science": "../data/explanations/X/explanationXsocialScience.js",
+  },
+  XII: {
+    accountancy: "../data/explanations/XII/explanationXIIaccountancy.js",
+    biology: "../data/explanations/XII/explanationXIIBiology.js",
+    chemistry: "../data/explanations/XII/explanationXIIchemistry.js",
+    economics: "../data/explanations/XII/explanationXIIeconomics.js",
+    mathematics: "../data/explanations/XII/explanationXIImathematics.js",
+    physics: "../data/explanations/XII/explanationXIIphysics.js",
+  },
+};
+
+/* ===================== STATE ===================== */
+
+const chatState = {
+  contextKey: null,
+  activeTopic: null,
+  activeStudent: null, // "student_1" | "student_2"
+  phase: "idle",
+  typingTimer: null,
+};
+
+/* ===================== DOM DISCOVERY ===================== */
+
+function findChatTargets() {
+  const panels = Array.from(document.querySelectorAll(".vs-panel"));
+
+  let chatBodies = [];
+  let inputFields = [];
+  let sendButtons = [];
+  let studentButtons = [];
+
+  panels.forEach((panel) => {
+    const header = panel.querySelector(".vs-panel-header");
+    const body = panel.querySelector(".vs-panel-body");
+    if (!header || !body) return;
+
+    const title = header.textContent.toLowerCase();
+
+    if (title.includes("ask")) {
+      chatBodies.push(body);
+
+      const buttons = header.querySelectorAll("button");
+      buttons.forEach((btn) => {
+        const txt = btn.textContent.toLowerCase();
+        if (txt.includes("student 1"))
+          studentButtons.push({ btn, id: "student_1" });
+        if (txt.includes("student 2"))
+          studentButtons.push({ btn, id: "student_2" });
+      });
+
+      const input = panel.querySelector("input");
+      const send = panel.querySelector("button[aria-label='Send']");
+      if (input) inputFields.push(input);
+      if (send) sendButtons.push(send);
+    }
+  });
+
+  return { chatBodies, inputFields, sendButtons, studentButtons };
+}
+
+/* ===================== HELPERS ===================== */
+
+function clearChat(targets) {
+  chatState.phase = "idle";
+  chatState.activeStudent = null;
+
+  targets.chatBodies.forEach((b) => (b.innerHTML = ""));
+  targets.inputFields.forEach((i) => (i.value = ""));
+}
+
+function makeContextKey(sel, topic) {
+  return JSON.stringify({
+    class: sel.class,
+    subject: sel.subject,
+    book: sel.book,
+    chapter: sel.chapter,
+    topic: topic || null,
+  });
+}
+
+function appendBubble(body, text, role = "student") {
+  const row = document.createElement("div");
+  row.className = `chat-row chat-row--${role}`;
+
+  const avatar = document.createElement("div");
+  avatar.className = "chat-avatar";
+  avatar.textContent = role === "student" ? "S" : "AI";
+
+  const bubble = document.createElement("div");
+  bubble.className = `chat-bubble chat-bubble--${role}`;
+  bubble.textContent = text;
+
+  if (role === "student") {
+    row.appendChild(avatar);
+    row.appendChild(bubble);
+  } else {
+    row.appendChild(bubble);
+    row.appendChild(avatar);
+  }
+
+  body.appendChild(row);
+}
+
+function appendSpinner(body) {
+  const spinner = document.createElement("div");
+  spinner.className = "spinner-border spinner-border-sm my-2";
+  spinner.setAttribute("role", "status");
+  body.appendChild(spinner);
+  return spinner;
+}
+
+/* ===================== EXPLANATION LOADER ===================== */
+
+async function loadExplanation(sel, topic, studentKey) {
+  const path = EXPLANATION_MODULES?.[sel.class]?.[sel.subject];
+  if (!path) return null;
+
+  const mod = await import(path);
+  const data = Object.values(mod)[0];
+  if (!data) return null;
+
+  // STRICT but correct match (your data uses readable chapter names)
+  if (
+    !data.passageId ||
+    data.passageId.trim().toLowerCase() !== topic.trim().toLowerCase()
+  ) {
+    return null;
+  }
+
+  return data.explanationsByProfile?.[studentKey] || null;
+}
+
+/* ===================== SIMULATION ===================== */
+
+async function runSimulation(targets, studentKey) {
+  const sel = getCurrentSelection();
+  if (!chatState.activeTopic) return;
+
+  clearChat(targets);
+  chatState.activeStudent = studentKey;
+  chatState.phase = "typing";
+
+  /* Step A — Typing */
+  let idx = 0;
+  const input = targets.inputFields[0];
+  input.value = "";
+
+  await new Promise((resolve) => {
+    chatState.typingTimer = setInterval(() => {
+      input.value += TYPED_PROMPT[idx++];
+      if (idx >= TYPED_PROMPT.length) {
+        clearInterval(chatState.typingTimer);
+        resolve();
+      }
+    }, TYPING_INTERVAL_MS);
+  });
+
+  /* Step B — Send */
+  chatState.phase = "sent";
+
+  /* Step C — Student bubble */
+  targets.chatBodies.forEach((chatBody) => {
+    appendBubble(chatBody, TYPED_PROMPT, "student");
+  });
+
+  /* Step D — Thinking */
+  chatState.phase = "thinking";
+  const spinners = targets.chatBodies.map((b) => appendSpinner(b));
+
+  await new Promise((r) => setTimeout(r, THINKING_DELAY_MS));
+  spinners.forEach((s) => s.remove());
+
+  /* Step E — Explanation */
+  const explanation = await loadExplanation(
+    sel,
+    chatState.activeTopic,
+    studentKey
+  );
+
+  if (!explanation) return;
+
+  const textBlocks = explanation["adapted*explanation"] || [];
+  targets.chatBodies.forEach((chatBody) => {
+    textBlocks.forEach((explanationText) => {
+      appendBubble(chatBody, explanationText, "ai");
+    });
+  });
+
+  chatState.phase = "done";
+}
+
+/* ===================== BINDINGS ===================== */
+
+function bindStudentButtons(targets) {
+  targets.studentButtons.forEach(({ btn, id }) => {
+    btn.addEventListener("click", () => {
+      if (!chatState.activeTopic) return;
+      runSimulation(targets, id);
+    });
+  });
+}
+
+function bindResets(targets) {
+  document.querySelectorAll("select").forEach((s) => {
+    s.addEventListener("change", () => clearChat(targets));
+  });
+}
+
+/* ===================== PUBLIC API ===================== */
+
+export function setActiveTopicForChat(topicTitle) {
+  const sel = getCurrentSelection();
+  const newKey = makeContextKey(sel, topicTitle);
+
+  if (chatState.contextKey !== newKey) {
+    chatState.contextKey = newKey;
+    chatState.activeTopic = topicTitle;
+    chatState.activeStudent = null;
+  }
+}
+
+export function clearChatOnTopicChange() {
+  chatState.activeTopic = null;
+  chatState.activeStudent = null;
+}
+
+/* ===================== INIT ===================== */
+
+export function initChatSimulationController() {
+  const targets = findChatTargets();
+  if (!targets.chatBodies.length) return;
+
+  clearChat(targets);
+  bindStudentButtons(targets);
+  bindResets(targets);
+}
+
+function appendThinkingBubble(body) {
+  const row = document.createElement("div");
+  row.className = "chat-row chat-row--ai";
+
+  const bubble = document.createElement("div");
+  bubble.className = "chat-bubble chat-bubble--ai";
+  bubble.innerHTML = `<span class="spinner-border spinner-border-sm"></span>`;
+
+  const avatar = document.createElement("div");
+  avatar.className = "chat-avatar";
+  avatar.textContent = "AI";
+
+  row.appendChild(bubble);
+  row.appendChild(avatar);
+  body.appendChild(row);
+
+  return row;
+}

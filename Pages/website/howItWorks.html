@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Vidyaa Saarthi – How It Works</title>
+
+    <!-- ================= BOOTSTRAP CORE CSS ================= -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- ================= VS DESIGN SYSTEM ================= -->
+    <!-- Provides brand colors, borders, and neutral tokens -->
+    <link rel="stylesheet" href="../../../../css/VS-Design-System.css" />
+    <link rel="stylesheet" href="../../../../css/custom-component.css" />
+
+    <!-- ================= PAGE-SPECIFIC LAYOUT STYLES ================= -->
+    <!-- Structural helpers only (no behavior, no JS dependency) -->
+    <style>
+      .vs-panel {
+        border: 1px solid var(--border-neutral);
+        border-radius: 0.75rem;
+        background: var(--neutral-0);
+        height: 100%;
+      }
+
+      .vs-panel-header {
+        padding: 0.75rem 1rem;
+        font-weight: 600;
+        border-bottom: 1px solid var(--border-neutral-subtle);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .vs-panel-body {
+        padding: 1rem;
+      }
+
+      .derivative-btn {
+        min-height: 96px;
+        font-weight: 600;
+      }
+      /* ================= CHAT INPUT (ChatGPT-style) ================= */
+
+      .chat-input-wrapper {
+        border-top: 1px solid var(--border-neutral);
+        padding: 0.75rem;
+      }
+
+      .chat-input-inner {
+        background: var(--neutral-0);
+        border: 1px solid var(--border-neutral);
+        border-radius: 999px; /* pill shape */
+        padding: 0.25rem 0.5rem;
+      }
+
+      .chat-text-input {
+        border: none;
+        box-shadow: none;
+        flex-grow: 1;
+      }
+
+      .chat-text-input:focus {
+        outline: none;
+        box-shadow: none;
+      }
+
+      .chat-icon-btn {
+        border-radius: 50%;
+        width: 36px;
+        height: 36px;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 600;
+      }
+      /* ================= CHAT LAYOUT ================= */
+
+      .chat-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 0.5rem;
+        margin-bottom: 0.75rem;
+      }
+
+      /* Student (Left) */
+      .chat-row--student {
+        justify-content: flex-start;
+      }
+
+      /* AI (Right) */
+      .chat-row--ai {
+        justify-content: flex-end;
+      }
+
+      /* ================= AVATARS ================= */
+
+      .chat-avatar {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        font-size: 0.75rem;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+      }
+
+      .chat-row--student .chat-avatar {
+        background: var(--neutral-300);
+        color: var(--neutral-900);
+      }
+
+      .chat-row--ai .chat-avatar {
+        background: var(--brand-600);
+        color: #fff;
+      }
+
+      /* ================= CHAT BUBBLES ================= */
+
+      .chat-bubble {
+        max-width: 72%;
+        padding: 0.6rem 0.75rem;
+        border-radius: 0.75rem;
+        line-height: 1.45;
+        font-size: 0.9rem;
+        word-wrap: break-word;
+      }
+
+      /* Student bubble */
+      .chat-bubble--student {
+        background: var(--neutral-200);
+        border-top-left-radius: 0.25rem;
+      }
+
+      /* AI bubble */
+      .chat-bubble--ai {
+        background: var(--brand-100);
+        border-top-right-radius: 0.25rem;
+      }
+
+      /* Paragraph spacing inside AI responses */
+      .chat-bubble--ai p {
+        margin-bottom: 0.5rem;
+      }
+
+      .chat-bubble--ai p:last-child {
+        margin-bottom: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- ================= NAVBAR (Injected via include-components.js) ================= -->
+    <div id="vs-navbar"></div>
+
+    <section class="container-fluid py-4">
+      <!-- ================================================= -->
+      <!-- ROW 1 : CLASS / SUBJECT / BOOK / CHAPTER SELECTION -->
+      <!-- ================================================= -->
+      <!-- Static dropdown structure only; options injected later via JS -->
+      <section class="mb-4">
+        <h5 class="fw-semibold mb-3">
+          Select Your Class & Chapter You Want to Study
+        </h5>
+
+        <!-- Responsive grid: stacks on mobile, 4 columns on desktop -->
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-3">
+          <div class="col">
+            <select class="form-select">
+              <option>Select Class</option>
+            </select>
+          </div>
+          <div class="col">
+            <select class="form-select">
+              <option>Select Subject</option>
+            </select>
+          </div>
+          <div class="col">
+            <select class="form-select">
+              <option>Select Book</option>
+            </select>
+          </div>
+          <div class="col">
+            <select class="form-select">
+              <option>Select Chapter</option>
+            </select>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================= -->
+      <!-- DESKTOP VIEW (> md)                               -->
+      <!-- Three-column learning workspace                   -->
+      <!-- ================================================= -->
+      <section class="d-none d-md-block mb-4">
+        <h5 class="fw-semibold mb-3">Clarify Your Concepts</h5>
+
+        <div class="row g-4">
+          <!-- ================= TOPIC LIST (DESKTOP) ================= -->
+          <!-- Topics will be rendered dynamically later -->
+          <div class="col-md-3">
+            <div class="vs-panel">
+              <div class="vs-panel-header">Topic List</div>
+              <div class="vs-panel-body">
+                <!-- Sample static topic item for visual reference -->
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="checkbox" />
+                  <label class="form-check-label"> Sample Topic Name </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ================= TOPIC DESCRIPTION (DESKTOP) ================= -->
+          <!-- Displays description of the selected topic -->
+          <div class="col-md-5">
+            <div class="vs-panel">
+              <div class="vs-panel-header">Topic Description</div>
+              <div class="vs-panel-body">
+                <p class="small text-muted">
+                  Topic description will appear here
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- ================= CHAT SIMULATION (DESKTOP) ================= -->
+          <!-- UI placeholder only; no chat logic wired -->
+          <div class="col-md-4">
+            <div class="vs-panel d-flex flex-column h-100">
+              <div class="vs-panel-header">
+                <span>Ask Vidyaa Saarthi</span>
+                <!-- Student persona switch (UI only) -->
+                <div class="d-flex gap-2">
+                  <button class="btn btn-outline-secondary btn-sm">
+                    Student 1
+                  </button>
+                  <button class="btn btn-outline-secondary btn-sm">
+                    Student 2
+                  </button>
+                </div>
+              </div>
+              <div class="vs-panel-body flex-grow-1">
+                <p class="small text-muted">Chat simulation area</p>
+              </div>
+              <!-- ================= CHAT INPUT BAR ================= -->
+              <div class="chat-input-wrapper mt-auto">
+                <div class="chat-input-inner d-flex align-items-center gap-2">
+                  <!-- Left icon (add / attach) -->
+                  <button
+                    type="button"
+                    class="btn btn-light chat-icon-btn"
+                    aria-label="Add"
+                  >
+                    +
+                  </button>
+
+                  <!-- Text input -->
+                  <input
+                    type="text"
+                    class="form-control chat-text-input"
+                    placeholder="Ask Vidyaa Saarthi…"
+                  />
+
+                  <!-- Right icon (mic / send) -->
+                  <button
+                    type="button"
+                    class="btn btn-dark chat-icon-btn"
+                    aria-label="Send"
+                  >
+                    ↑
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================= -->
+      <!-- DERIVATIVE LEARNING RESOURCES (DESKTOP)           -->
+      <!-- Clickable tiles; behavior added later             -->
+      <!-- ================================================= -->
+      <section class="d-none d-md-block">
+        <h5 class="fw-semibold mb-3">Derivative Learning Resources</h5>
+
+        <div class="row g-3">
+          <div class="col-md-3">
+            <button class="btn btn-light w-100 derivative-btn">Notes</button>
+          </div>
+          <div class="col-md-3">
+            <button class="btn btn-light w-100 derivative-btn">
+              Flash Cards
+            </button>
+          </div>
+          <div class="col-md-3">
+            <button class="btn btn-light w-100 derivative-btn">Quizzes</button>
+          </div>
+          <div class="col-md-3">
+            <button class="btn btn-light w-100 derivative-btn">Reports</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================================================= -->
+      <!-- MOBILE & TABLET VIEW (≤ md)                       -->
+      <!-- Tab-based navigation replacing columns            -->
+      <!-- ================================================= -->
+      <section class="d-block d-md-none">
+        <!-- ================= TAB HEADERS ================= -->
+        <ul class="nav nav-tabs mb-3" role="tablist">
+          <li class="nav-item">
+            <button
+              class="nav-link active"
+              data-bs-toggle="tab"
+              data-bs-target="#tab-topics"
+            >
+              Topics
+            </button>
+          </li>
+          <li class="nav-item">
+            <button
+              class="nav-link"
+              data-bs-toggle="tab"
+              data-bs-target="#tab-description"
+            >
+              Description
+            </button>
+          </li>
+          <li class="nav-item">
+            <button
+              class="nav-link"
+              data-bs-toggle="tab"
+              data-bs-target="#tab-chat"
+            >
+              Ask Us
+            </button>
+          </li>
+          <li class="nav-item">
+            <button
+              class="nav-link"
+              data-bs-toggle="tab"
+              data-bs-target="#tab-resources"
+            >
+              Resources
+            </button>
+          </li>
+        </ul>
+
+        <!-- ================= TAB CONTENT ================= -->
+        <div class="tab-content">
+          <!-- TOPICS TAB -->
+          <div class="tab-pane fade show active" id="tab-topics">
+            <div class="vs-panel">
+              <div class="vs-panel-header">Topic List</div>
+              <div class="vs-panel-body">
+                <div class="form-check mb-2">
+                  <input class="form-check-input" type="checkbox" />
+                  <label class="form-check-label"> Sample Topic Name </label>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- DESCRIPTION TAB -->
+          <div class="tab-pane fade" id="tab-description">
+            <div class="vs-panel">
+              <div class="vs-panel-header">Topic Description</div>
+              <div class="vs-panel-body">
+                <p class="small text-muted">Description will appear here</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- CHAT TAB -->
+          <div class="tab-pane fade" id="tab-chat">
+            <div class="vs-panel">
+              <div class="vs-panel-header">
+                <span>Ask Us</span>
+                <div class="d-flex gap-2">
+                  <button class="btn btn-outline-secondary btn-sm">
+                    Student 1
+                  </button>
+                  <button class="btn btn-outline-secondary btn-sm">
+                    Student 2
+                  </button>
+                </div>
+              </div>
+              <div class="vs-panel-body">
+                <p class="small text-muted">Chat simulation area</p>
+              </div>
+              <!-- ================= CHAT INPUT BAR ================= -->
+              <div class="chat-input-wrapper mt-auto">
+                <div class="chat-input-inner d-flex align-items-center gap-2">
+                  <!-- Left icon (add / attach) -->
+                  <button
+                    type="button"
+                    class="btn btn-light chat-icon-btn"
+                    aria-label="Add"
+                  >
+                    +
+                  </button>
+
+                  <!-- Text input -->
+                  <input
+                    type="text"
+                    class="form-control chat-text-input"
+                    placeholder="Ask Vidyaa Saarthi…"
+                  />
+
+                  <!-- Right icon (mic / send) -->
+                  <button
+                    type="button"
+                    class="btn btn-dark chat-icon-btn"
+                    aria-label="Send"
+                  >
+                    ↑
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RESOURCES TAB -->
+          <div class="tab-pane fade" id="tab-resources">
+            <div class="row g-3">
+              <div class="col-6">
+                <button class="btn btn-light w-100 derivative-btn">
+                  Notes
+                </button>
+              </div>
+              <div class="col-6">
+                <button class="btn btn-light w-100 derivative-btn">
+                  Flash Cards
+                </button>
+              </div>
+              <div class="col-6">
+                <button class="btn btn-light w-100 derivative-btn">
+                  Quizzes
+                </button>
+              </div>
+              <div class="col-6">
+                <button class="btn btn-light w-100 derivative-btn">
+                  Reports
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <!-- ================= FOOTER (Injected via include-components.js) ================= -->
+    <div id="vs-footer"></div>
+
+    <!-- ================= BOOTSTRAP BUNDLE (Tabs, Collapse, etc.) ================= -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- ================= SHARED NAVBAR / FOOTER INJECTION ================= -->
+    <script src="../../component-js/include-components.js"></script>
+
+    <script type="module">
+      import { initDropdownController } from "./howItWorks/controllers/dropdownController.js";
+      import { initTopicController } from "./howItWorks/controllers/topicController.js";
+      import { initChatSimulationController } from "./howItWorks/controllers/chatSimulationController.js";
+
+      document.addEventListener("DOMContentLoaded", () => {
+        initDropdownController();
+        initTopicController();
+        initChatSimulationController();
+      });
+    </script>
+  </body>
+</html>
