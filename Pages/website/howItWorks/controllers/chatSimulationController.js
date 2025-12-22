@@ -398,6 +398,14 @@ export function initChatSimulationController() {
   clearChat(targets);
   bindStudentButtons(targets);
   bindResets(targets);
+  // Listen for text-selection "Explain This" requests and render a fixed chat
+  document.addEventListener("explainText", () => {
+    clearChat(targets);
+    targets.chatBodies.forEach((chatBody) => {
+      appendBubble(chatBody, "Explain the selected text to me", "student");
+      appendAIBubble(chatBody, "Our AI will explain this further");
+    });
+  });
 }
 
 function appendThinkingBubble(body) {
