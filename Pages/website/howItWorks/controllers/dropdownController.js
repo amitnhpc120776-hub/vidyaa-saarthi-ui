@@ -44,12 +44,29 @@ const selectionState = {
  * Class → Subject → Book → Chapter
  */
 function getDropdowns() {
+  const byAttr = {
+    classSelect: document.querySelector('[data-vs-dropdown="class"]'),
+    subjectSelect: document.querySelector('[data-vs-dropdown="subject"]'),
+    bookSelect: document.querySelector('[data-vs-dropdown="book"]'),
+    chapterSelect: document.querySelector('[data-vs-dropdown="chapter"]'),
+  };
+
+  if (
+    byAttr.classSelect &&
+    byAttr.subjectSelect &&
+    byAttr.bookSelect &&
+    byAttr.chapterSelect
+  ) {
+    return byAttr;
+  }
+
+  // Back-compat fallback (brittle): first 4 selects on the page
   const selects = Array.from(document.querySelectorAll("select"));
   return {
-    classSelect: selects[0],
-    subjectSelect: selects[1],
-    bookSelect: selects[2],
-    chapterSelect: selects[3],
+    classSelect: selects[0] || null,
+    subjectSelect: selects[1] || null,
+    bookSelect: selects[2] || null,
+    chapterSelect: selects[3] || null,
   };
 }
 
@@ -204,6 +221,15 @@ export function getCurrentSelection() {
 
 export function initDropdownController() {
   const dropdowns = getDropdowns();
+
+  if (
+    !dropdowns.classSelect ||
+    !dropdowns.subjectSelect ||
+    !dropdowns.bookSelect ||
+    !dropdowns.chapterSelect
+  ) {
+    return;
+  }
 
   populateClassDropdown(dropdowns.classSelect);
 

@@ -319,7 +319,12 @@ async function loadTopicsForSelection(sel) {
   const modulePath = TOPIC_MODULES?.[classId]?.[subjectId];
   if (!modulePath) return [];
 
-  const mod = await import(modulePath);
+  let mod = null;
+  try {
+    mod = await import(modulePath);
+  } catch {
+    return [];
+  }
 
   // Each topic file exports a single object; grab the first export value safely.
   const exported = Object.values(mod)[0];
@@ -344,8 +349,9 @@ function hardResetTopics(targets) {
   targets.topicDescBodies.forEach((b) => {
     clearElement(b);
     renderMuted(b, "Select a topic to view its description");
-    clearChatOnTopicChange();
   });
+
+  clearChatOnTopicChange();
 }
 
 /* -------------------- Sync selection (desktop + mobile) -------------------- */
@@ -382,7 +388,7 @@ function setActiveTopicIndex(newIndex, targets) {
   renderTopicDescription(active, targets);
   // Enable chat for the newly selected topic
   const sel = getCurrentSelection();
-  setActiveTopicForChat(sel.chapter);
+  setActiveTopicForChat(active?.title || sel.chapter);
 }
 
 /* -------------------- Event wiring -------------------- */
@@ -435,7 +441,10 @@ async function handleContextChange(targets) {
 
     // Load topics only when a valid chapter exists AND class/subject/book exist
     if (sel.class && sel.subject && sel.book && sel.chapter) {
+      const requestedKey = key;
       const topics = await loadTopicsForSelection(sel);
+      if (topicState.contextKey !== requestedKey) return;
+
       topicState.topics = topics;
       topicState.activeIndex = null;
 

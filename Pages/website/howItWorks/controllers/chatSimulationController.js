@@ -46,7 +46,9 @@ const chatState = {
   activeTopic: null,
   activeStudent: null, // "student_1" | "student_2"
   phase: "idle",
+  simulationId: 0,
   typingTimer: null,
+  typingResolve: null,
 };
 
 /* ===================== DOM DISCOVERY ===================== */
@@ -91,6 +93,13 @@ function findChatTargets() {
 /* ===================== HELPERS ===================== */
 
 function clearChat(targets) {
+  // Cancels any in-flight typing simulation
+  chatState.simulationId += 1;
+  if (chatState.typingTimer) clearInterval(chatState.typingTimer);
+  chatState.typingTimer = null;
+  if (chatState.typingResolve) chatState.typingResolve();
+  chatState.typingResolve = null;
+
   chatState.phase = "idle";
   chatState.activeStudent = null;
 
@@ -149,15 +158,25 @@ async function loadExplanation(sel, topic, studentKey) {
   const data = Object.values(mod)[0];
   if (!data) return null;
 
-  // STRICT but correct match (your data uses readable chapter names)
-  if (
-    !data.passageId ||
-    data.passageId.trim().toLowerCase() !== topic.trim().toLowerCase()
-  ) {
-    return null;
-  }
+  const passageId = (data.passageId || "").trim().toLowerCase();
+  const candidates = [
+    topic != null ? String(topic) : "",
+    sel?.chapter != null ? String(sel.chapter) : "",
+  ]
+    .map((t) => t.trim().toLowerCase())
+    .filter(Boolean);
+
+  // Strict match against topic first, then chapter as fallback.
+  if (!passageId || !candidates.some((c) => c === passageId)) return null;
 
   return data.explanationsByProfile?.[studentKey] || null;
+}
+
+function normalizeExplanationBlocks(explanation) {
+  const raw = explanation?.["adapted*explanation"];
+  if (!raw) return [];
+  if (Array.isArray(raw)) return raw;
+  return [raw];
 }
 
 /* ===================== SIMULATION ===================== */
@@ -167,25 +186,40 @@ async function runSimulation(targets, studentKey) {
   if (!chatState.activeTopic) return;
 
   clearChat(targets);
+  const simulationId = (chatState.simulationId += 1);
   chatState.activeStudent = studentKey;
   chatState.phase = "typing";
 
-  /* Step A — Typing */
+  /* Step A - Typing */
   let idx = 0;
-  const input = targets.inputFields[0];
-  input.value = "";
+  targets.inputFields.forEach((input) => (input.value = ""));
 
   await new Promise((resolve) => {
+    chatState.typingResolve = resolve;
     chatState.typingTimer = setInterval(() => {
-      input.value += TYPED_PROMPT[idx++];
+      if (simulationId !== chatState.simulationId) {
+        clearInterval(chatState.typingTimer);
+        chatState.typingTimer = null;
+        chatState.typingResolve = null;
+        resolve();
+        return;
+      }
+
+      const next = TYPED_PROMPT.slice(0, idx + 1);
+      targets.inputFields.forEach((input) => (input.value = next));
+      idx++;
       if (idx >= TYPED_PROMPT.length) {
         clearInterval(chatState.typingTimer);
+        chatState.typingTimer = null;
+        chatState.typingResolve = null;
         resolve();
       }
     }, TYPING_INTERVAL_MS);
   });
 
-  /* Step B — Send */
+  if (simulationId !== chatState.simulationId) return;
+
+  /* Step B - Send */
   chatState.phase = "sent";
 
   /* Step C — Student bubble */
@@ -200,16 +234,27 @@ async function runSimulation(targets, studentKey) {
   await new Promise((r) => setTimeout(r, THINKING_DELAY_MS));
   spinners.forEach((s) => s.remove());
 
-  /* Step E — Explanation */
-  const explanation = await loadExplanation(
-    sel,
-    chatState.activeTopic,
-    studentKey
-  );
+  if (simulationId !== chatState.simulationId) return;
 
-  if (!explanation) return;
+  /* Step E - Explanation */
+  let explanation = null;
+  try {
+    explanation = await loadExplanation(sel, chatState.activeTopic, studentKey);
+  } catch {
+    explanation = null;
+  }
 
-  const textBlocks = explanation["adapted*explanation"] || [];
+  if (simulationId !== chatState.simulationId) return;
+
+  if (!explanation) {
+    targets.chatBodies.forEach((chatBody) => {
+      appendAIBubble(chatBody, "Explanation unavailable for this selection.");
+    });
+    chatState.phase = "done";
+    return;
+  }
+
+  const textBlocks = normalizeExplanationBlocks(explanation);
   targets.chatBodies.forEach((chatBody) => {
     textBlocks.forEach((explanationText) => {
       appendAIBubble(chatBody, explanationText);
@@ -232,7 +277,7 @@ function bindStudentButtons(targets) {
 
 function bindResets(targets) {
   document.querySelectorAll("select").forEach((s) => {
-    s.addEventListener("change", () => clearChat(targets));
+    s.addEventListener("change", () => clearChatOnTopicChange(targets));
   });
 }
 
@@ -242,16 +287,31 @@ export function setActiveTopicForChat(topicTitle) {
   const sel = getCurrentSelection();
   const newKey = makeContextKey(sel, topicTitle);
 
-  if (chatState.contextKey !== newKey) {
+  if (chatState.contextKey !== newKey || chatState.activeTopic !== topicTitle) {
     chatState.contextKey = newKey;
     chatState.activeTopic = topicTitle;
     chatState.activeStudent = null;
   }
 }
 
-export function clearChatOnTopicChange() {
+export function clearChatOnTopicChange(targets) {
   chatState.activeTopic = null;
   chatState.activeStudent = null;
+  chatState.contextKey = null;
+  chatState.phase = "idle";
+
+  const resolvedTargets = targets || findChatTargets();
+  if (resolvedTargets.chatBodies.length) {
+    clearChat(resolvedTargets);
+    return;
+  }
+
+  // If the page doesn't have chat panels, still cancel any in-flight typing.
+  chatState.simulationId += 1;
+  if (chatState.typingTimer) clearInterval(chatState.typingTimer);
+  chatState.typingTimer = null;
+  if (chatState.typingResolve) chatState.typingResolve();
+  chatState.typingResolve = null;
 }
 
 /* ===================== INIT ===================== */
