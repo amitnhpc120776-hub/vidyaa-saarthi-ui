@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Pricing & Plans – Vidyaa Saarthi</title>
+    <title>Pricing &amp; Plans &ndash; Vidyaa Saarthi</title>
 
     <!-- BOOTSTRAP 5.3.8 CSS -->
     <link
@@ -17,7 +17,7 @@
 
     <style>
       /* ======================================================
-         PRICING PAGE – ENHANCED VISIBILITY + MOTION
+         PRICING PAGE &ndash; ENHANCED VISIBILITY + MOTION
       ====================================================== */
 
       /* Reduced motion support */
@@ -65,10 +65,16 @@
 
       /* ------------------ Reveal Helpers ------------------ */
       .reveal {
-        opacity: 0;
-        animation: fadeUp 0.9s ease forwards;
-        animation-fill-mode: both;
+        opacity: 1;
         will-change: opacity, transform;
+      }
+
+      @media (prefers-reduced-motion: no-preference) {
+        .reveal {
+          opacity: 0;
+          animation: fadeUp 0.9s ease forwards;
+          animation-fill-mode: both;
+        }
       }
 
       .reveal-delay-1 {
@@ -244,7 +250,8 @@
         <p class="lead reveal reveal-delay-1">
           At Vidyaa Saarthi, parents should never have to guess what they are
           paying for. We follow a clear monthly subscription model with one
-          price per class band—no hidden conditions, no subject-wise charges.
+          price per class band&mdash;no hidden conditions, no subject-wise
+          charges.
         </p>
       </div>
     </section>
@@ -274,13 +281,10 @@
               <div>
                 <div class="plan-title">Upper Primary (VI - VIII)</div>
                 <div class="plan-price">
-                  <span class="rupee">₹</span>
+                  <span class="rupee">&#8377;</span>
                   <span class="price-number" data-price="300">0</span>
                   <span class="plan-subtitle"> / month</span>
                 </div>
-                <p class="plan-subtitle">
-                  Classes VI–VIII with full subject coverage.
-                </p>
               </div>
               <a href="subscription.html" class="cta-button"
                 >Go to Subscription Page</a
@@ -294,13 +298,10 @@
               <div>
                 <div class="plan-title">Secondary (IX-X)</div>
                 <div class="plan-price">
-                  <span class="rupee">₹</span>
+                  <span class="rupee">&#8377;</span>
                   <span class="price-number" data-price="400">0</span>
                   <span class="plan-subtitle"> / month</span>
                 </div>
-                <p class="plan-subtitle">
-                  Classes IX–X with guided exam readiness.
-                </p>
               </div>
               <a href="subscription.html" class="cta-button"
                 >Go to Subscription Page</a
@@ -314,13 +315,10 @@
               <div>
                 <div class="plan-title">Higher Secondary (XI-XII)</div>
                 <div class="plan-price">
-                  <span class="rupee">₹</span>
+                  <span class="rupee">&#8377;</span>
                   <span class="price-number" data-price="600">0</span>
                   <span class="plan-subtitle"> / month</span>
                 </div>
-                <p class="plan-subtitle">
-                  Classes XI-XII with deep concept support.
-                </p>
               </div>
               <a href="subscription.html" class="cta-button"
                 >Go to Subscription Page</a
@@ -328,6 +326,174 @@
             </div>
           </div>
         </div>
+      </div>
+    </section>
+
+    <!-- PRICE REASONABILITY -->
+    <section class="section-padding">
+      <div class="container">
+        <div class="row g-4 align-items-center">
+          <div class="col-lg-6">
+            <h2 class="section-heading reveal">
+              Why Parents Find This Pricing Reasonable
+            </h2>
+            <ul class="feature-grid ps-0 mt-3 reveal reveal-delay-1">
+              <li>
+                <span aria-hidden="true">&#10003;</span>
+                <span
+                  >Costs far less than private tuitions or coaching
+                  institutes</span
+                >
+              </li>
+              <li>
+                <span aria-hidden="true">&#10003;</span>
+                <span>Covers all subjects, not just one</span>
+              </li>
+              <li>
+                <span aria-hidden="true">&#10003;</span>
+                <span
+                  >Supports your child daily, not just once or twice a
+                  week</span
+                >
+              </li>
+              <li>
+                <span aria-hidden="true">&#10003;</span>
+                <span
+                  >Same pricing for schools and individual families&mdash;fair
+                  and uniform</span
+                >
+              </li>
+            </ul>
+
+            <p class="section-text mt-3 reveal reveal-delay-2">
+              You are not paying for &ldquo;hours of teaching&rdquo;&mdash;you
+              are investing in better understanding and confidence.
+            </p>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="reveal reveal-delay-1">
+              <img
+                src="../../../assets/illustration/pricing/priceReasoanability.svg"
+                alt="Illustration explaining price reasonability"
+                class="w-100"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STEADY PROGRESS -->
+    <section class="section-padding" style="background: var(--neutral-50)">
+      <div class="container">
+        <h2 class="section-heading reveal">
+          Built for Steady Progress, Not Short-Term Fixes
+        </h2>
+        <p class="section-text reveal reveal-delay-1">
+          We do not rely on flashy discounts or confusing plans. Our focus is on
+          long-term academic support, so parents can plan calmly and children
+          can learn without interruptions.
+        </p>
+        <p class="section-text reveal reveal-delay-2">
+          As your child moves to the next class band, the plan upgrades
+          smoothly&mdash;no disruption, no re-learning costs.
+        </p>
+      </div>
+    </section>
+
+    <!-- PEACE OF MIND -->
+    <section class="section-padding">
+      <div class="container">
+        <h2 class="section-heading reveal">
+          Clear Commitment. Complete Peace of Mind.
+        </h2>
+        <ul class="feature-grid ps-0 mt-3 reveal reveal-delay-1">
+          <li>
+            <span aria-hidden="true">&#10003;</span
+            ><span>Simple monthly subscription</span>
+          </li>
+          <li>
+            <span aria-hidden="true">&#10003;</span
+            ><span>Upgrade as your child progresses</span>
+          </li>
+          <li>
+            <span aria-hidden="true">&#10003;</span
+            ><span>No hidden add-ons or surprise charges</span>
+          </li>
+          <li>
+            <span aria-hidden="true">&#10003;</span>
+            <span
+              >You stay in control&mdash;always knowing what you pay and
+              why.</span
+            >
+          </li>
+        </ul>
+        <p class="section-text mt-3 reveal reveal-delay-2">
+          Prices are exclusive of applicable GST.
+        </p>
+      </div>
+    </section>
+
+    <!-- COMPARISON -->
+    <section class="section-padding" style="background: var(--neutral-50)">
+      <div class="container">
+        <h2 class="section-heading reveal">
+          Vidyaa Saarthi vs Traditional Tuition / Coaching
+        </h2>
+
+        <div class="comparison-table reveal reveal-delay-1">
+          <div class="table-responsive">
+            <table class="table mb-0 align-middle">
+              <thead class="table-light">
+                <tr>
+                  <th scope="col">Aspect</th>
+                  <th scope="col">Vidyaa Saarthi</th>
+                  <th scope="col">Tuition / Coaching</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Subjects covered</th>
+                  <td>All subjects in one plan</td>
+                  <td>Usually one subject per fee</td>
+                </tr>
+                <tr>
+                  <th scope="row">Monthly cost</th>
+                  <td>&#8377;300&ndash;&#8377;600</td>
+                  <td>&#8377;2,000&ndash;&#8377;6,000+</td>
+                </tr>
+                <tr>
+                  <th scope="row">Learning support</th>
+                  <td>Continuous, everyday</td>
+                  <td>Limited weekly classes</td>
+                </tr>
+                <tr>
+                  <th scope="row">Personalization</th>
+                  <td>Adjusts to child&rsquo;s learning needs</td>
+                  <td>Same pace for all students</td>
+                </tr>
+                <tr>
+                  <th scope="row">Convenience</th>
+                  <td>Learn at home, anytime</td>
+                  <td>Fixed timings, travel required</td>
+                </tr>
+                <tr>
+                  <th scope="row">Transparency</th>
+                  <td>Clear, upfront pricing</td>
+                  <td>Varies by teacher/institute</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <p class="section-text mt-4 reveal reveal-delay-2">
+          <strong>In short:</strong><br />
+          Tuition focuses on teaching more.<br />
+          Vidyaa Saarthi focuses on helping your child understand better.
+        </p>
       </div>
     </section>
 
