@@ -1,461 +1,359 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pricing & Plans – Vidyaa Saarthi</title>
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Pricing & Plans – Vidyaa Saarthi</title>
+    <!-- BOOTSTRAP 5.3.8 CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
 
-  <!-- BOOTSTRAP 5.3.8 CSS (CDN) -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
+    <!-- VS DESIGN SYSTEM -->
+    <link rel="stylesheet" href="../../css/VS-Design-System.css" />
+    <link rel="stylesheet" href="../../css/custom-component.css" />
 
-  <!-- VS DESIGN SYSTEM FILES -->
-  <link rel="stylesheet" href="../../css/VS-Design-System.css" />
-  <link rel="stylesheet" href="../../css/custom-component.css" />
+    <style>
+      /* ======================================================
+         PRICING PAGE – ENHANCED VISIBILITY + MOTION
+      ====================================================== */
 
-  <style>
-    /* ================================================
-       PRICING PAGE – CUSTOM STYLES
-       All colors, typography from VS-Design-System
-    ================================================ */
-
-    .pricing-hero {
-      padding: 6rem 1rem;
-      text-align: center;
-      background: linear-gradient(135deg, rgba(var(--primary-600-rgb), 0.08), rgba(var(--secondary-600-rgb), 0.08));
-      position: relative;
-      overflow: hidden;
-      border-bottom: 1px solid var(--border-neutral-subtle);
-    }
-
-    .pricing-hero::before,
-    .pricing-hero::after {
-      content: "";
-      position: absolute;
-      border-radius: 999px;
-      pointer-events: none;
-    }
-
-    .pricing-hero::before {
-      width: 420px;
-      height: 420px;
-      top: -180px;
-      right: -120px;
-      background: radial-gradient(circle, rgba(var(--primary-600-rgb), 0.18), transparent 65%);
-    }
-
-    .pricing-hero::after {
-      width: 360px;
-      height: 360px;
-      bottom: -150px;
-      left: -120px;
-      background: radial-gradient(circle, rgba(var(--secondary-600-rgb), 0.14), transparent 65%);
-    }
-
-    .pricing-hero h1 {
-      font-size: 3rem;
-      font-weight: 800;
-      color: var(--neutral-900);
-      margin-bottom: 1rem;
-      letter-spacing: -1px;
-    }
-
-    .pricing-hero .lead {
-      max-width: 760px;
-      margin: 0 auto;
-      font-size: 1.15rem;
-      color: var(--neutral-700);
-      line-height: 1.7;
-    }
-
-    .section-padding {
-      padding: 4.5rem 1rem;
-    }
-
-    .section-heading {
-      font-size: 2rem;
-      font-weight: 700;
-      color: var(--neutral-900);
-      letter-spacing: -0.5px;
-      margin-bottom: 1.5rem;
-    }
-
-    .section-text {
-      color: var(--neutral-700);
-      font-size: 1rem;
-      line-height: 1.8;
-    }
-
-    .highlight-card {
-      padding: 2rem;
-      border-radius: 1.25rem;
-      background: var(--neutral-0);
-      border: 1px solid var(--border-neutral-subtle);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
-    }
-
-    .illustration-placeholder {
-      border-radius: 1.5rem;
-      border: 1px dashed var(--primary-300);
-      background: linear-gradient(135deg, rgba(var(--primary-600-rgb), 0.08), rgba(var(--secondary-600-rgb), 0.08));
-      min-height: 240px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--neutral-600);
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      font-size: 0.85rem;
-    }
-
-    .pricing-card {
-      border-radius: 1.5rem;
-      border: 1px solid var(--border-neutral-subtle);
-      background: var(--neutral-0);
-      padding: 2.5rem 2rem;
-      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.08);
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      gap: 1.25rem;
-      transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
-    }
-
-    .pricing-card:hover {
-      transform: translateY(-8px);
-      border-color: var(--primary-600);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
-    }
-
-    .pricing-card .plan-title {
-      font-size: 1.35rem;
-      font-weight: 700;
-      color: var(--neutral-900);
-    }
-
-    .pricing-card .plan-price {
-      font-size: 2.75rem;
-      font-weight: 800;
-      color: var(--primary-700);
-      letter-spacing: -1px;
-    }
-
-    .pricing-card .plan-subtitle {
-      color: var(--neutral-600);
-      font-size: 0.95rem;
-    }
-
-    .pricing-card .cta-button {
-      margin-top: auto;
-      padding: 0.85rem 1.5rem;
-      border-radius: 0.85rem;
-      background: linear-gradient(135deg, var(--primary-600), var(--primary-700));
-      color: var(--neutral-0);
-      text-decoration: none;
-      font-weight: 600;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .pricing-card .cta-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
-      color: var(--neutral-0);
-    }
-
-    .pill-list {
-      display: grid;
-      gap: 0.75rem;
-    }
-
-    .pill-list li {
-      list-style: none;
-      padding: 0.6rem 0.9rem;
-      border-radius: 999px;
-      background: rgba(var(--primary-600-rgb), 0.08);
-      color: var(--neutral-700);
-      font-weight: 500;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .feature-grid {
-      display: grid;
-      gap: 1rem;
-    }
-
-    .feature-grid li {
-      list-style: none;
-      display: flex;
-      gap: 0.75rem;
-      color: var(--neutral-700);
-      align-items: flex-start;
-    }
-
-    .feature-grid li span {
-      color: var(--primary-600);
-      font-weight: 700;
-    }
-
-    .comparison-table {
-      border-radius: 1.5rem;
-      overflow: hidden;
-      border: 1px solid var(--border-neutral-subtle);
-      background: var(--neutral-0);
-    }
-
-    .comparison-table thead {
-      background: rgba(var(--primary-600-rgb), 0.08);
-    }
-
-    .comparison-table th,
-    .comparison-table td {
-      padding: 1rem 1.25rem;
-      vertical-align: middle;
-      color: var(--neutral-700);
-    }
-
-    .comparison-table th {
-      color: var(--neutral-900);
-      font-weight: 700;
-      font-size: 0.95rem;
-    }
-
-    .note-text {
-      font-size: 0.9rem;
-      color: var(--neutral-600);
-    }
-
-    @media (max-width: 992px) {
-      .pricing-hero h1 {
-        font-size: 2.4rem;
+      /* Reduced motion support */
+      @media (prefers-reduced-motion: reduce) {
+        * {
+          animation: none !important;
+          transition: none !important;
+        }
       }
 
-      .section-padding {
-        padding: 3.5rem 1rem;
+      /* ------------------ Animations ------------------ */
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(24px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
-    }
 
-    @media (max-width: 768px) {
+      @keyframes floatSoft {
+        0% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-8px);
+        }
+        100% {
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes rupeeSlide {
+        from {
+          opacity: 0;
+          transform: translateX(-8px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      /* ------------------ Reveal Helpers ------------------ */
+      .reveal {
+        opacity: 0;
+        animation: fadeUp 0.9s ease forwards;
+        animation-fill-mode: both;
+        will-change: opacity, transform;
+      }
+
+      .reveal-delay-1 {
+        animation-delay: 0.15s;
+      }
+      .reveal-delay-2 {
+        animation-delay: 0.3s;
+      }
+      .reveal-delay-3 {
+        animation-delay: 0.45s;
+      }
+
+      /* ------------------ Hero ------------------ */
       .pricing-hero {
-        padding: 4rem 1rem;
+        padding: 6rem 1rem;
+        text-align: center;
+        background: linear-gradient(
+          135deg,
+          rgba(var(--primary-600-rgb), 0.08),
+          rgba(var(--secondary-600-rgb), 0.08)
+        );
+        border-bottom: 1px solid var(--border-neutral-subtle);
       }
 
       .pricing-hero h1 {
-        font-size: 2rem;
+        font-size: 3rem;
+        font-weight: 800;
+        color: var(--neutral-900);
+      }
+
+      .pricing-hero .lead {
+        max-width: 760px;
+        margin: 0 auto;
+        font-size: 1.15rem;
+        color: var(--neutral-700);
+        line-height: 1.7;
+      }
+
+      /* ------------------ Sections ------------------ */
+      .section-padding {
+        padding: 4.5rem 1rem;
+      }
+
+      .section-padding + .section-padding {
+        border-top: 1px solid var(--border-neutral-light);
       }
 
       .section-heading {
-        font-size: 1.6rem;
+        font-size: 2rem;
+        font-weight: 700;
+        color: var(--neutral-900);
+        margin-bottom: 1.5rem;
       }
-    }
-  </style>
 
-  <!--END OF HEAD-->
-</head>
+      .section-text {
+        color: var(--neutral-700);
+        line-height: 1.8;
+      }
 
-<body>
-  <!-- ================= NAVBAR ================= -->
-  <div id="vs-navbar"></div>
+      /* ------------------ Illustrations ------------------ */
+      img[src*="illustration"] {
+        border-radius: 1.5rem;
+        animation: floatSoft 6s ease-in-out infinite;
+        transition: transform 0.4s ease;
+      }
 
-  <!-- ================= PRICING HERO ================= -->
-  <section class="pricing-hero">
-    <div class="container position-relative">
-      <h1>Simple, Transparent Pricing Parents Can Trust</h1>
-      <p class="lead">At Vidyaa Saarthi, parents should never have to guess what they are paying for. We follow a clear monthly subscription model with one price per class band—no hidden conditions, no subject-wise charges.</p>
-    </div>
-  </section>
+      img[src*="illustration"]:hover {
+        animation-play-state: paused;
+        transform: scale(1.02);
+      }
 
-  <!-- ================= SUBSCRIPTION OVERVIEW ================= -->
-  <section class="section-padding">
-    <div class="container">
-      <div class="row align-items-center g-5">
-        <div class="col-lg-6">
-          <h2 class="section-heading">One Subscription. Every Subject Covered.</h2>
-          <p class="section-text">Your child gets structured, guided learning support that complements school teaching—without the stress of managing multiple tuitions.</p>
-          <ul class="pill-list mt-4 ps-0">
-            <li>📘 Mathematics</li>
-            <li>🔬 Science</li>
-            <li>🌍 Social Science</li>
-            <li>🗣️ Language subjects (as applicable)</li>
-          </ul>
-          <p class="section-text mt-4">There is no extra fee per subject, no cap on usage, and no need to enroll separately for different topics. Parents don’t need to keep track of multiple fees—everything is included.</p>
-        </div>
-        <div class="col-lg-6">
-          <div class="illustration-placeholder">Illustration Placeholder</div>
-        </div>
+      /* ------------------ Pricing Cards ------------------ */
+      .pricing-card {
+        border-radius: 1.5rem;
+        border: 1px solid var(--border-neutral-subtle);
+        background: var(--neutral-0);
+        padding: 2.5rem 2rem;
+        box-shadow: 0 14px 30px rgba(0, 0, 0, 0.08);
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+        position: relative;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .pricing-card::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 4px;
+        width: 100%;
+        background: linear-gradient(
+          90deg,
+          var(--primary-500),
+          var(--secondary-500)
+        );
+        border-radius: 1.5rem 1.5rem 0 0;
+      }
+
+      .pricing-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+      }
+
+      .plan-title {
+        font-size: 1.35rem;
+        font-weight: 700;
+      }
+
+      .plan-price {
+        font-size: 2.75rem;
+        font-weight: 800;
+        color: var(--primary-700);
+        display: flex;
+        align-items: baseline;
+        gap: 0.25rem;
+      }
+
+      .rupee {
+        animation: rupeeSlide 0.6s ease forwards;
+      }
+
+      .price-number {
+        font-variant-numeric: tabular-nums;
+      }
+
+      .plan-subtitle {
+        color: var(--neutral-600);
+        font-size: 0.95rem;
+      }
+
+      .cta-button {
+        margin-top: auto;
+        padding: 0.85rem 1.5rem;
+        border-radius: 0.85rem;
+        background: linear-gradient(
+          135deg,
+          var(--primary-600),
+          var(--primary-700)
+        );
+        color: var(--neutral-0);
+        font-weight: 600;
+        text-decoration: none;
+        text-align: center;
+      }
+
+      /* ------------------ Lists & Tables ------------------ */
+      .feature-grid li {
+        list-style: none;
+        display: flex;
+        gap: 0.75rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .comparison-table {
+        border-radius: 1.5rem;
+        overflow: hidden;
+        border: 1px solid var(--border-neutral-subtle);
+        background: var(--neutral-0);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="vs-navbar"></div>
+
+    <!-- HERO -->
+    <section class="pricing-hero">
+      <div class="container">
+        <h1 class="reveal">Simple, Transparent Pricing Parents Can Trust</h1>
+        <p class="lead reveal reveal-delay-1">
+          At Vidyaa Saarthi, parents should never have to guess what they are
+          paying for. We follow a clear monthly subscription model with one
+          price per class band—no hidden conditions, no subject-wise charges.
+        </p>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ================= PRICING CARDS ================= -->
-  <section class="section-padding" style="background: var(--neutral-50);">
-    <div class="container">
-      <div class="row align-items-end mb-4">
-        <div class="col-lg-7">
-          <h2 class="section-heading">Affordable Learning, Month After Month</h2>
-          <p class="section-text">Our pricing is designed to remain within the reach of Indian families, while delivering consistent academic support throughout the year. That is less than the cost of a single tuition class, spread across an entire month of learning support.</p>
-        </div>
-        <div class="col-lg-5 text-lg-end">
-          <span class="note-text">Prices are exclusive of applicable GST.</span>
-        </div>
+    <!-- HERO ILLUSTRATION -->
+    <section class="section-padding">
+      <div class="container reveal">
+        <img
+          src="../../../assets/illustration/pricing/pricingHeroSection.svg"
+          alt="Students learning happily"
+          class="w-100"
+        />
       </div>
-      <div class="row g-4">
-        <div class="col-lg-4">
-          <div class="pricing-card">
-            <div>
-              <div class="plan-title">Upper Primary</div>
-              <div class="plan-price">₹300<span class="plan-subtitle"> / month</span></div>
-              <p class="plan-subtitle">Classes 6–8 with full subject coverage.</p>
+    </section>
+
+    <!-- PRICING -->
+    <section class="section-padding" style="background: var(--neutral-50)">
+      <div class="container">
+        <h2 class="section-heading reveal">
+          Affordable Learning, Month After Month
+        </h2>
+
+        <div class="row g-4">
+          <!-- CARD 1 -->
+          <div class="col-lg-4">
+            <div class="pricing-card reveal reveal-delay-1">
+              <div>
+                <div class="plan-title">Upper Primary (VI - VIII)</div>
+                <div class="plan-price">
+                  <span class="rupee">₹</span>
+                  <span class="price-number" data-price="300">0</span>
+                  <span class="plan-subtitle"> / month</span>
+                </div>
+                <p class="plan-subtitle">
+                  Classes VI–VIII with full subject coverage.
+                </p>
+              </div>
+              <a href="subscription.html" class="cta-button"
+                >Go to Subscription Page</a
+              >
             </div>
-            <a href="subscription.html" class="cta-button">Go to Subscription Page</a>
           </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="pricing-card">
-            <div>
-              <div class="plan-title">Secondary</div>
-              <div class="plan-price">₹400<span class="plan-subtitle"> / month</span></div>
-              <p class="plan-subtitle">Classes 9–10 with guided exam readiness.</p>
+
+          <!-- CARD 2 -->
+          <div class="col-lg-4">
+            <div class="pricing-card reveal reveal-delay-2">
+              <div>
+                <div class="plan-title">Secondary (IX-X)</div>
+                <div class="plan-price">
+                  <span class="rupee">₹</span>
+                  <span class="price-number" data-price="400">0</span>
+                  <span class="plan-subtitle"> / month</span>
+                </div>
+                <p class="plan-subtitle">
+                  Classes IX–X with guided exam readiness.
+                </p>
+              </div>
+              <a href="subscription.html" class="cta-button"
+                >Go to Subscription Page</a
+              >
             </div>
-            <a href="subscription.html" class="cta-button">Go to Subscription Page</a>
           </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="pricing-card">
-            <div>
-              <div class="plan-title">Higher Secondary</div>
-              <div class="plan-price">₹600<span class="plan-subtitle"> / month</span></div>
-              <p class="plan-subtitle">Classes 11–12 with deep concept support.</p>
+
+          <!-- CARD 3 -->
+          <div class="col-lg-4">
+            <div class="pricing-card reveal reveal-delay-3">
+              <div>
+                <div class="plan-title">Higher Secondary (XI-XII)</div>
+                <div class="plan-price">
+                  <span class="rupee">₹</span>
+                  <span class="price-number" data-price="600">0</span>
+                  <span class="plan-subtitle"> / month</span>
+                </div>
+                <p class="plan-subtitle">
+                  Classes XI-XII with deep concept support.
+                </p>
+              </div>
+              <a href="subscription.html" class="cta-button"
+                >Go to Subscription Page</a
+              >
             </div>
-            <a href="subscription.html" class="cta-button">Go to Subscription Page</a>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- ================= VALUE REASONS ================= -->
-  <section class="section-padding">
-    <div class="container">
-      <div class="row align-items-center g-5">
-        <div class="col-lg-6 order-lg-2">
-          <h2 class="section-heading">Why Parents Find This Pricing Reasonable</h2>
-          <ul class="feature-grid ps-0">
-            <li><span>✓</span> Costs far less than private tuitions or coaching institutes</li>
-            <li><span>✓</span> Covers all subjects, not just one</li>
-            <li><span>✓</span> Supports your child daily, not just once or twice a week</li>
-            <li><span>✓</span> Same pricing for schools and individual families—fair and uniform</li>
-            <li><span>✓</span> You are investing in better understanding and confidence</li>
-          </ul>
-        </div>
-        <div class="col-lg-6 order-lg-1">
-          <div class="illustration-placeholder">Illustration Placeholder</div>
-        </div>
-      </div>
-    </div>
-  </section>
+    <div id="vs-footer"></div>
 
-  <!-- ================= STEADY PROGRESS ================= -->
-  <section class="section-padding" style="background: var(--neutral-50);">
-    <div class="container">
-      <div class="row g-4">
-        <div class="col-lg-6">
-          <div class="highlight-card h-100">
-            <h2 class="section-heading">Built for Steady Progress, Not Short-Term Fixes</h2>
-            <p class="section-text">We do not rely on flashy discounts or confusing plans. Our focus is on long-term academic support, so parents can plan calmly and children can learn without interruptions.</p>
-            <p class="section-text">As your child moves to the next class band, the plan upgrades smoothly—no disruption, no re-learning costs.</p>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <div class="highlight-card h-100">
-            <h2 class="section-heading">Clear Commitment. Complete Peace of Mind.</h2>
-            <ul class="feature-grid ps-0 mb-0">
-              <li><span>✓</span> Simple monthly subscription</li>
-              <li><span>✓</span> Upgrade as your child progresses</li>
-              <li><span>✓</span> No hidden add-ons or surprise charges</li>
-              <li><span>✓</span> You stay in control—always knowing what you pay and why</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+    <!-- PRICE COUNT-UP SCRIPT -->
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        document.querySelectorAll(".price-number").forEach((el) => {
+          const target = +el.dataset.price;
+          let current = 0;
+          const step = Math.ceil(target / 40);
 
-  <!-- ================= COMPARISON TABLE ================= -->
-  <section class="section-padding">
-    <div class="container">
-      <h2 class="section-heading">Vidyaa Saarthi vs Traditional Tuition / Coaching</h2>
-      <div class="table-responsive comparison-table mt-4">
-        <table class="table mb-0">
-          <thead>
-            <tr>
-              <th>Aspect</th>
-              <th>Vidyaa Saarthi</th>
-              <th>Tuition / Coaching</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Subjects covered</td>
-              <td>All subjects in one plan</td>
-              <td>Usually one subject per fee</td>
-            </tr>
-            <tr>
-              <td>Monthly cost</td>
-              <td>₹300–₹600</td>
-              <td>₹2,000–₹6,000+</td>
-            </tr>
-            <tr>
-              <td>Learning support</td>
-              <td>Continuous, everyday</td>
-              <td>Limited weekly classes</td>
-            </tr>
-            <tr>
-              <td>Personalization</td>
-              <td>Adjusts to child’s learning needs</td>
-              <td>Same pace for all students</td>
-            </tr>
-            <tr>
-              <td>Convenience</td>
-              <td>Learn at home, anytime</td>
-              <td>Fixed timings, travel required</td>
-            </tr>
-            <tr>
-              <td>Transparency</td>
-              <td>Clear, upfront pricing</td>
-              <td>Varies by teacher/institute</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <div class="mt-4">
-        <p class="section-text">In short: Tuition focuses on teaching more. Vidyaa Saarthi focuses on helping your child understand better.</p>
-      </div>
-    </div>
-  </section>
+          const counter = setInterval(() => {
+            current += step;
+            if (current >= target) {
+              el.textContent = target;
+              clearInterval(counter);
+            } else {
+              el.textContent = current;
+            }
+          }, 20);
+        });
+      });
+    </script>
 
-  <!-- ================= FOOTER ================= -->
-  <div id="vs-footer"></div>
-
-  <!-- BOOTSTRAP JS (CDN) -->
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
-    integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
-    crossorigin="anonymous"></script>
-
-  <!-- INCLUDE NAVBAR & FOOTER -->
-  <script src="../../component-js/include-components.js"></script>
-
-  <!--END OF BODY-->
-</body>
-
+    <script src="../../component-js/include-components.js"></script>
+  </body>
 </html>
