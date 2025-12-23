@@ -59,6 +59,14 @@ const chatState = {
   feedbackChoice: null, // one of FEEDBACK_OPTIONS ids
 };
 
+function emitHowItWorksChatPhase() {
+  document.dispatchEvent(
+    new CustomEvent("vsHowItWorksChatPhase", {
+      detail: { phase: chatState.phase },
+    })
+  );
+}
+
 /* ===================== DOM DISCOVERY ===================== */
 
 function findChatTargets() {
@@ -112,6 +120,7 @@ function clearChat(targets) {
   chatState.activeStudent = null;
   chatState.feedbackStatus = "idle";
   chatState.feedbackChoice = null;
+  emitHowItWorksChatPhase();
 
   targets.chatBodies.forEach((b) => (b.innerHTML = ""));
   targets.inputFields.forEach((i) => (i.value = ""));
@@ -147,6 +156,43 @@ function appendBubble(body, text, role = "student") {
     row.appendChild(avatar);
   }
 
+  body.appendChild(row);
+}
+
+function escapeHTML(text) {
+  return String(text)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+function getFirstNWords(text, n) {
+  const words = String(text || "")
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean);
+  return words.slice(0, n).join(" ");
+}
+
+function appendExplainSelectionBubble(body, selectedText) {
+  const preview = getFirstNWords(selectedText, 10) || "this text";
+  const safePreview = escapeHTML(preview);
+
+  const row = document.createElement("div");
+  row.className = "chat-row chat-row--student";
+
+  const avatar = document.createElement("div");
+  avatar.className = "chat-avatar";
+  avatar.textContent = "S";
+
+  const bubble = document.createElement("div");
+  bubble.className = "chat-bubble chat-bubble--student";
+  bubble.innerHTML = `Explain: <span class="text-primary fw-semibold">${safePreview}</span> : to me`;
+
+  row.appendChild(avatar);
+  row.appendChild(bubble);
   body.appendChild(row);
 }
 
@@ -260,6 +306,7 @@ async function runSimulation(targets, studentKey) {
   const simulationId = (chatState.simulationId += 1);
   chatState.activeStudent = studentKey;
   chatState.phase = "typing";
+  emitHowItWorksChatPhase();
 
   /* Step A - Typing */
   let idx = 0;
@@ -322,6 +369,7 @@ async function runSimulation(targets, studentKey) {
       appendAIBubble(chatBody, "Explanation unavailable for this selection.");
     });
     chatState.phase = "done";
+    emitHowItWorksChatPhase();
     if (simulationId !== chatState.simulationId) return;
     showFeedbackUI(targets);
     return;
@@ -335,6 +383,7 @@ async function runSimulation(targets, studentKey) {
   });
 
   chatState.phase = "done";
+  emitHowItWorksChatPhase();
   if (simulationId !== chatState.simulationId) return;
   showFeedbackUI(targets);
 }
@@ -374,6 +423,7 @@ export function clearChatOnTopicChange(targets) {
   chatState.activeStudent = null;
   chatState.contextKey = null;
   chatState.phase = "idle";
+  emitHowItWorksChatPhase();
 
   const resolvedTargets = targets || findChatTargets();
   if (resolvedTargets.chatBodies.length) {
@@ -399,11 +449,12 @@ export function initChatSimulationController() {
   bindStudentButtons(targets);
   bindResets(targets);
   // Listen for text-selection "Explain This" requests and render a fixed chat
-  document.addEventListener("explainText", () => {
-    clearChat(targets);
+  document.addEventListener("explainText", (event) => {
+    if (chatState.phase !== "done") return;
+    const selectedText = event?.detail?.text || "";
     targets.chatBodies.forEach((chatBody) => {
-      appendBubble(chatBody, "Explain the selected text to me", "student");
-      appendAIBubble(chatBody, "Our AI will explain this further");
+      appendExplainSelectionBubble(chatBody, selectedText);
+      appendAIBubble(chatBody, "Our AI will explain the selected text");
     });
   });
 }

@@ -10,6 +10,7 @@
     let toolbar = null;
     let selectedText = '';
     let selectionTimeout = null;
+    let isChatDone = false;
 
     /**
      * Initialize the text selection toolbar
@@ -23,6 +24,16 @@
         document.addEventListener('touchend', handleTextSelection);
         document.addEventListener('keydown', handleKeyDown);
         document.addEventListener('mousedown', handleClickOutside);
+        document.addEventListener('vsHowItWorksChatPhase', handleChatPhaseChange);
+    }
+
+    function handleChatPhaseChange(event) {
+        const phase = event?.detail?.phase;
+        isChatDone = phase === 'done';
+
+        if (!isChatDone) {
+            hideToolbar();
+        }
     }
 
     /**
@@ -58,8 +69,8 @@
             const selection = window.getSelection();
             const text = selection.toString().trim();
 
-            // Only show toolbar if text is selected and within learning content area
-            if (text.length > 0 && isWithinLearningContent(selection)) {
+            // Only show toolbar if chat has completed AND selection is within Topic Description area
+            if (isChatDone && text.length > 0 && isWithinTopicDescription(selection)) {
                 selectedText = text;
                 showToolbar(selection);
             } else {
@@ -69,19 +80,21 @@
     }
 
     /**
-     * Check if selection is within learning content area
+     * Check if selection is within "Topic Description" panel only (How It Works page)
      */
-    function isWithinLearningContent(selection) {
+    function isWithinTopicDescription(selection) {
         if (!selection.rangeCount) return false;
 
         const range = selection.getRangeAt(0);
         const container = range.commonAncestorContainer;
         const element = container.nodeType === 3 ? container.parentElement : container;
 
-        // Check if selection is within topic content or description areas
-        return element.closest('#topicContentDesktop') ||
-            element.closest('.vs-panel-body') ||
-            element.closest('[data-selectable="true"]');
+        const panel = element?.closest?.('.vs-panel');
+        if (!panel) return false;
+
+        const header = panel.querySelector('.vs-panel-header');
+        const headerText = header?.textContent?.trim()?.toLowerCase();
+        return headerText === 'topic description';
     }
 
     /**
