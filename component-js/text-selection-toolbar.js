@@ -69,8 +69,8 @@
             const selection = window.getSelection();
             const text = selection.toString().trim();
 
-            // Only show toolbar if chat has completed AND selection is within Topic Description area
-            if (isChatDone && text.length > 0 && isWithinTopicDescription(selection)) {
+            // Only show toolbar if chat has completed AND selection is within allowed panels
+            if (isChatDone && text.length > 0 && isWithinExplainableArea(selection)) {
                 selectedText = text;
                 showToolbar(selection);
             } else {
@@ -80,9 +80,12 @@
     }
 
     /**
-     * Check if selection is within "Topic Description" panel only (How It Works page)
+     * Check if selection is within allowed "Explain This" panels (How It Works page):
+     * - Topic Description
+     * - Ask Vidyaa Saarthi (desktop chat)
+     * - Ask Us (mobile chat tab)
      */
-    function isWithinTopicDescription(selection) {
+    function isWithinExplainableArea(selection) {
         if (!selection.rangeCount) return false;
 
         const range = selection.getRangeAt(0);
@@ -94,7 +97,14 @@
 
         const header = panel.querySelector('.vs-panel-header');
         const headerText = header?.textContent?.trim()?.toLowerCase();
-        return headerText === 'topic description';
+
+        // Only allow selection inside the panel body (avoid header selections)
+        const inPanelBody = Boolean(element?.closest?.('.vs-panel-body'));
+        if (!inPanelBody) return false;
+
+        return headerText === 'topic description' ||
+            headerText?.includes('ask vidyaa saarthi') ||
+            headerText?.includes('ask us');
     }
 
     /**

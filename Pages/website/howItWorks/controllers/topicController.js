@@ -111,6 +111,18 @@ function renderMuted(el, text) {
   el.innerHTML = `<p class="small text-muted mb-0">${text}</p>`;
 }
 
+function typesetMathIn(element) {
+  const mj = globalThis.MathJax;
+  if (!mj || typeof mj.typesetPromise !== "function") return;
+
+  try {
+    if (typeof mj.typesetClear === "function") mj.typesetClear([element]);
+    mj.typesetPromise([element]).catch(() => {});
+  } catch {
+    // no-op
+  }
+}
+
 /* Finds chapter key in a case-insensitive way (handles ATOMS vs Atoms etc.) */
 function findChapterBlocks(topicsMap, chapterName) {
   if (!topicsMap || !chapterName) return null;
@@ -205,6 +217,7 @@ function renderTopicDescription(activeTopic, targets) {
 
     if (!activeTopic) {
       renderMuted(body, "Select a topic to view its description");
+      typesetMathIn(body);
       return;
     }
 
@@ -307,6 +320,8 @@ function renderTopicDescription(activeTopic, targets) {
         return;
       }
     });
+
+    typesetMathIn(body);
   });
 }
 

@@ -16,6 +16,28 @@
     <link rel="stylesheet" href="../../../../css/VS-Design-System.css" />
     <link rel="stylesheet" href="../../../../css/custom-component.css" />
 
+    <!-- ================= MATH RENDERING (How It Works demo) ================= -->
+    <script>
+      window.MathJax = {
+        tex: {
+          inlineMath: [
+            ["$", "$"],
+            ["\\(", "\\)"],
+          ],
+          displayMath: [
+            ["$$", "$$"],
+            ["\\[", "\\]"],
+          ],
+          packages: { "[+]": ["mhchem"] },
+        },
+        loader: { load: ["[tex]/mhchem"] },
+      };
+    </script>
+    <script
+      defer
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+
     <!-- ================= PAGE-SPECIFIC LAYOUT STYLES ================= -->
     <!-- Structural helpers only (no behavior, no JS dependency) -->
     <style>

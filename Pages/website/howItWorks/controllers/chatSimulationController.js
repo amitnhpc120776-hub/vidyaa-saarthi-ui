@@ -204,6 +204,79 @@ function appendSpinner(body) {
   return spinner;
 }
 
+async function typesetMathIn(elements) {
+  const mj = globalThis.MathJax;
+  if (!mj || typeof mj.typesetPromise !== "function") return;
+
+  const els = Array.isArray(elements) ? elements.filter(Boolean) : [elements];
+  if (!els.length) return;
+
+  try {
+    if (typeof mj.typesetClear === "function") mj.typesetClear(els);
+    await mj.typesetPromise(els);
+  } catch {
+    // no-op: math rendering should never break the demo
+  }
+}
+
+function appendAITable(chatBody, tableSpec) {
+  const row = document.createElement("div");
+  row.className = "chat-row chat-row--ai";
+
+  const avatar = document.createElement("div");
+  avatar.className = "chat-avatar";
+  avatar.textContent = "AI";
+
+  const bubble = document.createElement("div");
+  bubble.className = "chat-bubble chat-bubble--ai";
+
+  if (tableSpec?.title) {
+    const title = document.createElement("div");
+    title.className = "fw-semibold mb-2";
+    title.textContent = tableSpec.title;
+    bubble.appendChild(title);
+  }
+
+  const tableWrap = document.createElement("div");
+  tableWrap.className = "table-responsive";
+
+  const table = document.createElement("table");
+  table.className = "table table-sm table-bordered align-middle mb-0";
+
+  if (Array.isArray(tableSpec?.headers)) {
+    const thead = document.createElement("thead");
+    const tr = document.createElement("tr");
+    tableSpec.headers.forEach((hText) => {
+      const th = document.createElement("th");
+      th.textContent = hText;
+      tr.appendChild(th);
+    });
+    thead.appendChild(tr);
+    table.appendChild(thead);
+  }
+
+  if (Array.isArray(tableSpec?.rows)) {
+    const tbody = document.createElement("tbody");
+    tableSpec.rows.forEach((r) => {
+      const tr = document.createElement("tr");
+      (r || []).forEach((cell) => {
+        const td = document.createElement("td");
+        td.textContent = cell;
+        tr.appendChild(td);
+      });
+      tbody.appendChild(tr);
+    });
+    table.appendChild(tbody);
+  }
+
+  tableWrap.appendChild(table);
+  bubble.appendChild(tableWrap);
+
+  row.appendChild(bubble);
+  row.appendChild(avatar);
+  chatBody.appendChild(row);
+}
+
 /* ===================== EXPLANATION LOADER ===================== */
 
 async function loadExplanation(sel, topic, studentKey) {
@@ -381,6 +454,33 @@ async function runSimulation(targets, studentKey) {
       appendAIBubble(chatBody, explanationText);
     });
   });
+
+  const rich = explanation?.rich_content;
+  if (rich) {
+    const equations = Array.isArray(rich.equations) ? rich.equations : [];
+    const tables = Array.isArray(rich.tables) ? rich.tables : [];
+
+    if (equations.length) {
+      targets.chatBodies.forEach((chatBody) => {
+        equations.forEach(({ label, latex }) => {
+          if (!latex) return;
+          const blocks = [];
+          if (label) blocks.push(`**${label}**`);
+          blocks.push(latex);
+          appendAIBubble(chatBody, blocks);
+        });
+      });
+    }
+
+    if (tables.length) {
+      targets.chatBodies.forEach((chatBody) => {
+        tables.forEach((t) => appendAITable(chatBody, t));
+      });
+    }
+  }
+
+  await typesetMathIn(targets.chatBodies);
+  if (simulationId !== chatState.simulationId) return;
 
   chatState.phase = "done";
   emitHowItWorksChatPhase();
