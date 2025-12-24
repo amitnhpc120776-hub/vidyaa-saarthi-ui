@@ -1,346 +1,392 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Refund Policy – Vidyaa sarthi</title>
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Refund Policy – Vidyaa Saarthi</title>
+    <!-- BOOTSTRAP 5.3.8 CSS (CDN) -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
 
-  <!-- BOOTSTRAP 5.3.8 CSS (CDN) -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
+    <!-- VS DESIGN SYSTEM FILES -->
+    <link rel="stylesheet" href="../../css/VS-Design-System.css" />
+    <link rel="stylesheet" href="../../css/custom-component.css" />
 
-  <!-- VS DESIGN SYSTEM FILES -->
-  <link rel="stylesheet" href="../../css/VS-Design-System.css" />
-  <link rel="stylesheet" href="../../css/custom-component.css" />
-
-  <style>
-    /* ================================================
+    <style>
+      /* ================================================
        REFUND POLICY PAGE – CUSTOM STYLES
        All colors, typography from VS-Design-System
     ================================================ */
 
-    /* Page heading */
-    .policy-hero {
-      padding: 4rem 1rem;
-      text-align: center;
-      background: linear-gradient(135deg, var(--primary-100) 0%, var(--secondary-100) 100%);
-      border-bottom: 1px solid var(--border-neutral-subtle);
-    }
-
-    .policy-hero h1 {
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: var(--neutral-900);
-      margin-bottom: 0.5rem;
-    }
-
-    .policy-hero p {
-      font-size: 1.1rem;
-      color: var(--neutral-600);
-    }
-
-    /* Policy content section */
-    .policy-content {
-      padding: 4rem 1rem;
-    }
-
-    .policy-content-wrapper {
-      max-width: 900px;
-      margin: 0 auto;
-    }
-
-    /* Policy section header */
-    .policy-section {
-      margin-bottom: 2.5rem;
-      padding-bottom: 2rem;
-      border-bottom: 1px solid var(--border-neutral-subtle);
-    }
-
-    .policy-section:last-child {
-      border-bottom: none;
-    }
-
-    .policy-section h2 {
-      font-size: 1.5rem;
-      font-weight: 700;
-      color: var(--primary-600);
-      margin-bottom: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-    }
-
-    .policy-section h3 {
-      font-size: 1.2rem;
-      font-weight: 600;
-      color: var(--neutral-900);
-      margin-top: 1.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .policy-section p {
-      color: var(--neutral-700);
-      line-height: 1.8;
-      margin-bottom: 1rem;
-      font-size: 1rem;
-    }
-
-    .policy-section ul {
-      color: var(--neutral-700);
-      line-height: 1.8;
-      margin-left: 1.5rem;
-      margin-bottom: 1rem;
-    }
-
-    .policy-section ul li {
-      margin-bottom: 0.75rem;
-    }
-
-    .policy-section strong {
-      color: var(--neutral-900);
-      font-weight: 600;
-    }
-
-    /* Introduction box */
-    .policy-intro {
-      background: var(--primary-50);
-      border-left: 4px solid var(--primary-600);
-      padding: 1.5rem;
-      border-radius: 0.5rem;
-      margin-bottom: 2rem;
-    }
-
-    .policy-intro p {
-      margin: 0;
-      color: var(--neutral-700);
-      font-size: 1rem;
-    }
-
-    /* Highlight box for important info */
-    .policy-highlight {
-      background: var(--neutral-50);
-      border: 1px solid var(--border-neutral);
-      padding: 1.25rem;
-      border-radius: 0.5rem;
-      margin: 1.5rem 0;
-    }
-
-    .policy-highlight strong {
-      color: var(--primary-600);
-    }
-
-    /* Responsive adjustments */
-    @media (max-width: 768px) {
-      .policy-hero h1 {
-        font-size: 1.75rem;
-      }
-
+      /* Page heading */
       .policy-hero {
-        padding: 3rem 1rem;
+        padding: 4rem 1rem;
+        text-align: center;
+        background: linear-gradient(
+          135deg,
+          var(--primary-100) 0%,
+          var(--secondary-100) 100%
+        );
+        border-bottom: 1px solid var(--border-neutral-subtle);
       }
 
+      .policy-hero h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--neutral-900);
+        margin-bottom: 0.5rem;
+      }
+
+      .policy-hero p {
+        font-size: 1.1rem;
+        color: var(--neutral-600);
+      }
+
+      /* Policy content section */
       .policy-content {
-        padding: 2rem 1rem;
+        padding: 4rem 1rem;
       }
 
+      .policy-content-wrapper {
+        max-width: 900px;
+        margin: 0 auto;
+      }
+
+      /* Policy section header */
       .policy-section {
-        margin-bottom: 2rem;
-        padding-bottom: 1.5rem;
+        margin-bottom: 2.5rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid var(--border-neutral-subtle);
+      }
+
+      .policy-section:last-child {
+        border-bottom: none;
       }
 
       .policy-section h2 {
-        font-size: 1.25rem;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--primary-600);
+        margin-bottom: 1rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
       }
 
       .policy-section h3 {
-        font-size: 1.1rem;
+        font-size: 1.2rem;
+        font-weight: 600;
+        color: var(--neutral-900);
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
       }
 
       .policy-section p {
-        font-size: 0.95rem;
+        color: var(--neutral-700);
+        line-height: 1.8;
+        margin-bottom: 1rem;
+        font-size: 1rem;
       }
 
+      .policy-section ul {
+        color: var(--neutral-700);
+        line-height: 1.8;
+        margin-left: 1.5rem;
+        margin-bottom: 1rem;
+      }
+
+      .policy-section ul li {
+        margin-bottom: 0.75rem;
+      }
+
+      .policy-section strong {
+        color: var(--neutral-900);
+        font-weight: 600;
+      }
+
+      /* Introduction box */
       .policy-intro {
-        padding: 1rem;
+        background: var(--primary-50);
+        border-left: 4px solid var(--primary-600);
+        padding: 1.5rem;
+        border-radius: 0.5rem;
+        margin-bottom: 2rem;
       }
-    }
-  </style>
 
-  <!--END OF HEAD-->
-</head>
+      .policy-intro p {
+        margin: 0;
+        color: var(--neutral-700);
+        font-size: 1rem;
+      }
 
-<body>
-  <!-- ================= NAVBAR ================= -->
-  <div id="vs-navbar"></div>
+      /* Highlight box for important info */
+      .policy-highlight {
+        background: var(--neutral-50);
+        border: 1px solid var(--border-neutral);
+        padding: 1.25rem;
+        border-radius: 0.5rem;
+        margin: 1.5rem 0;
+      }
 
-  <!-- ================= POLICY HERO ================= -->
-  <section class="policy-hero">
-    <div class="container">
-      <h1>Refund Policy</h1>
-      <p>Transparency and fairness in every transaction</p>
-    </div>
-  </section>
+      .policy-highlight strong {
+        color: var(--primary-600);
+      }
 
-  <!-- ================= POLICY CONTENT ================= -->
-  <section class="policy-content">
-    <div class="policy-content-wrapper">
+      /* Responsive adjustments */
+      @media (max-width: 768px) {
+        .policy-hero h1 {
+          font-size: 1.75rem;
+        }
 
-      <div class="policy-intro">
-        <p>
-          At Vidyaasaarthi, we aim to provide high-quality educational content and learning experiences. Please read this Refund Policy carefully before purchasing any course, subscription, or service on our platform.
-        </p>
+        .policy-hero {
+          padding: 3rem 1rem;
+        }
+
+        .policy-content {
+          padding: 2rem 1rem;
+        }
+
+        .policy-section {
+          margin-bottom: 2rem;
+          padding-bottom: 1.5rem;
+        }
+
+        .policy-section h2 {
+          font-size: 1.25rem;
+        }
+
+        .policy-section h3 {
+          font-size: 1.1rem;
+        }
+
+        .policy-section p {
+          font-size: 0.95rem;
+        }
+
+        .policy-intro {
+          padding: 1rem;
+        }
+      }
+    </style>
+
+    <!--END OF HEAD-->
+  </head>
+
+  <body>
+    <!-- ================= NAVBAR ================= -->
+    <div id="vs-navbar"></div>
+
+    <!-- ================= POLICY HERO ================= -->
+    <section class="policy-hero">
+      <div class="container">
+        <h1>Refund Policy</h1>
+        <p>Transparency and fairness in every transaction</p>
       </div>
+    </section>
 
-      <!-- GENERAL POLICY -->
-      <div class="policy-section">
-        <h2>General Policy</h2>
-        <p>
-          All purchases made on Vidyaasaarthi are subject to the terms outlined in this Refund Policy. By enrolling in any course or purchasing any subscription, you agree to these refund terms.
-        </p>
-      </div>
-
-      <!-- ELIGIBILITY FOR REFUNDS -->
-      <div class="policy-section">
-        <h2>Eligibility for Refunds</h2>
-        <p>
-          Refunds may be issued under the following conditions:
-        </p>
-        <ul>
-          <li>
-            <strong>Technical Issues:</strong> If a technical issue from Vidyaasaarthi's side prevents access to the purchased content and cannot be resolved within a reasonable time.
-          </li>
-          <li>
-            <strong>Misrepresentation:</strong> If the course or service purchased is significantly different from the description provided on the platform.
-          </li>
-          <li>
-            <strong>Duplicate Payments:</strong> If a duplicate payment has been made for the same course or service.
-          </li>
-        </ul>
-      </div>
-
-      <!-- NON-REFUNDABLE CASES -->
-      <div class="policy-section">
-        <h2>Non-Refundable Cases</h2>
-        <p>
-          Refunds will NOT be provided in the following cases:
-        </p>
-        <ul>
-          <li>Change of mind after purchase</li>
-          <li>Failure to complete or attend the course</li>
-          <li>Lack of satisfaction with teaching style, instructor, or course content</li>
-          <li>Partial usage of the course or subscription</li>
-          <li>Failure to use discount codes or promotional offers</li>
-          <li>Purchases made during special offers, flash sales, or discounted pricing (unless explicitly stated)</li>
-        </ul>
-      </div>
-
-      <!-- TIME LIMIT FOR REFUND REQUESTS -->
-      <div class="policy-section">
-        <h2>Time Limit for Refund Requests</h2>
-        <p>
-          Refund requests must be submitted within the following timeframes:
-        </p>
-        <div class="policy-highlight">
+    <!-- ================= POLICY CONTENT ================= -->
+    <section class="policy-content">
+      <div class="policy-content-wrapper">
+        <div class="policy-intro">
           <p>
-            <strong>Individual Courses:</strong> 7 days from the date of purchase
-          </p>
-          <p style="margin-bottom: 0;">
-            <strong>Subscription Plans:</strong> 3 days from the start date of the subscription
+            At Vidyaasarthi, we aim to provide high-quality educational content
+            and learning experiences. Please read this Refund Policy carefully
+            before purchasing any course, subscription, or service on our
+            platform.
           </p>
         </div>
-        <p>
-          Requests made after the applicable period will not be considered.
-        </p>
-      </div>
 
-      <!-- PROCESS FOR REQUESTING A REFUND -->
-      <div class="policy-section">
-        <h2>How to Request a Refund</h2>
-        <p>
-          To request a refund, follow these steps:
-        </p>
-        <h3>Step 1: Gather Your Information</h3>
-        <ul>
-          <li>Registered email address associated with your account</li>
-          <li>Order ID or payment receipt</li>
-          <li>Clear reason for the refund request</li>
-        </ul>
-        <h3>Step 2: Contact Support</h3>
-        <p>
-          Email our support team at <a href="mailto:support@vidyaasarthi.com" class="text-decoration-none" style="color: var(--primary-600);"><strong>support@vidyaasarthi.com</strong></a> with your refund request details.
-        </p>
-        <h3>Step 3: Review Process</h3>
-        <p>
-          Refund requests will be reviewed within <strong>5–7 business days</strong>. We'll notify you via email about the status of your request.
-        </p>
-      </div>
-
-      <!-- MODE OF REFUND -->
-      <div class="policy-section">
-        <h2>Mode of Refund</h2>
-        <p>
-          Approved refunds will be processed through the <strong>original payment method</strong> used during purchase. 
-        </p>
-        <div class="policy-highlight">
+        <!-- GENERAL POLICY -->
+        <div class="policy-section">
+          <h2>General Policy</h2>
           <p>
-            <strong>Processing Timeline:</strong> The time taken to receive your refund may vary depending on your payment provider or bank policies. Typically, refunds appear in your account within 5-10 business days after approval.
+            All purchases made on Vidyaasarthi are subject to the terms outlined
+            in this Refund Policy. By enrolling in any course or purchasing any
+            subscription, you agree to these refund terms.
           </p>
         </div>
-      </div>
 
-      <!-- TERMINATION OF ACCESS -->
-      <div class="policy-section">
-        <h2>Termination of Access</h2>
-        <p>
-          Once a refund is approved and processed, access to the related course, content, or subscription will be <strong>immediately revoked</strong>. You will no longer be able to access any materials or services associated with the refunded purchase.
-        </p>
-      </div>
+        <!-- ELIGIBILITY FOR REFUNDS -->
+        <div class="policy-section">
+          <h2>Eligibility for Refunds</h2>
+          <p>Refunds may be issued under the following conditions:</p>
+          <ul>
+            <li>
+              <strong>Technical Issues:</strong> If a technical issue from
+              Vidyaasarthi's side prevents access to the purchased content and
+              cannot be resolved within a reasonable time.
+            </li>
+            <li>
+              <strong>Misrepresentation:</strong> If the course or service
+              purchased is significantly different from the description provided
+              on the platform.
+            </li>
+            <li>
+              <strong>Duplicate Payments:</strong> If a duplicate payment has
+              been made for the same course or service.
+            </li>
+          </ul>
+        </div>
 
-      <!-- CHANGES TO POLICY -->
-      <div class="policy-section">
-        <h2>Changes to This Policy</h2>
-        <p>
-          Vidyaasaarthi reserves the right to modify or update this Refund Policy at any time without prior notice. Any changes will be effective immediately upon being posted on the website. We recommend reviewing this policy periodically to stay informed of any updates.
-        </p>
-      </div>
+        <!-- NON-REFUNDABLE CASES -->
+        <div class="policy-section">
+          <h2>Non-Refundable Cases</h2>
+          <p>Refunds will NOT be provided in the following cases:</p>
+          <ul>
+            <li>Change of mind after purchase</li>
+            <li>Failure to complete or attend the course</li>
+            <li>
+              Lack of satisfaction with teaching style, instructor, or course
+              content
+            </li>
+            <li>Partial usage of the course or subscription</li>
+            <li>Failure to use discount codes or promotional offers</li>
+            <li>
+              Purchases made during special offers, flash sales, or discounted
+              pricing (unless explicitly stated)
+            </li>
+          </ul>
+        </div>
 
-      <!-- CONTACT INFORMATION -->
-      <div class="policy-section">
-        <h2>Contact Information</h2>
-        <p>
-          For refund-related queries or concerns, please contact Vidyaasaarthi support through the official communication channels:
-        </p>
-        <div class="policy-highlight">
+        <!-- TIME LIMIT FOR REFUND REQUESTS -->
+        <div class="policy-section">
+          <h2>Time Limit for Refund Requests</h2>
           <p>
-            <strong>Email:</strong> <a href="mailto:support@vidyaasarthi.com" class="text-decoration-none" style="color: var(--primary-600);">support@vidyaasarthi.com</a>
+            Refund requests must be submitted within the following timeframes:
           </p>
+          <div class="policy-highlight">
+            <p>
+              <strong>Individual Courses:</strong> 7 days from the date of
+              purchase
+            </p>
+            <p style="margin-bottom: 0">
+              <strong>Subscription Plans:</strong> 3 days from the start date of
+              the subscription
+            </p>
+          </div>
           <p>
-            <strong>Phone / WhatsApp:</strong> +91 12345 12345
-          </p>
-          <p style="margin-bottom: 0;">
-            <strong>Address:</strong> 7/124, Avas Vikas Sikandra, Avas Vikas Colony, Sadar, Agra- 282007, Uttar Pradesh
+            Requests made after the applicable period will not be considered.
           </p>
         </div>
+
+        <!-- PROCESS FOR REQUESTING A REFUND -->
+        <div class="policy-section">
+          <h2>How to Request a Refund</h2>
+          <p>To request a refund, follow these steps:</p>
+          <h3>Step 1: Gather Your Information</h3>
+          <ul>
+            <li>Registered email address associated with your account</li>
+            <li>Order ID or payment receipt</li>
+            <li>Clear reason for the refund request</li>
+          </ul>
+          <h3>Step 2: Contact Support</h3>
+          <p>
+            Email our support team at
+            <a
+              href="mailto:support@vidyaasarthi.com"
+              class="text-decoration-none"
+              style="color: var(--primary-600)"
+              ><strong>support@vidyaasarthi.com</strong></a
+            >
+            with your refund request details.
+          </p>
+          <h3>Step 3: Review Process</h3>
+          <p>
+            Refund requests will be reviewed within
+            <strong>5–7 business days</strong>. We'll notify you via email about
+            the status of your request.
+          </p>
+        </div>
+
+        <!-- MODE OF REFUND -->
+        <div class="policy-section">
+          <h2>Mode of Refund</h2>
+          <p>
+            Approved refunds will be processed through the
+            <strong>original payment method</strong> used during purchase.
+          </p>
+          <div class="policy-highlight">
+            <p>
+              <strong>Processing Timeline:</strong> The time taken to receive
+              your refund may vary depending on your payment provider or bank
+              policies. Typically, refunds appear in your account within 5-10
+              business days after approval.
+            </p>
+          </div>
+        </div>
+
+        <!-- TERMINATION OF ACCESS -->
+        <div class="policy-section">
+          <h2>Termination of Access</h2>
+          <p>
+            Once a refund is approved and processed, access to the related
+            course, content, or subscription will be
+            <strong>immediately revoked</strong>. You will no longer be able to
+            access any materials or services associated with the refunded
+            purchase.
+          </p>
+        </div>
+
+        <!-- CHANGES TO POLICY -->
+        <div class="policy-section">
+          <h2>Changes to This Policy</h2>
+          <p>
+            Vidyaasarthi reserves the right to modify or update this Refund
+            Policy at any time without prior notice. Any changes will be
+            effective immediately upon being posted on the website. We recommend
+            reviewing this policy periodically to stay informed of any updates.
+          </p>
+        </div>
+
+        <!-- CONTACT INFORMATION -->
+        <div class="policy-section">
+          <h2>Contact Information</h2>
+          <p>
+            For refund-related queries or concerns, please contact Vidyaasarthi
+            support through the official communication channels:
+          </p>
+          <div class="policy-highlight">
+            <p>
+              <strong>Email:</strong>
+              <a
+                href="mailto:support@vidyaasarthi.com"
+                class="text-decoration-none"
+                style="color: var(--primary-600)"
+                >support@vidyaasarthi.com</a
+              >
+            </p>
+            <p><strong>Phone / WhatsApp:</strong> +91 12345 12345</p>
+            <p style="margin-bottom: 0">
+              <strong>Address:</strong> 7/124, Avas Vikas Sikandra, Avas Vikas
+              Colony, Sadar, Agra- 282007, Uttar Pradesh
+            </p>
+          </div>
+        </div>
       </div>
+    </section>
 
-    </div>
-  </section>
+    <!-- ================= FOOTER ================= -->
+    <div id="vs-footer"></div>
 
-  <!-- ================= FOOTER ================= -->
-  <div id="vs-footer"></div>
+    <!-- BOOTSTRAP JS (CDN) -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
+      integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
+      crossorigin="anonymous"
+    ></script>
 
-  <!-- BOOTSTRAP JS (CDN) -->
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.min.js"
-    integrity="sha384-G/EV+4j2dNv+tEPo3++6LCgdCROaejBqfUeNjuKAiuXbjrxilcCdDz6ZAVfHWe1Y"
-    crossorigin="anonymous"></script>
+    <!-- INCLUDE NAVBAR & FOOTER -->
+    <script src="../../component-js/include-components.js"></script>
 
-  <!-- INCLUDE NAVBAR & FOOTER -->
-  <script src="../../component-js/include-components.js"></script>
-
-  <!--END OF BODY-->
-</body>
-
+    <!--END OF BODY-->
+  </body>
 </html>
