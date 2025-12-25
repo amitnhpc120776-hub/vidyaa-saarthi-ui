@@ -142,6 +142,12 @@
         justify-content: flex-end;
       }
 
+      /* Helper Texts*/
+      .vs-helper-tip {
+        font-size: 0.25rem;
+        line-height: 1.2;
+        font-weight: 200;
+      }
       /* ================= AVATARS ================= */
 
       .chat-avatar {
@@ -262,6 +268,9 @@
             <select class="form-select" data-vs-dropdown="class">
               <option>Select Class</option>
             </select>
+            <div class="small text-muted mt-1">
+              Demo: Select Class VIII, X, or XII.
+            </div>
           </div>
           <div class="col">
             <select class="form-select" data-vs-dropdown="subject">
@@ -295,6 +304,9 @@
             <div class="vs-panel">
               <div class="vs-panel-header">Topic List</div>
               <div class="vs-panel-body">
+                <p class="small text-muted mb-2">
+                  Select a topic from the list to continue.
+                </p>
                 <!-- Sample static topic item for visual reference -->
                 <div class="form-check mb-2">
                   <input class="form-check-input" type="checkbox" />
@@ -324,13 +336,19 @@
               <div class="vs-panel-header">
                 <span>Ask Vidyaa sarthi</span>
                 <!-- Student persona switch (UI only) -->
-                <div class="d-flex gap-2">
-                  <button class="btn btn-outline-secondary btn-sm">
-                    Student 1
-                  </button>
-                  <button class="btn btn-outline-secondary btn-sm">
-                    Student 2
-                  </button>
+                <div class="d-flex flex-column align-items-end">
+                  <div class="d-flex gap-2">
+                    <button class="btn btn-outline-secondary btn-sm">
+                      Student 1
+                    </button>
+                    <button class="btn btn-outline-secondary btn-sm">
+                      Student 2
+                    </button>
+                  </div>
+                  <div class="small text-muted mt-1 vs-helper-tip">
+                    Click Student 1 or Student 2 for personalized explanations,
+                    then highlight text for 'Explain This'
+                  </div>
                 </div>
               </div>
               <div class="vs-panel-body flex-grow-1">
@@ -447,6 +465,9 @@
             <div class="vs-panel">
               <div class="vs-panel-header">Topic List</div>
               <div class="vs-panel-body">
+                <p class="small text-muted mb-2">
+                  Select a topic from the list to continue.
+                </p>
                 <div class="form-check mb-2">
                   <input class="form-check-input" type="checkbox" />
                   <label class="form-check-label"> Sample Topic Name </label>
@@ -470,13 +491,19 @@
             <div class="vs-panel">
               <div class="vs-panel-header">
                 <span>Ask Us</span>
-                <div class="d-flex gap-2">
-                  <button class="btn btn-outline-secondary btn-sm">
-                    Student 1
-                  </button>
-                  <button class="btn btn-outline-secondary btn-sm">
-                    Student 2
-                  </button>
+                <div class="d-flex flex-column align-items-end">
+                  <div class="d-flex gap-2">
+                    <button class="btn btn-outline-secondary btn-sm">
+                      Student 1
+                    </button>
+                    <button class="btn btn-outline-secondary btn-sm">
+                      Student 2
+                    </button>
+                  </div>
+                  <div class="small text-muted mt-1 vs-helper-tip">
+                    Click Student 1 or Student 2 for personalized explanations,
+                    then highlight text for 'Explain This'
+                  </div>
                 </div>
               </div>
               <div class="vs-panel-body">
