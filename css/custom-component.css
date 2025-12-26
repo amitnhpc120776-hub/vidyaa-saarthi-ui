@@ -399,13 +399,130 @@
     animation: fadeInUp 0.8s ease-out 0.3s both;
     flex-wrap: wrap;
 }
+.btn-hero-primary {
+    padding: 14px 32px;
+    background: linear-gradient(135deg, #0066ff, #0052cc);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(0, 102, 255, 0.3);
+}
 
-/* Legacy button classes moved to buttons.css */
-/* Keeping minimal backward compatibility aliases */
+.btn-hero-primary:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 102, 255, 0.4);
+    background: linear-gradient(135deg, #0052cc, #003d99);
+}
+
+.btn-hero-primary:active {
+    transform: translateY(-2px);
+}
+
+.btn-hero-secondary {
+    padding: 14px 32px;
+    background: white;
+    color: #0066ff;
+    border: 2px solid #0066ff;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-hero-secondary:hover {
+    background: rgba(0, 102, 255, 0.1);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 102, 255, 0.2);
+}
+
+.btn-hero-secondary:active {
+    transform: translateY(-2px);
+}
+
+.btn-modern-primary {
+    display: inline-block;
+    padding: 14px 32px;
+    background: linear-gradient(135deg, #0066ff, #0052cc);
+    color: white !important;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(0, 102, 255, 0.3);
+    text-decoration: none;
+    text-align: center;
+}
+
+.btn-modern-primary:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 102, 255, 0.4);
+    background: linear-gradient(135deg, #0052cc, #003d99);
+    color: white !important;
+}
+
+.btn-modern-secondary {
+    display: inline-block;
+    padding: 14px 32px;
+    background: white;
+    color: #0066ff !important;
+    border: 2px solid #0066ff;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    text-align: center;
+}
+
+.btn-modern-secondary:hover {
+    background: rgba(0, 102, 255, 0.1);
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(0, 102, 255, 0.2);
+    color: #0066ff !important;
+}
+
+.btn-modern-warning {
+    display: inline-block;
+    padding: 14px 32px;
+    background: linear-gradient(135deg, #ffa500, #ff8c00);
+    color: white !important;
+    border: none;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 16px rgba(255, 165, 0, 0.3);
+    text-decoration: none;
+    text-align: center;
+}
+
+.btn-modern-warning:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 24px rgba(255, 165, 0, 0.4);
+    background: linear-gradient(135deg, #ff8c00, #ff7700);
+    color: white !important;
+}
 
 .arrow-icon-modern {
     font-size: 18px;
     transition: transform 0.3s ease;
+}
+
+.btn-hero-primary:hover .arrow-icon-modern {
+    transform: translateX(4px);
+}
+
+.btn-hero-secondary:hover .arrow-icon-modern {
+    transform: translateX(4px);
 }
 
 .hero-stats-modern {
@@ -462,6 +579,11 @@
     
     .hero-buttons-modern {
         flex-direction: column;
+    }
+    
+    .btn-hero-primary, .btn-hero-secondary {
+        width: 100%;
+        justify-content: center;
     }
     
     /* Center tiles on tablet */
