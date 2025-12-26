@@ -35,3 +35,210 @@
 .vs-navbar .nav-link:focus {
   color: var(--neutral-200) !important;
 }
+/* ====== MODERN VIDYAA SARTHI NAVBAR ====== */
+/* Updated Design with Blue Gradient Theme */
+
+/* Navbar container - Dark gradient background */
+.vs-navbar {
+    background: linear-gradient(135deg, #0f1a2b 0%, #1a2b47 100%);
+    padding: 16px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.vs-navbar:hover {
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Navbar wrapper - Flexbox layout */
+.vs-navbar .navbar-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 32px;
+}
+
+/* Brand/Logo section */
+.vs-navbar .navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0;
+    background: transparent;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.vs-navbar .navbar-brand:hover {
+    transform: translateY(-2px);
+}
+
+.vs-navbar .navbar-brand img {
+    width: 40px;
+    height: auto;
+    transition: filter 0.3s ease;
+}
+
+.vs-navbar .navbar-brand img:hover {
+    filter: brightness(1.1);
+}
+
+.vs-navbar .navbar-brand span {
+    color: #ffffff;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+/* Navigation menu */
+.vs-navbar .navbar-nav {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 32px;
+    align-items: center;
+}
+
+/* Navigation links */
+.vs-navbar .nav-link {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 500;
+    padding: 8px 0;
+    position: relative;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.vs-navbar .nav-link:hover,
+.vs-navbar .nav-link.active {
+    color: #00d4ff;
+}
+
+.vs-navbar .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #0066ff, #00d4ff);
+    transition: width 0.3s ease;
+}
+
+.vs-navbar .nav-link:hover::after,
+.vs-navbar .nav-link.active::after {
+    width: 100%;
+}
+
+/* Navigation buttons container */
+.vs-navbar .nav-buttons {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+/* Button base styles */
+.vs-navbar .btn {
+    padding: 10px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+/* Secondary button (Outline) */
+.vs-navbar .btn-secondary {
+    background: transparent;
+    color: #00d4ff;
+    border: 1.5px solid #00d4ff;
+}
+
+.vs-navbar .btn-secondary:hover {
+    background: rgba(0, 212, 255, 0.1);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 212, 255, 0.2);
+}
+
+/* Primary button (Filled) */
+.vs-navbar .btn-primary {
+    background: linear-gradient(135deg, #0066ff, #0052cc);
+    color: #ffffff;
+}
+
+.vs-navbar .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 102, 255, 0.3);
+    background: linear-gradient(135deg, #0052cc, #003d99);
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .vs-navbar .navbar-wrapper {
+        padding: 0 24px;
+    }
+
+    .vs-navbar .navbar-nav {
+        gap: 24px;
+    }
+
+    .vs-navbar .nav-link {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+    .vs-navbar .navbar-wrapper {
+        padding: 0 16px;
+        flex-wrap: wrap;
+    }
+
+    .vs-navbar .navbar-nav {
+        flex-basis: 100%;
+        gap: 12px;
+        margin-top: 16px;
+        padding-top: 16px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .vs-navbar .nav-link {
+        font-size: 13px;
+    }
+
+    .vs-navbar .nav-buttons {
+        flex-wrap: wrap;
+        gap: 8px;
+        width: 100%;
+    }
+
+    .vs-navbar .btn {
+        padding: 8px 16px;
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .vs-navbar .navbar-brand span {
+        font-size: 16px;
+    }
+
+    .vs-navbar .navbar-nav {
+        gap: 8px;
+    }
+
+    .vs-navbar .nav-link {
+        font-size: 12px;
+    }
+}
